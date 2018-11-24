@@ -15,5 +15,5 @@ before_script:
   - Rscript -e 'mauricer::mrc_install("NS")'
 
 script:
-  - Rscript run.R
+  - travis_wait 50 Rscript run.R
 
