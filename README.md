@@ -1,2 +1,3 @@
 # McBette
-Model Comparison using babette
+
+Model Comparison using `babette`.
