@@ -16,5 +16,11 @@ for (site_model in beautier:::create_site_models()) {
     mcmc = create_mcmc_nested_sampling(),
     beast2_path = get_default_beast2_bin_path()
   )$ns
-  print(paste(site_model[[1]]$name, "|",marg_lik$marg_log_lik, "|", marg_lik$marg_log_lik_sd))
+  print(
+    paste(
+      site_model$name, "|", 
+      marg_lik$marg_log_lik, "|", 
+      marg_lik$marg_log_lik_sd
+    )
+  )
 }
