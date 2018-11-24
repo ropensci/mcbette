@@ -1,0 +1,20 @@
+language: r
+cache: packages
+
+r_github_packages:
+  - richelbilderbeek/babette
+  - richelbilderbeek/beastier
+  - richelbilderbeek/beautier
+  - richelbilderbeek/mauricer
+  - richelbilderbeek/tracerer
+
+before_script:
+  - # Java
+  - sudo apt-get install -qq oracle-java8-installer
+  - sudo apt-get install oracle-java8-set-default
+  - Rscript -e "beastier::install_beast2()"
+  - Rscript -e 'mauricer::mrc_install("NS")'
+
+script:
+  - ./run.sh
+
