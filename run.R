@@ -3,7 +3,7 @@ library(babette)
 testit::assert(is_beast2_installed())
 testit::assert(mauricer::mrc_is_installed("NS"))
 
-fasta_filename <- "primates.fas"
+fasta_filename <- "my_alignment.fas"
 testit::assert(file.exists(fasta_filename))
 
 n_rows <- length(beautier:::create_site_models())
