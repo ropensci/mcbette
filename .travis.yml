@@ -15,6 +15,5 @@ before_script:
   - Rscript -e 'mauricer::mrc_install("NS")'
 
 script:
-  - Rscript -e "getwd()"
-  - Rscript run.r
+  - Rscript run.R
 
