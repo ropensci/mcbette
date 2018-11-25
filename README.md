@@ -16,6 +16,11 @@ To do so, McBette uses the infrastructure of GitHub and Travis CI. For simple
 alignments, this costs nothing. Because everything happens online, 
 no installation is needed :+1:.
 
+You can 
+ 
+ * [watch a McBette introduction video on YouTube](https://youtu.be/bLhrrSua8OM)
+ * [download that video](http://richelbilderbeek.nl/mcbette.ogv)
+
 ## How to use McBette?
 
   1. Get a GitHub account
