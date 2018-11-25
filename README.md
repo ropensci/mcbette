@@ -1,6 +1,6 @@
 # McBette
 
-Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)]
+Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)
 ---|---
 master|[![Build Status](https://travis-ci.org/richelbilderbeek/McBette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/McBette)
 develop|[![Build Status](https://travis-ci.org/richelbilderbeek/McBette.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/McBette)
