@@ -1,4 +1,3 @@
-
 library(babette)
 testit::assert(is_beast2_installed())
 testit::assert(mauricer::mrc_is_installed("NS"))
@@ -57,12 +56,6 @@ knitr::kable(df)
 df <- na.omit(df)
 best_row_index <- which(df$marg_log_lik == max(df$marg_log_lik))
 
-df_best <- data.frame(
-  site_model_name = site_model_names[best_row_index],
-  clock_model_name = clock_model_names[best_row_index],
-  tree_prior_name = tree_prior_names[best_row_index],
-  marg_log_lik = marg_log_liks[best_row_index],
-  marg_log_lik_sd = marg_log_lik_sds[best_row_index]
-)
+df_best <- df[best_row_index, ]
 print("Best model:")
-knitr::kable(df_best)
+knitr::kable(df_best, row.names = FALSE)
