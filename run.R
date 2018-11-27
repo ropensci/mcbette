@@ -13,13 +13,11 @@ tree_prior_names <- rep(NA, n_rows)
 marg_log_liks <- rep(NA, n_rows)
 marg_log_lik_sds <- rep(NA, n_rows)
 
-tree_priors <- list(create_yule_tree_prior(), create_bd_tree_prior())
-
 # Pick a site model
 row_index <- 1
 for (site_model in beautier:::create_site_models()) {
   for (clock_model in beautier:::create_clock_models()) {
-    for (tree_prior in tree_priors) {
+    for (tree_prior in beautier:::create_tree_priors()) {
       marg_lik <- bbt_run(
         fasta_filenames = fasta_filename,
         site_models = site_model,
