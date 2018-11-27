@@ -27,7 +27,7 @@ for (site_model in beautier:::create_site_models()) {
             site_models = site_model,
             clock_models = clock_model,
             tree_priors = tree_prior,
-            mcmc = create_mcmc_nested_sampling(),
+            mcmc = create_mcmc_nested_sampling(epsilon = 10e-13),
             beast2_path = get_default_beast2_bin_path()
           )$ns
           marg_log_liks[row_index] <- marg_lik$marg_log_lik
