@@ -15,6 +15,7 @@ before_script:
   - Rscript -e 'mauricer::mrc_install("NS")'
 
 after_script:
+  - Rscript -e 'devtools::install_package("richelbilderbeek/mcbette")'
   - travis_wait 50 Rscript run.R
 
 after_success:
