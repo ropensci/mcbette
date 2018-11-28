@@ -16,10 +16,8 @@ before_script:
   - Rscript -e "beastier::install_beast2()"
   - Rscript -e 'mauricer::mrc_install("NS")'
 
-after_script:
+after_success:
   - Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
   - travis_wait 50 Rscript run.R
-
-after_success:
   - Rscript -e 'lintr::lint_package()'
   - Rscript -e 'covr::codecov()'
