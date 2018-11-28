@@ -1,27 +1,27 @@
-# McBette
+# `mcbette`
 
 Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)
 ---|---
-master|[![Build Status](https://travis-ci.org/richelbilderbeek/McBette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/McBette)
-develop|[![Build Status](https://travis-ci.org/richelbilderbeek/McBette.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/McBette)
+master|[![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/mcbette)
+develop|[![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/mcbette)
 
 Model Comparison using `babette`.
 
-## What is McBette?
+## What is `mcbette`?
 
-McBette allows you to do a Bayesian model comparison on a DNA alignment,
+`mcbette` allows you to do a Bayesian model comparison on a DNA alignment,
 in an easy-to-use way.
 
-To do so, McBette uses the infrastructure of GitHub and Travis CI. For simple
+To do so, mcbette uses the infrastructure of GitHub and Travis CI. For simple
 alignments, this costs nothing. Because everything happens online, 
 no installation is needed :+1:.
 
 You can 
  
- * [watch a McBette introduction video on YouTube](https://youtu.be/bLhrrSua8OM)
+ * [watch a mcbette introduction video on YouTube](https://youtu.be/bLhrrSua8OM)
  * [download that video](http://richelbilderbeek.nl/mcbette.ogv)
 
-## How to use McBette?
+## How to use `mcbette`?
 
   1. Get a GitHub account
   2. Get a Travis CI account (one can simply log in with GitHub)
