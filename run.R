@@ -1,5 +1,5 @@
-library(babette)
-testit::assert(is_beast2_installed())
+library(mcbette)
+testit::assert(beastier::is_beast2_installed())
 testit::assert(mauricer::mrc_is_installed("NS"))
 
 df <- mcbette::est_marg_liks("my_alignment.fas")

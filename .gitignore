@@ -37,3 +37,5 @@ rsconnect/
 .Rproj.user
 primates.log
 primates.trees
+my_alignment.log
+my_alignment.trees
