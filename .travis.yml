@@ -17,3 +17,6 @@ before_script:
 after_script:
   - travis_wait 50 Rscript run.R
 
+after_success:
+  - Rscript -e 'lintr::lint_package()'
+  - Rscript -e 'covr::codecov()'
