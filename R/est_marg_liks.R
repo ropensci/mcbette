@@ -4,6 +4,7 @@
 #' @return a data frame showing the estimated marginal likelihoods
 #' (and its estimated error) per combination of models
 #' @author Richel J.C. Bilderbeek
+#' @export
 est_marg_liks <- function(fasta_filename) {
 
   testit::assert(file.exists(fasta_filename))
