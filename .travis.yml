@@ -14,6 +14,6 @@ before_script:
   - Rscript -e "beastier::install_beast2()"
   - Rscript -e 'mauricer::mrc_install("NS")'
 
-script:
+after_script:
   - travis_wait 50 Rscript run.R
 
