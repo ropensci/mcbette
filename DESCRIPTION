@@ -1,4 +1,4 @@
-Package: McBette
+Package: mcbette
 Title: Model Comparison Using Babette
 Version: 0.1
 Authors@R: c(
@@ -8,15 +8,15 @@ Description: 'BEAST2' (<http://www.beast2.org>) is a widely used
   Bayesian phylogenetic tool, that uses DNA/RNA/protein data
   and many model priors to create a posterior of jointly estimated 
   phylogenies and parameters.
-  McBette allows to do a Bayesian model comparison over some
+  'mcbette' allows to do a Bayesian model comparison over some
   site and clock models, 
   using 'babette' (<https://www.github.com/richelbilderbeek/babette>).
 License: GPL-3 | file LICENSE
 LazyData: true
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
-URL: https://github.com/richelbilderbeek/McBette
-BugReports: https://github.com/richelbilderbeek/McBette/issues
+URL: https://github.com/richelbilderbeek/mcbette
+BugReports: https://github.com/richelbilderbeek/mcbette/issues
 Imports:
     babette,
     beautier,

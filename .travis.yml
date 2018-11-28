@@ -2,6 +2,8 @@ language: r
 cache: packages
 
 r_github_packages:
+  - jimhester/covr
+  - jimhester/lintr
   - richelbilderbeek/babette
   - richelbilderbeek/beastier
   - richelbilderbeek/beautier
@@ -14,6 +16,8 @@ before_script:
   - Rscript -e "beastier::install_beast2()"
   - Rscript -e 'mauricer::mrc_install("NS")'
 
-script:
+after_success:
+  - Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
   - travis_wait 120 Rscript run.R
-
+  - Rscript -e 'lintr::lint_package()'
+  - Rscript -e 'covr::codecov()'
