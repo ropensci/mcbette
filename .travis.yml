@@ -1,6 +1,9 @@
 language: r
 cache: packages
 
+r_packages:
+  - txtplot
+
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
