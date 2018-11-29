@@ -6,7 +6,7 @@
 calc_weights <- function(
   marg_liks
 ) {
-  marg_liks[ is.na(marg_liks) ] <- 0.0
+  marg_liks[is.na(marg_liks)] <- 0.0
   weights <- rep(0.0, length(marg_liks))
   if (sum(marg_liks) != 0.0) {
     weights <- marg_liks / sum(marg_liks)

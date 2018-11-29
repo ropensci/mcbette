@@ -3,7 +3,6 @@ context("test-calc_weights")
 test_that("human values", {
 
   marg_liks <- c(0.1, 0.2, 0.3, 0.4)
-  # marg_log_liks <- log(marg_log_liks)
   created <- calc_weights(marg_liks)
   expected <- c(0.1, 0.2, 0.3, 0.4)
   expect_equal(created, expected)
