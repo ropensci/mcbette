@@ -5,10 +5,13 @@
 \title{Estimate the marginal likelihoods for all combinations of\
 site, clock and tree models}
 \usage{
-est_marg_liks(fasta_filename)
+est_marg_liks(fasta_filename, epsilon = 1e-12)
 }
 \arguments{
 \item{fasta_filename}{name of the FASTA file}
+
+\item{epsilon}{measure of relative accuracy.
+Smaller values result in longer, more precise estimations}
 }
 \value{
 a data frame showing the estimated marginal likelihoods

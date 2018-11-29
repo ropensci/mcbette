@@ -1,11 +1,16 @@
 #' Estimate the marginal likelihoods for all combinations of\
 #' site, clock and tree models
 #' @param fasta_filename name of the FASTA file
+#' @param epsilon measure of relative accuracy.
+#'   Smaller values result in longer, more precise estimations
 #' @return a data frame showing the estimated marginal likelihoods
 #' (and its estimated error) per combination of models
 #' @author Richel J.C. Bilderbeek
 #' @export
-est_marg_liks <- function(fasta_filename) {
+est_marg_liks <- function(
+  fasta_filename,
+  epsilon = 10e-13
+) {
 
   testit::assert(file.exists(fasta_filename))
   testit::assert(beastier::is_beast2_installed())
@@ -32,7 +37,7 @@ est_marg_liks <- function(fasta_filename) {
               site_models = site_model,
               clock_models = clock_model,
               tree_priors = tree_prior,
-              mcmc = beautier::create_mcmc_nested_sampling(epsilon = 10e-13),
+              mcmc = beautier::create_mcmc_nested_sampling(epsilon = epsilon),
               beast2_path = beastier::get_default_beast2_bin_path()
             )$ns
             marg_log_liks[row_index] <- marg_lik$marg_log_lik
@@ -53,6 +58,7 @@ est_marg_liks <- function(fasta_filename) {
     clock_model_name = clock_model_names,
     tree_prior_name = tree_prior_names,
     marg_log_lik = marg_log_liks,
-    marg_log_lik_sd = marg_log_lik_sds
+    marg_log_lik_sd = marg_log_lik_sds,
+    weight = calc_weights(exp(marg_log_liks))
   )
 }
