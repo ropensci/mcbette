@@ -10,7 +10,7 @@ knitr::kable(df)
 ################################################################################
 # Create an ordered data frame
 ################################################################################
-# Keep non-NA
+# Keep rows without an NA
 df_ordered <- na.omit(df)
 
 # Order from high to low
