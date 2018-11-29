@@ -43,3 +43,4 @@ simple.log
 simple.trees
 simple.posterior.log
 simple.posterior.trees
+my_alignment.posterior.*

@@ -7,20 +7,26 @@ df <- mcbette::est_marg_liks("my_alignment.fas")
 # Show all models
 knitr::kable(df)
 
+################################################################################
+# Create an ordered data frame
+################################################################################
 # Keep non-NA
-df <- na.omit(df)
+df_ordered <- na.omit(df)
 
 # Order from high to low
-df <- df[ order(-df$weight), ]
+df_ordered <- df_ordered[ order(-df_ordered$weight), ]
 
 # Show most convincing first
-knitr::kable(df)
+knitr::kable(df_ordered)
 
 # Show weights
-txtplot::txtplot(x = seq(1, length(df$weight)), y = df$weight)
+txtplot::txtplot(x = seq(1, length(df_ordered$weight)), y = df_ordered$weight)
 
+################################################################################
+# Create a best model data frame
+################################################################################
 # Show the best model
-best_row_index <- which(df$marg_log_lik == max(df$marg_log_lik))
-df_best <- df[best_row_index, ]
+best_row_index <- which(df_ordered$marg_log_lik == max(df_ordered$marg_log_lik))
+df_best <- df_ordered[best_row_index, ]
 print("Best model:")
 knitr::kable(df_best, row.names = FALSE)
