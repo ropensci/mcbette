@@ -10,3 +10,4 @@
 ^appveyor\.yml$
 ^my_alignment\.fas$
 ^run\.R$
+^example.fas$
