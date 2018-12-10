@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^pics$
+^scripts$
 ^doc$
 ^scripts$
 ^\.travis\.yml$
