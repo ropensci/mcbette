@@ -31,7 +31,7 @@ for (n_taxa in c(10, 20, 30, 40, 50, 60, 70, 80, 160, 320, 640)) {
     alignment <- pirouette::sim_alignment(
       phylogeny = phylogeny,
       sequence_length = NA,
-      root_sequence = pirouette::create_blocked_dna(1000),
+      root_sequence = pirouette::create_blocked_dna(sequence_length),
       mutation_rate = 1.0 / crown_age
     )
     ape::write.FASTA(
