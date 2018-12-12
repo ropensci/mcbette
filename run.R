@@ -2,7 +2,10 @@ library(mcbette)
 testit::assert(beastier::is_beast2_installed())
 testit::assert(mauricer::mrc_is_installed("NS"))
 
-df <- mcbette::est_marg_liks("my_alignment.fas")
+fasta_filename <- "my_alignment.fas"
+
+# mcbette will check if FASTA file exists
+df <- mcbette::est_marg_liks(fasta_filename, verbose = TRUE)
 
 # Show all models
 knitr::kable(df)

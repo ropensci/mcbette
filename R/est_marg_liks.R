@@ -3,15 +3,22 @@
 #' @param fasta_filename name of the FASTA file
 #' @param epsilon measure of relative accuracy.
 #'   Smaller values result in longer, more precise estimations
+#' @param verbose if TRUE show debug output
 #' @return a data frame showing the estimated marginal likelihoods
 #' (and its estimated error) per combination of models
 #' @author Richel J.C. Bilderbeek
 #' @export
 est_marg_liks <- function(
   fasta_filename,
-  epsilon = 10e-13
+  epsilon = 10e-13,
+  verbose = FALSE
 ) {
-
+  if (!file.exists(fasta_filename)) {
+    stop(
+      "FASTA file does not exists. ",
+      "File '", fasta_filename,"' not found"
+    )
+  }
   testit::assert(file.exists(fasta_filename))
   testit::assert(beastier::is_beast2_installed())
   testit::assert(mauricer::mrc_is_installed("NS"))
@@ -43,7 +50,9 @@ est_marg_liks <- function(
             marg_log_liks[row_index] <- marg_lik$marg_log_lik
             marg_log_lik_sds[row_index] <- marg_lik$marg_log_lik_sd
           },
-          error = function(msg) {} # nolint indeed nothing happens here
+          error = function(msg) {
+            if (verbose) print(msg)
+          }
         )
         site_model_names[row_index] <- site_model$name
         clock_model_names[row_index] <- clock_model$name
