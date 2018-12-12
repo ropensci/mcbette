@@ -22,6 +22,7 @@ Imports:
     beautier,
     beastier,
     phangorn,
+    Rmpfr,
     stringr,
     tracerer,
     testit,

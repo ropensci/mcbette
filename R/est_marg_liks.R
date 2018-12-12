@@ -68,6 +68,6 @@ est_marg_liks <- function(
     tree_prior_name = tree_prior_names,
     marg_log_lik = marg_log_liks,
     marg_log_lik_sd = marg_log_lik_sds,
-    weight = calc_weights(exp(marg_log_liks))
+    weight = calc_weights(exp(Rmpfr::mpfr(marg_log_liks, 256)))
   )
 }
