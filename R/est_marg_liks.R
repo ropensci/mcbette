@@ -67,7 +67,7 @@ est_marg_liks <- function(
     calc_weights(marg_liks = exp(Rmpfr::mpfr(marg_log_liks, 256)))
   )
 
-  data.frame(
+  df <- data.frame(
     site_model_name = site_model_names,
     clock_model_name = clock_model_names,
     tree_prior_name = tree_prior_names,
@@ -75,4 +75,5 @@ est_marg_liks <- function(
     marg_log_lik_sd = marg_log_lik_sds,
     weight = weights
   )
+  df
 }
