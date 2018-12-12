@@ -14,6 +14,7 @@ r_github_packages:
   - richelbilderbeek/tracerer
 
 before_script:
+  - sudo apt install -qq libmpfr-dev
   - sudo apt-get install -qq oracle-java8-installer
   - sudo apt-get install oracle-java8-set-default
   - Rscript -e "beastier::install_beast2()"
