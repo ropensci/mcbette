@@ -19,8 +19,8 @@ test_that("use", {
   expect_true(!is.factor(df$marg_log_lik_sd))
   expect_true(!is.factor(df$weight))
 
-  expect_true(all(is.na(df$marg_log_lik) | df$marg_log_lik < 0.0))
-  expect_true(all(is.na(df$marg_log_lik_sd) | df$marg_log_lik_sd >= 0.0))
+  expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
+  expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
   expect_true(all(df$weight >= 0.0))
   expect_true(all(df$weight <= 1.0))
 })
