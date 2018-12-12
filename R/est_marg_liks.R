@@ -33,10 +33,10 @@ est_marg_liks <- function(
       for (tree_prior in beautier:::create_tree_priors()) {
         tryCatch({
             marg_lik <- babette::bbt_run(
-              fasta_filenames = fasta_filename,
-              site_models = site_model,
-              clock_models = clock_model,
-              tree_priors = tree_prior,
+              fasta_filename = fasta_filename,
+              site_model = site_model,
+              clock_model = clock_model,
+              tree_prior = tree_prior,
               mcmc = beautier::create_mcmc_nested_sampling(epsilon = epsilon),
               beast2_path = beastier::get_default_beast2_bin_path()
             )$ns
