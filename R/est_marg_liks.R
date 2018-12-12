@@ -45,7 +45,8 @@ est_marg_liks <- function(
               clock_model = clock_model,
               tree_prior = tree_prior,
               mcmc = beautier::create_mcmc_nested_sampling(epsilon = epsilon),
-              beast2_path = beastier::get_default_beast2_bin_path()
+              beast2_path = beastier::get_default_beast2_bin_path(),
+              overwrite = TRUE
             )$ns
             marg_log_liks[row_index] <- marg_lik$marg_log_lik
             marg_log_lik_sds[row_index] <- marg_lik$marg_log_lik_sd
