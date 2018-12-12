@@ -4,7 +4,7 @@
 #' @param epsilon measure of relative accuracy.
 #'   Smaller values result in longer, more precise estimations
 #' @param verbose if TRUE show debug output
-#' @return a data frame showing the estimated marginal likelihoods
+#' @return a \code{\link[dplyr]{tibble}} showing the estimated marginal likelihoods
 #' (and its estimated error) per combination of models
 #' @author Richel J.C. Bilderbeek
 #' @export
@@ -62,13 +62,14 @@ est_marg_liks <- function(
       }
     }
   }
+  weights <- calc_weights(marg_liks = exp(Rmpfr::mpfr(marg_log_liks, 256)))
 
-  data.frame(
+  dplyr::tibble(
     site_model_name = site_model_names,
     clock_model_name = clock_model_names,
     tree_prior_name = tree_prior_names,
-    marg_log_lik = marg_log_liks,
-    marg_log_lik_sd = marg_log_lik_sds,
-    weight = calc_weights(exp(Rmpfr::mpfr(marg_log_liks, 256)))
+    marg_log_lik = Rmpfr::mpfr(marg_log_liks, 256),
+    marg_log_lik_sd = Rmpfr::mpfr(marg_log_lik_sds, 256),
+    weight = weights
   )
 }
