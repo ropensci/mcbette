@@ -64,7 +64,7 @@ est_marg_liks <- function(
   }
   weights <- calc_weights(marg_liks = exp(Rmpfr::mpfr(marg_log_liks, 256)))
 
-  dplyr::tibble(
+  t <- dplyr::tibble(
     site_model_name = site_model_names,
     clock_model_name = clock_model_names,
     tree_prior_name = tree_prior_names,
@@ -72,4 +72,8 @@ est_marg_liks <- function(
     marg_log_lik_sd = Rmpfr::mpfr(marg_log_lik_sds, 256),
     weight = weights
   )
+  t$site_model_name <- as.factor(t$site_model_name)
+  t$clock_model_name <- as.factor(t$clock_model_name)
+  t$tree_prior_name <- as.factor(t$tree_prior_name)
+  t
 }
