@@ -16,7 +16,7 @@ est_marg_liks <- function(
   if (!file.exists(fasta_filename)) {
     stop(
       "FASTA file does not exists. ",
-      "File '", fasta_filename,"' not found"
+      "File '", fasta_filename, "' not found"
     )
   }
   testit::assert(file.exists(fasta_filename))
