@@ -29,10 +29,18 @@ test_that("using log values", {
   expect_equal(created, expected)
 })
 
-test_that("teach NA as zero", {
+test_that("treat NA as zero", {
 
   marg_liks <- c(0.1, 0.2, 0.3, 0.4, NA)
   created <- calc_weights(marg_liks)
   expected <- c(0.1, 0.2, 0.3, 0.4, 0.0)
   expect_equal(created, expected)
+})
+
+test_that("treat NA as zero, using Rmpfr", {
+
+  marg_liks <- Rmpfr::mpfr(c(0.1, 0.2, 0.3, 0.4, NA), 256)
+  created <- calc_weights(marg_liks)
+  expected <- Rmpfr::mpfr(c(0.1, 0.2, 0.3, 0.4, 0.0), 256)
+  expect_true(all(created - expected < 0.000000000001))
 })
