@@ -131,6 +131,7 @@ Here is the output of the supplied FASTA file:
 |site_model_name |clock_model_name   |tree_prior_name           | marg_log_lik| marg_log_lik_sd|    weight|
 |:---------------|:------------------|:-------------------------|------------:|---------------:|---------:|
 |TN93            |relaxed_log_normal |coalescent_exp_population |    -1791.263|        4.356108| 0.4594322|```
+```
 
 This alignment apparently fits best with an TN93 site model, 
 relaxed log-normal clock model and a coalescent exponential population tree prior. 
