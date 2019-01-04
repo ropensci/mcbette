@@ -7,7 +7,7 @@ r_packages:
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
-  - richelbilderbeek/babette
+  - ropensci/babette
   - ropensci/beastier
   - ropensci/beautier
   - ropensci/mauricer
