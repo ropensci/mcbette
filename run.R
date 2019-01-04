@@ -1,6 +1,6 @@
 library(mcbette)
 testit::assert(beastier::is_beast2_installed())
-testit::assert(mauricer::mrc_is_installed("NS"))
+testit::assert(mauricer::is_beast2_pkg_installed("NS"))
 
 fasta_filename <- "my_alignment.fas"
 
