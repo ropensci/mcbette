@@ -20,7 +20,7 @@ before_script:
   - sudo apt-get install -qq oracle-java8-installer
   - sudo apt-get install oracle-java8-set-default
   - Rscript -e "beastier::install_beast2()"
-  - Rscript -e 'mauricer::mrc_install("NS")'
+  - Rscript -e 'mauricer::install_beast2_pkg("NS")'
   - Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
 
 after_success:
