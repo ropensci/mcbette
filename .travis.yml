@@ -10,7 +10,7 @@ r_github_packages:
   - richelbilderbeek/babette
   - ropensci/beastier
   - ropensci/beautier
-  - richelbilderbeek/mauricer
+  - ropensci/mauricer
   - ropensci/tracerer
 
 before_install:
