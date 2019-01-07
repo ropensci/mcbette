@@ -1,4 +1,4 @@
-#' Estimate the marginal likelihoods for all combinations of\
+#' Estimate the marginal likelihoods for all combinations of
 #' site, clock and tree models
 #' @param fasta_filename name of the FASTA file
 #' @param epsilon measure of relative accuracy.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/est_marg_liks.R
 \name{est_marg_liks}
 \alias{est_marg_liks}
-\title{Estimate the marginal likelihoods for all combinations of\
+\title{Estimate the marginal likelihoods for all combinations of
 site, clock and tree models}
 \usage{
 est_marg_liks(fasta_filename, epsilon = 1e-12, verbose = FALSE)
@@ -16,11 +16,11 @@ Smaller values result in longer, more precise estimations}
 \item{verbose}{if TRUE show debug output}
 }
 \value{
-a data frame showing the estimated marginal likelihoods
+a \code{\link[dplyr]{tibble}} showing the estimated marginal likelihoods
 (and its estimated error) per combination of models
 }
 \description{
-Estimate the marginal likelihoods for all combinations of\
+Estimate the marginal likelihoods for all combinations of
 site, clock and tree models
 }
 \author{
