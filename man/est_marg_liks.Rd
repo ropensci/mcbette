@@ -16,7 +16,7 @@ Smaller values result in longer, more precise estimations}
 \item{verbose}{if TRUE show debug output}
 }
 \value{
-a \code{\link[dplyr]{tibble}} showing the estimated marginal likelihoods
+a \link{data.frame} showing the estimated marginal likelihoods
 (and its estimated error) per combination of models
 }
 \description{

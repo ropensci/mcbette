@@ -4,7 +4,7 @@
 #' @param epsilon measure of relative accuracy.
 #'   Smaller values result in longer, more precise estimations
 #' @param verbose if TRUE show debug output
-#' @return a \code{\link[dplyr]{tibble}} showing the estimated marginal likelihoods
+#' @return a \link{data.frame} showing the estimated marginal likelihoods
 #' (and its estimated error) per combination of models
 #' @author Richel J.C. Bilderbeek
 #' @export
