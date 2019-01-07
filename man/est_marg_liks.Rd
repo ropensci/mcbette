@@ -24,7 +24,7 @@ a \link{data.frame} showing the estimated marginal likelihoods
   \item \code{tree_prior_name}: name of the tree prior
   \item \code{marg_log_lik}: estimated marginal (natural) log likelihood
   \item \code{marg_log_lik_sd}: estimated error of \code{marg_log_lik}
-  \item \code{weight relative model}: weight, a value from 1.0 (all
+  \item \code{weight}: relative model weight, a value from 1.0 (all
     evidence is in favor of this model combination) to 0.0 (no
     evidence in favor of this model combination)
 }
