@@ -17,7 +17,17 @@ Smaller values result in longer, more precise estimations}
 }
 \value{
 a \link{data.frame} showing the estimated marginal likelihoods
-(and its estimated error) per combination of models
+(and its estimated error) per combination of models. Columns are:
+\itemize{
+  \item \code{site_model_name}: name of the site model
+  \item \code{clock_model_name}: name of the clock model
+  \item \code{tree_prior_name}: name of the tree prior
+  \item \code{marg_log_lik}: estimated marginal (natural) log likelihood
+  \item \code{marg_log_lik_sd}: estimated error of \code{marg_log_lik}
+  \item \code{weight relative model}: weight, a value from 1.0 (all
+    evidence is in favor of this model combination) to 0.0 (no
+    evidence in favor of this model combination)
+}
 }
 \description{
 Estimate the marginal likelihoods for all combinations of

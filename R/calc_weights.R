@@ -1,6 +1,11 @@
 #' Calculate the weights for each marginal likelihood
 #' @param marg_liks (non-log) marginal likelihood estimates
 #' @return the weight of each marginal likelihood estimate
+#' @examples
+#'   marg_liks <- c(0.0001, 0.0002, 0.0003, 0.0004)
+#'   created <- calc_weights(marg_liks)
+#'   expected <- c(0.1, 0.2, 0.3, 0.4)
+#'   testthat::expect_equal(created, expected)
 #' @author Richel J.C. Bilderbeek
 #' @export
 calc_weights <- function(
