@@ -1,6 +1,12 @@
 #' Estimate the marginal likelihoods for all combinations of
 #' site, clock and tree models
 #' @param fasta_filename name of the FASTA file
+#' @param site_models one or more site models,
+#'   as, for example, can be created by \link[beautier]{create_site_models}
+#' @param clock_models one or more clock models,
+#'   as, for example, can be created by \link[beautier]{create_clock_models}
+#' @param tree_priors one or more tree priors,
+#'   as, for example, can be created by \link[beautier]{create_tree_priors}
 #' @param epsilon measure of relative accuracy.
 #'   Smaller values result in longer, more precise estimations
 #' @param verbose if TRUE show debug output
@@ -20,6 +26,9 @@
 #' @export
 est_marg_liks <- function(
   fasta_filename,
+  site_models = beautier::create_site_models(),
+  clock_models = beautier::create_clock_models(),
+  tree_priors = beautier::create_tree_priors(),
   epsilon = 10e-13,
   verbose = FALSE
 ) {
@@ -33,9 +42,8 @@ est_marg_liks <- function(
   testit::assert(beastier::is_beast2_installed())
   testit::assert(mauricer::is_beast2_pkg_installed("NS"))
 
-  n_rows <- length(beautier:::create_site_models()) *
-    length(beautier:::create_clock_models()) *
-    length(beautier:::create_tree_priors())
+  n_rows <- length(site_models) *
+    length(clock_models) * length(tree_priors)
 
   site_model_names <- rep(NA, n_rows)
   clock_model_names <- rep(NA, n_rows)
@@ -45,9 +53,9 @@ est_marg_liks <- function(
 
   # Pick a site model
   row_index <- 1
-  for (site_model in beautier:::create_site_models()) {
-    for (clock_model in beautier:::create_clock_models()) {
-      for (tree_prior in beautier:::create_tree_priors()) {
+  for (site_model in site_models()) {
+    for (clock_model in clock_models) {
+      for (tree_prior in tree_priors) {
         tryCatch({
             marg_lik <- babette::bbt_run(
               fasta_filename = fasta_filename,
