@@ -53,7 +53,7 @@ est_marg_liks <- function(
 
   # Pick a site model
   row_index <- 1
-  for (site_model in site_models()) {
+  for (site_model in site_models) {
     for (clock_model in clock_models) {
       for (tree_prior in tree_priors) {
         tryCatch({
