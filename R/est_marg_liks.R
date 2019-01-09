@@ -1,11 +1,11 @@
 #' Estimate the marginal likelihoods for all combinations of
 #' site, clock and tree models
 #' @param fasta_filename name of the FASTA file
-#' @param site_models one or more site models,
+#' @param site_models a list of one or more site models,
 #'   as, for example, can be created by \link[beautier]{create_site_models}
-#' @param clock_models one or more clock models,
+#' @param clock_models a list of one or more clock models,
 #'   as, for example, can be created by \link[beautier]{create_clock_models}
-#' @param tree_priors one or more tree priors,
+#' @param tree_priors a list of one or more tree priors,
 #'   as, for example, can be created by \link[beautier]{create_tree_priors}
 #' @param epsilon measure of relative accuracy.
 #'   Smaller values result in longer, more precise estimations
@@ -22,6 +22,40 @@
 #'     evidence is in favor of this model combination) to 0.0 (no
 #'     evidence in favor of this model combination)
 #' }
+#' @examples
+#'   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+#'
+#'   # Only compare two site models
+#'   df <- est_marg_liks(
+#'     fasta_filename,
+#'     site_models = list(
+#'       beautier::create_jc69_site_model(),
+#'       beautier::create_hky_site_model()
+#'     ),
+#'     clock_models = list(beautier::create_strict_clock_model()),
+#'     tree_priors = list(beautier::create_yule_tree_prior()),
+#'     epsilon = 1e7
+#'   )
+#'
+#'   testthat::expect_true(is.data.frame(df))
+#'   testthat::expect_true("site_model_name" %in% colnames(df))
+#'   testthat::expect_true("clock_model_name" %in% colnames(df))
+#'   testthat::expect_true("tree_prior_name" %in% colnames(df))
+#'   testthat::expect_true("marg_log_lik" %in% colnames(df))
+#'   testthat::expect_true("marg_log_lik_sd" %in% colnames(df))
+#'   testthat::expect_true("weight" %in% colnames(df))
+#'
+#'   testthat::expect_true(is.factor(df$site_model_name))
+#'   testthat::expect_true(is.factor(df$clock_model_name))
+#'   testthat::expect_true(is.factor(df$tree_prior_name))
+#'   testthat::expect_true(!is.factor(df$marg_log_lik))
+#'   testthat::expect_true(!is.factor(df$marg_log_lik_sd))
+#'   testthat::expect_true(!is.factor(df$weight)
+#'
+#'   testthat::expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
+#'   testthat::expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
+#'   testthat::expect_true(all(df$weight >= 0.0))
+#'   testthat::expect_true(all(df$weight <= 1.0))
 #' @author Richel J.C. Bilderbeek
 #' @export
 est_marg_liks <- function(

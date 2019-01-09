@@ -2,7 +2,13 @@ context("test-est_marg_liks")
 
 test_that("use", {
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
-  df <- est_marg_liks(fasta_filename, epsilon = 1e7)
+  df <- est_marg_liks(
+    fasta_filename,
+    site_models = beautier::create_site_models()[1:2],
+    clock_models = beautier::create_clock_models()[1:2],
+    tree_priors = beautier::create_tree_priors()[1:2],
+    epsilon = 1e7
+  )
 
   expect_true(is.data.frame(df))
   expect_true("site_model_name" %in% colnames(df))
