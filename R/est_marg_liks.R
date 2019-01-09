@@ -50,7 +50,7 @@
 #'   testthat::expect_true(is.factor(df$tree_prior_name))
 #'   testthat::expect_true(!is.factor(df$marg_log_lik))
 #'   testthat::expect_true(!is.factor(df$marg_log_lik_sd))
-#'   testthat::expect_true(!is.factor(df$weight)
+#'   testthat::expect_true(!is.factor(df$weight))
 #'
 #'   testthat::expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
 #'   testthat::expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
