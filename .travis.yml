@@ -7,11 +7,11 @@ r_packages:
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
-  - ropensci/babette
-  - ropensci/beastier
   - ropensci/beautier
-  - ropensci/mauricer
   - ropensci/tracerer
+  - ropensci/beastier
+  - ropensci/mauricer
+  - ropensci/babette
 
 before_install:
   - sudo apt install -qq libmpfr-dev
