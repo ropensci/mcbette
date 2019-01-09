@@ -1,5 +1,13 @@
 # FAQ
 
+## Package
+
+### What are the dependencies?
+
+`mcbette` depends on (non-CRAN) packages like this:
+
+![mcbette dependencies](dependencies.png)
+
 ## Troubleshooting
 
 ### My run takes longer than one hour
