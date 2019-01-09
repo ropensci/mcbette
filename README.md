@@ -30,9 +30,22 @@ You can
   5. Change the alignment FASTA file, called `my_alignment.fas`
   6. See the results in the Travis CI build log
 
-## Example output
+## Example
 
-Here is the output of the supplied FASTA file:
+`mcbette` starts from an alignment:
+
+![A DNA alignment](pics/alignment.png)
+
+`mcbette` estimates the evidence (also known as marginal likelihood)
+of each model.
+
+```{r}
+mcbette::est_marg_liks(
+  fasta_filename = system.file("extdata", "primates.fas", package = "mcbette")
+)
+```
+
+Here is the `mcbette` output of that alignment:
 
 ```
 |site_model_name |clock_model_name   |tree_prior_name                | marg_log_lik| marg_log_lik_sd|    weight|
