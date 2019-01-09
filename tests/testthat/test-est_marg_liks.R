@@ -30,3 +30,62 @@ test_that("use", {
   expect_true(all(df$weight >= 0.0))
   expect_true(all(df$weight <= 1.0))
 })
+
+test_that("abuse", {
+  # fasta_filename
+  expect_error(
+    est_marg_liks(fasta_filename = "nonsense"),
+    "'fasta_filename' must be the name of an existing FASTA file"
+  )
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+
+  # site_models
+  expect_error(
+    est_marg_liks(
+      fasta_filename = fasta_filename, site_models = "nonsense"
+    ),
+    "'site_models' must be a list of one or more valid site models"
+  )
+
+  # clock_models
+  expect_error(
+    est_marg_liks(
+      fasta_filename = fasta_filename, clock_models = "nonsense"
+    ),
+    "'clock_models' must be a list of one or more valid clock models"
+  )
+
+  # tree_priors
+  expect_error(
+    est_marg_liks(
+      fasta_filename = fasta_filename, tree_priors = "nonsense"
+    ),
+    "'tree_priors' must be a list of one or more valid tree priors"
+  )
+
+  # epsilon
+  expect_error(
+    est_marg_liks(
+      fasta_filename = fasta_filename, epsilon = "nonsense"
+    ),
+    "'epsilon' must be one numerical value"
+  )
+  expect_error(
+    est_marg_liks(
+      fasta_filename = fasta_filename, epsilon = c(1.2, 3.4, 5.6)
+    ),
+    "'epsilon' must be one numerical value"
+  )
+  expect_error(
+    est_marg_liks(
+      fasta_filename = fasta_filename, epsilon = NA
+    ),
+    "'epsilon' must be one numerical value"
+  )
+  expect_error(
+    est_marg_liks(
+      fasta_filename = fasta_filename, epsilon = NULL
+    ),
+    "'epsilon' must be one numerical value"
+  )
+})

@@ -68,10 +68,17 @@ est_marg_liks <- function(
 ) {
   if (!file.exists(fasta_filename)) {
     stop(
-      "FASTA file does not exists. ",
+      "'fasta_filename' must be the name of an existing FASTA file.\n",
       "File '", fasta_filename, "' not found"
     )
   }
+  beautier::check_site_models(site_models)
+  beautier::check_clock_models(clock_models)
+  beautier::check_tree_priors(tree_priors)
+  if (!is.numeric(epsilon) || length(epsilon) != 1) {
+    stop("'epsilon' must be one numerical value. Actual value(s): ", epsilon)
+  }
+
   testit::assert(file.exists(fasta_filename))
   testit::assert(beastier::is_beast2_installed())
   testit::assert(mauricer::is_beast2_pkg_installed("NS"))

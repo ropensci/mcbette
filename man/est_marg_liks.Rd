@@ -14,13 +14,13 @@ est_marg_liks(fasta_filename,
 \arguments{
 \item{fasta_filename}{name of the FASTA file}
 
-\item{site_models}{one or more site models,
+\item{site_models}{a list of one or more site models,
 as, for example, can be created by \link[beautier]{create_site_models}}
 
-\item{clock_models}{one or more clock models,
+\item{clock_models}{a list of one or more clock models,
 as, for example, can be created by \link[beautier]{create_clock_models}}
 
-\item{tree_priors}{one or more tree priors,
+\item{tree_priors}{a list of one or more tree priors,
 as, for example, can be created by \link[beautier]{create_tree_priors}}
 
 \item{epsilon}{measure of relative accuracy.
