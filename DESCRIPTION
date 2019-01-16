@@ -38,6 +38,7 @@ Suggests:
     mauricer,
     nLTT,
     rmarkdown,
+    Rmpfr,
     spelling,
     testthat
 Language: en-US

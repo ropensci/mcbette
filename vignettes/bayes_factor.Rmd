@@ -1,0 +1,153 @@
+---
+title: "Bayes Factor"
+author: "Richel J.C. Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Bayes Factor}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Goal
+
+Measure the Bayes factor between JC69 and GTR.
+
+Set a random seed:
+
+```{r}
+set.seed(314)
+```
+
+
+## Prepare
+
+BEAST2 must be installed:
+
+```{r}
+if (!beastier::is_beast2_installed()) {
+  beastier::install_beast2()
+}
+```
+
+The BEAST2 package `NS` must be installed:
+
+```{r}
+if (!mauricer::is_beast2_pkg_installed("NS")) {
+  mauricer::install_beast2_pkg("NS")
+}
+```
+
+Interpretation of the Bayes factor [1]:
+
+```{r}
+interpret_bayes_factor <- function(bayes_factor) {
+  if (bayes_factor < 10^0.0) {
+    "in favor of other model"
+  } else if (bayes_factor < 10^0.5) {
+    "barely worth mentioning"
+  } else if (bayes_factor < 10^1.0) {
+    "substantial"
+  } else if (bayes_factor < 10^1.5) {
+    "strong"
+  } else if (bayes_factor < 10^2.0) {
+    "very strong"
+  } else {
+    "decisive"
+  }
+}
+testit::assert(interpret_bayes_factor(0.5) == "in favor of other model")
+testit::assert(interpret_bayes_factor(1.5) == "barely worth mentioning")
+testit::assert(interpret_bayes_factor(8.5) == "substantial")
+testit::assert(interpret_bayes_factor(12.5) == "strong")
+testit::assert(interpret_bayes_factor(85.0) == "very strong")
+testit::assert(interpret_bayes_factor(123.0) == "decisive")
+```
+
+## Overview
+
+ * Create a data set that *is* JC69
+ * Calculate the mar
+ * Compare these posteriors using the Bayes factor
+ * Interpret the Bayes factor
+
+## Methods
+
+Create an articifical PBD phylogeny with a long time to speciate. That is,
+a tree with all speciation event observed early in time (close to the root):
+ 
+```{r fig.width=7}
+phylogeny <- ape::read.tree(text = "((((A:12, B:12):1,C:13):1,D:14):1, E:15);")
+crown_age <- pirouette::get_crown_age(phylogeny)
+ape::plot.phylo(phylogeny)
+```
+
+Create JC69 alignment and save it to a FASTA file:
+
+```{r fig.width=7}
+sequence_length <- 1000
+
+alignment_phydat <- phangorn::simSeq(
+  phylogeny,
+  l = sequence_length,
+  rate = 1.0 / crown_age,
+  rootseq = rep(c('a', 'c', 'g', 't'), each = sequence_length / 4)
+)
+testit::assert(class(alignment_phydat) == "phyDat")
+alignment_dnabin <- ape::as.DNAbin(alignment_phydat)
+
+fasta_filename <- tempfile(pattern = "bayes_factor_", fileext = ".fasta")
+phangorn::write.phyDat(
+  alignment_dnabin,
+  file = fasta_filename,
+  format = "fasta"
+)
+image(alignment_dnabin)
+```
+
+From that alignment, get the marginal likelihood of the two desired models:
+
+
+```{r}
+df <- mcbette::est_marg_liks(
+  fasta_filename = fasta_filename, 
+  site_models = list(
+    beautier::create_jc69_site_model(), 
+    beautier::create_gtr_site_model()
+  ),
+  clock_models = list(beautier::create_strict_clock_model()),
+  tree_priors = list(beautier::create_bd_tree_prior()),
+  epsilon = 100.0
+)
+knitr::kable(df)
+```
+
+The Bayes factor (usually denoted as K) can be used for model comparison. 
+It can be calculated from the marginal likelihoods ratio:
+
+```{r}
+marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 256)) 
+marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 256))
+bayes_factor = marg_lik_jc / marg_lik_gtr
+interpretation <- interpret_bayes_factor(bayes_factor)
+paste(interpretation, "in favor of JC69")
+```
+
+There is also another way to compare models: by comparing their relative weights:
+
+```{r}
+ggplot2::ggplot(
+  df, ggplot2::aes(x = site_model_name, y = weight)
+) + ggplot2::geom_col()
+```
+
+## References
+
+ * [1] H. Jeffreys (1961). The Theory of Probability (3rd ed.). Oxford. p. 432
