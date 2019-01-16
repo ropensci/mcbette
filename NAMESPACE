@@ -2,4 +2,3 @@
 
 export(calc_weights)
 export(est_marg_liks)
-export(get_crown_age)
