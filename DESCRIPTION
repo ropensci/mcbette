@@ -23,6 +23,7 @@ Imports:
     beastier,
     dplyr,
     phangorn,
+    rappdirs,
     Rmpfr,
     stringr,
     tracerer,
