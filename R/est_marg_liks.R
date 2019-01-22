@@ -72,6 +72,15 @@ est_marg_liks <- function(
       "File '", fasta_filename, "' not found"
     )
   }
+  if (rappdirs::app_dir()$os == "win") {
+    stop(
+      "mcbette must run on Linux or Mac.\n",
+      "\n",
+      "It is not yet supported to call BEAST2 with packages installed\n",
+      "in a scripted way"
+    )
+  }
+
   beautier::check_site_models(site_models)
   beautier::check_clock_models(clock_models)
   beautier::check_tree_priors(tree_priors)
