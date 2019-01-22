@@ -66,12 +66,6 @@ est_marg_liks <- function(
   epsilon = 10e-13,
   verbose = FALSE
 ) {
-  if (!file.exists(fasta_filename)) {
-    stop(
-      "'fasta_filename' must be the name of an existing FASTA file.\n",
-      "File '", fasta_filename, "' not found"
-    )
-  }
   if (rappdirs::app_dir()$os == "win") {
     stop(
       "mcbette must run on Linux or Mac.\n",
@@ -80,7 +74,12 @@ est_marg_liks <- function(
       "in a scripted way"
     )
   }
-
+  if (!file.exists(fasta_filename)) {
+    stop(
+      "'fasta_filename' must be the name of an existing FASTA file.\n",
+      "File '", fasta_filename, "' not found"
+    )
+  }
   beautier::check_site_models(site_models)
   beautier::check_clock_models(clock_models)
   beautier::check_tree_priors(tree_priors)
