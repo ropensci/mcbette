@@ -85,7 +85,7 @@ a tree with all speciation event observed early in time (close to the root):
  
 ```{r fig.width=7}
 phylogeny <- ape::read.tree(text = "((((A:12, B:12):1,C:13):1,D:14):1, E:15);")
-crown_age <- beautier::get_phylo_crown_age(phylogeny)
+crown_age <- beautier::get_crown_age(phylogeny)
 ape::plot.phylo(phylogeny)
 ```
 
