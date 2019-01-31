@@ -39,7 +39,7 @@ est_marg_liks_from_models <- function(
     )
   }
   check_inference_models(inference_models)
-  check_beast2_optionses(check_beast2_optionses)
+  check_beast2_optionses(beast2_optionses)
   if (!is.numeric(epsilon) || length(epsilon) != 1) {
     stop("'epsilon' must be one numerical value. Actual value(s): ", epsilon)
   }
@@ -61,7 +61,7 @@ est_marg_liks_from_models <- function(
     inference_model <- inference_models[[i]]
     beast2_options <- beast2_optionses[[i]]
     beautier::check_inference_model(inference_model)
-    beastier::check_beast2_options(beast_options)
+    beastier::check_beast2_options(beast2_options)
 
     tryCatch({
         marg_lik <- babette::bbt_run_from_model(

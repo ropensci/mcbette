@@ -2,5 +2,6 @@
 
 export(calc_weights)
 export(check_beast2_optionses)
+export(check_inference_models)
 export(est_marg_liks)
 export(est_marg_liks_from_models)

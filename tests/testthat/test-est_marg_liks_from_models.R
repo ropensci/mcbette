@@ -10,7 +10,6 @@ test_that("use", {
   )
   inference_models <- list(inference_model_1, inference_model_2)
 
-  skip("WIP #2")
   df <- est_marg_liks_from_models(
     fasta_filename,
     inference_models = inference_models,
@@ -32,8 +31,10 @@ test_that("use", {
   expect_true(!is.factor(df$marg_log_lik_sd))
   expect_true(!is.factor(df$weight))
 
-  expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
-  expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
   expect_true(all(df$weight >= 0.0))
   expect_true(all(df$weight <= 1.0))
+
+  skip("WIP #2")
+  expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
+  expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
 })
