@@ -38,8 +38,8 @@ est_marg_liks_from_models <- function(
       "File '", fasta_filename, "' not found"
     )
   }
-  check_inference_models(inference_models)
-  check_beast2_optionses(beast2_optionses)
+  beatutier::check_inference_models(inference_models)
+  beastier::check_beast2_optionses(beast2_optionses)
   if (!is.numeric(epsilon) || length(epsilon) != 1) {
     stop("'epsilon' must be one numerical value. Actual value(s): ", epsilon)
   }
