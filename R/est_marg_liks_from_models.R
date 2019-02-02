@@ -38,7 +38,7 @@ est_marg_liks_from_models <- function(
       "File '", fasta_filename, "' not found"
     )
   }
-  beatutier::check_inference_models(inference_models)
+  beautier::check_inference_models(inference_models)
   beastier::check_beast2_optionses(beast2_optionses)
   if (!is.numeric(epsilon) || length(epsilon) != 1) {
     stop("'epsilon' must be one numerical value. Actual value(s): ", epsilon)
@@ -69,8 +69,8 @@ est_marg_liks_from_models <- function(
           inference_model = inference_model,
           beast2_options = beast2_options
         )$ns
-        marg_log_liks[row_index] <- marg_lik$marg_log_lik
-        marg_log_lik_sds[row_index] <- marg_lik$marg_log_lik_sd
+        marg_log_liks[i] <- marg_lik$marg_log_lik
+        marg_log_lik_sds[i] <- marg_lik$marg_log_lik_sd
       },
       error = function(msg) {
         if (verbose) print(msg)
