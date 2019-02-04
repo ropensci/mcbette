@@ -54,7 +54,7 @@ est_marg_liks_from_models <- function(
     if (!beautier::is_nested_sampling_mcmc(inference_model$mcmc)) {
       stop(
         "'inference_models' must have 'mcmc's for nested sampling.\n",
-        "Tip: use 'create_nested_sampling_mcmc'"
+        "Tip: use 'beautier::create_nested_sampling_mcmc'"
       )
     }
   }
