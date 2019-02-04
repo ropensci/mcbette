@@ -39,6 +39,12 @@ est_marg_liks_from_models <- function(
     )
   }
   beautier::check_inference_models(inference_models)
+  if (length(inference_models) == 0) {
+    stop(
+      "'inference_models' must be a list of at least 1 inference model.\n",
+      "Tip: use 'create_inference_model'"
+    )
+  }
   beastier::check_beast2_optionses(beast2_optionses)
   if (!is.numeric(epsilon) || length(epsilon) != 1) {
     stop("'epsilon' must be one numerical value. Actual value(s): ", epsilon)

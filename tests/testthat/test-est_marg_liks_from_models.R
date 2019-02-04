@@ -38,3 +38,14 @@ test_that("use", {
   expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
   expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
 })
+
+test_that("abuse", {
+  # no inference models
+  expect_error(
+    est_marg_liks_from_models(
+      system.file("extdata", "simple.fas", package = "mcbette"),
+      inference_models = list()
+    ),
+    "'inference_models' must be a list of at least 1 inference model"
+  )
+})
