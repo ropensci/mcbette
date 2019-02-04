@@ -58,7 +58,9 @@ test_that("abuse", {
   expect_error(
     est_marg_liks_from_models(
       system.file("extdata", "simple.fas", package = "mcbette"),
-      inference_models = list(beautier::create_inference_model(mcmc = create_mcmc()))
+      inference_models = list(
+        beautier::create_inference_model(mcmc = beautier::create_mcmc())
+      )
     ),
     "'inference_models' must have 'mcmc's for nested sampling"
   )
