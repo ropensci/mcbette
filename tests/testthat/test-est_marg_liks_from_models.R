@@ -3,17 +3,23 @@ context("test-est_marg_liks_from_models")
 test_that("use", {
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   inference_model_1 <- beautier::create_inference_model(
-    site_model = beautier::create_jc69_site_model()
+    site_model = beautier::create_jc69_site_model(),
+    mcmc = create_nested_sampling_mcmc()
   )
   inference_model_2 <- beautier::create_inference_model(
-    site_model = beautier::create_jc69_site_model()
+    site_model = beautier::create_jc69_site_model(),
+    mcmc = create_nested_sampling_mcmc()
   )
   inference_models <- list(inference_model_1, inference_model_2)
+  beast2_options <- beastier::create_beast2_options(beast2_path = beastier::get_default_beast2_bin_path())
+  beast2_optionses <- list(beast2_options, beast2_options)
 
   df <- est_marg_liks_from_models(
     fasta_filename,
     inference_models = inference_models,
-    epsilon = 1e7
+    beast2_optionses = beast2_optionses,
+    epsilon = 1e7,
+    verbose = TRUE
   )
 
   expect_true(is.data.frame(df))
@@ -34,7 +40,6 @@ test_that("use", {
   expect_true(all(df$weight >= 0.0))
   expect_true(all(df$weight <= 1.0))
 
-  skip("WIP #2")
   expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
   expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
 })
@@ -48,4 +53,14 @@ test_that("abuse", {
     ),
     "'inference_models' must be a list of at least 1 inference model"
   )
+
+  # mcmc must be nested_sampling_mcmcs
+  expect_error(
+    est_marg_liks_from_models(
+      system.file("extdata", "simple.fas", package = "mcbette"),
+      inference_models = list(create_inference_model(mcmc = create_mcmc()))
+    ),
+    "'inference_models' must have 'mcmc's for nested sampling"
+  )
+
 })

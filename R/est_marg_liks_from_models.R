@@ -45,11 +45,19 @@ est_marg_liks_from_models <- function(
       "Tip: use 'create_inference_model'"
     )
   }
+
   beastier::check_beast2_optionses(beast2_optionses)
   if (!is.numeric(epsilon) || length(epsilon) != 1) {
     stop("'epsilon' must be one numerical value. Actual value(s): ", epsilon)
   }
-
+  for (inference_model in inference_models) {
+    if (!beautier::is_nested_sampling_mcmc(inference_model$mcmc)) {
+      stop(
+        "'inference_models' must have 'mcmc's for nested sampling.\n",
+        "Tip: use 'create_nested_sampling_mcmc'"
+      )
+    }
+  }
   testit::assert(file.exists(fasta_filename))
   testit::assert(beastier::is_beast2_installed())
   testit::assert(mauricer::is_beast2_pkg_installed("NS"))
@@ -70,11 +78,15 @@ est_marg_liks_from_models <- function(
     beastier::check_beast2_options(beast2_options)
 
     tryCatch({
-        marg_lik <- babette::bbt_run_from_model(
+        bbt_out <- babette::bbt_run_from_model(
           fasta_filename = fasta_filename,
           inference_model = inference_model,
           beast2_options = beast2_options
-        )$ns
+        )
+        testit::assert("ns" %in% names(bbt_out))
+        marg_lik <- bbt_out$ns
+        testit::assert("marg_log_lik" %in% names(marg_lik))
+        testit::assert("marg_log_lik_sd" %in% names(marg_lik))
         marg_log_liks[i] <- marg_lik$marg_log_lik
         marg_log_lik_sds[i] <- marg_lik$marg_log_lik_sd
       },
