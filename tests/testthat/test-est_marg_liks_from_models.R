@@ -44,6 +44,42 @@ test_that("use", {
   expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
 })
 
+test_that("use with same RNG seed must result in identical output", {
+
+  if (!beastier::is_on_travis()) return()
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+  inference_model_1 <- beautier::create_inference_model(
+    site_model = beautier::create_jc69_site_model(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_model_2 <- beautier::create_inference_model(
+    site_model = beautier::create_jc69_site_model(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_models <- list(inference_model_1, inference_model_2)
+  beast2_options <- beastier::create_beast2_options(
+    beast2_path = beastier::get_default_beast2_bin_path(),
+    rng_seed = 314
+  )
+  beast2_optionses <- list(beast2_options, beast2_options)
+  epsilon <- 100
+  df_1 <- est_marg_liks_from_models(
+    fasta_filename,
+    inference_models = inference_models,
+    beast2_optionses = beast2_optionses,
+    epsilon = epsilon
+  )
+  df_2 <- est_marg_liks_from_models(
+    fasta_filename,
+    inference_models = inference_models,
+    beast2_optionses = beast2_optionses,
+    epsilon = epsilon
+  )
+  expect_equal(df_1, df_2)
+
+})
+
 test_that("abuse", {
   # no inference models
   expect_error(

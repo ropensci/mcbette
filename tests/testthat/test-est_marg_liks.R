@@ -1,12 +1,13 @@
 context("test-est_marg_liks")
 
 test_that("use", {
+
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   df <- est_marg_liks(
     fasta_filename,
     site_models = beautier::create_site_models()[1:2],
-    clock_models = beautier::create_clock_models()[1:2],
-    tree_priors = beautier::create_tree_priors()[1:2],
+    clock_models = beautier::create_clock_models()[1:1],
+    tree_priors = beautier::create_tree_priors()[1:1],
     epsilon = 1e7
   )
 
@@ -29,6 +30,32 @@ test_that("use", {
   expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
   expect_true(all(df$weight >= 0.0))
   expect_true(all(df$weight <= 1.0))
+})
+
+test_that("use with same RNG seed must result in identical output", {
+
+  if (!beastier::is_on_travis()) return()
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+  df_1 <- est_marg_liks(
+    fasta_filename,
+    site_models = beautier::create_site_models()[1:2],
+    clock_models = beautier::create_clock_models()[1:2],
+    tree_priors = beautier::create_tree_priors()[1:2],
+    epsilon = 1e7,
+    rng_seed = 314
+  )
+  df_2 <- est_marg_liks(
+    fasta_filename,
+    site_models = beautier::create_site_models()[1:2],
+    clock_models = beautier::create_clock_models()[1:2],
+    tree_priors = beautier::create_tree_priors()[1:2],
+    epsilon = 1e7,
+    rng_seed = 314
+  )
+
+  expect_equal(df_1, df_2)
+
 })
 
 test_that("abuse", {
