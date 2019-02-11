@@ -72,10 +72,21 @@ est_marg_liks_from_models <- function(
 
   # Pick a site model
   for (i in seq(1, n_rows)) {
+    if (verbose == TRUE) {
+      print(
+        paste0(
+          "Estimating evidence for model ", i, "/", n_rows, " with ",
+          inference_models[[i]]$site_model$name, " site model, ",
+          inference_models[[i]]$clock_model$name, " clock model and ",
+          inference_models[[i]]$tree_prior$name, " tree prior"
+        )
+      )
+    }
     inference_model <- inference_models[[i]]
     beast2_options <- beast2_optionses[[i]]
     beautier::check_inference_model(inference_model)
     beastier::check_beast2_options(beast2_options)
+    testit::assert(beautier::is_nested_sampling_mcmc(inference_model$mcmc))
 
     tryCatch({
         bbt_out <- babette::bbt_run_from_model(
@@ -97,6 +108,11 @@ est_marg_liks_from_models <- function(
     site_model_names[i] <- inference_model$site_model$name
     clock_model_names[i] <- inference_model$clock_model$name
     tree_prior_names[i] <- inference_model$tree_prior$name
+    if (verbose == TRUE) {
+      print(
+        paste0("Log evidence for model ", i, "/", n_rows, ": ", marg_log_liks[i])
+      )
+    }
   }
 
   weights <- as.numeric(

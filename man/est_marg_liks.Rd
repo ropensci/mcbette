@@ -9,22 +9,25 @@ est_marg_liks(fasta_filename,
   site_models = beautier::create_site_models(),
   clock_models = beautier::create_clock_models(),
   tree_priors = beautier::create_tree_priors(), epsilon = 1e-12,
-  verbose = FALSE)
+  rng_seed = 1, verbose = FALSE)
 }
 \arguments{
 \item{fasta_filename}{name of the FASTA file}
 
 \item{site_models}{a list of one or more site models,
-as, for example, can be created by \link[beautier]{create_site_models}}
+as can be created by \link[beautier]{create_site_models}}
 
 \item{clock_models}{a list of one or more clock models,
-as, for example, can be created by \link[beautier]{create_clock_models}}
+as can be created by \link[beautier]{create_clock_models}}
 
 \item{tree_priors}{a list of one or more tree priors,
-as, for example, can be created by \link[beautier]{create_tree_priors}}
+as can be created by \link[beautier]{create_tree_priors}}
 
 \item{epsilon}{measure of relative accuracy.
 Smaller values result in longer, more precise estimations}
+
+\item{rng_seed}{a random number generator seed used for the BEAST2
+inference}
 
 \item{verbose}{if TRUE show debug output}
 }

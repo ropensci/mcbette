@@ -7,7 +7,7 @@ This function does nothing.
 It is intended to inherit function argument documentation.}
 \usage{
 default_params_doc(beast2_optionses, clock_models, epsilon, fasta_filename,
-  inference_models, site_models, tree_priors, verbose)
+  inference_models, rng_seed, site_models, tree_priors, verbose)
 }
 \arguments{
 \item{beast2_optionses}{list of one or more \code{beast2_options}
@@ -26,6 +26,9 @@ Smaller values result in longer, more precise estimations}
 
 \item{inference_models}{a list of one or more inference models,
 as can be created by \link[beautier]{create_inference_model}}
+
+\item{rng_seed}{a random number generator seed used for the BEAST2
+inference}
 
 \item{site_models}{a list of one or more site models,
 as can be created by \link[beautier]{create_site_models}}

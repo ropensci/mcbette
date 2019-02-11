@@ -1,15 +1,6 @@
 #' Estimate the marginal likelihoods for all combinations of
 #' site, clock and tree models
-#' @param fasta_filename name of the FASTA file
-#' @param site_models a list of one or more site models,
-#'   as, for example, can be created by \link[beautier]{create_site_models}
-#' @param clock_models a list of one or more clock models,
-#'   as, for example, can be created by \link[beautier]{create_clock_models}
-#' @param tree_priors a list of one or more tree priors,
-#'   as, for example, can be created by \link[beautier]{create_tree_priors}
-#' @param epsilon measure of relative accuracy.
-#'   Smaller values result in longer, more precise estimations
-#' @param verbose if TRUE show debug output
+#' @inheritParams default_params_doc
 #' @return a \link{data.frame} showing the estimated marginal likelihoods
 #' (and its estimated error) per combination of models. Columns are:
 #' \itemize{
@@ -64,6 +55,7 @@ est_marg_liks <- function(
   clock_models = beautier::create_clock_models(),
   tree_priors = beautier::create_tree_priors(),
   epsilon = 10e-13,
+  rng_seed = 1,
   verbose = FALSE
 ) {
   if (rappdirs::app_dir()$os == "win") {
@@ -113,6 +105,7 @@ est_marg_liks <- function(
               tree_prior = tree_prior,
               mcmc = beautier::create_mcmc_nested_sampling(epsilon = epsilon),
               beast2_path = beastier::get_default_beast2_bin_path(),
+              rng_seed = rng_seed,
               overwrite = TRUE
             )$ns
             marg_log_liks[row_index] <- marg_lik$marg_log_lik
