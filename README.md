@@ -21,7 +21,7 @@ You can
  * [watch a mcbette introduction video on YouTube](https://youtu.be/bLhrrSua8OM)
  * [download that video](http://richelbilderbeek.nl/mcbette.ogv)
 
-## How to use `mcbette`?
+## How to use `mcbette` online?
 
   1. Get a GitHub account
   2. Get a Travis CI account (one can simply log in with GitHub)
@@ -29,6 +29,20 @@ You can
   4. Activate Travis CI for your fork
   5. Change the alignment FASTA file, called `my_alignment.fas`
   6. See the results in the Travis CI build log
+
+## How to use `mcbette` offline?
+
+### Installation
+
+```r
+usthis::install_github("ropensci/beautier")
+usthis::install_github("ropensci/tracerer")
+usthis::install_github("ropensci/beastier")
+usthis::install_github("ropensci/mauricer")
+usthis::install_github("ropensci/babette")
+beastier::install_beast2()
+mauricer::install_beast2_pkg("NS")
+```
 
 ## Example
 
