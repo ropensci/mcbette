@@ -32,6 +32,8 @@ You can
 
 ## How to use `mcbette` offline?
 
+:warning: only works on Linux and Mac
+
 ### Installation
 
 ```r
