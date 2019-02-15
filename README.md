@@ -37,11 +37,12 @@ You can
 ### Installation
 
 ```r
-usthis::install_github("ropensci/beautier")
-usthis::install_github("ropensci/tracerer")
-usthis::install_github("ropensci/beastier")
-usthis::install_github("ropensci/mauricer")
-usthis::install_github("ropensci/babette")
+usethis::install_github("ropensci/beautier")
+usethis::install_github("ropensci/tracerer")
+usethis::install_github("ropensci/beastier")
+usethis::install_github("ropensci/mauricer")
+usethis::install_github("ropensci/babette")
+usethis::install_github("richelbilderbeek/mcbette")
 beastier::install_beast2()
 mauricer::install_beast2_pkg("NS")
 ```
