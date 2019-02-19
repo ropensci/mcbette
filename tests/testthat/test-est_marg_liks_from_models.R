@@ -11,7 +11,9 @@ test_that("use", {
     mcmc = beautier::create_nested_sampling_mcmc()
   )
   inference_models <- list(inference_model_1, inference_model_2)
-  beast2_options <- beastier::create_beast2_options(beast2_path = beastier::get_default_beast2_bin_path())
+  beast2_options <- beastier::create_beast2_options(
+    beast2_path = beastier::get_default_beast2_bin_path()
+  )
   beast2_optionses <- list(beast2_options, beast2_options)
 
   df <- est_marg_liks_from_models(

@@ -110,7 +110,9 @@ est_marg_liks_from_models <- function(
     tree_prior_names[i] <- inference_model$tree_prior$name
     if (verbose == TRUE) {
       print(
-        paste0("Log evidence for model ", i, "/", n_rows, ": ", marg_log_liks[i])
+        paste0(
+          "Log evidence for model ", i, "/", n_rows, ": ", marg_log_liks[i]
+        )
       )
     }
   }
