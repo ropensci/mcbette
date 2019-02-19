@@ -19,7 +19,7 @@ r_github_packages:
 
 before_install:
   - echo $TRAVIS_OS_NAME
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libmpfr; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install mpfr; fi
   - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then sudo apt install -qq libmpfr-dev; fi
 
 before_script:
