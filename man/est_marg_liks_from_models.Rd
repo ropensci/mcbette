@@ -6,7 +6,8 @@
 site, clock and tree models}
 \usage{
 est_marg_liks_from_models(fasta_filename,
-  inference_models = list(beautier::create_inference_model()),
+  inference_models = list(beautier::create_inference_model(mcmc =
+  beautier::create_nested_sampling_mcmc())),
   beast2_optionses = rep(list(beastier::create_beast2_options()), times =
   length(inference_models)), epsilon = 1e-12, verbose = FALSE)
 }
