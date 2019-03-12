@@ -7,7 +7,7 @@ test_that("use", {
     mcmc = beautier::create_nested_sampling_mcmc()
   )
   inference_model_2 <- beautier::create_inference_model(
-    site_model = beautier::create_jc69_site_model(),
+    site_model = beautier::create_hky_site_model(),
     mcmc = beautier::create_nested_sampling_mcmc()
   )
   inference_models <- list(inference_model_1, inference_model_2)

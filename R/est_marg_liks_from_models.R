@@ -13,6 +13,57 @@
 #'     evidence is in favor of this model combination) to 0.0 (no
 #'     evidence in favor of this model combination)
 #' }
+#' @examples
+#'   # Use an example FASTA file
+#'   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+#'
+#'   # Create two inference models
+#'   inference_model_1 <- beautier::create_inference_model(
+#'     site_model = beautier::create_jc69_site_model(),
+#'     mcmc = beautier::create_nested_sampling_mcmc()
+#'   )
+#'   inference_model_2 <- beautier::create_inference_model(
+#'     site_model = beautier::create_hky_site_model(),
+#'     mcmc = beautier::create_nested_sampling_mcmc()
+#'   )
+#'   inference_models <- list(inference_model_1, inference_model_2)
+#'
+#'   # Need the BEAST2 binary's path
+#'   beast2_options <- beastier::create_beast2_options(
+#'     beast2_path = beastier::get_default_beast2_bin_path()
+#'   )
+#'
+#'   # Need as much beast2_optionses as inference models
+#'   beast2_optionses <- list(beast2_options, beast2_options)
+#'
+#'   df <- est_marg_liks_from_models(
+#'     fasta_filename,
+#'     inference_models = inference_models,
+#'     beast2_optionses = beast2_optionses,
+#'     epsilon = 1e7
+#'   )
+#'
+#'   # Testing the results
+#'   library(testthat)
+#'   expect_true(is.data.frame(df))
+#'   expect_true("site_model_name" %in% colnames(df))
+#'   expect_true("clock_model_name" %in% colnames(df))
+#'   expect_true("tree_prior_name" %in% colnames(df))
+#'   expect_true("marg_log_lik" %in% colnames(df))
+#'   expect_true("marg_log_lik_sd" %in% colnames(df))
+#'   expect_true("weight" %in% colnames(df))
+#'
+#'   expect_true(is.factor(df$site_model_name))
+#'   expect_true(is.factor(df$clock_model_name))
+#'   expect_true(is.factor(df$tree_prior_name))
+#'   expect_true(!is.factor(df$marg_log_lik))
+#'   expect_true(!is.factor(df$marg_log_lik_sd))
+#'   expect_true(!is.factor(df$weight))
+#'
+#'   expect_true(all(df$weight >= 0.0))
+#'   expect_true(all(df$weight <= 1.0))
+#'   expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
+#'   expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
 #' @author Richel J.C. Bilderbeek
 #' @export
 est_marg_liks_from_models <- function(
