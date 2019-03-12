@@ -74,7 +74,12 @@ est_marg_liks_from_models <- function(
     )
   ),
   beast2_optionses = rep(
-    list(beastier::create_beast2_options()), times = length(inference_models)
+    list(
+      beastier::create_beast2_options(
+        beast2_path = get_default_beast2_bin_path()
+      )
+    ),
+    times = length(inference_models)
   ),
   epsilon = 10e-13,
   verbose = FALSE
