@@ -6,6 +6,7 @@ test_that("human values", {
   created <- calc_weights(marg_liks)
   expected <- c(0.1, 0.2, 0.3, 0.4)
   expect_equal(created, expected)
+  expect_equal(1.0, sum(created))
 })
 
 test_that("small values", {
@@ -14,6 +15,7 @@ test_that("small values", {
   created <- calc_weights(marg_liks)
   expected <- c(0.1, 0.2, 0.3, 0.4)
   expect_equal(created, expected)
+  expect_equal(1.0, sum(created))
 })
 
 test_that("using log values", {
@@ -27,6 +29,7 @@ test_that("using log values", {
   created <- calc_weights(marg_liks)
   expected <- c(0.1, 0.2, 0.3, 0.4)
   expect_equal(created, expected)
+  expect_equal(1.0, sum(created))
 })
 
 test_that("treat NA as zero", {
@@ -35,6 +38,7 @@ test_that("treat NA as zero", {
   created <- calc_weights(marg_liks)
   expected <- c(0.1, 0.2, 0.3, 0.4, 0.0)
   expect_equal(created, expected)
+  expect_equal(1.0, sum(created))
 })
 
 test_that("treat NA as zero, using Rmpfr", {
@@ -43,4 +47,5 @@ test_that("treat NA as zero, using Rmpfr", {
   created <- calc_weights(marg_liks)
   expected <- Rmpfr::mpfr(c(0.1, 0.2, 0.3, 0.4, 0.0), 256)
   expect_true(all(created - expected < 0.000000000001))
+  expect_equal(Rmpfr::mpfr(1.0, 256), sum(created))
 })
