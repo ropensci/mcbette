@@ -19,7 +19,10 @@ r_github_packages:
 
 before_install:
   - echo $TRAVIS_OS_NAME
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install mpfr; fi
+  # No need to brew install mpfr
+  # Error: mpfr 4.0.1 is already installed
+  # To upgrade to 4.0.2, run `brew upgrade mpfr`
+  # if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install mpfr; fi
   - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then sudo apt install -qq libmpfr-dev; fi
 
 before_script:
