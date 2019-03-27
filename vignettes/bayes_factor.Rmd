@@ -32,19 +32,30 @@ set.seed(314)
 BEAST2 must be installed:
 
 ```{r}
-if (!beastier::is_beast2_installed()) {
-  beastier::install_beast2()
+if (1 == 2) {
+  if (!beastier::is_beast2_installed()) {
+    beastier::install_beast2()
+  }
 }
 ```
 
 The BEAST2 package `NS` must be installed:
 
 ```{r}
-if (!mauricer::is_beast2_pkg_installed("NS")) {
-  mauricer::install_beast2_pkg("NS")
+if (1 == 2) {
+  if (!mauricer::is_beast2_pkg_installed("NS")) {
+    mauricer::install_beast2_pkg("NS")
+  }
 }
 ```
 
+```{r}
+df <- data.frame(
+  site_model_name = c("JC69", "GTR"),
+  marg_log_lik = c(-1234.567, -23456.78),
+  weight = c(0.9, 0.1)
+)
+```
 Interpretation of the Bayes factor [1]:
 
 ```{r}
@@ -116,17 +127,19 @@ From that alignment, get the marginal likelihood of the two desired models:
 
 
 ```{r}
-df <- mcbette::est_marg_liks(
-  fasta_filename = fasta_filename, 
-  site_models = list(
-    beautier::create_jc69_site_model(), 
-    beautier::create_gtr_site_model()
-  ),
-  clock_models = list(beautier::create_strict_clock_model()),
-  tree_priors = list(beautier::create_bd_tree_prior()),
-  epsilon = 100.0
-)
-knitr::kable(df)
+if (beastier::is_beast2_installed()) {
+  df <- mcbette::est_marg_liks(
+    fasta_filename = fasta_filename, 
+    site_models = list(
+      beautier::create_jc69_site_model(), 
+      beautier::create_gtr_site_model()
+    ),
+    clock_models = list(beautier::create_strict_clock_model()),
+    tree_priors = list(beautier::create_bd_tree_prior()),
+    epsilon = 100.0
+  )
+  knitr::kable(df)
+}
 ```
 
 The Bayes factor (usually denoted as K) can be used for model comparison. 

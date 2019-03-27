@@ -1,6 +1,9 @@
 context("test-est_marg_liks_from_models")
 
 test_that("use", {
+
+  if (!beastier::is_beast2_installed()) return()
+
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   inference_model_1 <- beautier::create_inference_model(
     site_model = beautier::create_jc69_site_model(),

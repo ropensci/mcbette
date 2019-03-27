@@ -2,6 +2,8 @@ context("test-est_marg_liks")
 
 test_that("use", {
 
+  if (!beastier::is_beast2_installed()) return()
+
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   df <- est_marg_liks(
     fasta_filename,
