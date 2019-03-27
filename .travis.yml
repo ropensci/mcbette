@@ -30,9 +30,9 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R CMD javareconf; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R --quiet -e 'install.packages("rJava", type="source", repos="http://cran.us.r-project.org")'; fi
   # Should build with and without BEAST2 installed
-  - #Rscript -e "beastier::install_beast2()"
-  - #Rscript -e 'mauricer::install_beast2_pkg("NS")'
-  - #Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
+  - Rscript -e "beastier::install_beast2()"
+  - Rscript -e 'mauricer::install_beast2_pkg("NS")'
+  - Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
 
 script:
   - travis_wait 50 R CMD build .
