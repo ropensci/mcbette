@@ -124,7 +124,7 @@ est_marg_liks <- function(
   }
 
   weights <- as.numeric(
-    calc_weights(marg_liks = exp(Rmpfr::mpfr(marg_log_liks, 256)))
+    calc_weights(marg_liks = exp(Rmpfr::mpfr(marg_log_liks, 512)))
   )
 
   df <- data.frame(

@@ -15,7 +15,7 @@ calc_weights <- function(
   # represented as Rmpfr numbers
   zero <- 0.0
   if (class(marg_liks) == "mpfr") {
-    zero <- Rmpfr::mpfr(0.0, 256)
+    zero <- Rmpfr::mpfr(0.0, 512)
   }
 
   marg_liks[is.na(marg_liks)] <- zero

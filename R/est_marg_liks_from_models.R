@@ -178,7 +178,7 @@ est_marg_liks_from_models <- function(
   }
 
   weights <- as.numeric(
-    calc_weights(marg_liks = exp(Rmpfr::mpfr(marg_log_liks, 256)))
+    calc_weights(marg_liks = exp(Rmpfr::mpfr(marg_log_liks, 512)))
   )
   if (abs(1.0 - sum(weights)) > 0.01) {
     warning(
