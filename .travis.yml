@@ -37,7 +37,7 @@ script:
   - travis_wait 50 R CMD build .
 
 after_success:
-  - Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
-  - travis_wait 120 Rscript run.R
-  - Rscript -e 'lintr::lint_package()'
-  - travis_wait 20 Rscript -e 'covr::codecov()'
+  - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'; fi
+  - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then travis_wait 120 Rscript run.R; fi
+  - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then Rscript -e "lintr::lint_package()"; fi
+  - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then travis_wait 20 Rscript -e "covr::codecov()"; fi
