@@ -20,34 +20,37 @@ knitr::opts_chunk$set(
 
 Measure the Bayes factor between JC69 and GTR.
 
+```{r}
+library(mcbette)
+library(testthat)
+```
+
 Set a random seed:
 
 ```{r}
 set.seed(314)
 ```
 
-
-## Prepare
-
 BEAST2 must be installed:
 
 ```{r}
-if (1 == 2) {
-  if (!beastier::is_beast2_installed()) {
-    beastier::install_beast2()
-  }
+if (!beastier::is_beast2_installed()) {
+  message("BEAST2 must be installed. Tip: use 'beastier::install_beast2()'")
 }
 ```
 
 The BEAST2 package `NS` must be installed:
 
 ```{r}
-if (1 == 2) {
-  if (!mauricer::is_beast2_pkg_installed("NS")) {
-    mauricer::install_beast2_pkg("NS")
-  }
+if (!mauricer::is_beast2_pkg_installed("NS")) {
+  message(
+    "The BEAST2 'NS' package must be installed. ",
+    "Tip: use 'mauricer::install_beast2_pkg(\"NS\")'"
+  )
 }
 ```
+
+Create data frame:
 
 ```{r}
 df <- data.frame(
@@ -56,10 +59,15 @@ df <- data.frame(
   weight = c(0.9, 0.1)
 )
 ```
+
 Interpretation of the Bayes factor [1]:
 
 ```{r}
 interpret_bayes_factor <- function(bayes_factor) {
+  if (length(bayes_factor) != 1 || !is.numeric(bayes_factor)) {
+    stop("'bayes_factor' must be one numeric value")
+  }
+
   if (bayes_factor < 10^0.0) {
     "in favor of other model"
   } else if (bayes_factor < 10^0.5) {
@@ -74,12 +82,29 @@ interpret_bayes_factor <- function(bayes_factor) {
     "decisive"
   }
 }
-testit::assert(interpret_bayes_factor(0.5) == "in favor of other model")
-testit::assert(interpret_bayes_factor(1.5) == "barely worth mentioning")
-testit::assert(interpret_bayes_factor(8.5) == "substantial")
-testit::assert(interpret_bayes_factor(12.5) == "strong")
-testit::assert(interpret_bayes_factor(85.0) == "very strong")
-testit::assert(interpret_bayes_factor(123.0) == "decisive")
+expect_equal(interpret_bayes_factor(0.5), "in favor of other model")
+expect_equal(interpret_bayes_factor(1.5), "barely worth mentioning")
+expect_equal(interpret_bayes_factor(8.5), "substantial")
+expect_equal(interpret_bayes_factor(12.5), "strong")
+expect_equal(interpret_bayes_factor(85.0), "very strong")
+expect_equal(interpret_bayes_factor(123.0), "decisive")
+
+expect_error(
+  interpret_bayes_factor(c(0.1, 0.2)), 
+  "'bayes_factor' must be one numeric value"
+)
+expect_error(
+  interpret_bayes_factor("nonsense"), 
+  "'bayes_factor' must be one numeric value"
+)
+expect_error(
+  interpret_bayes_factor(NA), 
+  "'bayes_factor' must be one numeric value"
+)
+expect_error(
+  interpret_bayes_factor(NULL), 
+  "'bayes_factor' must be one numeric value"
+)
 ```
 
 ## Overview
@@ -148,7 +173,7 @@ It can be calculated from the marginal likelihoods ratio:
 ```{r}
 marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512)) 
 marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
-bayes_factor = marg_lik_jc / marg_lik_gtr
+bayes_factor <- marg_lik_jc / marg_lik_gtr
 interpretation <- interpret_bayes_factor(bayes_factor)
 paste(interpretation, "in favor of JC69")
 ```

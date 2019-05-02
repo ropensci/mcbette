@@ -108,6 +108,7 @@ est_marg_liks <- function(
               rng_seed = rng_seed,
               overwrite = TRUE
             )$ns
+            print(marg_lik)
             marg_log_liks[row_index] <- marg_lik$marg_log_lik
             marg_log_lik_sds[row_index] <- marg_lik$marg_log_lik_sd
           },
