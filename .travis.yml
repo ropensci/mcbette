@@ -35,7 +35,8 @@ before_script:
   - Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
 
 script:
-  - travis_wait 50 R CMD build .
+  - travis_wait 30 R CMD build .
+  - travis_wait 40 R CMD check *tar.gz
 
 after_success:
   - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'; fi
