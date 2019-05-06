@@ -174,7 +174,7 @@ It can be calculated from the marginal likelihoods ratio:
 marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512)) 
 marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
 bayes_factor <- marg_lik_jc / marg_lik_gtr
-interpretation <- interpret_bayes_factor(bayes_factor)
+interpretation <- interpret_bayes_factor(as.numeric(bayes_factor))
 paste(interpretation, "in favor of JC69")
 ```
 
