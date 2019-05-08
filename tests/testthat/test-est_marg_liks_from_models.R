@@ -107,3 +107,106 @@ test_that("abuse", {
   )
 
 })
+
+
+test_that("Issue #7", {
+
+  if (!beastier::is_beast2_installed()) return()
+
+  args <- c(33)
+  print(paste("Number of arguments:", length(args)))
+
+  example_no <- 3
+  root_folder <- path.expand("~/GitHubs/pirouette_article")
+  example_folder <- file.path(root_folder, paste0("example_", example_no))
+  rng_seed <- 314
+
+  if (length(args) == 1) {
+    rng_seed <- as.numeric(args[1])
+    example_folder <- file.path(root_folder, paste0("example_", example_no, "_", rng_seed))
+  } else {
+    stop("Need argument")
+  }
+
+  print(rng_seed)
+  print(example_folder)
+
+  library(pirouette)
+  library(ggplot2)
+  library(ggtree)
+
+  dir.create(example_folder, showWarnings = FALSE)
+  setwd(example_folder)
+  # No need to do 'set.seed(rng_seed)': we use 'rng_seed' arguments instead
+
+  testit::assert(is_beast2_installed())
+
+  phylogeny  <- ape::read.tree(text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);")
+
+  alignment_params <- create_alignment_params(
+    root_sequence = create_blocked_dna(length = 1000),
+    mutation_rate = 0.1,
+    rng_seed = rng_seed
+  )
+
+  experiments <- list(create_gen_experiment(beast2_options = create_beast2_options(rng_seed = rng_seed)))
+
+  # Testing
+  if (1 == 2) {
+    for (i in seq_along(experiments)) {
+      experiments[[i]]$inference_model$mcmc <- create_mcmc(chain_length = 10000, store_every = 1000)
+      experiments[[i]]$est_evidence_mcmc <- create_mcmc_nested_sampling(
+        chain_length = 10000,
+        store_every = 1000,
+        epsilon = 100.0
+      )
+    }
+  }
+
+  twinning_params <- create_twinning_params(
+    twin_model = "birth_death",
+    method = "random_tree",
+   rng_seed = rng_seed
+  )
+
+  pir_params <- create_pir_params(
+    alignment_params = alignment_params,
+    experiments = experiments,
+    twinning_params = twinning_params
+  )
+
+  if (1 == 1) {
+    print("#######################################################################")
+    print("Settings to run on Peregrine cluster")
+    print("#######################################################################")
+    pir_params$alignment_params$fasta_filename <- file.path(example_folder, "true.fasta")
+    for (i in seq_along(pir_params$experiments)) {
+      pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(example_folder, "beast2_input.xml")
+      pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(example_folder, "beast2_output.log")
+      pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(example_folder, "beast2_output.trees")
+      pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(example_folder, "beast2_output.xml.state")
+      pir_params$experiments[[i]]$beast2_options$beast2_working_dir <- example_folder
+      pir_params$experiments[[i]]$errors_filename <- file.path(example_folder, "error.csv")
+    }
+    pir_params$evidence_filename <- file.path(example_folder, "evidence_true.csv")
+    if (!is_one_na(pir_params$twinning_params)) {
+      pir_params$twinning_params$twin_tree_filename <- file.path(example_folder, "twin.tree")
+      pir_params$twinning_params$twin_alignment_filename <- file.path(example_folder, "twin.fasta")
+      pir_params$twinning_params$twin_evidence_filename <- file.path(example_folder, "evidence_twin.csv")
+    }
+    rm_pir_param_files(pir_params)
+    print("#######################################################################")
+  }
+
+  Sys.time()
+  # 11:24:52
+  expect_silent(
+    pir_run(
+      phylogeny,
+      pir_params = pir_params
+    )
+  )
+  Sys.time()
+
+
+})
