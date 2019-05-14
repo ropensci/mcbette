@@ -144,7 +144,7 @@ test_that("Issue #7", {
   phylogeny  <- ape::read.tree(text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);")
 
   alignment_params <- create_alignment_params(
-    root_sequence = create_blocked_dna(length = 1000),
+    root_sequence = create_blocked_dna(length = 100),
     mutation_rate = 0.1,
     rng_seed = rng_seed
   )
@@ -198,6 +198,11 @@ test_that("Issue #7", {
     print("#######################################################################")
   }
 
+  # Shorten run
+    for (i in seq_along(pir_params$experiments)) {
+      pir_params$experiments[[1]]$inference_model$mcmc$chain_length <- 3698000
+    }
+
   Sys.time()
   # 11:24:52
   expect_silent(
@@ -207,6 +212,4 @@ test_that("Issue #7", {
     )
   )
   Sys.time()
-
-
 })
