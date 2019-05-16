@@ -111,6 +111,8 @@ test_that("abuse", {
 
 test_that("Issue #7", {
 
+  skip("Issue #7")
+
   if (!beastier::is_beast2_installed()) return()
 
   args <- c(33)
