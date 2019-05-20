@@ -115,20 +115,13 @@ test_that("Issue #7", {
 
   if (!beastier::is_beast2_installed()) return()
 
-  args <- c(33)
-  print(paste("Number of arguments:", length(args)))
+  testit::assert(beastier::is_beast2_installed())
+  testit::assert(mauricer::is_beast2_pkg_installed("NS"))
 
   example_no <- 3
   root_folder <- path.expand("~/GitHubs/pirouette_article")
-  example_folder <- file.path(root_folder, paste0("example_", example_no))
-  rng_seed <- 314
-
-  if (length(args) == 1) {
-    rng_seed <- as.numeric(args[1])
-    example_folder <- file.path(root_folder, paste0("example_", example_no, "_", rng_seed))
-  } else {
-    stop("Need argument")
-  }
+  example_folder <- file.path(root_folder, "example_3_33")
+  rng_seed <- 33
 
   print(rng_seed)
   print(example_folder)
