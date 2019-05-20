@@ -114,6 +114,9 @@ test_that("Issue #7", {
   skip("Issue #7")
 
   if (!beastier::is_beast2_installed()) return()
+  library(pirouette)
+  library(ggplot2)
+  library(ggtree)
 
   testit::assert(beastier::is_beast2_installed())
   testit::assert(mauricer::is_beast2_pkg_installed("NS"))
@@ -123,12 +126,6 @@ test_that("Issue #7", {
   example_folder <- file.path(root_folder, "example_3_33")
   rng_seed <- 33
 
-  print(rng_seed)
-  print(example_folder)
-
-  library(pirouette)
-  library(ggplot2)
-  library(ggtree)
 
   dir.create(example_folder, showWarnings = FALSE)
   setwd(example_folder)

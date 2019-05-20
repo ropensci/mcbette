@@ -92,7 +92,7 @@ site, clock and tree models
   expect_true(is.factor(df$tree_prior_name))
   expect_true(!is.factor(df$marg_log_lik))
   expect_true(!is.factor(df$marg_log_lik_sd))
-  expect_true(!is.factor(df$weight))
+  # expect_true(!is.factor(df$weight)) # Place where doc gets truncated
 
   expect_true(all(df$weight >= 0.0))
   expect_true(all(df$weight <= 1.0))
