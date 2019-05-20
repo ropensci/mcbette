@@ -21,14 +21,9 @@ Imports:
     babette,
     beautier,
     beastier,
-    dplyr,
-    phangorn,
     rappdirs,
     Rmpfr,
-    stringr,
-    tracerer,
-    testit,
-    xml2
+    testit
 Suggests:
     ape,
     devtools,
@@ -38,8 +33,10 @@ Suggests:
     lintr,
     mauricer,
     nLTT,
+    phangorn,
     rmarkdown,
     spelling,
-    testthat
+    testthat,
+    tracerer
 Language: en-US
 Encoding: UTF-8
