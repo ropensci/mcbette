@@ -3,8 +3,8 @@ cache: packages
 # dist: xenial
 
 os: 
-  - osx
   - linux
+  # - osx
 
 r_packages:
   - txtplot
