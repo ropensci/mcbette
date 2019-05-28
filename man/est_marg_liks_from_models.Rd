@@ -10,7 +10,7 @@ est_marg_liks_from_models(fasta_filename,
   beautier::create_nested_sampling_mcmc())),
   beast2_optionses = rep(list(beastier::create_beast2_options(beast2_path
   = get_default_beast2_bin_path())), times = length(inference_models)),
-  epsilon = 1e-12, verbose = FALSE)
+  epsilon = 1e-12, verbose = FALSE, os = rappdirs::app_dir()$os)
 }
 \arguments{
 \item{fasta_filename}{name of the FASTA file}
@@ -28,6 +28,9 @@ Use of reduplicated plural to achieve difference with
 Smaller values result in longer, more precise estimations}
 
 \item{verbose}{if TRUE show debug output}
+
+\item{os}{name of the operating system,
+must be \code{unix} (Linux, Mac) or \code{win} (Windows)}
 }
 \value{
 a \link{data.frame} showing the estimated marginal likelihoods

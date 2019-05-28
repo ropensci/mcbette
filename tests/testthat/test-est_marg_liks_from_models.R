@@ -86,10 +86,22 @@ test_that("use with same RNG seed must result in identical output", {
 })
 
 test_that("abuse", {
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+
+  # no FASTA file
+  expect_error(
+    est_marg_liks_from_models(
+      fasta_filename = "abs.ent",
+      inference_models = "irrelevant"
+    ),
+    "'fasta_filename' must be the name of an existing FASTA file"
+  )
+
   # no inference models
   expect_error(
     est_marg_liks_from_models(
-      system.file("extdata", "simple.fas", package = "mcbette"),
+      fasta_filename = fasta_filename,
       inference_models = list()
     ),
     "'inference_models' must be a list of at least 1 inference model"
@@ -98,7 +110,7 @@ test_that("abuse", {
   # mcmc must be nested_sampling_mcmcs
   expect_error(
     est_marg_liks_from_models(
-      system.file("extdata", "simple.fas", package = "mcbette"),
+      fasta_filename = fasta_filename,
       inference_models = list(
         beautier::create_inference_model(mcmc = beautier::create_mcmc())
       )
@@ -106,4 +118,31 @@ test_that("abuse", {
     "'inference_models' must have 'mcmc's for nested sampling"
   )
 
+  # epsilon
+  expect_error(
+    est_marg_liks_from_models(
+      fasta_filename = fasta_filename,
+      inference_models = list(
+        beautier::create_inference_model(
+          mcmc = beautier::create_nested_sampling_mcmc()
+        )
+      ),
+      epsilon = "nonsense"
+    ),
+    "'epsilon' must be one numerical value"
+  )
+
+  # Unsupported OS
+  expect_error(
+    est_marg_liks_from_models(
+      fasta_filename = fasta_filename,
+      inference_models = list(
+        beautier::create_inference_model(
+          mcmc = beautier::create_neste_sampling_mcmc()
+        )
+      ),
+      os = "win"
+    ),
+    "mcbette must run on Linux or Mac"
+  )
 })

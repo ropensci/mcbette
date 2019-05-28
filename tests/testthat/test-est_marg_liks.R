@@ -61,6 +61,7 @@ test_that("use with same RNG seed must result in identical output", {
 })
 
 test_that("abuse", {
+
   # fasta_filename
   expect_error(
     est_marg_liks(fasta_filename = "nonsense"),
@@ -116,5 +117,13 @@ test_that("abuse", {
       fasta_filename = fasta_filename, epsilon = NULL
     ),
     "'epsilon' must be one numerical value"
+  )
+
+  expect_error(
+    est_marg_liks(
+      fasta_filename = fasta_filename,
+      os = "win"
+    ),
+    "mcbette must run on Linux or Mac"
   )
 })

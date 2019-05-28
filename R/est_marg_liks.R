@@ -56,9 +56,10 @@ est_marg_liks <- function(
   tree_priors = beautier::create_tree_priors(),
   epsilon = 10e-13,
   rng_seed = 1,
-  verbose = FALSE
+  verbose = FALSE,
+  os = rappdirs::app_dir()$os
 ) {
-  if (rappdirs::app_dir()$os == "win") {
+  if (os == "win") {
     stop(
       "mcbette must run on Linux or Mac.\n",
       "\n",

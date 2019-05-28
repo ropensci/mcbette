@@ -9,7 +9,7 @@ est_marg_liks(fasta_filename,
   site_models = beautier::create_site_models(),
   clock_models = beautier::create_clock_models(),
   tree_priors = beautier::create_tree_priors(), epsilon = 1e-12,
-  rng_seed = 1, verbose = FALSE)
+  rng_seed = 1, verbose = FALSE, os = rappdirs::app_dir()$os)
 }
 \arguments{
 \item{fasta_filename}{name of the FASTA file}
@@ -30,6 +30,9 @@ Smaller values result in longer, more precise estimations}
 inference}
 
 \item{verbose}{if TRUE show debug output}
+
+\item{os}{name of the operating system,
+must be \code{unix} (Linux, Mac) or \code{win} (Windows)}
 }
 \value{
 a \link{data.frame} showing the estimated marginal likelihoods

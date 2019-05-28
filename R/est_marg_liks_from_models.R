@@ -82,9 +82,10 @@ est_marg_liks_from_models <- function(
     times = length(inference_models)
   ),
   epsilon = 10e-13,
-  verbose = FALSE
+  verbose = FALSE,
+  os = rappdirs::app_dir()$os
 ) {
-  if (rappdirs::app_dir()$os == "win") {
+  if (os == "win") {
     stop(
       "mcbette must run on Linux or Mac.\n",
       "\n",
