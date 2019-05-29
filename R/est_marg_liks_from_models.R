@@ -181,14 +181,6 @@ est_marg_liks_from_models <- function(
   weights <- as.numeric(
     calc_weights(marg_liks = exp(Rmpfr::mpfr(marg_log_liks, 512)))
   )
-  if (abs(1.0 - sum(weights)) > 0.01) {
-    warning(
-      "Sum of weights should be 1.0. \n",
-      "Actual sum: ", sum(weights), " \n",
-      "Maybe forgot to install libmpfr-dev? \n"
-    )
-  }
-
   df <- data.frame(
     site_model_name = site_model_names,
     clock_model_name = clock_model_names,
@@ -197,6 +189,14 @@ est_marg_liks_from_models <- function(
     marg_log_lik_sd = marg_log_lik_sds,
     weight = weights
   )
+  if (abs(1.0 - sum(weights)) > 0.01) {
+    warning(
+      "Sum of weights should be 1.0. \n",
+      "Actual sum: ", sum(weights), " \n",
+      "Maybe forgot to install libmpfr-dev? \n",
+      "df: ", df
+    )
+  }
 
   df
 }
