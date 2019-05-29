@@ -21,6 +21,7 @@ Imports:
     babette,
     beautier,
     beastier,
+    knitr,
     rappdirs,
     Rmpfr,
     testit
@@ -29,7 +30,6 @@ Suggests:
     devtools,
     ggplot2,
     hunspell,
-    knitr,
     lintr,
     mauricer,
     nLTT,

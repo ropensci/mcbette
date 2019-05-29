@@ -194,7 +194,8 @@ est_marg_liks_from_models <- function(
       "Sum of weights should be 1.0. \n",
       "Actual sum: ", sum(weights), " \n",
       "Maybe forgot to install libmpfr-dev? \n",
-      "df: ", df
+      "df: \n",
+      knitr::kable(df), " \n"
     )
   }
 
