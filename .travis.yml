@@ -2,9 +2,14 @@ language: r
 cache: packages
 dist: xenial
 
-os: 
-  - linux
-  # - osx
+matrix:
+  include:
+  #- r: release
+  #  os: linux
+  - r: devel
+    os: linux
+  - r: release
+    os: osx
 
 r_packages:
   - txtplot
@@ -20,21 +25,23 @@ r_github_packages:
 
 before_install:
   - echo $TRAVIS_OS_NAME
-  # No need to brew install mpfr on macOS
-  # Error: mpfr 4.0.1 is already installed
-  # To upgrade to 4.0.2, run `brew upgrade mpfr`
-  # if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install mpfr; fi
-  # Do install mpfr on Linux
-  - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then sudo apt install -qq libmpfr-dev; fi
-
-before_script:
-  - # Java
+  - echo $TRAVIS_R_VERSION_STRING
+  # ImageMagick
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository -y ppa:opencpu/imagemagick; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagick++-dev; fi
+  # Rmpfr
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install -qq libmpfr-dev; fi
+  # Java
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R CMD javareconf; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R --quiet -e 'install.packages("rJava", type="source", repos="http://cran.us.r-project.org")'; fi
+
+
+before_script:
   # Should build with and without BEAST2 installed
   - Rscript -e "beastier::install_beast2()"
   - Rscript -e 'mauricer::install_beast2_pkg("NS")'
-  - Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
+  # - Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
 
 script:
   - travis_wait 30 R CMD build .
