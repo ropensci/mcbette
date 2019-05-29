@@ -183,9 +183,9 @@ est_marg_liks_from_models <- function(
   )
   if (abs(1.0 - sum(weights)) > 0.01) {
     warning(
-      "Sum of weights should be 1.0. ",
-      "Actual sum: ", sum(weights),
-      "Maybe forgot to install libmpfr-dev? "
+      "Sum of weights should be 1.0. \n",
+      "Actual sum: ", sum(weights), " \n",
+      "Maybe forgot to install libmpfr-dev? \n"
     )
   }
 
