@@ -3,3 +3,4 @@
 export(calc_weights)
 export(est_marg_liks)
 export(est_marg_liks_from_models)
+export(install_mcbette_deps)
