@@ -1,0 +1,15 @@
+#!/bin/bash
+# Script to install mcbette and its dependencies
+#
+# Usage, locally:
+#
+#   ./install_mcbette_deps
+#
+Rscript -e 'remotes::install_github("richelbilderbeek/nLTT")'
+Rscript -e 'remotes::install_github("ropensci/beautier")'
+Rscript -e 'remotes::install_github("ropensci/tracerer")'
+Rscript -e 'remotes::install_github("ropensci/beastier")'
+Rscript -e 'remotes::install_github("ropensci/mauricer")'
+Rscript -e 'remotes::install_github("ropensci/babette")'
+Rscript -e 'if (!beastier::is_beast2_installed()) beastier::install_beast2()'
+Rscript -e 'if (!mauricer::is_beast2_pkg_installed("NS")) mauricer::install_beast2_pkg("NS")'
