@@ -121,7 +121,7 @@ est_marg_liks_from_models <- function(
   }
   testit::assert(file.exists(fasta_filename))
   testit::assert(beastier::is_beast2_installed())
-  testit::assert(mauricer::is_beast2_pkg_installed("NS"))
+  testit::assert(mauricer::is_beast2_ns_pkg_installed())
 
   n_rows <- length(inference_models)
 
