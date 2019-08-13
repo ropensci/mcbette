@@ -1,4 +1,195 @@
->t1
-AAAA
->t2
-ACGT
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" required="" version="2.4">
+
+
+    <data
+id="simple"
+name="alignment">
+                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="aaaa"/>
+                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="acgt"/>
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform" >beast.math.distributions.Uniform</map>
+<map name="Exponential" >beast.math.distributions.Exponential</map>
+<map name="LogNormal" >beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal" >beast.math.distributions.Normal</map>
+<map name="Beta" >beast.math.distributions.Beta</map>
+<map name="Gamma" >beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution" >beast.math.distributions.LaplaceDistribution</map>
+<map name="prior" >beast.math.distributions.Prior</map>
+<map name="InverseGamma" >beast.math.distributions.InverseGamma</map>
+<map name="OneOnX" >beast.math.distributions.OneOnX</map>
+
+
+<run id="mcmc" spec="beast.gss.NS" chainLength="10000000" particleCount="1" subChainLength="5000" epsilon="10000000">
+    <state id="state" storeEvery="5000">
+        <tree id="Tree.t:simple" name="stateNode">
+            <taxonset id="TaxonSet.simple" spec="TaxonSet">
+                <alignment idref="simple"/>
+            </taxonset>
+        </tree>
+        <parameter id="rateAC.s:simple" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="rateAG.s:simple" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="rateAT.s:simple" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="rateCG.s:simple" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="rateGT.s:simple" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="freqParameter.s:simple" dimension="4" lower="0.0" name="stateNode" upper="1.0">0.25</parameter>
+        <parameter id="ucldStdev.c:simple" lower="0.0" name="stateNode">0.1</parameter>
+        <stateNode id="rateCategories.c:simple" spec="parameter.IntegerParameter" dimension="2">1</stateNode>
+        <parameter id="BDBirthRate.t:simple" lower="0.0" name="stateNode" upper="10000.0">1.0</parameter>
+        <parameter id="BDDeathRate.t:simple" lower="0.0" name="stateNode" upper="1.0">0.5</parameter>
+    </state>
+
+    <init id="RandomTree.t:simple" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:simple" taxa="@simple">
+        <populationModel id="ConstantPopulation0.t:simple" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:simple" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+            <distribution id="BirthDeath.t:simple" spec="beast.evolution.speciation.BirthDeathGernhard08Model" birthDiffRate="@BDBirthRate.t:simple" relativeDeathRate="@BDDeathRate.t:simple" tree="@Tree.t:simple"/>
+            <prior id="BirthRatePrior.t:simple" name="distribution" x="@BDBirthRate.t:simple">
+                <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+            </prior>
+            <prior id="DeathRatePrior.t:simple" name="distribution" x="@BDDeathRate.t:simple">
+                <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
+            </prior>
+            <prior id="RateACPrior.s:simple" name="distribution" x="@rateAC.s:simple">
+                <Gamma id="Gamma.0" name="distr">
+                    <parameter id="RealParameter.0" estimate="false" name="alpha">0.05</parameter>
+                    <parameter id="RealParameter.1" estimate="false" name="beta">10.0</parameter>
+                </Gamma>
+            </prior>
+            <prior id="RateAGPrior.s:simple" name="distribution" x="@rateAG.s:simple">
+                <Gamma id="Gamma.1" name="distr">
+                    <parameter id="RealParameter.2" estimate="false" name="alpha">0.05</parameter>
+                    <parameter id="RealParameter.3" estimate="false" name="beta">20.0</parameter>
+                </Gamma>
+            </prior>
+            <prior id="RateATPrior.s:simple" name="distribution" x="@rateAT.s:simple">
+                <Gamma id="Gamma.2" name="distr">
+                    <parameter id="RealParameter.4" estimate="false" name="alpha">0.05</parameter>
+                    <parameter id="RealParameter.5" estimate="false" name="beta">10.0</parameter>
+                </Gamma>
+            </prior>
+            <prior id="RateCGPrior.s:simple" name="distribution" x="@rateCG.s:simple">
+                <Gamma id="Gamma.3" name="distr">
+                    <parameter id="RealParameter.6" estimate="false" name="alpha">0.05</parameter>
+                    <parameter id="RealParameter.7" estimate="false" name="beta">10.0</parameter>
+                </Gamma>
+            </prior>
+            <prior id="RateGTPrior.s:simple" name="distribution" x="@rateGT.s:simple">
+                <Gamma id="Gamma.4" name="distr">
+                    <parameter id="RealParameter.8" estimate="false" name="alpha">0.05</parameter>
+                    <parameter id="RealParameter.9" estimate="false" name="beta">10.0</parameter>
+                </Gamma>
+            </prior>
+            <prior id="ucldStdevPrior.c:simple" name="distribution" x="@ucldStdev.c:simple">
+                <Gamma id="Gamma.5" name="distr">
+                    <parameter id="RealParameter.10" estimate="false" name="alpha">0.5396</parameter>
+                    <parameter id="RealParameter.11" estimate="false" name="beta">0.3819</parameter>
+                </Gamma>
+            </prior>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
+            <distribution id="treeLikelihood.simple" spec="ThreadedTreeLikelihood" data="@simple" tree="@Tree.t:simple">
+                <siteModel id="SiteModel.s:simple" spec="SiteModel">
+                    <parameter id="mutationRate.s:simple" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:simple" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:simple" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="gtr.s:simple" spec="GTR" rateAC="@rateAC.s:simple" rateAG="@rateAG.s:simple" rateAT="@rateAT.s:simple" rateCG="@rateCG.s:simple" rateGT="@rateGT.s:simple">
+                        <parameter id="rateCT.s:simple" estimate="false" lower="0.0" name="rateCT">1.0</parameter>
+                        <frequencies id="estimatedFreqs.s:simple" spec="Frequencies" frequencies="@freqParameter.s:simple"/>
+                    </substModel>
+                </siteModel>
+                <branchRateModel id="RelaxedClock.c:simple" spec="beast.evolution.branchratemodel.UCRelaxedClockModel" rateCategories="@rateCategories.c:simple" tree="@Tree.t:simple">
+                    <LogNormal id="LogNormalDistributionModel.c:simple" S="@ucldStdev.c:simple" meanInRealSpace="true" name="distr">
+                        <parameter id="RealParameter.12" estimate="false" lower="0.0" name="M" upper="1.0">1.0</parameter>
+                    </LogNormal>
+                    <parameter id="ucldMean.c:simple" estimate="false" name="clock.rate">1.0</parameter>
+                </branchRateModel>
+            </distribution>
+        </distribution>
+    </distribution>
+
+    <operator id="BirthRateScaler.t:simple" spec="ScaleOperator" parameter="@BDBirthRate.t:simple" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="DeathRateScaler.t:simple" spec="ScaleOperator" parameter="@BDDeathRate.t:simple" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="BirthDeathTreeScaler.t:simple" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:simple" weight="3.0"/>
+
+    <operator id="BirthDeathTreeRootScaler.t:simple" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:simple" weight="3.0"/>
+
+    <operator id="BirthDeathUniformOperator.t:simple" spec="Uniform" tree="@Tree.t:simple" weight="30.0"/>
+
+    <operator id="BirthDeathSubtreeSlide.t:simple" spec="SubtreeSlide" tree="@Tree.t:simple" weight="15.0"/>
+
+    <operator id="BirthDeathNarrow.t:simple" spec="Exchange" tree="@Tree.t:simple" weight="15.0"/>
+
+    <operator id="BirthDeathWide.t:simple" spec="Exchange" isNarrow="false" tree="@Tree.t:simple" weight="3.0"/>
+
+    <operator id="BirthDeathWilsonBalding.t:simple" spec="WilsonBalding" tree="@Tree.t:simple" weight="3.0"/>
+
+    <operator id="RateACScaler.s:simple" spec="ScaleOperator" parameter="@rateAC.s:simple" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateAGScaler.s:simple" spec="ScaleOperator" parameter="@rateAG.s:simple" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateATScaler.s:simple" spec="ScaleOperator" parameter="@rateAT.s:simple" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateCGScaler.s:simple" spec="ScaleOperator" parameter="@rateCG.s:simple" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateGTScaler.s:simple" spec="ScaleOperator" parameter="@rateGT.s:simple" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="FrequenciesExchanger.s:simple" spec="DeltaExchangeOperator" delta="0.01" weight="0.1">
+        <parameter idref="freqParameter.s:simple"/>
+    </operator>
+
+    <operator id="ucldStdevScaler.c:simple" spec="ScaleOperator" parameter="@ucldStdev.c:simple" scaleFactor="0.5" weight="3.0"/>
+
+    <operator id="CategoriesRandomWalk.c:simple" spec="IntRandomWalkOperator" parameter="@rateCategories.c:simple" weight="10.0" windowSize="1"/>
+
+    <operator id="CategoriesSwapOperator.c:simple" spec="SwapOperator" intparameter="@rateCategories.c:simple" weight="10.0"/>
+
+    <operator id="CategoriesUniform.c:simple" spec="UniformOperator" parameter="@rateCategories.c:simple" weight="10.0"/>
+
+    <logger id="tracelog" fileName="simple.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+        <log idref="treeLikelihood.simple"/>
+        <log id="TreeHeight.t:simple" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:simple"/>
+        <log idref="rateAC.s:simple"/>
+        <log idref="rateAG.s:simple"/>
+        <log idref="rateAT.s:simple"/>
+        <log idref="rateCG.s:simple"/>
+        <log idref="rateGT.s:simple"/>
+        <log idref="freqParameter.s:simple"/>
+        <log idref="ucldStdev.c:simple"/>
+        <log id="rate.c:simple" spec="beast.evolution.branchratemodel.RateStatistic" branchratemodel="@RelaxedClock.c:simple" tree="@Tree.t:simple"/>
+        <log idref="BirthDeath.t:simple"/>
+        <log idref="BDBirthRate.t:simple"/>
+        <log idref="BDDeathRate.t:simple"/>
+    </logger>
+
+    <logger id="screenlog" logEvery="1000">
+        <log idref="posterior"/>
+        <log id="ESS.0" spec="util.ESS" arg="@posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+    </logger>
+
+    <logger id="treelog.t:simple" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:simple" spec="beast.evolution.tree.TreeWithMetaDataLogger" branchratemodel="@RelaxedClock.c:simple" tree="@Tree.t:simple"/>
+    </logger>
+
+</run>
+
+</beast>

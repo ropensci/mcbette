@@ -57,6 +57,8 @@ est_marg_liks <- function(
   epsilon = 10e-13,
   rng_seed = 1,
   verbose = FALSE,
+  beast2_working_dir = tempfile(pattern = "beast2_mcbette_tmp_folder"),
+  beast2_bin_path = beastier::get_default_beast2_bin_path(),
   os = rappdirs::app_dir()$os
 ) {
   if (os == "win") {
@@ -65,6 +67,12 @@ est_marg_liks <- function(
       "\n",
       "It is not yet supported to call BEAST2 with packages installed\n",
       "in a scripted way"
+    )
+  }
+  if (!beastier::is_bin_path(beast2_bin_path)) {
+    stop(
+      "Use the binary BEAST2 executable for marginal likelihood estimation. \n",
+      "Actual path: ", beast2_bin_path
     )
   }
   if (!file.exists(fasta_filename)) {
@@ -76,7 +84,7 @@ est_marg_liks <- function(
   beautier::check_site_models(site_models)
   beautier::check_clock_models(clock_models)
   beautier::check_tree_priors(tree_priors)
-  if (!is.numeric(epsilon) || length(epsilon) != 1) {
+  if (!beautier::is_one_double(epsilon)) {
     stop("'epsilon' must be one numerical value. Actual value(s): ", epsilon)
   }
 
@@ -98,23 +106,36 @@ est_marg_liks <- function(
   for (site_model in site_models) {
     for (clock_model in clock_models) {
       for (tree_prior in tree_priors) {
+        inference_model <- beautier::create_inference_model(
+          site_model = site_model,
+          clock_model = clock_model,
+          tree_prior = tree_prior,
+          mcmc = beautier::create_mcmc_nested_sampling(epsilon = epsilon)
+        )
+        beast2_options <- beastier::create_beast2_options(
+          input_filename = fasta_filename,
+          rng_seed = rng_seed,
+          overwrite = TRUE,
+          beast2_working_dir = beast2_working_dir,
+          beast2_path = beast2_bin_path,
+          verbose = verbose
+        )
         tryCatch({
-            marg_lik <- babette::bbt_run(
+            bbt_run_out <- babette::bbt_run_from_model(
               fasta_filename = fasta_filename,
-              site_model = site_model,
-              clock_model = clock_model,
-              tree_prior = tree_prior,
-              mcmc = beautier::create_mcmc_nested_sampling(epsilon = epsilon),
-              beast2_path = beastier::get_default_beast2_bin_path(),
-              rng_seed = rng_seed,
-              overwrite = TRUE
-            )$ns
-            print(marg_lik)
-            marg_log_liks[row_index] <- marg_lik$marg_log_lik
-            marg_log_lik_sds[row_index] <- marg_lik$marg_log_lik_sd
+              inference_model = inference_model,
+              beast2_options = beast2_options
+            )
+            testit::assert("ns" %in% names(bbt_run_out))
+            ns <- bbt_run_out$ns
+            if (verbose) print(ns)
+            marg_log_liks[row_index] <- ns$marg_log_lik
+            marg_log_lik_sds[row_index] <- ns$marg_log_lik_sd
           },
-          error = function(msg) {
-            if (verbose) print(msg)
+          error = function(e) {
+            if (verbose) {
+              print(e$message)
+            }
           }
         )
         site_model_names[row_index] <- site_model$name

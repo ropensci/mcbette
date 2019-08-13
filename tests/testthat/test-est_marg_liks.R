@@ -1,6 +1,6 @@
 context("test-est_marg_liks")
 
-test_that("use", {
+test_that("use, 2 models", {
 
   if (!beastier::is_beast2_installed()) return()
 
@@ -32,6 +32,27 @@ test_that("use", {
   expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
   expect_true(all(df$weight >= 0.0))
   expect_true(all(df$weight <= 1.0))
+})
+
+test_that("use, 1 model", {
+
+  skip("WIP. Issue 10. Issue #10")
+  if (!beastier::is_beast2_installed()) return()
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+  df <- est_marg_liks(
+    fasta_filename,
+    site_models = beautier::create_site_models()[1],
+    clock_models = beautier::create_clock_models()[1],
+    tree_priors = beautier::create_tree_priors()[1],
+    epsilon = 1e7
+  )
+  expect_true(is.data.frame(df))
+  expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
+  expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
+  expect_true(all(df$weight >= 0.0))
+  expect_true(all(df$weight <= 1.0))
+  expect_true(1.0 - sum(df$weight) < 0.1)
 })
 
 test_that("use with same RNG seed must result in identical output", {
