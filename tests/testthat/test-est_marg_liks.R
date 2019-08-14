@@ -62,26 +62,38 @@ test_that("use with same RNG seed must result in identical output", {
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+
+  site_models <- list()
+  site_models[[1]] <- create_jc69_site_model()
+
+  clock_models <- list()
+  clock_models[[1]] <- create_strict_clock_model()
+
+  # Cannot use a CBS tree prior, as the FASTA file has only two taxa
+  tree_priors <- list()
+  tree_priors[[1]] <- create_yule_tree_prior()
+  tree_priors[[2]] <- create_bd_tree_prior()
+
+  rng_seed <- 314
+  epsilon <- 1e7
+
   df_1 <- est_marg_liks(
     fasta_filename,
-    site_models = beautier::create_site_models()[1:2],
-    clock_models = beautier::create_clock_models()[1:2],
-    tree_priors = beautier::create_tree_priors()[1:2],
-    epsilon = 1e7,
-    rng_seed = 314,
-    verbose = TRUE
+    site_models = site_models,
+    clock_models = clock_models,
+    tree_priors = tree_priors,
+    epsilon = epsilon,
+    rng_seed = rng_seed
   )
   df_2 <- est_marg_liks(
     fasta_filename,
-    site_models = beautier::create_site_models()[1:2],
-    clock_models = beautier::create_clock_models()[1:2],
-    tree_priors = beautier::create_tree_priors()[1:2],
-    epsilon = 1e7,
-    rng_seed = 314
+    site_models = site_models,
+    clock_models = clock_models,
+    tree_priors = tree_priors,
+    epsilon = epsilon,
+    rng_seed = rng_seed
   )
-
   expect_equal(df_1, df_2)
-
 })
 
 test_that("abuse", {
