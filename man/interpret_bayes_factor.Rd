@@ -2,10 +2,22 @@
 % Please edit documentation in R/interpret_bayes_factor.R
 \name{interpret_bayes_factor}
 \alias{interpret_bayes_factor}
-\title{From [1] H. Jeffreys (1961). The Theory of Probability (3rd ed.). Oxford. p. 432}
+\title{Interpret a Bayes factor}
 \usage{
 interpret_bayes_factor(bayes_factor)
 }
+\arguments{
+\item{bayes_factor}{Bayes factor to be interpreted}
+}
+\value{
+a string with the interpretation in English
+}
 \description{
-From [1] H. Jeffreys (1961). The Theory of Probability (3rd ed.). Oxford. p. 432
+Interpretation from [1].
+}
+\details{
+\itemize{
+  \item [1] H. Jeffreys (1961). The Theory of Probability (3rd ed.).
+    Oxford. p. 432
+}
 }
