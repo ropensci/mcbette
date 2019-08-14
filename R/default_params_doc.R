@@ -1,6 +1,10 @@
 #' Documentation of general function arguments.
 #' This function does nothing.
 #' It is intended to inherit function argument documentation.
+#' @param beast2_bin_path path to the the BEAST2 binary file
+#' @param beast2_working_dir folder in which BEAST2 will run and
+#'   produce intermediate files.
+#'   By default, this is a temporary folder
 #' @param beast2_optionses list of one or more \code{beast2_options}
 #'   structures,
 #'   as can be created by \link[beastier]{create_beast2_options}.
@@ -33,6 +37,8 @@
 #'   \code{@noRd}. This is not done, as this will disallow all
 #'   functions to find the documentation parameters
 default_params_doc <- function(
+  beast2_bin_path,
+  beast2_working_dir,
   beast2_optionses,
   clock_model, clock_models,
   epsilon,

@@ -6,11 +6,17 @@
 This function does nothing.
 It is intended to inherit function argument documentation.}
 \usage{
-default_params_doc(beast2_optionses, clock_model, clock_models, epsilon,
-  fasta_filename, inference_models, os, rng_seed, site_model, site_models,
-  tree_prior, tree_priors, verbose)
+default_params_doc(beast2_bin_path, beast2_working_dir, beast2_optionses,
+  clock_model, clock_models, epsilon, fasta_filename, inference_models, os,
+  rng_seed, site_model, site_models, tree_prior, tree_priors, verbose)
 }
 \arguments{
+\item{beast2_bin_path}{path to the the BEAST2 binary file}
+
+\item{beast2_working_dir}{folder in which BEAST2 will run and
+produce intermediate files.
+By default, this is a temporary folder}
+
 \item{beast2_optionses}{list of one or more \code{beast2_options}
 structures,
 as can be created by \link[beastier]{create_beast2_options}.

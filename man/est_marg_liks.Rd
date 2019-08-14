@@ -34,6 +34,12 @@ inference}
 
 \item{verbose}{if TRUE show debug output}
 
+\item{beast2_working_dir}{folder in which BEAST2 will run and
+produce intermediate files.
+By default, this is a temporary folder}
+
+\item{beast2_bin_path}{path to the the BEAST2 binary file}
+
 \item{os}{name of the operating system,
 must be \code{unix} (Linux, Mac) or \code{win} (Windows)}
 }
