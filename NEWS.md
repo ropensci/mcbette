@@ -2,7 +2,7 @@
 
 Newest versions at top.
 
-## `mcbette` 1.2 (2019-08-14)
+## `mcbette` 1.3 (2019-08-14)
 
 ### NEW FEATURES
 
@@ -13,6 +13,7 @@ Newest versions at top.
 ### MINOR IMPROVEMENTS
 
  * Better error message when using a CBS site model and too few taxa
+ * Builds on Bionic
 
 ### BUG FIXES
 
@@ -21,6 +22,10 @@ Newest versions at top.
 ### DEPRECATED AND DEFUNCT
 
  * None
+
+## `mcbette` 1.2
+
+An untagged release
 
 ## `mcbette` 1.1 (2019-05-29)
 
