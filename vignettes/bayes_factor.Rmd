@@ -42,7 +42,7 @@ if (!beastier::is_beast2_installed()) {
 The BEAST2 package `NS` must be installed:
 
 ```{r}
-if (!mauricer::is_beast2_pkg_installed("NS")) {
+if (!mauricer::is_beast2_ns_pkg_installed()) {
   message(
     "The BEAST2 'NS' package must be installed. ",
     "Tip: use 'mauricer::install_beast2_pkg(\"NS\")'"
@@ -152,7 +152,7 @@ From that alignment, get the marginal likelihood of the two desired models:
 
 
 ```{r}
-if (beastier::is_beast2_installed()) {
+if (mauricer::is_beast2_ns_pkg_installed()) {
   df <- mcbette::est_marg_liks(
     fasta_filename = fasta_filename, 
     site_models = list(
@@ -181,6 +181,9 @@ paste(interpretation, "in favor of JC69")
 There is also another way to compare models: by comparing their relative weights:
 
 ```{r}
+site_model_name <- NULL; rm(site_model_name) # nolint, fixes warning: no visible binding for global variable
+weight <- NULL; rm(weight) # nolint, fixes warning: no visible binding for global variable
+
 ggplot2::ggplot(
   df, ggplot2::aes(x = site_model_name, y = weight)
 ) + ggplot2::geom_col()
