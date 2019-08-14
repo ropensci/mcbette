@@ -1,7 +1,7 @@
 test_that("use, JC69, strict, Yule", {
 
   if (!beastier::is_beast2_installed()) return()
-  if (!beastier::is_beast2_ns_installed()) return()
+  if (!mauricer::is_beast2_ns_pkg_installed()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   marg_lik <- est_marg_lik(
