@@ -108,7 +108,7 @@ est_marg_liks <- function(
   for (site_model in site_models) {
     for (clock_model in clock_models) {
       for (tree_prior in tree_priors) {
-        ns <- estimate_marg_lik(
+        ns <- est_marg_lik(
           fasta_filename = fasta_filename,
           site_model = site_model,
           clock_model = clock_model,
