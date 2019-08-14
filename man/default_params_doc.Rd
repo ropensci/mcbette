@@ -6,8 +6,9 @@
 This function does nothing.
 It is intended to inherit function argument documentation.}
 \usage{
-default_params_doc(beast2_optionses, clock_models, epsilon, fasta_filename,
-  inference_models, os, rng_seed, site_models, tree_priors, verbose)
+default_params_doc(beast2_optionses, clock_model, clock_models, epsilon,
+  fasta_filename, inference_models, os, rng_seed, site_model, site_models,
+  tree_prior, tree_priors, verbose)
 }
 \arguments{
 \item{beast2_optionses}{list of one or more \code{beast2_options}
@@ -15,6 +16,9 @@ structures,
 as can be created by \link[beastier]{create_beast2_options}.
 Use of reduplicated plural to achieve difference with
 \code{beast2_options}}
+
+\item{clock_model}{a clock model,
+as can be created by \link[beautier]{create_clock_model}}
 
 \item{clock_models}{a list of one or more clock models,
 as can be created by \link[beautier]{create_clock_models}}
@@ -33,8 +37,14 @@ must be \code{unix} (Linux, Mac) or \code{win} (Windows)}
 \item{rng_seed}{a random number generator seed used for the BEAST2
 inference}
 
+\item{site_model}{a site model,
+as can be created by \link[beautier]{create_site_model}}
+
 \item{site_models}{a list of one or more site models,
 as can be created by \link[beautier]{create_site_models}}
+
+\item{tree_prior}{a tree prior,
+as can be created by \link[beautier]{create_tree_prior}}
 
 \item{tree_priors}{a list of one or more tree priors,
 as can be created by \link[beautier]{create_tree_priors}}

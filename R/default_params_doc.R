@@ -6,6 +6,8 @@
 #'   as can be created by \link[beastier]{create_beast2_options}.
 #'   Use of reduplicated plural to achieve difference with
 #'   \code{beast2_options}
+#' @param clock_model a clock model,
+#'   as can be created by \link[beautier]{create_clock_model}
 #' @param clock_models a list of one or more clock models,
 #'   as can be created by \link[beautier]{create_clock_models}
 #' @param epsilon measure of relative accuracy.
@@ -17,8 +19,12 @@
 #'   must be \code{unix} (Linux, Mac) or \code{win} (Windows)
 #' @param rng_seed a random number generator seed used for the BEAST2
 #'   inference
+#' @param site_model a site model,
+#'   as can be created by \link[beautier]{create_site_model}
 #' @param site_models a list of one or more site models,
 #'   as can be created by \link[beautier]{create_site_models}
+#' @param tree_prior a tree prior,
+#'   as can be created by \link[beautier]{create_tree_prior}
 #' @param tree_priors a list of one or more tree priors,
 #'   as can be created by \link[beautier]{create_tree_priors}
 #' @param verbose if TRUE show debug output
@@ -28,14 +34,14 @@
 #'   functions to find the documentation parameters
 default_params_doc <- function(
   beast2_optionses,
-  clock_models,
+  clock_model, clock_models,
   epsilon,
   fasta_filename,
   inference_models,
   os,
   rng_seed,
-  site_models,
-  tree_priors,
+  site_model, site_models,
+  tree_prior, tree_priors,
   verbose
 ) {
   # Nothing

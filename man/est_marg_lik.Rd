@@ -17,6 +17,15 @@ est_marg_lik(fasta_filename,
 \arguments{
 \item{fasta_filename}{name of the FASTA file}
 
+\item{site_model}{a site model,
+as can be created by \link[beautier]{create_site_model}}
+
+\item{clock_model}{a clock model,
+as can be created by \link[beautier]{create_clock_model}}
+
+\item{tree_prior}{a tree prior,
+as can be created by \link[beautier]{create_tree_prior}}
+
 \item{epsilon}{measure of relative accuracy.
 Smaller values result in longer, more precise estimations}
 
@@ -48,7 +57,7 @@ library(testthat)
 
 fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
-marg_lik <- est_marg_liks(
+marg_lik <- est_marg_lik(
   fasta_filename = fasta_filename,
   epsilon = 1e7
 )

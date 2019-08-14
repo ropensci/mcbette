@@ -15,7 +15,7 @@
 #'
 #' fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 #'
-#' marg_lik <- est_marg_liks(
+#' marg_lik <- est_marg_lik(
 #'   fasta_filename = fasta_filename,
 #'   epsilon = 1e7
 #' )
