@@ -125,6 +125,18 @@ est_marg_lik <- function(
       }
     }
   )
-
+  if (beautier::is_one_na(ns$marg_log_lik)) {
+    stop(
+      "Could not estimate the marginal likelihood. \n",
+      "site_model: ", site_model, "\n",
+      "clock_model: ", clock_model, "\n",
+      "tree_prior: ", tree_prior, "\n",
+      "epsilon: ", epsilon, "\n",
+      "rng_seed: ", rng_seed, "\n",
+      "verbose: ", verbose, "\n",
+      "beast2_working_dir: ", beast2_working_dir, "\n",
+      "beast2_bin_path: ", beast2_bin_path
+    )
+  }
   ns
 }
