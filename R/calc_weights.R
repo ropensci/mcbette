@@ -6,7 +6,7 @@
 #'   created <- calc_weights(marg_liks)
 #'   expected <- c(0.1, 0.2, 0.3, 0.4)
 #'   testthat::expect_equal(created, expected)
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 calc_weights <- function(
   marg_liks

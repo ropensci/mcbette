@@ -103,5 +103,5 @@ site, clock and tree models
   expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

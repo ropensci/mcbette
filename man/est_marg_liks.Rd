@@ -9,7 +9,10 @@ est_marg_liks(fasta_filename,
   site_models = beautier::create_site_models(),
   clock_models = beautier::create_clock_models(),
   tree_priors = beautier::create_tree_priors(), epsilon = 1e-12,
-  rng_seed = 1, verbose = FALSE, os = rappdirs::app_dir()$os)
+  rng_seed = 1, verbose = FALSE,
+  beast2_working_dir = tempfile(pattern = "beast2_mcbette_tmp_folder"),
+  beast2_bin_path = beastier::get_default_beast2_bin_path(),
+  os = rappdirs::app_dir()$os)
 }
 \arguments{
 \item{fasta_filename}{name of the FASTA file}
@@ -88,5 +91,5 @@ site, clock and tree models
   testthat::expect_true(all(df$weight <= 1.0))
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

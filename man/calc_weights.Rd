@@ -22,5 +22,5 @@ Calculate the weights for each marginal likelihood
   testthat::expect_equal(created, expected)
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

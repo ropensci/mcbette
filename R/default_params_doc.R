@@ -22,7 +22,7 @@
 #' @param tree_priors a list of one or more tree priors,
 #'   as can be created by \link[beautier]{create_tree_priors}
 #' @param verbose if TRUE show debug output
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @note This is an internal function, so it should be marked with
 #'   \code{@noRd}. This is not done, as this will disallow all
 #'   functions to find the documentation parameters

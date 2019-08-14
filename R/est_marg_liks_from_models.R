@@ -64,7 +64,7 @@
 #'   expect_true(all(df$weight <= 1.0))
 #'   expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
 #'   expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 est_marg_liks_from_models <- function(
   fasta_filename,
