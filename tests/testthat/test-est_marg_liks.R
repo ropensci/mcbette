@@ -68,7 +68,8 @@ test_that("use with same RNG seed must result in identical output", {
     clock_models = beautier::create_clock_models()[1:2],
     tree_priors = beautier::create_tree_priors()[1:2],
     epsilon = 1e7,
-    rng_seed = 314
+    rng_seed = 314,
+    verbose = TRUE
   )
   df_2 <- est_marg_liks(
     fasta_filename,

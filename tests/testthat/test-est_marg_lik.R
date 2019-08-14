@@ -27,26 +27,33 @@ test_that("use, all non-default: GTR, RLN, BD", {
   if (!beastier::is_beast2_installed()) return()
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
 
-  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
-  marg_lik <- est_marg_lik(
-    fasta_filename = fasta_filename,
-    site_model = create_gtr_site_model(),
-    clock_model = create_rln_clock_model(),
-    tree_prior = create_bd_tree_prior(),
-    epsilon = 1e7
+  expect_silent(
+    est_marg_lik(
+      fasta_filename = system.file(
+        "extdata", "simple.fas", package = "mcbette"
+      ),
+      site_model = create_gtr_site_model(),
+      clock_model = create_rln_clock_model(),
+      tree_prior = create_bd_tree_prior(),
+      epsilon = 1e7
+    )
   )
+})
 
-  expect_true(is.list(marg_lik))
-  expect_true("marg_log_lik" %in% names(marg_lik))
-  expect_true("marg_log_lik_sd" %in% names(marg_lik))
-  expect_true("ess" %in% names(marg_lik))
-  expect_true("estimates" %in% names(marg_lik))
-  expect_true("trees" %in% names(marg_lik))
-  expect_true(beautier::is_one_double(marg_lik$marg_log_lik))
-  expect_true(beautier::is_one_double(marg_lik$marg_log_lik_sd))
-  expect_true(beautier::is_one_double(marg_lik$ess))
-  expect_true(marg_lik$marg_log_lik < 0.0)
-  expect_true(marg_lik$marg_log_lik_sd > 0.0)
+test_that("use, too few taxa for CBS", {
+
+  if (!beastier::is_beast2_installed()) return()
+  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+
+  expect_error(
+    est_marg_lik(
+      fasta_filename = system.file(
+        "extdata", "simple.fas", package = "mcbette"
+      ),
+      tree_prior = create_cbs_tree_prior()
+    ),
+    "'group_sizes_dimension' .* must be less than the number of taxa"
+  )
 })
 
 test_that("abuse", {
@@ -116,4 +123,3 @@ test_that("abuse", {
     "mcbette must run on Linux or Mac"
   )
 })
-

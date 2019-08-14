@@ -121,6 +121,8 @@ est_marg_liks <- function(
           os = os
         )
         if (verbose) print(ns)
+        testit::assert("marg_log_lik" %in% names(ns))
+        testit::assert("marg_log_lik_sd" %in% names(ns))
         marg_log_liks[row_index] <- ns$marg_log_lik
         marg_log_lik_sds[row_index] <- ns$marg_log_lik_sd
         site_model_names[row_index] <- site_model$name
