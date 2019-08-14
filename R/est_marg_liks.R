@@ -108,38 +108,21 @@ est_marg_liks <- function(
   for (site_model in site_models) {
     for (clock_model in clock_models) {
       for (tree_prior in tree_priors) {
-        inference_model <- beautier::create_inference_model(
+        ns <- estimate_marg_lik(
+          fasta_filename = fasta_filename,
           site_model = site_model,
           clock_model = clock_model,
           tree_prior = tree_prior,
-          mcmc = beautier::create_mcmc_nested_sampling(epsilon = epsilon)
-        )
-        beast2_options <- beastier::create_beast2_options(
-          input_filename = fasta_filename,
+          epsilon = epsilon,
           rng_seed = rng_seed,
-          overwrite = TRUE,
+          verbose = verbose,
           beast2_working_dir = beast2_working_dir,
-          beast2_path = beast2_bin_path,
-          verbose = verbose
+          beast2_bin_path = beast2_bin_path,
+          os = os
         )
-        tryCatch({
-            bbt_run_out <- babette::bbt_run_from_model(
-              fasta_filename = fasta_filename,
-              inference_model = inference_model,
-              beast2_options = beast2_options
-            )
-            testit::assert("ns" %in% names(bbt_run_out))
-            ns <- bbt_run_out$ns
-            if (verbose) print(ns)
-            marg_log_liks[row_index] <- ns$marg_log_lik
-            marg_log_lik_sds[row_index] <- ns$marg_log_lik_sd
-          },
-          error = function(e) {
-            if (verbose) {
-              print(e$message)
-            }
-          }
-        )
+        if (verbose) print(ns)
+        marg_log_liks[row_index] <- ns$marg_log_lik
+        marg_log_lik_sds[row_index] <- ns$marg_log_lik_sd
         site_model_names[row_index] <- site_model$name
         clock_model_names[row_index] <- clock_model$name
         tree_prior_names[row_index] <- tree_prior$name

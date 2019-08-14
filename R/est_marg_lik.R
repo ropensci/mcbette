@@ -65,9 +65,25 @@ est_marg_lik <- function(
       "File '", fasta_filename, "' not found"
     )
   }
-  beautier::check_site_model(site_model)
-  beautier::check_clock_model(clock_model)
-  beautier::check_tree_prior(tree_prior)
+  if (!beautier::is_site_model(site_model)) {
+    stop(
+      "'site_model' must be a valid site model.\n",
+      "Actual value: ", site_model
+    )
+  }
+  if (!beautier::is_clock_model(clock_model)) {
+    stop(
+      "'clock_model' must be a valid clock model.\n",
+      "Actual value: ", clock_model
+    )
+  }
+  if (!beautier::is_tree_prior(tree_prior)) {
+    stop(
+      "'tree_prior' must be a valid tree prior.\n",
+      "Actual value: ", tree_prior
+    )
+  }
+
   if (!beautier::is_one_double(epsilon)) {
     stop("'epsilon' must be one numerical value. Actual value(s): ", epsilon)
   }

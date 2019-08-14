@@ -1,13 +1,12 @@
-test_that("use, 1 model", {
+test_that("use, JC69, strict, Yule", {
 
-  skip("WIP. Issue 10. Issue #10")
   if (!beastier::is_beast2_installed()) return()
+  if (!beastier::is_beast2_ns_installed()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   marg_lik <- est_marg_lik(
     fasta_filename,
-    epsilon = 1e7,
-    verbose = TRUE
+    epsilon = 1e7
   )
 
   expect_true(is.list(marg_lik))
@@ -23,93 +22,67 @@ test_that("use, 1 model", {
   expect_true(marg_lik$marg_log_lik_sd > 0.0)
 })
 
-test_that("use with same RNG seed must result in identical output", {
-
-  if (!beastier::is_on_travis()) return()
-
-  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
-  df_1 <- est_marg_liks(
-    fasta_filename,
-    site_models = beautier::create_site_models()[1:2],
-    clock_models = beautier::create_clock_models()[1:2],
-    tree_priors = beautier::create_tree_priors()[1:2],
-    epsilon = 1e7,
-    rng_seed = 314
-  )
-  df_2 <- est_marg_liks(
-    fasta_filename,
-    site_models = beautier::create_site_models()[1:2],
-    clock_models = beautier::create_clock_models()[1:2],
-    tree_priors = beautier::create_tree_priors()[1:2],
-    epsilon = 1e7,
-    rng_seed = 314
-  )
-
-  expect_equal(df_1, df_2)
-
-})
-
 test_that("abuse", {
 
   # fasta_filename
   expect_error(
-    est_marg_liks(fasta_filename = "nonsense"),
+    est_marg_lik(fasta_filename = "nonsense"),
     "'fasta_filename' must be the name of an existing FASTA file"
   )
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
   # site_models
   expect_error(
-    est_marg_liks(
-      fasta_filename = fasta_filename, site_models = "nonsense"
+    est_marg_lik(
+      fasta_filename = fasta_filename, site_model = "nonsense"
     ),
-    "'site_models' must be a list of one or more valid site models"
+    "'site_model' must be a valid site model"
   )
 
   # clock_models
   expect_error(
-    est_marg_liks(
-      fasta_filename = fasta_filename, clock_models = "nonsense"
+    est_marg_lik(
+      fasta_filename = fasta_filename, clock_model = "nonsense"
     ),
-    "'clock_models' must be a list of one or more valid clock models"
+    "'clock_model' must be a valid clock model"
   )
 
   # tree_priors
   expect_error(
-    est_marg_liks(
-      fasta_filename = fasta_filename, tree_priors = "nonsense"
+    est_marg_lik(
+      fasta_filename = fasta_filename, tree_prior = "nonsense"
     ),
-    "'tree_priors' must be a list of one or more valid tree priors"
+    "'tree_prior' must be a valid tree prior"
   )
 
   # epsilon
   expect_error(
-    est_marg_liks(
+    est_marg_lik(
       fasta_filename = fasta_filename, epsilon = "nonsense"
     ),
     "'epsilon' must be one numerical value"
   )
   expect_error(
-    est_marg_liks(
+    est_marg_lik(
       fasta_filename = fasta_filename, epsilon = c(1.2, 3.4, 5.6)
     ),
     "'epsilon' must be one numerical value"
   )
   expect_error(
-    est_marg_liks(
+    est_marg_lik(
       fasta_filename = fasta_filename, epsilon = NA
     ),
     "'epsilon' must be one numerical value"
   )
   expect_error(
-    est_marg_liks(
+    est_marg_lik(
       fasta_filename = fasta_filename, epsilon = NULL
     ),
     "'epsilon' must be one numerical value"
   )
 
   expect_error(
-    est_marg_liks(
+    est_marg_lik(
       fasta_filename = fasta_filename,
       os = "win"
     ),
