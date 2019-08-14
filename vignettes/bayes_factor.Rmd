@@ -22,6 +22,7 @@ Measure the Bayes factor between JC69 and GTR.
 
 ```{r}
 library(mcbette)
+library(Rmpfr)
 library(testthat)
 ```
 
@@ -172,9 +173,27 @@ It can be calculated from the marginal likelihoods ratio:
 
 ```{r}
 marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512)) 
+```
+
+a
+```{r}
 marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
+```
+
+b
+
+```{r}
 bayes_factor <- marg_lik_jc / marg_lik_gtr
+```
+
+c
+```{r}
 interpretation <- interpret_bayes_factor(as.numeric(bayes_factor))
+```
+
+d
+
+```{r}
 paste(interpretation, "in favor of JC69")
 ```
 
