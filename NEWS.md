@@ -2,6 +2,26 @@
 
 Newest versions at top.
 
+## `mcbette` 1.4 (2019-08-??)
+
+### NEW FEATURES
+
+ * Removed duplicate `epsilon` argument from `est_marg_liks_from_model`:
+   use the `epsilon` supplied in the inference models' nested sampling
+   MCMC
+
+### MINOR IMPROVEMENTS
+
+ * Better error message when using a CBS site model and too few taxa
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.3 (2019-08-14)
 
 ### NEW FEATURES

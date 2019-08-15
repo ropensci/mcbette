@@ -120,72 +120,11 @@ est_marg_liks <- function(
   beast2_optionses <- rep(list(beast2_options), times = n_models)
   testit::assert(length(beast2_optionses) == n_models)
 
-  # OLDSKOOL
-  if (1 == 2) {
-    testit::assert(file.exists(fasta_filename))
-    testit::assert(beastier::is_beast2_installed())
-    testit::assert(mauricer::is_beast2_ns_pkg_installed())
-
-    n_rows <- length(site_models) *
-      length(clock_models) * length(tree_priors)
-
-    site_model_names <- rep(NA, n_rows)
-    clock_model_names <- rep(NA, n_rows)
-    tree_prior_names <- rep(NA, n_rows)
-    marg_log_liks <- rep(NA, n_rows)
-    marg_log_lik_sds <- rep(NA, n_rows)
-
-    # Pick a site model
-    row_index <- 1
-    for (site_model in site_models) {
-      for (clock_model in clock_models) {
-        for (tree_prior in tree_priors) {
-          ns <- est_marg_lik(
-            fasta_filename = fasta_filename,
-            site_model = site_model,
-            clock_model = clock_model,
-            tree_prior = tree_prior,
-            epsilon = epsilon,
-            rng_seed = rng_seed,
-            verbose = verbose,
-            beast2_working_dir = beast2_working_dir,
-            beast2_bin_path = beast2_bin_path,
-            os = os
-          )
-          if (verbose) print(ns)
-          testit::assert("marg_log_lik" %in% names(ns))
-          testit::assert("marg_log_lik_sd" %in% names(ns))
-          marg_log_liks[row_index] <- ns$marg_log_lik
-          marg_log_lik_sds[row_index] <- ns$marg_log_lik_sd
-          site_model_names[row_index] <- site_model$name
-          clock_model_names[row_index] <- clock_model$name
-          tree_prior_names[row_index] <- tree_prior$name
-          row_index <- row_index + 1
-        }
-      }
-    }
-
-    weights <- as.numeric(
-      calc_weights(marg_liks = exp(Rmpfr::mpfr(marg_log_liks, 512)))
-    )
-
-    df <- data.frame(
-      site_model_name = site_model_names,
-      clock_model_name = clock_model_names,
-      tree_prior_name = tree_prior_names,
-      marg_log_lik = marg_log_liks,
-      marg_log_lik_sd = marg_log_lik_sds,
-      weight = weights
-    )
-    df
-  }
   est_marg_liks_from_models(
     fasta_filename = fasta_filename,
     inference_models = inference_models,
     beast2_optionses = beast2_optionses,
-    epsilon = epsilon,
     verbose = verbose,
     os = os
   )
-
 }
