@@ -2,6 +2,7 @@ test_that("use, 8 models", {
 
   if (!beastier::is_beast2_installed()) return()
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!beastier::is_on_travis()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   site_models <- list(create_jc69_site_model(), create_hky_site_model())
@@ -46,6 +47,7 @@ test_that("use, 1 model", {
 
   if (!beastier::is_beast2_installed()) return()
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!beastier::is_on_travis()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   df <- est_marg_liks(
@@ -82,6 +84,7 @@ test_that("use with same RNG seed must result in identical output", {
 
   if (!beastier::is_on_travis()) return()
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!beastier::is_on_travis()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 

@@ -2,6 +2,7 @@ test_that("use, 8 models", {
 
   if (!beastier::is_beast2_installed()) return()
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!beastier::is_on_travis()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   # idx | site | clock  | tree                                                  # nolint this is not code
