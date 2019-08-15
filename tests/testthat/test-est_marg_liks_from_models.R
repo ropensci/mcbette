@@ -1,4 +1,225 @@
-context("test-est_marg_liks_from_models")
+test_that("use, 8 models", {
+
+  if (!beastier::is_beast2_installed()) return()
+  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+  # idx | site | clock  | tree
+  #  1  | JC   | strict | Yule
+  #  2  | JC   | strict | BD
+  #  3  | JC   | RLN    | Yule
+  #  4  | JC   | RLN    | BD
+  #  5  | HKY  | strict | Yule
+  #  6  | HKY  | strict | BD
+  #  7  | HKY  | RLN    | Yule
+  #  8  | HKY  | RLN    | BD
+  inference_model_1 <- beautier::create_inference_model(
+    site_model = beautier::create_jc69_site_model(),
+    clock_model = beautier::create_strict_clock_model(),
+    tree_prior = beautier::create_yule_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_model_2 <- beautier::create_inference_model(
+    site_model = beautier::create_jc69_site_model(),
+    clock_model = beautier::create_strict_clock_model(),
+    tree_prior = beautier::create_bd_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_model_3 <- beautier::create_inference_model(
+    site_model = beautier::create_jc69_site_model(),
+    clock_model = beautier::create_rln_clock_model(),
+    tree_prior = beautier::create_yule_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_model_4 <- beautier::create_inference_model(
+    site_model = beautier::create_jc69_site_model(),
+    clock_model = beautier::create_rln_clock_model(),
+    tree_prior = beautier::create_bd_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_model_5 <- beautier::create_inference_model(
+    site_model = beautier::create_hky_site_model(),
+    clock_model = beautier::create_strict_clock_model(),
+    tree_prior = beautier::create_yule_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_model_6 <- beautier::create_inference_model(
+    site_model = beautier::create_hky_site_model(),
+    clock_model = beautier::create_strict_clock_model(),
+    tree_prior = beautier::create_bd_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_model_7 <- beautier::create_inference_model(
+    site_model = beautier::create_hky_site_model(),
+    clock_model = beautier::create_rln_clock_model(),
+    tree_prior = beautier::create_yule_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_model_8 <- beautier::create_inference_model(
+    site_model = beautier::create_hky_site_model(),
+    clock_model = beautier::create_rln_clock_model(),
+    tree_prior = beautier::create_bd_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_models <- list(
+    inference_model_1,
+    inference_model_2,
+    inference_model_3,
+    inference_model_4,
+    inference_model_5,
+    inference_model_6,
+    inference_model_7,
+    inference_model_8
+  )
+  beast2_options <- beastier::create_beast2_options(
+    beast2_path = beastier::get_default_beast2_bin_path()
+  )
+  beast2_optionses <- list(
+    beast2_options,
+    beast2_options,
+    beast2_options,
+    beast2_options,
+    beast2_options,
+    beast2_options,
+    beast2_options,
+    beast2_options
+  )
+
+  df <- est_marg_liks_from_models(
+    fasta_filename,
+    inference_models = inference_models,
+    beast2_optionses = beast2_optionses,
+    epsilon = 1e7,
+    verbose = FALSE
+  )
+
+  expect_true(is.data.frame(df))
+  expect_equal(
+    nrow(df),
+    length(inference_models)
+  )
+  expect_true("site_model_name" %in% colnames(df))
+  expect_true("clock_model_name" %in% colnames(df))
+  expect_true("tree_prior_name" %in% colnames(df))
+  expect_true("marg_log_lik" %in% colnames(df))
+  expect_true("marg_log_lik_sd" %in% colnames(df))
+  expect_true("weight" %in% colnames(df))
+
+  expect_true(is.factor(df$site_model_name))
+  expect_true(is.factor(df$clock_model_name))
+  expect_true(is.factor(df$tree_prior_name))
+  expect_true(!is.factor(df$marg_log_lik))
+  expect_true(!is.factor(df$marg_log_lik_sd))
+  expect_true(!is.factor(df$weight))
+
+  expect_true(all(df$marg_log_lik < 0.0))
+  expect_true(all(df$marg_log_lik_sd > 0.0))
+  expect_true(all(df$weight >= 0.0))
+  expect_true(all(df$weight <= 1.0))
+})
+
+
+
+## TODO
+
+test_that("use, 1 model", {
+
+  if (!beastier::is_beast2_installed()) return()
+  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+
+  inference_model <- beautier::create_inference_model(
+    site_model = beautier::create_jc69_site_model(),
+    clock_model = beautier::create_strict_clock_model(),
+    tree_prior = beautier::create_yule_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_models <- list(inference_model)
+  beast2_options <- beastier::create_beast2_options(
+    beast2_path = beastier::get_default_beast2_bin_path()
+  )
+  beast2_optionses <- list(beast2_options)
+
+  df <- est_marg_liks_from_models(
+    fasta_filename,
+    inference_models = inference_models,
+    beast2_optionses = beast2_optionses,
+    epsilon = 1e7
+  )
+  expect_equal(1, nrow(df))
+  expect_true(df$marg_log_lik < 0.0)
+  expect_true(df$marg_log_lik_sd > 0.0)
+  expect_equal(1.0, df$weight)
+})
+
+test_that("use, 1 model, CBS", {
+
+  if (!beastier::is_beast2_installed()) return()
+  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+
+  skip("Issue 11, Issue #11")
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+
+  inference_model <- beautier::create_inference_model(
+    site_model = beautier::create_jc69_site_model(),
+    clock_model = beautier::create_strict_clock_model(),
+    tree_prior = beautier::create_cbs_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc()
+  )
+  inference_models <- list(inference_model)
+  beast2_options <- beastier::create_beast2_options(
+    beast2_path = beastier::get_default_beast2_bin_path()
+  )
+  beast2_optionses <- list(beast2_options)
+
+  expect_error(
+    est_marg_liks_from_models(
+      fasta_filename,
+      inference_models = inference_models,
+      beast2_optionses = beast2_optionses
+    ),
+    "'group_sizes_dimension' .* must be less than the number of taxa"
+  )
+})
+
+test_that("use with same RNG seed must result in identical output", {
+
+  if (!beastier::is_on_travis()) return()
+  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+
+  site_models <- list(create_jc69_site_model())
+  clock_models <- list(create_strict_clock_model())
+  # Cannot use a CBS tree prior, as the FASTA file has only two taxa
+  tree_priors <- list(create_yule_tree_prior(), create_bd_tree_prior())
+
+  rng_seed <- 314
+  epsilon <- 1e7
+
+  df_1 <- est_marg_liks(
+    fasta_filename,
+    site_models = site_models,
+    clock_models = clock_models,
+    tree_priors = tree_priors,
+    epsilon = epsilon,
+    rng_seed = rng_seed
+  )
+  df_2 <- est_marg_liks(
+    fasta_filename,
+    site_models = site_models,
+    clock_models = clock_models,
+    tree_priors = tree_priors,
+    epsilon = epsilon,
+    rng_seed = rng_seed
+  )
+  expect_equal(df_1, df_2)
+})
+
+################################################################################
+# OLDSKOOL
+################################################################################
 
 test_that("use", {
 

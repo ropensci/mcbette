@@ -1,5 +1,3 @@
-context("test-est_marg_liks")
-
 test_that("use, 8 models", {
 
   if (!beastier::is_beast2_installed()) return()
