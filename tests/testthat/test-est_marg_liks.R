@@ -29,6 +29,10 @@ test_that("use, 2 models", {
   )
 
   expect_true(is.data.frame(df))
+  expect_equal(
+    nrow(df),
+    length(site_models) * length(clock_models) * length(tree_priors)
+  )
   expect_true("site_model_name" %in% colnames(df))
   expect_true("clock_model_name" %in% colnames(df))
   expect_true("tree_prior_name" %in% colnames(df))
@@ -43,8 +47,8 @@ test_that("use, 2 models", {
   expect_true(!is.factor(df$marg_log_lik_sd))
   expect_true(!is.factor(df$weight))
 
-  expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
-  expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
+  expect_true(all(df$marg_log_lik < 0.0))
+  expect_true(all(df$marg_log_lik_sd > 0.0))
   expect_true(all(df$weight >= 0.0))
   expect_true(all(df$weight <= 1.0))
 })
@@ -57,17 +61,32 @@ test_that("use, 1 model", {
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   df <- est_marg_liks(
     fasta_filename,
-    site_models = beautier::create_site_models()[1],
-    clock_models = beautier::create_clock_models()[1],
-    tree_priors = beautier::create_tree_priors()[1],
+    site_models = list(beautier::create_jc69_site_model()),
+    clock_models = list(beautier::create_strict_clock_model()),
+    tree_priors = list(beautier::create_yule_tree_prior()),
     epsilon = 1e7
   )
-  expect_true(is.data.frame(df))
-  expect_true(sum(df$marg_log_lik < 0.0, na.rm = TRUE) > 0)
-  expect_true(sum(df$marg_log_lik_sd > 0.0, na.rm = TRUE) > 0)
-  expect_true(all(df$weight >= 0.0))
-  expect_true(all(df$weight <= 1.0))
-  expect_true(1.0 - sum(df$weight) < 0.1)
+  expect_equal(1, nrow(df))
+  expect_true(df$marg_log_lik < 0.0)
+  expect_true(df$marg_log_lik_sd > 0.0)
+  expect_equal(1.0, df$weight)
+})
+
+test_that("use, 1 model, CBS", {
+
+  if (!beastier::is_beast2_installed()) return()
+  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+  expect_error(
+    est_marg_liks(
+      fasta_filename,
+      site_models = list(beautier::create_jc69_site_model()),
+      clock_models = list(beautier::create_strict_clock_model()),
+      tree_priors = list(beautier::create_cbs_tree_prior())
+    ),
+    "'group_sizes_dimension' .* must be less than the number of taxa"
+  )
 })
 
 test_that("use with same RNG seed must result in identical output", {
