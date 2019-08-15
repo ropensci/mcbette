@@ -4,15 +4,16 @@ test_that("use, 8 models", {
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
-  # idx | site | clock  | tree
-  #  1  | JC   | strict | Yule
-  #  2  | JC   | strict | BD
-  #  3  | JC   | RLN    | Yule
-  #  4  | JC   | RLN    | BD
-  #  5  | HKY  | strict | Yule
-  #  6  | HKY  | strict | BD
-  #  7  | HKY  | RLN    | Yule
-  #  8  | HKY  | RLN    | BD
+  # idx | site | clock  | tree                                                  # nolint this is not code
+  # ----|------|--------|-----                                                  # nolint this is not code
+  #  1  | JC   | strict | Yule                                                  # nolint this is not code
+  #  2  | JC   | strict | BD                                                    # nolint this is not code
+  #  3  | JC   | RLN    | Yule                                                  # nolint this is not code
+  #  4  | JC   | RLN    | BD                                                    # nolint this is not code
+  #  5  | HKY  | strict | Yule                                                  # nolint this is not code
+  #  6  | HKY  | strict | BD                                                    # nolint this is not code
+  #  7  | HKY  | RLN    | Yule                                                  # nolint this is not code
+  #  8  | HKY  | RLN    | BD                                                    # nolint this is not code
   mcmc <- beautier::create_nested_sampling_mcmc(epsilon = 1e7)
   inference_model_1 <- beautier::create_inference_model(
     site_model = beautier::create_jc69_site_model(),
@@ -129,7 +130,7 @@ test_that("use, 1 model", {
     site_model = beautier::create_jc69_site_model(),
     clock_model = beautier::create_strict_clock_model(),
     tree_prior = beautier::create_yule_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = beautier::create_nested_sampling_mcmc(epsilon = 1e7)
   )
   inference_models <- list(inference_model)
   beast2_options <- beastier::create_beast2_options(
@@ -140,8 +141,7 @@ test_that("use, 1 model", {
   df <- est_marg_liks_from_models(
     fasta_filename,
     inference_models = inference_models,
-    beast2_optionses = beast2_optionses,
-    epsilon = 1e7
+    beast2_optionses = beast2_optionses
   )
   expect_equal(1, nrow(df))
   expect_true(df$marg_log_lik < 0.0)
@@ -184,13 +184,14 @@ test_that("use with same RNG seed must result in identical output", {
   if (!beastier::is_on_travis()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+  epsilon <- 100
   inference_model_1 <- beautier::create_inference_model(
     site_model = beautier::create_jc69_site_model(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = beautier::create_nested_sampling_mcmc(epsilon = epsilon)
   )
   inference_model_2 <- beautier::create_inference_model(
     site_model = beautier::create_jc69_site_model(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = beautier::create_nested_sampling_mcmc(epsilon = epsilon)
   )
   inference_models <- list(inference_model_1, inference_model_2)
   beast2_options <- beastier::create_beast2_options(
@@ -198,18 +199,16 @@ test_that("use with same RNG seed must result in identical output", {
     rng_seed = 314
   )
   beast2_optionses <- list(beast2_options, beast2_options)
-  epsilon <- 100
+
   df_1 <- est_marg_liks_from_models(
     fasta_filename,
     inference_models = inference_models,
-    beast2_optionses = beast2_optionses,
-    epsilon = epsilon
+    beast2_optionses = beast2_optionses
   )
   df_2 <- est_marg_liks_from_models(
     fasta_filename,
     inference_models = inference_models,
-    beast2_optionses = beast2_optionses,
-    epsilon = epsilon
+    beast2_optionses = beast2_optionses
   )
   expect_equal(df_1, df_2)
 
@@ -254,10 +253,9 @@ test_that("abuse", {
       fasta_filename = fasta_filename,
       inference_models = list(
         beautier::create_inference_model(
-          mcmc = beautier::create_nested_sampling_mcmc()
+          mcmc = beautier::create_nested_sampling_mcmc(epsilon = "nonsense")
         )
-      ),
-      epsilon = "nonsense"
+      )
     ),
     "'epsilon' must be one numerical value"
   )
