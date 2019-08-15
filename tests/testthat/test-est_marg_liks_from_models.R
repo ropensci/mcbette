@@ -154,7 +154,6 @@ test_that("use, 1 model, CBS", {
   if (!beastier::is_beast2_installed()) return()
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
 
-  skip("Issue 11, Issue #11")
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
   inference_model <- beautier::create_inference_model(
