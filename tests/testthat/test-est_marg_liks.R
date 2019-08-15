@@ -96,16 +96,10 @@ test_that("use with same RNG seed must result in identical output", {
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
-  site_models <- list()
-  site_models[[1]] <- create_jc69_site_model()
-
-  clock_models <- list()
-  clock_models[[1]] <- create_strict_clock_model()
-
+  site_models <- list(create_jc69_site_model())
+  clock_models <- list(create_strict_clock_model())
   # Cannot use a CBS tree prior, as the FASTA file has only two taxa
-  tree_priors <- list()
-  tree_priors[[1]] <- create_yule_tree_prior()
-  tree_priors[[2]] <- create_bd_tree_prior()
+  tree_priors <- list(create_yule_tree_prior(), create_bd_tree_prior())
 
   rng_seed <- 314
   epsilon <- 1e7
