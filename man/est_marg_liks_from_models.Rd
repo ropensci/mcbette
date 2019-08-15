@@ -7,10 +7,11 @@ site, clock and tree models}
 \usage{
 est_marg_liks_from_models(fasta_filename,
   inference_models = list(beautier::create_inference_model(mcmc =
-  beautier::create_nested_sampling_mcmc())),
+  beautier::create_nested_sampling_mcmc(epsilon = 1e-12))),
   beast2_optionses = rep(list(beastier::create_beast2_options(beast2_path
-  = get_default_beast2_bin_path())), times = length(inference_models)),
-  epsilon = 1e-12, verbose = FALSE, os = rappdirs::app_dir()$os)
+  = beastier::get_default_beast2_bin_path())), times =
+  length(inference_models)), verbose = FALSE,
+  os = rappdirs::app_dir()$os)
 }
 \arguments{
 \item{fasta_filename}{name of the FASTA file}
@@ -23,9 +24,6 @@ structures,
 as can be created by \link[beastier]{create_beast2_options}.
 Use of reduplicated plural to achieve difference with
 \code{beast2_options}}
-
-\item{epsilon}{measure of relative accuracy.
-Smaller values result in longer, more precise estimations}
 
 \item{verbose}{if TRUE show debug output}
 
@@ -57,11 +55,11 @@ site, clock and tree models
   # Create two inference models
   inference_model_1 <- create_inference_model(
     site_model = create_jc69_site_model(),
-    mcmc = create_nested_sampling_mcmc()
+    mcmc = create_nested_sampling_mcmc(epsilon = 1e7)
   )
   inference_model_2 <- create_inference_model(
     site_model = create_hky_site_model(),
-    mcmc = create_nested_sampling_mcmc()
+    mcmc = create_nested_sampling_mcmc(epsilon = 1e7)
   )
   inference_models <- list(inference_model_1, inference_model_2)
 
@@ -76,8 +74,7 @@ site, clock and tree models
   df <- est_marg_liks_from_models(
     fasta_filename,
     inference_models = inference_models,
-    beast2_optionses = beast2_optionses,
-    epsilon = 1e7
+    beast2_optionses = beast2_optionses
   )
 
   # Testing the results

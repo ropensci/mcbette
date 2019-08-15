@@ -13,53 +13,54 @@ test_that("use, 8 models", {
   #  6  | HKY  | strict | BD
   #  7  | HKY  | RLN    | Yule
   #  8  | HKY  | RLN    | BD
+  mcmc <- beautier::create_nested_sampling_mcmc(epsilon = 1e7)
   inference_model_1 <- beautier::create_inference_model(
     site_model = beautier::create_jc69_site_model(),
     clock_model = beautier::create_strict_clock_model(),
     tree_prior = beautier::create_yule_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = mcmc
   )
   inference_model_2 <- beautier::create_inference_model(
     site_model = beautier::create_jc69_site_model(),
     clock_model = beautier::create_strict_clock_model(),
     tree_prior = beautier::create_bd_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = mcmc
   )
   inference_model_3 <- beautier::create_inference_model(
     site_model = beautier::create_jc69_site_model(),
     clock_model = beautier::create_rln_clock_model(),
     tree_prior = beautier::create_yule_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = mcmc
   )
   inference_model_4 <- beautier::create_inference_model(
     site_model = beautier::create_jc69_site_model(),
     clock_model = beautier::create_rln_clock_model(),
     tree_prior = beautier::create_bd_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = mcmc
   )
   inference_model_5 <- beautier::create_inference_model(
     site_model = beautier::create_hky_site_model(),
     clock_model = beautier::create_strict_clock_model(),
     tree_prior = beautier::create_yule_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = mcmc
   )
   inference_model_6 <- beautier::create_inference_model(
     site_model = beautier::create_hky_site_model(),
     clock_model = beautier::create_strict_clock_model(),
     tree_prior = beautier::create_bd_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = mcmc
   )
   inference_model_7 <- beautier::create_inference_model(
     site_model = beautier::create_hky_site_model(),
     clock_model = beautier::create_rln_clock_model(),
     tree_prior = beautier::create_yule_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = mcmc
   )
   inference_model_8 <- beautier::create_inference_model(
     site_model = beautier::create_hky_site_model(),
     clock_model = beautier::create_rln_clock_model(),
     tree_prior = beautier::create_bd_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = mcmc
   )
   inference_models <- list(
     inference_model_1,
@@ -89,7 +90,6 @@ test_that("use, 8 models", {
     fasta_filename,
     inference_models = inference_models,
     beast2_optionses = beast2_optionses,
-    epsilon = 1e7,
     verbose = FALSE
   )
 
