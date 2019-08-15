@@ -161,7 +161,7 @@ test_that("use, 1 model, CBS", {
     site_model = beautier::create_jc69_site_model(),
     clock_model = beautier::create_strict_clock_model(),
     tree_prior = beautier::create_cbs_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = beautier::create_nested_sampling_mcmc(epsilon = 1e7)
   )
   inference_models <- list(inference_model)
   beast2_options <- beastier::create_beast2_options(
