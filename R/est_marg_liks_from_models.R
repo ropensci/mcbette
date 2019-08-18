@@ -127,6 +127,7 @@ est_marg_liks_from_models <- function(
   tree_prior_names <- rep(NA, n_rows)
   marg_log_liks <- rep(NA, n_rows)
   marg_log_lik_sds <- rep(NA, n_rows)
+  esses <- rep(NA, n_rows)
 
   # Iterate over all inference models and BEAST2 optionses
   for (i in seq(1, n_rows)) {
@@ -162,6 +163,7 @@ est_marg_liks_from_models <- function(
     testit::assert("marg_log_lik_sd" %in% names(ns))
     marg_log_liks[i] <- ns$marg_log_lik
     marg_log_lik_sds[i] <- ns$marg_log_lik_sd
+    esses[i] <- ns$ess
     site_model_names[i] <- inference_model$site_model$name
     clock_model_names[i] <- inference_model$clock_model$name
     tree_prior_names[i] <- inference_model$tree_prior$name
@@ -176,7 +178,8 @@ est_marg_liks_from_models <- function(
     tree_prior_name = tree_prior_names,
     marg_log_lik = marg_log_liks,
     marg_log_lik_sd = marg_log_lik_sds,
-    weight = weights
+    weight = weights,
+    ess = esses
   )
   if (abs(1.0 - sum(weights)) > 0.01) {
     warning(
