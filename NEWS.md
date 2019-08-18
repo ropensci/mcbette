@@ -2,7 +2,26 @@
 
 Newest versions at top.
 
-## `mcbette` 1.4 (2019-08-??)
+## `mcbette` 1.5 (2019-08-18)
+
+### NEW FEATURES
+
+ * Show effective sample size in marginal likelihood estimation
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
+
+## `mcbette` 1.4 (2019-08-15)
 
 ### NEW FEATURES
 

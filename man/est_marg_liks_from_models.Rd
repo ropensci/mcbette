@@ -86,6 +86,7 @@ site, clock and tree models
   expect_true("marg_log_lik" \%in\% colnames(df))
   expect_true("marg_log_lik_sd" \%in\% colnames(df))
   expect_true("weight" \%in\% colnames(df))
+  expect_true("ess" \%in\% colnames(df))
 
   expect_true(is.factor(df$site_model_name))
   expect_true(is.factor(df$clock_model_name))
