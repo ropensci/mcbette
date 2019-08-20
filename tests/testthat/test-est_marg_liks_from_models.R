@@ -275,3 +275,61 @@ test_that("abuse", {
     "mcbette must run on Linux or Mac"
   )
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+test_that("use BEAST2 working directory in same folder as BEAST2 output", {
+
+  if (!beastier::is_beast2_installed()) return()
+  if (rappdirs::app_dir()$os == "win") return()
+  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+
+  inference_model <- beautier::create_inference_model(
+    site_model = beautier::create_jc69_site_model(),
+    clock_model = beautier::create_strict_clock_model(),
+    tree_prior = beautier::create_yule_tree_prior(),
+    mcmc = beautier::create_nested_sampling_mcmc(epsilon = 1e7)
+  )
+  inference_models <- list(inference_model)
+
+  folder_name <- tempfile()
+
+  # Try to use the most conflicting naming
+  beast2_options <- beastier::create_beast2_options(
+    input_filename = file.path(folder_name, "simple.xml"),
+    output_log_filename = file.path(folder_name, "simple.log"),
+    output_trees_filenames = file.path(folder_name, "simple.trees"),
+    output_state_filename = file.path(folder_name, "simple.xml.state"),
+    beast2_working_dir = folder_name,
+    beast2_path = beastier::get_default_beast2_bin_path()
+  )
+  beast2_optionses <- list(beast2_options)
+
+  expect_silent(
+    est_marg_liks_from_models(
+      fasta_filename,
+      inference_models = inference_models,
+      beast2_optionses = beast2_optionses
+    )
+  )
+})
