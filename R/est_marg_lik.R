@@ -123,14 +123,9 @@ est_marg_lik <- function(
       stop(
         "Could not estimate the marginal likelihood. \n",
         "Error message: ", e$message, "\n",
-        "site_model$name: ", site_model$name, "\n",
-        "clock_model$name: ", clock_model$name, "\n",
-        "tree_prior$name: ", tree_prior$name, "\n",
-        "epsilon: ", epsilon, "\n",
-        "rng_seed: ", rng_seed, "\n",
-        "verbose: ", verbose, "\n",
-        "beast2_working_dir: ", beast2_working_dir, "\n",
-        "beast2_bin_path: ", beast2_bin_path
+        "fasta_filename: ", fasta_filename, "\n",
+        "beast2_options: ", beast2_options, "\n",
+        "inference_model: ", inference_model, "\n"
       )
     }
   )
