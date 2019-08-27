@@ -103,6 +103,10 @@ est_marg_lik <- function(
   beast2_options <- beastier::create_beast2_options(
     rng_seed = rng_seed,
     overwrite = TRUE,
+    input_filename = file.path(beast2_working_dir, "mcbette.xml"),
+    output_log_filename = file.path(beast2_working_dir, "mcbette.log"),
+    output_trees_filenames = file.path(beast2_working_dir, "mcbette.trees"),
+    output_state_filename = file.path(beast2_working_dir, "mcbette.xml.state"),
     beast2_working_dir = beast2_working_dir,
     beast2_path = beast2_bin_path,
     verbose = verbose
