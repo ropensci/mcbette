@@ -2,6 +2,26 @@
 
 Newest versions at top.
 
+## `mcbette` 1.6 (2019-08-27)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * Creates BEAST2 temporary files in same folder as the BEAST2 working
+   folder. This allows `mcbette` to run on the Groninger Peregrine
+   computer cluster
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.5 (2019-08-18)
 
 ### NEW FEATURES
