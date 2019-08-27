@@ -1,5 +1,8 @@
 # R script to test if pirouette runs on peregrine
 
+# Added an extra check
+remotes::install_github("ropensci/beastier", ref = "develop")
+
 # Copied from peregrine
 get_pff_tempdir <- function() {
   dirname <- file.path(
