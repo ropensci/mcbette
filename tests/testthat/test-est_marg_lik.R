@@ -6,7 +6,7 @@ test_that("use, JC69, strict, Yule", {
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   marg_lik <- est_marg_lik(
     fasta_filename,
-    epsilon = 1e7
+    mcmc = create_test_ns_mcmc()
   )
 
   expect_true(is.list(marg_lik))

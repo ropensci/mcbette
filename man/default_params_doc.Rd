@@ -7,8 +7,9 @@ This function does nothing.
 It is intended to inherit function argument documentation.}
 \usage{
 default_params_doc(beast2_bin_path, beast2_working_dir, beast2_optionses,
-  clock_model, clock_models, epsilon, fasta_filename, inference_models, os,
-  rng_seed, site_model, site_models, tree_prior, tree_priors, verbose)
+  clock_model, clock_models, epsilon, fasta_filename, inference_models,
+  mcmc, os, rng_seed, site_model, site_models, tree_prior, tree_priors,
+  verbose)
 }
 \arguments{
 \item{beast2_bin_path}{path to the the BEAST2 binary file}
@@ -36,6 +37,9 @@ Smaller values result in longer, more precise estimations}
 
 \item{inference_models}{a list of one or more inference models,
 as can be created by \link[beautier]{create_inference_model}}
+
+\item{mcmc}{an MCMC for the Nested Sampling run,
+as can be created by \link[beautier]{create_mcmc_nested_sampling}}
 
 \item{os}{name of the operating system,
 must be \code{unix} (Linux, Mac) or \code{win} (Windows)}

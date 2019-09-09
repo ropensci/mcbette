@@ -19,6 +19,8 @@
 #' @param fasta_filename name of the FASTA file
 #' @param inference_models a list of one or more inference models,
 #'   as can be created by \link[beautier]{create_inference_model}
+#' @param mcmc an MCMC for the Nested Sampling run,
+#'   as can be created by \link[beautier]{create_mcmc_nested_sampling}
 #' @param os name of the operating system,
 #'   must be \code{unix} (Linux, Mac) or \code{win} (Windows)
 #' @param rng_seed a random number generator seed used for the BEAST2
@@ -44,6 +46,7 @@ default_params_doc <- function(
   epsilon,
   fasta_filename,
   inference_models,
+  mcmc,
   os,
   rng_seed,
   site_model, site_models,

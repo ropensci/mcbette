@@ -38,7 +38,7 @@ est_marg_lik <- function(
   site_model = beautier::create_jc69_site_model(),
   clock_model = beautier::create_strict_clock_model(),
   tree_prior = beautier::create_yule_tree_prior(),
-  epsilon = 10e-13,
+  mcmc = beautier::create_nested_sampling_mcmc(),
   rng_seed = 1,
   verbose = FALSE,
   beast2_working_dir = tempfile(pattern = "beast2_mcbette_tmp_folder"),
@@ -84,13 +84,18 @@ est_marg_lik <- function(
     )
   }
 
-  if (!beautier::is_one_double(epsilon)) {
-    stop("'epsilon' must be one numerical value. Actual value(s): ", epsilon)
+  if (!beautier::is_mcmc_nested_sampling(mcmc)) {
+    stop(
+      "'mcmc' must be a nested sampling MCMC. ",
+      "Tip: use 'beautier::create_mcmc_nested_sampling'. \n",
+      "Actual value: ", mcmc
+    )
   }
 
   testit::assert(file.exists(fasta_filename))
   testit::assert(beastier::is_beast2_installed())
   testit::assert(mauricer::is_beast2_ns_pkg_installed())
+  testit::assert(beautier::is_mcmc_nested_sampling(mcmc))
 
   ns <- list()
 
@@ -98,7 +103,7 @@ est_marg_lik <- function(
     site_model = site_model,
     clock_model = clock_model,
     tree_prior = tree_prior,
-    mcmc = beautier::create_mcmc_nested_sampling(epsilon = epsilon)
+    mcmc = mcmc
   )
   beast2_options <- beastier::create_beast2_options(
     rng_seed = rng_seed,

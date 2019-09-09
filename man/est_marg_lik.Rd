@@ -8,9 +8,10 @@ site, clock and tree models}
 est_marg_lik(fasta_filename,
   site_model = beautier::create_jc69_site_model(),
   clock_model = beautier::create_strict_clock_model(),
-  tree_prior = beautier::create_yule_tree_prior(), epsilon = 1e-12,
-  rng_seed = 1, verbose = FALSE,
-  beast2_working_dir = tempfile(pattern = "beast2_mcbette_tmp_folder"),
+  tree_prior = beautier::create_yule_tree_prior(),
+  mcmc = beautier::create_nested_sampling_mcmc(), rng_seed = 1,
+  verbose = FALSE, beast2_working_dir = tempfile(pattern =
+  "beast2_mcbette_tmp_folder"),
   beast2_bin_path = beastier::get_default_beast2_bin_path(),
   os = rappdirs::app_dir()$os)
 }
@@ -26,8 +27,8 @@ as can be created by \link[beautier]{create_clock_model}}
 \item{tree_prior}{a tree prior,
 as can be created by \link[beautier]{create_tree_prior}}
 
-\item{epsilon}{measure of relative accuracy.
-Smaller values result in longer, more precise estimations}
+\item{mcmc}{an MCMC for the Nested Sampling run,
+as can be created by \link[beautier]{create_mcmc_nested_sampling}}
 
 \item{rng_seed}{a random number generator seed used for the BEAST2
 inference}
