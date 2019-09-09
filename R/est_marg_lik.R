@@ -35,16 +35,16 @@
 #' @export
 est_marg_lik <- function(
   fasta_filename,
-  site_model = beautier::create_jc69_site_model(),
-  clock_model = beautier::create_strict_clock_model(),
-  tree_prior = beautier::create_yule_tree_prior(),
-  mcmc = beautier::create_nested_sampling_mcmc(),
-  rng_seed = 1,
-  verbose = FALSE,
-  beast2_working_dir = tempfile(pattern = "beast2_mcbette_tmp_folder"),
-  beast2_bin_path = beastier::get_default_beast2_bin_path(),
+  inference_model = beautier::create_inference_model(
+    mcmc = beautier::create_nested_sampling_mcmc()
+  ),
+  beast2_options = create_mcbette_beast2_options(),
   os = rappdirs::app_dir()$os
 ) {
+  beautier::check_file_exists(fasta_filename)
+  beautier::check_inference_model(inference_model)
+  beastier::check_beast2_options(beast2_options)
+
   if (os == "win") {
     stop(
       "mcbette must run on Linux or Mac.\n",
@@ -53,40 +53,15 @@ est_marg_lik <- function(
       "in a scripted way"
     )
   }
-  if (!beastier::is_bin_path(beast2_bin_path)) {
+  if (!beastier::is_bin_path(beast2_options$beast2_bin_path)) {
     stop(
       "Use the binary BEAST2 executable for marginal likelihood estimation. \n",
       "Actual path: ", beast2_bin_path
     )
   }
-  if (!file.exists(fasta_filename)) {
+  if (!beautier::is_mcmc_nested_sampling(inference_model$mcmc)) {
     stop(
-      "'fasta_filename' must be the name of an existing FASTA file.\n",
-      "File '", fasta_filename, "' not found"
-    )
-  }
-  if (!beautier::is_site_model(site_model)) {
-    stop(
-      "'site_model' must be a valid site model.\n",
-      "Actual value: ", site_model
-    )
-  }
-  if (!beautier::is_clock_model(clock_model)) {
-    stop(
-      "'clock_model' must be a valid clock model.\n",
-      "Actual value: ", clock_model
-    )
-  }
-  if (!beautier::is_tree_prior(tree_prior)) {
-    stop(
-      "'tree_prior' must be a valid tree prior.\n",
-      "Actual value: ", tree_prior
-    )
-  }
-
-  if (!beautier::is_mcmc_nested_sampling(mcmc)) {
-    stop(
-      "'mcmc' must be a nested sampling MCMC. ",
+      "'inference_model$mcmc' must be a nested sampling MCMC. ",
       "Tip: use 'beautier::create_mcmc_nested_sampling'. \n",
       "Actual value: ", mcmc
     )
@@ -95,7 +70,6 @@ est_marg_lik <- function(
   testit::assert(file.exists(fasta_filename))
   testit::assert(beastier::is_beast2_installed())
   testit::assert(mauricer::is_beast2_ns_pkg_installed())
-  testit::assert(beautier::is_mcmc_nested_sampling(mcmc))
 
   ns <- list()
 

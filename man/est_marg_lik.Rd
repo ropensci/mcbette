@@ -6,40 +6,13 @@
 site, clock and tree models}
 \usage{
 est_marg_lik(fasta_filename,
-  site_model = beautier::create_jc69_site_model(),
-  clock_model = beautier::create_strict_clock_model(),
-  tree_prior = beautier::create_yule_tree_prior(),
-  mcmc = beautier::create_nested_sampling_mcmc(), rng_seed = 1,
-  verbose = FALSE, beast2_working_dir = tempfile(pattern =
-  "beast2_mcbette_tmp_folder"),
-  beast2_bin_path = beastier::get_default_beast2_bin_path(),
+  inference_model = beautier::create_inference_model(mcmc =
+  beautier::create_nested_sampling_mcmc()),
+  beast2_options = create_mcbette_beast2_options(),
   os = rappdirs::app_dir()$os)
 }
 \arguments{
 \item{fasta_filename}{name of the FASTA file}
-
-\item{site_model}{a site model,
-as can be created by \link[beautier]{create_site_model}}
-
-\item{clock_model}{a clock model,
-as can be created by \link[beautier]{create_clock_model}}
-
-\item{tree_prior}{a tree prior,
-as can be created by \link[beautier]{create_tree_prior}}
-
-\item{mcmc}{an MCMC for the Nested Sampling run,
-as can be created by \link[beautier]{create_mcmc_nested_sampling}}
-
-\item{rng_seed}{a random number generator seed used for the BEAST2
-inference}
-
-\item{verbose}{if TRUE show debug output}
-
-\item{beast2_working_dir}{folder in which BEAST2 will run and
-produce intermediate files.
-By default, this is a temporary folder}
-
-\item{beast2_bin_path}{path to the the BEAST2 binary file}
 
 \item{os}{name of the operating system,
 must be \code{unix} (Linux, Mac) or \code{win} (Windows)}
