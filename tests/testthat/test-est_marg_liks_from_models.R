@@ -15,7 +15,7 @@ test_that("use, 8 models", {
   #  6  | HKY  | strict | BD                                                    # nolint this is not code
   #  7  | HKY  | RLN    | Yule                                                  # nolint this is not code
   #  8  | HKY  | RLN    | BD                                                    # nolint this is not code
-  mcmc <- beautier::create_nested_sampling_mcmc(epsilon = 1e7)
+  mcmc <- create_test_ns_mcmc()
   inference_model_1 <- beautier::create_inference_model(
     site_model = beautier::create_jc69_site_model(),
     clock_model = beautier::create_strict_clock_model(),
@@ -126,24 +126,10 @@ test_that("use, 1 model", {
   if (!beastier::is_beast2_installed()) return()
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
 
-  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
-
-  inference_model <- beautier::create_inference_model(
-    site_model = beautier::create_jc69_site_model(),
-    clock_model = beautier::create_strict_clock_model(),
-    tree_prior = beautier::create_yule_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc(epsilon = 1e7)
-  )
-  inference_models <- list(inference_model)
-  beast2_options <- beastier::create_beast2_options(
-    beast2_path = beastier::get_default_beast2_bin_path()
-  )
-  beast2_optionses <- list(beast2_options)
-
   df <- est_marg_liks_from_models(
-    fasta_filename,
-    inference_models = inference_models,
-    beast2_optionses = beast2_optionses
+    fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
+    inference_models = list(create_test_ns_inference_model()),
+    beast2_optionses = list(create_mcbette_beast2_options())
   )
   expect_equal(1, nrow(df))
   expect_true(df$marg_log_lik < 0.0)
@@ -158,16 +144,11 @@ test_that("use, 1 model, CBS", {
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
-  inference_model <- beautier::create_inference_model(
-    site_model = beautier::create_jc69_site_model(),
-    clock_model = beautier::create_strict_clock_model(),
+  inference_model <- create_test_ns_inference_model(
     tree_prior = beautier::create_cbs_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc(epsilon = 1e7)
   )
   inference_models <- list(inference_model)
-  beast2_options <- beastier::create_beast2_options(
-    beast2_path = beastier::get_default_beast2_bin_path()
-  )
+  beast2_options <- create_mcbette_beast2_options()
   beast2_optionses <- list(beast2_options)
 
   expect_error(
@@ -185,20 +166,12 @@ test_that("use with same RNG seed must result in identical output", {
   if (!beastier::is_on_travis()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
-  epsilon <- 100
-  inference_model_1 <- beautier::create_inference_model(
-    site_model = beautier::create_jc69_site_model(),
-    mcmc = beautier::create_nested_sampling_mcmc(epsilon = epsilon)
+
+  inference_model <- create_test_ns_inference_model(
+    mcmc = create_test_ns_mcmc()
   )
-  inference_model_2 <- beautier::create_inference_model(
-    site_model = beautier::create_jc69_site_model(),
-    mcmc = beautier::create_nested_sampling_mcmc(epsilon = epsilon)
-  )
-  inference_models <- list(inference_model_1, inference_model_2)
-  beast2_options <- beastier::create_beast2_options(
-    beast2_path = beastier::get_default_beast2_bin_path(),
-    rng_seed = 314
-  )
+  inference_models <- list(inference_model, inference_model)
+  beast2_options <- create_mcbette_beast2_options(rng_seed = 314)
   beast2_optionses <- list(beast2_options, beast2_options)
 
   df_1 <- est_marg_liks_from_models(
@@ -212,7 +185,6 @@ test_that("use with same RNG seed must result in identical output", {
     beast2_optionses = beast2_optionses
   )
   expect_equal(df_1, df_2)
-
 })
 
 test_that("abuse", {
@@ -248,19 +220,6 @@ test_that("abuse", {
     "'inference_models' must have 'mcmc's for nested sampling"
   )
 
-  # epsilon
-  expect_error(
-    est_marg_liks_from_models(
-      fasta_filename = fasta_filename,
-      inference_models = list(
-        beautier::create_inference_model(
-          mcmc = beautier::create_nested_sampling_mcmc(epsilon = "nonsense")
-        )
-      )
-    ),
-    "'epsilon' must be one numerical value"
-  )
-
   # Unsupported OS
   expect_error(
     est_marg_liks_from_models(
@@ -273,63 +232,5 @@ test_that("abuse", {
       os = "win"
     ),
     "mcbette must run on Linux or Mac"
-  )
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-test_that("use BEAST2 working directory in same folder as BEAST2 output", {
-
-  if (!beastier::is_beast2_installed()) return()
-  if (rappdirs::app_dir()$os == "win") return()
-  if (!mauricer::is_beast2_ns_pkg_installed()) return()
-
-  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
-
-  inference_model <- beautier::create_inference_model(
-    site_model = beautier::create_jc69_site_model(),
-    clock_model = beautier::create_strict_clock_model(),
-    tree_prior = beautier::create_yule_tree_prior(),
-    mcmc = beautier::create_nested_sampling_mcmc(epsilon = 1e7)
-  )
-  inference_models <- list(inference_model)
-
-  folder_name <- tempfile()
-
-  # Try to use the most conflicting naming
-  beast2_options <- beastier::create_beast2_options(
-    input_filename = file.path(folder_name, "simple.xml"),
-    output_log_filename = file.path(folder_name, "simple.log"),
-    output_trees_filenames = file.path(folder_name, "simple.trees"),
-    output_state_filename = file.path(folder_name, "simple.xml.state"),
-    beast2_working_dir = folder_name,
-    beast2_path = beastier::get_default_beast2_bin_path()
-  )
-  beast2_optionses <- list(beast2_options)
-
-  expect_silent(
-    est_marg_liks_from_models(
-      fasta_filename,
-      inference_models = inference_models,
-      beast2_optionses = beast2_optionses
-    )
   )
 })

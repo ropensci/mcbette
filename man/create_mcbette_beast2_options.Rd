@@ -5,7 +5,7 @@
 \title{Create a \code{beast2_options} structure, with the filenames
 indicating \code{mcbette} usage}
 \usage{
-create_mcbette_beast2_options()
+create_mcbette_beast2_options(rng_seed = NA)
 }
 \description{
 Create a \code{beast2_options} structure, with the filenames

@@ -70,17 +70,11 @@ est_marg_liks_from_models <- function(
   fasta_filename,
   inference_models = list(
     beautier::create_inference_model(
-      mcmc = beautier::create_nested_sampling_mcmc(
-        epsilon = 10e-13
-      )
+      mcmc = beautier::create_nested_sampling_mcmc()
     )
   ),
   beast2_optionses = rep(
-    list(
-      beastier::create_beast2_options(
-        beast2_path = beastier::get_default_beast2_bin_path()
-      )
-    ),
+    list(create_mcbette_beast2_options()),
     times = length(inference_models)
   ),
   verbose = FALSE,
@@ -146,17 +140,11 @@ est_marg_liks_from_models <- function(
     beast2_options <- beast2_optionses[[i]]
     beautier::check_inference_model(inference_model)
     beastier::check_beast2_options(beast2_options)
-    testit::assert(beautier::is_nested_sampling_mcmc(inference_model$mcmc))
+    beautier::check_nested_sampling_mcmc(inference_model$mcmc)
     ns <- est_marg_lik(
       fasta_filename = fasta_filename,
-      site_model = inference_model$site_model,
-      clock_model = inference_model$clock_model,
-      tree_prior = inference_model$tree_prior,
-      epsilon = inference_model$mcmc$epsilon,
-      rng_seed = beast2_options$rng_seed,
-      verbose = beast2_options$verbose,
-      beast2_working_dir = beast2_options$beast2_working_dir,
-      beast2_bin_path = beast2_options$beast2_path,
+      inference_model = inference_model,
+      beast2_options = beast2_options,
       os = os
     )
     if (verbose) print(ns)
