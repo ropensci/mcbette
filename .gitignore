@@ -44,3 +44,7 @@ simple.trees
 simple.posterior.log
 simple.posterior.trees
 my_alignment.posterior.*
+mcbette.log
+mcbette.trees
+mcbette.xml
+mcbette.xml.state

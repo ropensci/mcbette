@@ -12,5 +12,5 @@ Create a \code{beast2_options} structure, with the filenames
 indicating \code{mcbette} usage
 }
 \seealso{
-use \link[beastier](create_beast2_options)
+use \link[beastier]{create_beast2_options}
 }

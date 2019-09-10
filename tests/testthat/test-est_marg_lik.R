@@ -3,23 +3,33 @@ test_that("use, JC69, strict, Yule", {
   if (!beastier::is_beast2_installed()) return()
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
 
-  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   marg_lik <- est_marg_lik(
-    fasta_filename,
-    mcmc = create_test_ns_mcmc()
+    fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
+    inference_model = create_test_ns_inference_model(),
+    beast2_options = create_mcbette_beast2_options()
   )
 
+  # A list
   expect_true(is.list(marg_lik))
+
+  # with the right elements
   expect_true("marg_log_lik" %in% names(marg_lik))
   expect_true("marg_log_lik_sd" %in% names(marg_lik))
   expect_true("ess" %in% names(marg_lik))
   expect_true("estimates" %in% names(marg_lik))
   expect_true("trees" %in% names(marg_lik))
+
+  # elements have the right data type
   expect_true(beautier::is_one_double(marg_lik$marg_log_lik))
   expect_true(beautier::is_one_double(marg_lik$marg_log_lik_sd))
   expect_true(beautier::is_one_double(marg_lik$ess))
+  expect_true(assertive::is_data.frame(marg_lik$estimates))
+  expect_equal(class(marg_lik$trees), "multiPhylo")
+
+  # elements have the right values
   expect_true(marg_lik$marg_log_lik < 0.0)
   expect_true(marg_lik$marg_log_lik_sd > 0.0)
+  expect_true(marg_lik$ess > 0.0)
 })
 
 test_that("use, all non-default: GTR, RLN, BD", {
@@ -29,13 +39,14 @@ test_that("use, all non-default: GTR, RLN, BD", {
 
   expect_silent(
     est_marg_lik(
-      fasta_filename = system.file(
-        "extdata", "simple.fas", package = "mcbette"
+      fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
+      inference_model = create_test_ns_inference_model(
+        site_model = beautier::create_gtr_site_model(),
+        clock_model = beautier::create_rln_clock_model(),
+        tree_prior = beautier::create_bd_tree_prior(),
+        mcmc = create_nested_sampling_mcmc(epsilon = 1e2)
       ),
-      site_model = create_gtr_site_model(),
-      clock_model = create_rln_clock_model(),
-      tree_prior = create_bd_tree_prior(),
-      epsilon = 1e7
+      beast2_options = create_mcbette_beast2_options()
     )
   )
 })
@@ -45,12 +56,14 @@ test_that("use, too few taxa for CBS", {
   if (!beastier::is_beast2_installed()) return()
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
 
+
   expect_error(
     est_marg_lik(
-      fasta_filename = system.file(
-        "extdata", "simple.fas", package = "mcbette"
+      fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
+      inference_model = create_test_ns_inference_model(
+        tree_prior = beautier::create_cbs_tree_prior()
       ),
-      tree_prior = create_cbs_tree_prior()
+      beast2_options = create_mcbette_beast2_options()
     ),
     "'group_sizes_dimension' .* must be less than the number of taxa"
   )
@@ -65,56 +78,32 @@ test_that("abuse", {
   )
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
-  # site_models
+  # inference_model
   expect_error(
     est_marg_lik(
-      fasta_filename = fasta_filename, site_model = "nonsense"
+      fasta_filename = fasta_filename,
+      inference_model = "nonsense"
     ),
-    "'site_model' must be a valid site model"
+    "'site_model' must be an element of an 'inference_model'"
   )
 
-  # clock_models
+  # beast2_options
   expect_error(
     est_marg_lik(
-      fasta_filename = fasta_filename, clock_model = "nonsense"
+      fasta_filename = fasta_filename,
+      beast2_options = "nonsense"
     ),
-    "'clock_model' must be a valid clock model"
+    "'input_filename' must be an element of an 'beast2_options'"
   )
 
-  # tree_priors
+  # os
   expect_error(
     est_marg_lik(
-      fasta_filename = fasta_filename, tree_prior = "nonsense"
+      fasta_filename = fasta_filename,
+      os = "nonsense"
     ),
-    "'tree_prior' must be a valid tree prior"
+    "'os' must be either 'mac', 'unix' or 'win'"
   )
-
-  # epsilon
-  expect_error(
-    est_marg_lik(
-      fasta_filename = fasta_filename, epsilon = "nonsense"
-    ),
-    "'epsilon' must be one numerical value"
-  )
-  expect_error(
-    est_marg_lik(
-      fasta_filename = fasta_filename, epsilon = c(1.2, 3.4, 5.6)
-    ),
-    "'epsilon' must be one numerical value"
-  )
-  expect_error(
-    est_marg_lik(
-      fasta_filename = fasta_filename, epsilon = NA
-    ),
-    "'epsilon' must be one numerical value"
-  )
-  expect_error(
-    est_marg_lik(
-      fasta_filename = fasta_filename, epsilon = NULL
-    ),
-    "'epsilon' must be one numerical value"
-  )
-
   expect_error(
     est_marg_lik(
       fasta_filename = fasta_filename,
