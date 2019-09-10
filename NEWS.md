@@ -2,6 +2,27 @@
 
 Newest versions at top.
 
+## `mcbette` 1.7 (unreleased)
+
+### NEW FEATURES
+
+ * Higher number of particles do result in a better estimation
+ * Renamed `est_marg_liks_from_models` to `est_marg_liks`,
+   removed the old `est_marg_liks`
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
+
 ## `mcbette` 1.6 (2019-08-27)
 
 ### NEW FEATURES

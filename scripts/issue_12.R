@@ -66,7 +66,7 @@ beast2_optionses <- list(
   beast2_options
 )
 
-mcbette::est_marg_liks_from_models(
+mcbette::est_marg_liks(
   fasta_filename,
   inference_models = inference_models,
   beast2_optionses = beast2_optionses,

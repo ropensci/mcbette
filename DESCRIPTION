@@ -1,6 +1,6 @@
 Package: mcbette
 Title: Model Comparison Using 'babette'
-Version: 1.6
+Version: 1.7
 Authors@R: c(
     person("Richel J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
 Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
@@ -19,8 +19,8 @@ URL: https://github.com/richelbilderbeek/mcbette
 BugReports: https://github.com/richelbilderbeek/mcbette/issues
 Imports:
     babette,
-    beautier,
-    beastier,
+    beautier (>= 2.2.3),
+    beastier (>= 2.0.21),
     knitr,
     rappdirs,
     Rmpfr,
