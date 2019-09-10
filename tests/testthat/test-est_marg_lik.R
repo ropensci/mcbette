@@ -112,3 +112,40 @@ test_that("abuse", {
     "mcbette must run on Linux or Mac"
   )
 })
+
+
+test_that("more particles, less sd", {
+
+  if (!beastier::is_beast2_installed()) return()
+  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+  inference_model_1 = create_test_ns_inference_model(
+    mcmc = create_nested_sampling_mcmc(
+      particle_count = 1
+    )
+  )
+  inference_model_10 = create_test_ns_inference_model(
+    mcmc = create_nested_sampling_mcmc(
+      particle_count = 10
+    )
+  )
+  beast2_options <- create_mcbette_beast2_options()
+
+  marg_lik_high_sd <- est_marg_lik(
+    fasta_filename = fasta_filename,
+    inference_model = inference_model_1,
+    beast2_options = beast2_options
+  )
+  marg_lik_low_sd <- est_marg_lik(
+    fasta_filename = fasta_filename,
+    inference_model = inference_model_10,
+    beast2_options = beast2_options
+  )
+  marg_lik_low_sd$marg_log_lik_sd
+  marg_lik_high_sd$marg_log_lik_sd
+
+  expect_true(
+    marg_lik_low_sd$marg_log_lik_sd < marg_lik_high_sd$marg_log_lik_sd
+  )
+})

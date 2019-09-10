@@ -2,7 +2,7 @@
 
 Newest versions at top.
 
-## `mcbette` 1.7 (unreleased)
+## `mcbette` 1.7 (2019-09-10)
 
 ### NEW FEATURES
 
