@@ -74,7 +74,7 @@ test_that("abuse", {
   # fasta_filename
   expect_error(
     est_marg_lik(fasta_filename = "nonsense"),
-    "'fasta_filename' must be the name of an existing FASTA file"
+    "File not found. Could not find file with path 'nonsense'"
   )
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
