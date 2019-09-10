@@ -107,15 +107,17 @@ From that alignment, get the marginal likelihood of the two desired models:
 
 ```{r}
 if (mauricer::is_beast2_ns_pkg_installed()) {
+  inference_model_1 <- create_test_ns_inference_model(
+    site_model = beautier::create_jc69_site_model()   
+  )
+  inference_model_2 <- create_test_ns_inference_model(
+    site_model = beautier::create_gtr_site_model()   
+  )
+  inference_models <- c(list(inference_model_1), list(inference_model_2))
+  
   df <- mcbette::est_marg_liks(
     fasta_filename = fasta_filename, 
-    site_models = list(
-      beautier::create_jc69_site_model(), 
-      beautier::create_gtr_site_model()
-    ),
-    clock_models = list(beautier::create_strict_clock_model()),
-    tree_priors = list(beautier::create_bd_tree_prior()),
-    epsilon = 100.0
+    inference_models = inference_models
   )
   knitr::kable(df)
 }
