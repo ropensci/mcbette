@@ -134,7 +134,9 @@ test_that("more particles, less sd", {
       particle_count = 10
     )
   )
-  beast2_options <- create_mcbette_beast2_options()
+  beast2_options <- create_mcbette_beast2_options(
+    rng_seed = 314
+  )
 
   marg_lik_high_sd <- est_marg_lik(
     fasta_filename = fasta_filename,
