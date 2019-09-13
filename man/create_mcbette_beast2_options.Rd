@@ -7,6 +7,10 @@ indicating \code{mcbette} usage}
 \usage{
 create_mcbette_beast2_options(rng_seed = NA)
 }
+\arguments{
+\item{rng_seed}{a random number generator seed used for the BEAST2
+inference}
+}
 \description{
 Create a \code{beast2_options} structure, with the filenames
 indicating \code{mcbette} usage

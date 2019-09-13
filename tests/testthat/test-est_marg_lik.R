@@ -142,10 +142,8 @@ test_that("more particles, less sd", {
     inference_model = inference_model_10,
     beast2_options = beast2_options
   )
-  marg_lik_low_sd$marg_log_lik_sd
-  marg_lik_high_sd$marg_log_lik_sd
-
-  expect_true(
-    marg_lik_low_sd$marg_log_lik_sd < marg_lik_high_sd$marg_log_lik_sd
+  expect_lt(
+    marg_lik_low_sd$marg_log_lik_sd,
+    marg_lik_high_sd$marg_log_lik_sd
   )
 })

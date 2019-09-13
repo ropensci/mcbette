@@ -5,6 +5,8 @@
 #' @param beast2_working_dir folder in which BEAST2 will run and
 #'   produce intermediate files.
 #'   By default, this is a temporary folder
+#' @param beast2_options a \code{beast2_options} structure,
+#'   as can be created by \link[beastier]{create_beast2_options}.
 #' @param beast2_optionses list of one or more \code{beast2_options}
 #'   structures,
 #'   as can be created by \link[beastier]{create_beast2_options}.
@@ -17,6 +19,8 @@
 #' @param epsilon measure of relative accuracy.
 #'   Smaller values result in longer, more precise estimations
 #' @param fasta_filename name of the FASTA file
+#' @param inference_model an inference model,
+#'   as can be created by \link[beautier]{create_inference_model}
 #' @param inference_models a list of one or more inference models,
 #'   as can be created by \link[beautier]{create_inference_model}
 #' @param mcmc an MCMC for the Nested Sampling run,
@@ -41,10 +45,12 @@
 default_params_doc <- function(
   beast2_bin_path,
   beast2_working_dir,
+  beast2_options,
   beast2_optionses,
   clock_model, clock_models,
   epsilon,
   fasta_filename,
+  inference_model,
   inference_models,
   mcmc,
   os,

@@ -6,10 +6,10 @@
 This function does nothing.
 It is intended to inherit function argument documentation.}
 \usage{
-default_params_doc(beast2_bin_path, beast2_working_dir, beast2_optionses,
-  clock_model, clock_models, epsilon, fasta_filename, inference_models,
-  mcmc, os, rng_seed, site_model, site_models, tree_prior, tree_priors,
-  verbose)
+default_params_doc(beast2_bin_path, beast2_working_dir, beast2_options,
+  beast2_optionses, clock_model, clock_models, epsilon, fasta_filename,
+  inference_model, inference_models, mcmc, os, rng_seed, site_model,
+  site_models, tree_prior, tree_priors, verbose)
 }
 \arguments{
 \item{beast2_bin_path}{path to the the BEAST2 binary file}
@@ -17,6 +17,9 @@ default_params_doc(beast2_bin_path, beast2_working_dir, beast2_optionses,
 \item{beast2_working_dir}{folder in which BEAST2 will run and
 produce intermediate files.
 By default, this is a temporary folder}
+
+\item{beast2_options}{a \code{beast2_options} structure,
+as can be created by \link[beastier]{create_beast2_options}.}
 
 \item{beast2_optionses}{list of one or more \code{beast2_options}
 structures,
@@ -34,6 +37,9 @@ as can be created by \link[beautier]{create_clock_models}}
 Smaller values result in longer, more precise estimations}
 
 \item{fasta_filename}{name of the FASTA file}
+
+\item{inference_model}{an inference model,
+as can be created by \link[beautier]{create_inference_model}}
 
 \item{inference_models}{a list of one or more inference models,
 as can be created by \link[beautier]{create_inference_model}}

@@ -1,5 +1,6 @@
 #' Create a \code{beast2_options} structure, with the filenames
 #' indicating \code{mcbette} usage
+#' @inheritParams default_params_doc
 #' @seealso use \link[beastier]{create_beast2_options}
 #' @export
 create_mcbette_beast2_options <- function(rng_seed = NA) {
