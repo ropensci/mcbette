@@ -39,7 +39,9 @@ test_that("use, all non-default: GTR, RLN, BD", {
 
   expect_silent(
     est_marg_lik(
-      fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
+      fasta_filename = system.file(
+        "extdata", "simple.fas", package = "mcbette"
+      ),
       inference_model = create_test_ns_inference_model(
         site_model = beautier::create_gtr_site_model(),
         clock_model = beautier::create_rln_clock_model(),
@@ -59,7 +61,9 @@ test_that("use, too few taxa for CBS", {
 
   expect_error(
     est_marg_lik(
-      fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
+      fasta_filename = system.file(
+        "extdata", "simple.fas", package = "mcbette"
+      ),
       inference_model = create_test_ns_inference_model(
         tree_prior = beautier::create_cbs_tree_prior()
       ),
@@ -120,12 +124,12 @@ test_that("more particles, less sd", {
   if (!mauricer::is_beast2_ns_pkg_installed()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
-  inference_model_1 = create_test_ns_inference_model(
+  inference_model_1 <- create_test_ns_inference_model(
     mcmc = create_nested_sampling_mcmc(
       particle_count = 1
     )
   )
-  inference_model_10 = create_test_ns_inference_model(
+  inference_model_10 <- create_test_ns_inference_model(
     mcmc = create_nested_sampling_mcmc(
       particle_count = 10
     )
