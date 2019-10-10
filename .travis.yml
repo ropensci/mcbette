@@ -28,7 +28,7 @@ r_github_packages:
   - richelbilderbeek/nLTT
   - ropensci/beautier
   - ropensci/tracerer
-  - ropensci/beastier
+  - ropensci/beastier@develop
   - ropensci/mauricer
   - ropensci/babette
 
