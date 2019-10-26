@@ -5,7 +5,7 @@ test_that("use, JC69, strict, Yule", {
 
   marg_lik <- est_marg_lik(
     fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
-    inference_model = create_test_ns_inference_model(),
+    inference_model = beautier::create_test_ns_inference_model(),
     beast2_options = create_mcbette_beast2_options()
   )
 
@@ -16,15 +16,11 @@ test_that("use, JC69, strict, Yule", {
   expect_true("marg_log_lik" %in% names(marg_lik))
   expect_true("marg_log_lik_sd" %in% names(marg_lik))
   expect_true("ess" %in% names(marg_lik))
-  expect_true("estimates" %in% names(marg_lik))
-  expect_true("trees" %in% names(marg_lik))
 
   # elements have the right data type
   expect_true(beautier::is_one_double(marg_lik$marg_log_lik))
   expect_true(beautier::is_one_double(marg_lik$marg_log_lik_sd))
   expect_true(beautier::is_one_double(marg_lik$ess))
-  expect_true(assertive::is_data.frame(marg_lik$estimates))
-  expect_equal(class(marg_lik$trees), "multiPhylo")
 
   # elements have the right values
   expect_true(marg_lik$marg_log_lik < 0.0)
