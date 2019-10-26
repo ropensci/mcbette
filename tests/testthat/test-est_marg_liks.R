@@ -15,7 +15,7 @@ test_that("use, 8 models", {
   #  6  | HKY  | strict | BD                                                    # nolint this is not code
   #  7  | HKY  | RLN    | Yule                                                  # nolint this is not code
   #  8  | HKY  | RLN    | BD                                                    # nolint this is not code
-  mcmc <- create_test_ns_mcmc()
+  mcmc <- beautier::create_test_ns_mcmc()
   inference_model_1 <- beautier::create_inference_model(
     site_model = beautier::create_jc69_site_model(),
     clock_model = beautier::create_strict_clock_model(),
@@ -168,7 +168,7 @@ test_that("use with same RNG seed must result in identical output", {
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
   inference_model <- create_test_ns_inference_model(
-    mcmc = create_test_ns_mcmc()
+    mcmc = beautier::create_test_ns_mcmc()
   )
   inference_models <- list(inference_model, inference_model)
   beast2_options <- create_mcbette_beast2_options(rng_seed = 314)

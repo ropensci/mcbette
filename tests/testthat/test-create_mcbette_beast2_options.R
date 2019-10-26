@@ -14,22 +14,6 @@ test_that("use", {
   expect_true(
     !is.na(
       stringr::str_match(
-        string = mcbette_beast2_options$output_log_filename,
-        pattern = "mcbette.log"
-      )[1, 1]
-    )
-  )
-  expect_true(
-    !is.na(
-      stringr::str_match(
-        string = mcbette_beast2_options$output_trees_filename,
-        pattern = "mcbette.trees"
-      )[1, 1]
-    )
-  )
-  expect_true(
-    !is.na(
-      stringr::str_match(
         string = mcbette_beast2_options$output_state_filename,
         pattern = "mcbette.xml.state"
       )[1, 1]
