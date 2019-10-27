@@ -22,7 +22,6 @@ Imports:
     beautier (>= 2.3),
     beastier (>= 2.0.25),
     knitr,
-    rappdirs,
     Rmpfr,
     testit
 Suggests:
@@ -34,6 +33,7 @@ Suggests:
     mauricer,
     nLTT,
     phangorn,
+    rappdirs,
     rmarkdown,
     spelling,
     testthat (>= 2.1.0),
