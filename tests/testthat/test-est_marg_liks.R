@@ -128,7 +128,7 @@ test_that("use, 1 model", {
 
   df <- est_marg_liks(
     fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
-    inference_models = list(create_test_ns_inference_model()),
+    inference_models = list(beautier::create_test_ns_inference_model()),
     beast2_optionses = list(create_mcbette_beast2_options())
   )
   expect_equal(1, nrow(df))
@@ -144,7 +144,7 @@ test_that("use, 1 model, CBS", {
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
-  inference_model <- create_test_ns_inference_model(
+  inference_model <- beautier::create_test_ns_inference_model(
     tree_prior = beautier::create_cbs_tree_prior(),
   )
   inference_models <- list(inference_model)
@@ -167,7 +167,7 @@ test_that("use with same RNG seed must result in identical output", {
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
-  inference_model <- create_test_ns_inference_model(
+  inference_model <- beautier::create_test_ns_inference_model(
     mcmc = beautier::create_test_ns_mcmc()
   )
   inference_models <- list(inference_model, inference_model)
