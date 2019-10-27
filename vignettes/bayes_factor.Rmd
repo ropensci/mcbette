@@ -93,7 +93,11 @@ alignment_phydat <- phangorn::simSeq(
 testit::assert(class(alignment_phydat) == "phyDat")
 alignment_dnabin <- ape::as.DNAbin(alignment_phydat)
 
-fasta_filename <- tempfile(pattern = "bayes_factor_", fileext = ".fasta")
+fasta_filename <- tempfile(
+  pattern = "bayes_factor_", 
+  tmpdir = rappdirs::user_cache_dir(),
+  fileext = ".fasta"
+)
 phangorn::write.phyDat(
   alignment_dnabin,
   file = fasta_filename,
