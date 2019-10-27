@@ -2,6 +2,24 @@
 
 Newest versions at top.
 
+## `mcbette` 1.8 (2019-10-27)
+
+### NEW FEATURES
+
+ * Follow interface of beautier v2.3
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.7 (2019-09-10)
 
 ### NEW FEATURES
