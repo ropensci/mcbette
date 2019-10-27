@@ -28,9 +28,9 @@ r_github_packages:
   - richelbilderbeek/nLTT
   - ropensci/beautier@develop
   - ropensci/tracerer
-  - ropensci/beastier
-  - ropensci/mauricer
-  - ropensci/babette
+  - ropensci/beastier@develop
+  - ropensci/mauricer@develop
+  - ropensci/babette@develop
 
 before_install:
   - echo $TRAVIS_OS_NAME
