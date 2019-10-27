@@ -48,13 +48,13 @@ before_install:
 
 
 before_script:
+  - echo "Do nothing for now"
   # Should build with and without BEAST2 installed
-  - Rscript -e "beastier::install_beast2()"
-  - Rscript -e 'mauricer::install_beast2_pkg("NS")'
-  # - Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
+  #- Rscript -e "beastier::install_beast2()"
+  #- Rscript -e 'mauricer::install_beast2_pkg("NS")'
 
 script:
-  # Do nothing for now
+  - echo "Do nothing for now"
   #- travis_wait 30 R CMD build .
   # R CD check
   #- if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 40 R CMD check *tar.gz; fi
