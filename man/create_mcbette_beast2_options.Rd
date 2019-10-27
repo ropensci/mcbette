@@ -15,6 +15,11 @@ BEAST2 binary type}
   verbose = FALSE)
 }
 \arguments{
+\item{input_filename}{the name of a BEAST2 input XML file.
+This file usually has an \code{.xml} extension.}
+
+\item{output_state_filename}{name of the \code{.xml.state} file to create.}
+
 \item{rng_seed}{a random number generator seed used for the BEAST2
 inference}
 

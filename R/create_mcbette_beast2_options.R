@@ -2,8 +2,11 @@
 #' indicating \code{mcbette} usage, as well as the correct
 #' BEAST2 binary type
 #' @inheritParams default_params_doc
+#' @param input_filename the name of a BEAST2 input XML file.
+#' This file usually has an \code{.xml} extension.
 #' @param n_threads the number of computational threads to use.
 #' Use \link{NA} to use the BEAST2 default of 1.
+#' @param output_state_filename name of the \code{.xml.state} file to create.
 #' @param use_beagle use BEAGLE if present
 #' @param overwrite if TRUE: overwrite the \code{.log}
 #' and \code{.trees} files if one of these exists.
