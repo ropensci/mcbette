@@ -109,7 +109,7 @@ image(alignment_dnabin)
 From that alignment, get the marginal likelihood of the two desired models:
 
 
-```{r}
+```
 if (mauricer::is_beast2_ns_pkg_installed()) {
   inference_model_1 <- create_test_ns_inference_model(
     site_model = beautier::create_jc69_site_model()   
@@ -130,35 +130,35 @@ if (mauricer::is_beast2_ns_pkg_installed()) {
 The Bayes factor (usually denoted as K) can be used for model comparison. 
 It can be calculated from the marginal likelihoods ratio:
 
-```{r}
+```
 marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512)) 
 ```
 
 a
-```{r}
+```
 marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
 ```
 
 b
 
-```{r}
+```
 bayes_factor <- marg_lik_jc / marg_lik_gtr
 ```
 
 c
-```{r}
+```
 interpretation <- interpret_bayes_factor(as.numeric(bayes_factor))
 ```
 
 d
 
-```{r}
+```
 paste(interpretation, "in favor of JC69")
 ```
 
 There is also another way to compare models: by comparing their relative weights:
 
-```{r}
+```
 site_model_name <- NULL; rm(site_model_name) # nolint, fixes warning: no visible binding for global variable
 weight <- NULL; rm(weight) # nolint, fixes warning: no visible binding for global variable
 
