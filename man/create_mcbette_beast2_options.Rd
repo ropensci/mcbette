@@ -3,17 +3,44 @@
 \name{create_mcbette_beast2_options}
 \alias{create_mcbette_beast2_options}
 \title{Create a \code{beast2_options} structure, with the filenames
-indicating \code{mcbette} usage}
+indicating \code{mcbette} usage, as well as the correct
+BEAST2 binary type}
 \usage{
-create_mcbette_beast2_options(rng_seed = NA)
+
+  create_mcbette_beast2_options(input_filename = beastier::create_temp_input_filename(),
+  output_state_filename = beastier::create_temp_output_state_filename(),
+  rng_seed = NA, n_threads = NA, use_beagle = FALSE,
+  overwrite = TRUE,
+  beast2_bin_path = beastier::get_default_beast2_bin_path(),
+  verbose = FALSE)
 }
 \arguments{
 \item{rng_seed}{a random number generator seed used for the BEAST2
 inference}
+
+\item{n_threads}{the number of computational threads to use.
+Use \link{NA} to use the BEAST2 default of 1.}
+
+\item{use_beagle}{use BEAGLE if present}
+
+\item{overwrite}{if TRUE: overwrite the \code{.log}
+and \code{.trees} files if one of these exists.
+If FALSE, BEAST2 will not be started if
+\itemize{
+  \item{the \code{.log} file exists}
+  \item{the \code{.trees} files exist}
+  \item{the \code{.log} file created by BEAST2 exists}
+  \item{the \code{.trees} files created by BEAST2 exist}
+}}
+
+\item{beast2_bin_path}{path to the the BEAST2 binary file}
+
+\item{verbose}{if TRUE show debug output}
 }
 \description{
 Create a \code{beast2_options} structure, with the filenames
-indicating \code{mcbette} usage
+indicating \code{mcbette} usage, as well as the correct
+BEAST2 binary type
 }
 \seealso{
 use \link[beastier]{create_beast2_options}

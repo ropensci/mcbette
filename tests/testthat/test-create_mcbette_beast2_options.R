@@ -7,7 +7,7 @@ test_that("use", {
     !is.na(
       stringr::str_match(
         string = mcbette_beast2_options$input_filename,
-        pattern = "mcbette.xml"
+        pattern = "beast2_.*.xml"
       )[1, 1]
     )
   )
@@ -15,7 +15,7 @@ test_that("use", {
     !is.na(
       stringr::str_match(
         string = mcbette_beast2_options$output_state_filename,
-        pattern = "mcbette.xml.state"
+        pattern = "beast2_.*.xml.state"
       )[1, 1]
     )
   )
