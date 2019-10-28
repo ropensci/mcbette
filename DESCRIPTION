@@ -17,10 +17,13 @@ RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 URL: https://github.com/richelbilderbeek/mcbette
 BugReports: https://github.com/richelbilderbeek/mcbette/issues
-Imports:
+Depends:
     babette,
     beautier (>= 2.3),
     beastier (>= 2.0.25),
+    mauricer,
+    tracerer
+Imports:
     knitr,
     Rmpfr,
     testit
@@ -30,14 +33,12 @@ Suggests:
     ggplot2,
     hunspell,
     lintr,
-    mauricer,
     nLTT,
     phangorn,
     rappdirs,
     rmarkdown,
     spelling,
-    testthat (>= 2.1.0),
-    tracerer
+    testthat (>= 2.1.0)
 Language: en-US
 Encoding: UTF-8
 SystemRequirements: BEAST2 (http://www.beast2.org/)
