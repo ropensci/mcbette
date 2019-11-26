@@ -17,8 +17,8 @@ matrix:
     os: linux
   - r: devel
     os: linux
-  #- r: release
-  #  os: osx
+  - r: release
+    os: osx
 
 r_packages:
   - txtplot
@@ -48,19 +48,17 @@ before_install:
 
 
 before_script:
-  - echo "Do nothing for now"
   # Should build with and without BEAST2 installed
-  #- Rscript -e "beastier::install_beast2()"
-  #- Rscript -e 'mauricer::install_beast2_pkg("NS")'
+  - Rscript -e "beastier::install_beast2()"
+  - Rscript -e 'mauricer::install_beast2_pkg("NS")'
 
 script:
-  - echo "Do nothing for now"
-  #- travis_wait 30 R CMD build .
+  - travis_wait 30 R CMD build .
   # R CD check
-  #- if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 40 R CMD check *tar.gz; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 40 R CMD check *tar.gz; fi
   # Run script
-  #- if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'; fi
-  #- if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 120 Rscript scripts/run.R; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 120 Rscript scripts/run.R; fi
 
 after_success:
   # Codecov
@@ -69,3 +67,4 @@ after_success:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then Rscript -e "lintr::lint_package()"; fi
   # goodpractice
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then Rscript -e "goodpractice::gp()"; fi
+
