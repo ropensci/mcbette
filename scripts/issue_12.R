@@ -31,7 +31,7 @@ get_pff_tempfile <- function(
 fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
 # Inaccurate MCMC
-mcmc <- beautier::create_nested_sampling_mcmc(epsilon = 1e2)
+mcmc <- beautier::create_ns_mcmc(epsilon = 1e2)
 
 inference_model_1 <- beautier::create_inference_model(
   site_model = beautier::create_jc69_site_model(),

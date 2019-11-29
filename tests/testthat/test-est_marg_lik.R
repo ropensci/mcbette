@@ -42,7 +42,7 @@ test_that("use, all non-default: GTR, RLN, BD", {
         site_model = beautier::create_gtr_site_model(),
         clock_model = beautier::create_rln_clock_model(),
         tree_prior = beautier::create_bd_tree_prior(),
-        mcmc = create_nested_sampling_mcmc(epsilon = 1e2)
+        mcmc = create_ns_mcmc(epsilon = 1e2)
       ),
       beast2_options = create_mcbette_beast2_options()
     )
@@ -121,12 +121,12 @@ test_that("more particles, less sd", {
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   inference_model_1 <- beautier::create_test_ns_inference_model(
-    mcmc = create_nested_sampling_mcmc(
+    mcmc = create_ns_mcmc(
       particle_count = 1
     )
   )
   inference_model_10 <- beautier::create_test_ns_inference_model(
-    mcmc = create_nested_sampling_mcmc(
+    mcmc = create_ns_mcmc(
       particle_count = 10
     )
   )

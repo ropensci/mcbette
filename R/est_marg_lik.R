@@ -55,7 +55,7 @@
 est_marg_lik <- function(
   fasta_filename,
   inference_model = beautier::create_inference_model(
-    mcmc = beautier::create_nested_sampling_mcmc()
+    mcmc = beautier::create_ns_mcmc()
   ),
   beast2_options = create_mcbette_beast2_options(),
   os = rappdirs::app_dir()$os
