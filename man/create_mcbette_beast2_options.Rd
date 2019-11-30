@@ -8,7 +8,7 @@ BEAST2 binary type}
 \usage{
 
   create_mcbette_beast2_options(input_filename = beastier::create_temp_input_filename(),
-  output_state_filename = beastier::create_temp_output_state_filename(),
+  output_state_filename = beastier::create_temp_state_filename(),
   rng_seed = NA, n_threads = NA, use_beagle = FALSE,
   overwrite = TRUE,
   beast2_bin_path = beastier::get_default_beast2_bin_path(),
