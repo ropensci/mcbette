@@ -66,13 +66,11 @@ expect_true(is.list(marg_lik))
 expect_true("marg_log_lik" \%in\% names(marg_lik))
 expect_true("marg_log_lik_sd" \%in\% names(marg_lik))
 expect_true("ess" \%in\% names(marg_lik))
-expect_true("estimates" \%in\% names(marg_lik))
-expect_true("trees" \%in\% names(marg_lik))
 
 # with these data types ...
-expect_true(beautier::is_one_double(marg_lik$marg_log_lik))
-expect_true(beautier::is_one_double(marg_lik$marg_log_lik_sd))
-expect_true(beautier::is_one_double(marg_lik$ess))
+expect_true(is_one_double(marg_lik$marg_log_lik))
+expect_true(is_one_double(marg_lik$marg_log_lik_sd))
+expect_true(is_one_double(marg_lik$ess))
 
 # with these values
 expect_true(marg_lik$marg_log_lik < 0.0)
