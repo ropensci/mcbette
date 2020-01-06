@@ -2,7 +2,7 @@
 
 Newest versions at top.
 
-## `mcbette` 1.8 (2019-10-27)
+## `mcbette` 1.8 (2020-01-06)
 
 ### NEW FEATURES
 
@@ -10,7 +10,8 @@ Newest versions at top.
 
 ### MINOR IMPROVEMENTS
 
- * None
+ * Use CRAN versions of `beautier`, `beastier`, `tracerer`, `mauricer`
+ * Processed all @lintr-bot's comments
 
 ### BUG FIXES
 
