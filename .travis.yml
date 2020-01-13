@@ -1,14 +1,14 @@
 language: r
 dist: bionic
-cache: packages
+#cache: packages
 
-# ----------------+-------------+---------+-------+--------------+-------------+
-# Environment     | R CMD CHECK | codecov | lintr | goodpractice | run script  |
-# ----------------+-------------+---------+-------+--------------+-------------+
-# MacOS           | No          | No      | Yes   | Yes          | No          |
-# Linux r-devel   | Yes         | Yes     | No    | No           | No          |
-# Linux r-release | No          | No      | No    | No           | Yes         |
-# ----------------+-------------+---------+-------+--------------+-------------+
+# ----------------+-------------+---------+-------+-------------+
+# Environment     | R CMD CHECK | codecov | lintr | run script  |
+# ----------------+-------------+---------+-------+-------------+
+# MacOS           | No          | No      | Yes   | No          |
+# Linux r-devel   | Yes         | Yes     | No    | No          |
+# Linux r-release | No          | No      | No    | Yes         |
+# ----------------+-------------+---------+-------+-------------+
 
 matrix:
   include:
@@ -27,8 +27,6 @@ r_github_packages:
   - jimhester/lintr
 
 before_install:
-  - echo $TRAVIS_OS_NAME
-  - echo $TRAVIS_R_VERSION_STRING
   # ImageMagick
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository -y ppa:opencpu/imagemagick; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update; fi
@@ -58,8 +56,4 @@ after_success:
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then Rscript -e 'lintr::lint_package()'; fi
   # Codecov
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
-  # Proselint
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then proselint *.md | egrep -v "typography\.symbols\.curly_quotes"; fi
-  # Goodpractice
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 60 Rscript -e 'goodpractice::gp()'; fi
 
