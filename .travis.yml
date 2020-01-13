@@ -1,6 +1,6 @@
 language: r
 dist: bionic
-#cache: packages
+cache: packages
 
 # ----------------+-------------+---------+-------+-------------+
 # Environment     | R CMD CHECK | codecov | lintr | run script  |
