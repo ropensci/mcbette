@@ -1,8 +1,8 @@
 # `mcbette`
 
-Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
----|---|---
-`master`|[![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/mcbette) | [![codecov.io](https://codecov.io/github/richelbilderbeek/mcbette/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/mcbette?branch=master)
+Branch   |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)                                                                        |[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
+---------|-------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+`master` |[![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/mcbette)  | [![codecov.io](https://codecov.io/github/richelbilderbeek/mcbette/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/mcbette?branch=master)
 `develop`|[![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/mcbette) | [![codecov.io](https://codecov.io/github/richelbilderbeek/mcbette/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/mcbette?branch=develop)
 
 Model Comparison using `babette`.
@@ -37,12 +37,7 @@ You can
 ### Installation
 
 ```r
-usethis::install_github("ropensci/beautier")
-usethis::install_github("ropensci/tracerer")
-usethis::install_github("ropensci/beastier")
-usethis::install_github("ropensci/mauricer")
-usethis::install_github("ropensci/babette")
-usethis::install_github("richelbilderbeek/mcbette")
+usethis::install_github("richelbilderbeek/mcbette", dependencies = TRUE)
 beastier::install_beast2()
 mauricer::install_beast2_pkg("NS")
 ```
