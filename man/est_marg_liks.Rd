@@ -5,12 +5,15 @@
 \title{Estimate the marginal likelihoods for all combinations of
 site, clock and tree models}
 \usage{
-est_marg_liks(fasta_filename,
+est_marg_liks(
+  fasta_filename,
   inference_models = list(beautier::create_inference_model(mcmc =
-  beautier::create_ns_mcmc())),
+    beautier::create_ns_mcmc())),
   beast2_optionses = rep(list(create_mcbette_beast2_options()), times =
-  length(inference_models)), verbose = FALSE,
-  os = rappdirs::app_dir()$os)
+    length(inference_models)),
+  verbose = FALSE,
+  os = rappdirs::app_dir()$os
+)
 }
 \arguments{
 \item{fasta_filename}{name of the FASTA file}

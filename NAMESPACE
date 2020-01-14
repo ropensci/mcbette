@@ -2,6 +2,7 @@
 
 export(calc_weights)
 export(create_mcbette_beast2_options)
+export(create_ns_inference_model)
 export(est_marg_lik)
 export(est_marg_liks)
 export(interpret_bayes_factor)

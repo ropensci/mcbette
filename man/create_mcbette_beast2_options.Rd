@@ -6,13 +6,16 @@
 indicating \code{mcbette} usage, as well as the correct
 BEAST2 binary type}
 \usage{
-
-  create_mcbette_beast2_options(input_filename = beastier::create_temp_input_filename(),
+create_mcbette_beast2_options(
+  input_filename = beastier::create_temp_input_filename(),
   output_state_filename = beastier::create_temp_state_filename(),
-  rng_seed = NA, n_threads = NA, use_beagle = FALSE,
+  rng_seed = NA,
+  n_threads = NA,
+  use_beagle = FALSE,
   overwrite = TRUE,
   beast2_bin_path = beastier::get_default_beast2_bin_path(),
-  verbose = FALSE)
+  verbose = FALSE
+)
 }
 \arguments{
 \item{input_filename}{the name of a BEAST2 input XML file.

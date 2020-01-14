@@ -6,10 +6,26 @@
 This function does nothing.
 It is intended to inherit function argument documentation.}
 \usage{
-default_params_doc(beast2_bin_path, beast2_working_dir, beast2_options,
-  beast2_optionses, clock_model, clock_models, epsilon, fasta_filename,
-  inference_model, inference_models, mcmc, os, rng_seed, site_model,
-  site_models, tree_prior, tree_priors, verbose)
+default_params_doc(
+  beast2_bin_path,
+  beast2_working_dir,
+  beast2_options,
+  beast2_optionses,
+  clock_model,
+  clock_models,
+  epsilon,
+  fasta_filename,
+  inference_model,
+  inference_models,
+  mcmc,
+  os,
+  rng_seed,
+  site_model,
+  site_models,
+  tree_prior,
+  tree_priors,
+  verbose
+)
 }
 \arguments{
 \item{beast2_bin_path}{path to the the BEAST2 binary file}

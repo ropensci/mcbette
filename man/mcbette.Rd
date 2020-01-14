@@ -3,7 +3,6 @@
 \docType{package}
 \name{mcbette}
 \alias{mcbette}
-\alias{mcbette-package}
 \title{mcbette: Model Comparison Using Babette}
 \description{
 'mcbette' does a model comparing using `babette`.
