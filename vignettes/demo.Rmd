@@ -1,0 +1,120 @@
+---
+title: "Demo"
+author: "Richèl J.C. Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Bayes Factor}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+![](man/figures/mcbette_logo.png)
+
+Given a DNA alignment, one wonders which phylogenetic inference model
+fits that alignment best. `mcbette` ('Model Comparison using babette') 
+can give the answer.
+
+In this example, we use a 'BEAST2' example alignment and compare the fit
+of two inference models on that alignment. We'll interpret the finding
+in the end, concluding which inference model to use.
+
+## Getting started
+
+First, load `mcbette`:
+
+```{r}
+library(mcbette)
+```
+
+To use `mcbette`, BEAST2 and the BEAST2 `NS` package must be installed:
+
+```{r}
+if (!beastier::is_beast2_installed()) {
+  message(
+    "BEAST2 must be installed. ",
+    "Tip: use 'beastier::install_beast2()'"
+  )
+}
+if (!mauricer::is_beast2_ns_pkg_installed()) {
+  message(
+    "The BEAST2 'NS' package must be installed. ",
+    "Tip: use 'mauricer::install_beast2_pkg(\"NS\")'"
+  )
+}
+```
+
+## Method
+
+To run `mcbette`, we need a FASTA file with a DNA alignment in it.
+We use a temporary file for this:
+
+```{r}
+fasta_filename <- tempfile(pattern = "primates_", fileext = ".fas")
+```
+
+At that location, we save a BEAST2 example NEXUS file in FASTA format:
+
+```{r fig.width=7}
+beastier::save_nexus_as_fasta(
+  nexus_filename = beastier::get_beast2_example_filename("Primates.nex"),
+  fasta_filename = fasta_filename
+)
+```
+
+Now we have the alignment saved in our FASTA file, we can display it:
+
+```{r}
+alignment <- ape::read.FASTA(fasta_filename)
+image(alignment)
+```
+
+From that alignment, get the marginal likelihood of two inference models,
+only differing in their nucleotide substitution model:
+
+  1. JC69: all nucleotides share the same mutation rate. 
+     For example, the
+     mutation rate from adenine to cytosine is the same as the
+     mutation rate from guanine to thymine
+  2. GTR: there is a different mutation rate from each nucleotide to each
+     other nucleotide
+
+```{r}
+if (mauricer::is_beast2_ns_pkg_installed()) {
+  inference_model_1 <- create_test_ns_inference_model(
+    site_model = beautier::create_jc69_site_model()   
+  )
+  inference_model_2 <- create_test_ns_inference_model(
+    site_model = beautier::create_gtr_site_model()   
+  )
+  inference_models <- c(list(inference_model_1), list(inference_model_2))
+  
+  df <- mcbette::est_marg_liks(
+    fasta_filename = fasta_filename, 
+    inference_models = inference_models
+  )
+  knitr::kable(df)
+}
+```
+
+The Bayes factor (usually denoted as K) can be used for model comparison. 
+It can be calculated from the marginal likelihoods ratio:
+
+```{r}
+if (mauricer::is_beast2_ns_pkg_installed()) {
+  marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512))
+  marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
+  bayes_factor <- marg_lik_jc / marg_lik_gtr
+  interpretation <- interpret_bayes_factor(as.numeric(bayes_factor))
+  cat(paste("Interpretation from JC69 model's point of view: ", interpretation))
+}
+```
