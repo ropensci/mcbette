@@ -1,6 +1,6 @@
 # `mcbette`
 
-Branch   |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)                                                                        |[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
+Branch   |[![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)                                                                 |[![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)
 ---------|-------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 `master` |[![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/mcbette)  | [![codecov.io](https://codecov.io/github/richelbilderbeek/mcbette/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/mcbette?branch=master)
 `develop`|[![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/mcbette) | [![codecov.io](https://codecov.io/github/richelbilderbeek/mcbette/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/mcbette?branch=develop)
@@ -46,7 +46,7 @@ mauricer::install_beast2_pkg("NS")
 
 `mcbette` starts from an alignment:
 
-![A DNA alignment](pics/alignment.png)
+![A DNA alignment](man/figures/alignment.png)
 
 `mcbette` estimates the evidence (also known as marginal likelihood)
 of each model.
@@ -169,7 +169,7 @@ See [FAQ](doc/faq.md)
 
 ## Package dependencies
 
-Package                                         |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)                                                        |[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
+Package                                         |[![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)                                                 |[![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)
 ------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------
 [babette](https://github.com/ropensci/babette)  |[![Build Status](https://travis-ci.org/ropensci/babette.svg?branch=master)](https://travis-ci.org/ropensci/babette)  |[![codecov.io](https://codecov.io/github/ropensci/babette/coverage.svg?branch=master)](https://codecov.io/github/ropensci/babette/branch/master)
 [beautier](https://github.com/ropensci/beautier)|[![Build Status](https://travis-ci.org/ropensci/beautier.svg?branch=master)](https://travis-ci.org/ropensci/beautier)|[![codecov.io](https://codecov.io/github/ropensci/beautier/coverage.svg?branch=master)](https://codecov.io/github/ropensci/beautier/branch/master)
@@ -192,3 +192,4 @@ Package                                                                       | 
 Article about `babette`:
 
  * Bilderbeek, Richel JC, and Rampal S. Etienne. "babette: BEAUti 2, BEAST 2 and Tracer for R." Methods in Ecology and Evolution (2018). https://doi.org/10.1111/2041-210X.13032
+

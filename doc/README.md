@@ -1,12 +1,4 @@
-# `pics`
-
-Pictures used by `mcbette` from the root folder.
-
-Filename|Description
----|---
-`alignment.png`|README.md (in root folder) alignment
-`Codecov.png`|Codecov logo
-`TravisCI.png`|Travis CI logo
+# `doc`
 
 ## How to create `alignment.png`
 
