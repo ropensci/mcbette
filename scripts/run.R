@@ -8,11 +8,11 @@ fasta_filename <- "my_alignment.fas"
 df <- mcbette::est_marg_liks(fasta_filename)
 
 # Show all models
-print(" ")
-print("**********************************")
-print("* All models (ordered by index)  *")
-print("**********************************")
-print(" ")
+cat(" ")
+cat("**********************************")
+cat("* All models (ordered by index)  *")
+cat("**********************************")
+cat(" ")
 knitr::kable(df)
 
 ################################################################################
@@ -25,15 +25,15 @@ df_ordered <- na.omit(df)
 df_ordered <- df_ordered[ order(-df_ordered$weight), ]
 
 # Show most convincing first
-print(" ")
-print("**********************************")
-print("* All models (ordered by weight) *")
-print("**********************************")
-print(" ")
+cat(" ")
+cat("**********************************")
+cat("* All models (ordered by weight) *")
+cat("**********************************")
+cat(" ")
 knitr::kable(df_ordered)
 
 # Show weights
-print(" ")
+cat(" ")
 txtplot::txtplot(x = seq(1, length(df_ordered$weight)), y = df_ordered$weight)
 
 ################################################################################
@@ -42,9 +42,9 @@ txtplot::txtplot(x = seq(1, length(df_ordered$weight)), y = df_ordered$weight)
 # Show the best model
 best_row_index <- which(df_ordered$marg_log_lik == max(df_ordered$marg_log_lik))
 df_best <- df_ordered[best_row_index, ]
-print(" ")
-print("**********************************")
-print("* Best model:                    *")
-print("**********************************")
-print(" ")
+cat(" ")
+cat("**********************************")
+cat("* Best model:                    *")
+cat("**********************************")
+cat(" ")
 knitr::kable(df_best, row.names = FALSE)
