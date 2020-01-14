@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-![](man/figures/mcbette_logo.png)
+![](mcbette_logo.png)
 
 Given a DNA alignment, one wonders which phylogenetic inference model
 fits that alignment best. `mcbette` ('Model Comparison using babette') 
