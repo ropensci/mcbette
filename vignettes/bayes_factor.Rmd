@@ -22,8 +22,6 @@ Measure the Bayes factor between JC69 and GTR.
 
 ```{r}
 library(mcbette)
-library(Rmpfr)
-library(testthat)
 ```
 
 Set a random seed:
@@ -109,7 +107,7 @@ image(alignment_dnabin)
 From that alignment, get the marginal likelihood of the two desired models:
 
 
-```
+```{r}
 if (mauricer::is_beast2_ns_pkg_installed()) {
   inference_model_1 <- create_test_ns_inference_model(
     site_model = beautier::create_jc69_site_model()   
@@ -130,43 +128,12 @@ if (mauricer::is_beast2_ns_pkg_installed()) {
 The Bayes factor (usually denoted as K) can be used for model comparison. 
 It can be calculated from the marginal likelihoods ratio:
 
+```{r}
+if (mauricer::is_beast2_ns_pkg_installed()) {
+  marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512))
+  marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
+  bayes_factor <- marg_lik_jc / marg_lik_gtr
+  interpretation <- interpret_bayes_factor(as.numeric(bayes_factor))
+  cat(paste(interpretation, "in favor of JC69"))
+}
 ```
-marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512)) 
-```
-
-a
-```
-marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
-```
-
-b
-
-```
-bayes_factor <- marg_lik_jc / marg_lik_gtr
-```
-
-c
-```
-interpretation <- interpret_bayes_factor(as.numeric(bayes_factor))
-```
-
-d
-
-```
-paste(interpretation, "in favor of JC69")
-```
-
-There is also another way to compare models: by comparing their relative weights:
-
-```
-site_model_name <- NULL; rm(site_model_name) # nolint, fixes warning: no visible binding for global variable
-weight <- NULL; rm(weight) # nolint, fixes warning: no visible binding for global variable
-
-ggplot2::ggplot(
-  df, ggplot2::aes(x = site_model_name, y = weight)
-) + ggplot2::geom_col()
-```
-
-## References
-
- * [1] H. Jeffreys (1961). The Theory of Probability (3rd ed.). Oxford. p. 432
