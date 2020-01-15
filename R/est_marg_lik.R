@@ -11,43 +11,46 @@
 #'   \item \code{trees} the jointly-estimated posterior trees
 #' }
 #' @examples
-#' library(testthat)
+#' if (mauricer::is_beast2_ns_pkg_installed()) {
 #'
-#' # An example FASTA file
-#' fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+#'   library(testthat)
 #'
-#' # A testing inference model with inaccurate (thus fast) marginal
-#' # likelihood estimation
-#' inference_model <- create_test_ns_inference_model()
+#'   # An example FASTA file
+#'   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 #'
-#' # Setup the options for BEAST2 to be able to call BEAST2 packages
-#' beast2_options <- create_mcbette_beast2_options()
+#'   # A testing inference model with inaccurate (thus fast) marginal
+#'   # likelihood estimation
+#'   inference_model <- create_test_ns_inference_model()
 #'
-#' # Estimate the marginal likelihood
-#' marg_lik <- est_marg_lik(
-#'   fasta_filename = fasta_filename,
-#'   inference_model = inference_model,
-#'   beast2_options = beast2_options
-#' )
+#'   # Setup the options for BEAST2 to be able to call BEAST2 packages
+#'   beast2_options <- create_mcbette_beast2_options()
 #'
-#' # Results are:
-#' # a list ...
-#' expect_true(is.list(marg_lik))
+#'   # Estimate the marginal likelihood
+#'   marg_lik <- est_marg_lik(
+#'     fasta_filename = fasta_filename,
+#'     inference_model = inference_model,
+#'     beast2_options = beast2_options
+#'   )
 #'
-#' # with these elements ...
-#' expect_true("marg_log_lik" %in% names(marg_lik))
-#' expect_true("marg_log_lik_sd" %in% names(marg_lik))
-#' expect_true("ess" %in% names(marg_lik))
+#'   # Results are:
+#'   # a list ...
+#'   expect_true(is.list(marg_lik))
 #'
-#' # with these data types ...
-#' expect_true(is_one_double(marg_lik$marg_log_lik))
-#' expect_true(is_one_double(marg_lik$marg_log_lik_sd))
-#' expect_true(is_one_double(marg_lik$ess))
+#'   # with these elements ...
+#'   expect_true("marg_log_lik" %in% names(marg_lik))
+#'   expect_true("marg_log_lik_sd" %in% names(marg_lik))
+#'   expect_true("ess" %in% names(marg_lik))
 #'
-#' # with these values
-#' expect_true(marg_lik$marg_log_lik < 0.0)
-#' expect_true(marg_lik$marg_log_lik_sd > 0.0)
-#' expect_true(marg_lik$ess > 0.0)
+#'   # with these data types ...
+#'   expect_true(is_one_double(marg_lik$marg_log_lik))
+#'   expect_true(is_one_double(marg_lik$marg_log_lik_sd))
+#'   expect_true(is_one_double(marg_lik$ess))
+#'
+#'   # with these values
+#'   expect_true(marg_lik$marg_log_lik < 0.0)
+#'   expect_true(marg_lik$marg_log_lik_sd > 0.0)
+#'   expect_true(marg_lik$ess > 0.0)
+#' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
 est_marg_lik <- function(

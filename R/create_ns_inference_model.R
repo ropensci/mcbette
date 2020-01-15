@@ -5,10 +5,13 @@
 #' for using a Nested Sampling MCMC (see \link[beautier]{create_ns_mcmc})
 #' @inheritParams beautier::default_params_doc
 #' @examples
-#' library(testthat)
+#' if (mauricer::is_beast2_ns_pkg_installed()) {
 #'
-#' inference_model <- create_ns_inference_model()
-#' expect_true(beautier::is_nested_sampling_mcmc(inference_model$mcmc))
+#'   library(testthat)
+#'
+#'   inference_model <- create_ns_inference_model()
+#'   expect_true(beautier::is_nested_sampling_mcmc(inference_model$mcmc))
+#' }
 #' @export
 create_ns_inference_model <- function(
   site_model = beautier::create_jc69_site_model(),

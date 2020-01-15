@@ -30,8 +30,11 @@ To do so, the inference model is created as usual (see
 for using a Nested Sampling MCMC (see \link[beautier]{create_ns_mcmc})
 }
 \examples{
-library(testthat)
+if (mauricer::is_beast2_ns_pkg_installed()) {
 
-inference_model <- create_ns_inference_model()
-expect_true(beautier::is_nested_sampling_mcmc(inference_model$mcmc))
+  library(testthat)
+
+  inference_model <- create_ns_inference_model()
+  expect_true(beautier::is_nested_sampling_mcmc(inference_model$mcmc))
+}
 }
