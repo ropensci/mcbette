@@ -63,19 +63,10 @@ vignette will be empty.
 ## Method
 
 To run `mcbette`, we need a FASTA file with a DNA alignment in it.
-We use a temporary file for this:
+We use one that is present in the `mcbette` package:
 
 ```{r}
-fasta_filename <- tempfile(pattern = "primates_", fileext = ".fas")
-```
-
-At that location, we save a BEAST2 example NEXUS file in FASTA format:
-
-```{r fig.width=7}
-beastier::save_nexus_as_fasta(
-  nexus_filename = beastier::get_beast2_example_filename("Primates.nex"),
-  fasta_filename = fasta_filename
-)
+fasta_filename <- system.file("extdata", "primates.fas", package = "mcbette")
 ```
 
 Now we have the alignment saved in our FASTA file, we can display it:
