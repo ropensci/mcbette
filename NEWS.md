@@ -2,6 +2,29 @@
 
 Newest versions at top.
 
+## `mcbette` 1.8.2 (unreleased)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * Added `create_ns_inference_model` for convenience, as it is the same
+   as `create_inference_model(mcmc = create_ns_mcmc(...), ...)`. This
+   function will be moved to `beautier` in a future version
+ * Vignette uses BEAST2 example alignment, instead
+   of a simulated alignment
+ * Prepare for rOpenSci review
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.8.1 (2020-01-14)
 
 ### NEW FEATURES
