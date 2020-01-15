@@ -31,6 +31,10 @@ if (mauricer::is_beast2_ns_pkg_installed()) {
   marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
   bayes_factor <- marg_lik_jc / marg_lik_gtr
   interpretation <- interpret_bayes_factor(as.numeric(bayes_factor))
-  cat(paste("Interpretation from JC69 model's point of view: ", interpretation))
+  cat(
+    paste(
+      "Interpretation from JC69 model's point of view: ", interpretation
+    )
+  )
 }
 }

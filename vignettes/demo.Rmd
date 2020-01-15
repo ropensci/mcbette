@@ -45,13 +45,20 @@ if (!beastier::is_beast2_installed()) {
     "Tip: use 'beastier::install_beast2()'"
   )
 }
-if (!mauricer::is_beast2_ns_pkg_installed()) {
+if (
+  beastier::is_beast2_installed() && 
+  !mauricer::is_beast2_ns_pkg_installed()
+) {
   message(
     "The BEAST2 'NS' package must be installed. ",
     "Tip: use 'mauricer::install_beast2_pkg(\"NS\")'"
   )
 }
 ```
+
+If you've just gotten a message that you need to install either
+BEAST2 or the BEAST2 NS package, do so. The rest of this
+vignette will be empty.
 
 ## Method
 
@@ -89,7 +96,10 @@ only differing in their nucleotide substitution model:
      other nucleotide
 
 ```{r}
-if (mauricer::is_beast2_ns_pkg_installed()) {
+if (
+  beastier::is_beast2_installed() && 
+  mauricer::is_beast2_ns_pkg_installed()
+) {
   inference_model_1 <- create_test_ns_inference_model(
     site_model = beautier::create_jc69_site_model()   
   )
@@ -110,7 +120,10 @@ The Bayes factor (usually denoted as K) can be used for model comparison.
 It can be calculated from the marginal likelihoods ratio:
 
 ```{r}
-if (mauricer::is_beast2_ns_pkg_installed()) {
+if (
+  beastier::is_beast2_installed() && 
+  mauricer::is_beast2_ns_pkg_installed()
+) {
   marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512))
   marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
   bayes_factor <- marg_lik_jc / marg_lik_gtr
