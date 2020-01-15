@@ -6,8 +6,8 @@ cache: packages
 # Environment     | R CMD CHECK | codecov | lintr | run script  |
 # ----------------+-------------+---------+-------+-------------+
 # MacOS           | No          | No      | Yes   | No          |
-# Linux r-devel   | Yes         | Yes     | No    | No          |
-# Linux r-release | No          | No      | No    | Yes         |
+# Linux r-devel   | Yes         | Yes     | Yes   | No          |
+# Linux r-release | No          | No      | Yes   | Yes         |
 # ----------------+-------------+---------+-------+-------------+
 
 matrix:
@@ -52,8 +52,6 @@ script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 120 Rscript scripts/run.R; fi
 
 after_success:
-  # Lint
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then Rscript -e 'lintr::lint_package()'; fi
   # Codecov
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
 
