@@ -39,16 +39,14 @@ library(mcbette)
 To use `mcbette`, BEAST2 and the BEAST2 `NS` package must be installed:
 
 ```{r}
-if (!beastier::is_beast2_installed()) {
+if (rappdirs::app_dir()$os == "win") {
+  message("'mcbette' can only run on Linux and MacOS")
+} else if (!beastier::is_beast2_installed()) {
   message(
     "BEAST2 must be installed. ",
     "Tip: use 'beastier::install_beast2()'"
   )
-}
-if (
-  beastier::is_beast2_installed() && 
-  !mauricer::is_beast2_ns_pkg_installed()
-) {
+} else if (!mauricer::is_beast2_ns_pkg_installed()) {
   message(
     "The BEAST2 'NS' package must be installed. ",
     "Tip: use 'mauricer::install_beast2_pkg(\"NS\")'"
@@ -87,10 +85,7 @@ only differing in their nucleotide substitution model:
      other nucleotide
 
 ```{r}
-if (
-  beastier::is_beast2_installed() && 
-  mauricer::is_beast2_ns_pkg_installed()
-) {
+if (can_run_mcbette()) {
   inference_model_1 <- create_test_ns_inference_model(
     site_model = beautier::create_jc69_site_model()   
   )
@@ -111,10 +106,7 @@ The Bayes factor (usually denoted as K) can be used for model comparison.
 It can be calculated from the marginal likelihoods ratio:
 
 ```{r}
-if (
-  beastier::is_beast2_installed() && 
-  mauricer::is_beast2_ns_pkg_installed()
-) {
+if (can_run_mcbette()) {
   marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512))
   marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
   bayes_factor <- marg_lik_jc / marg_lik_gtr
