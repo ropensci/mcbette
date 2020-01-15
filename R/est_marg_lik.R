@@ -1,5 +1,4 @@
-#' Estimate the marginal likelihood for a combination of
-#' site, clock and tree models
+#' Estimate the marginal likelihood for an inference model.
 #' @inheritParams default_params_doc
 #' @return a \link{list} showing the estimated marginal likelihoods
 #' (and its estimated error), its items are::
@@ -10,8 +9,13 @@
 #'   \item \code{estimates} the estimated marginal (natural) log likelihoods
 #'   \item \code{trees} the jointly-estimated posterior trees
 #' }
+#' @seealso
+#' \itemize{
+#'   \item \link{can_run_mcbette}: see if 'mcbette' can run
+#'   \item \link{est_marg_lik}: estimate multiple marginal likelihoods
+#' }
 #' @examples
-#' if (mauricer::is_beast2_ns_pkg_installed()) {
+#' if (can_run_mcbette()) {
 #'
 #'   library(testthat)
 #'
@@ -55,9 +59,7 @@
 #' @export
 est_marg_lik <- function(
   fasta_filename,
-  inference_model = beautier::create_inference_model(
-    mcmc = beautier::create_ns_mcmc()
-  ),
+  inference_model = create_ns_inference_model(),
   beast2_options = create_mcbette_beast2_options(),
   os = rappdirs::app_dir()$os
 ) {

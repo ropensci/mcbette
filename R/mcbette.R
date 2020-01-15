@@ -2,8 +2,9 @@
 #'
 #' 'mcbette' does a model comparing using \link[babette]{babette}.
 #'
+#' @seealso Use \link{can_run_mcbette} to see if 'mcbette' can run.
 #' @examples
-#' if (mauricer::is_beast2_ns_pkg_installed()) {
+#' if (can_run_mcbette()) {
 #'   library(testthat)
 #'
 #'   # An example FASTA file

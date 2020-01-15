@@ -13,8 +13,13 @@
 #'     evidence is in favor of this model combination) to 0.0 (no
 #'     evidence in favor of this model combination)
 #' }
+#' \itemize{
+#'   \item \link{can_run_mcbette}: see if 'mcbette' can run
+#'   \item \link{est_marg_liks}: estimate multiple marginal likelihood of a
+#'     single inference mode
+#' }
 #' @examples
-#' if (mauricer::is_beast2_ns_pkg_installed()) {
+#' if (can_run_mcbette()) {
 #'
 #'   library(testthat)
 #'

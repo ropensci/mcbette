@@ -2,12 +2,11 @@
 % Please edit documentation in R/est_marg_lik.R
 \name{est_marg_lik}
 \alias{est_marg_lik}
-\title{Estimate the marginal likelihood for a combination of
-site, clock and tree models}
+\title{Estimate the marginal likelihood for an inference model.}
 \usage{
 est_marg_lik(
   fasta_filename,
-  inference_model = beautier::create_inference_model(mcmc = beautier::create_ns_mcmc()),
+  inference_model = create_ns_inference_model(),
   beast2_options = create_mcbette_beast2_options(),
   os = rappdirs::app_dir()$os
 )
@@ -36,11 +35,10 @@ a \link{list} showing the estimated marginal likelihoods
 }
 }
 \description{
-Estimate the marginal likelihood for a combination of
-site, clock and tree models
+Estimate the marginal likelihood for an inference model.
 }
 \examples{
-if (mauricer::is_beast2_ns_pkg_installed()) {
+if (can_run_mcbette()) {
 
   library(testthat)
 
@@ -79,6 +77,12 @@ if (mauricer::is_beast2_ns_pkg_installed()) {
   expect_true(marg_lik$marg_log_lik < 0.0)
   expect_true(marg_lik$marg_log_lik_sd > 0.0)
   expect_true(marg_lik$ess > 0.0)
+}
+}
+\seealso{
+\itemize{
+  \item \link{can_run_mcbette}: see if 'mcbette' can run
+  \item \link{est_marg_lik}: estimate multiple marginal likelihoods
 }
 }
 \author{

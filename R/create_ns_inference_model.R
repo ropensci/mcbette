@@ -5,7 +5,7 @@
 #' for using a Nested Sampling MCMC (see \link[beautier]{create_ns_mcmc})
 #' @inheritParams beautier::default_params_doc
 #' @examples
-#' if (mauricer::is_beast2_ns_pkg_installed()) {
+#' if (can_run_mcbette()) {
 #'
 #'   library(testthat)
 #'
