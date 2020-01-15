@@ -10,16 +10,26 @@ calc_weights(marg_liks)
 \item{marg_liks}{(non-log) marginal likelihood estimates}
 }
 \value{
-the weight of each marginal likelihood estimate
+the weight of each marginal likelihood estimate,
+which will sum up to 1.0
 }
 \description{
 Calculate the weights for each marginal likelihood
 }
 \examples{
-  marg_liks <- c(0.0001, 0.0002, 0.0003, 0.0004)
-  created <- calc_weights(marg_liks)
-  expected <- c(0.1, 0.2, 0.3, 0.4)
-  testthat::expect_equal(created, expected)
+library(testthat)
+
+# Evidences (aka marginal likelihoods) can be very small
+evidences <- c(0.0001, 0.0002, 0.0003, 0.0004)
+
+# These are the weight we expect from these evidences
+expected <- c(0.1, 0.2, 0.3, 0.4)
+
+# Calculate the weights
+created <- calc_weights(evidences)
+
+expect_equal(created, expected)
+expect_equal(sum(created), 1.0)
 }
 \author{
 Richèl J.C. Bilderbeek

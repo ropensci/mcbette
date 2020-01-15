@@ -13,16 +13,16 @@ create_ns_inference_model(
 }
 \arguments{
 \item{site_model}{a site model,
-as can be created by \link[beautier]{create_site_model}}
+as returned by \code{\link[beautier]{create_site_model}}}
 
 \item{clock_model}{a clock model,
-as can be created by \link[beautier]{create_clock_model}}
+as returned by \code{\link[beautier]{create_clock_model}}}
 
-\item{tree_prior}{a tree prior,
-as can be created by \link[beautier]{create_tree_prior}}
+\item{tree_prior}{a tree priors,
+as returned by \code{\link[beautier]{create_tree_prior}}}
 
-\item{mcmc}{an MCMC for the Nested Sampling run,
-as can be created by \link[beautier]{create_mcmc_nested_sampling}}
+\item{mcmc}{one MCMC
+as returned by \code{\link[beautier]{create_mcmc}}}
 }
 \description{
 To do so, the inference model is created as usual (see

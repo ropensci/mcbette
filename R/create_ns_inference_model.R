@@ -3,7 +3,7 @@
 #' To do so, the inference model is created as usual (see
 #' \link[beautier]{create_inference_model}), except
 #' for using a Nested Sampling MCMC (see \link[beautier]{create_ns_mcmc})
-#' @inheritParams default_params_doc
+#' @inheritParams beautier::default_params_doc
 #' @examples
 #' library(testthat)
 #'

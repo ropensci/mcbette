@@ -1,23 +1,16 @@
 #' Create a \code{beast2_options} structure, with the filenames
 #' indicating \code{mcbette} usage, as well as the correct
 #' BEAST2 binary type
-#' @inheritParams default_params_doc
-#' @param input_filename the name of a BEAST2 input XML file.
-#' This file usually has an \code{.xml} extension.
-#' @param n_threads the number of computational threads to use.
-#' Use \link{NA} to use the BEAST2 default of 1.
-#' @param output_state_filename name of the \code{.xml.state} file to create.
-#' @param use_beagle use BEAGLE if present
-#' @param overwrite if TRUE: overwrite the \code{.log}
-#' and \code{.trees} files if one of these exists.
-#' If FALSE, BEAST2 will not be started if
-#' \itemize{
-#'   \item{the \code{.log} file exists}
-#'   \item{the \code{.trees} files exist}
-#'   \item{the \code{.log} file created by BEAST2 exists}
-#'   \item{the \code{.trees} files created by BEAST2 exist}
-#' }
+#' @inheritParams beastier::default_params_doc
 #' @seealso use \link[beastier]{create_beast2_options}
+#' @examples
+#' library(testthat)
+#'
+#' beast2_options <- create_mcbette_beast2_options()
+#'
+#' # To use mcbette, the binary executable of BEAST2 must be used
+#' # (instead of the .jar file)
+#' expect_true(beastier::is_bin_path(beast2_options$beast2_path))
 #' @export
 create_mcbette_beast2_options <- function(
   input_filename = beastier::create_temp_input_filename(),
@@ -29,6 +22,7 @@ create_mcbette_beast2_options <- function(
   beast2_bin_path = beastier::get_default_beast2_bin_path(),
   verbose = FALSE
 ) {
+  testit::assert(beastier::is_bin_path(beast2_bin_path))
   beastier::create_beast2_options(
     input_filename = input_filename,
     output_state_filename = output_state_filename,

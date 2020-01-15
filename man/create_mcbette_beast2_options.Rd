@@ -19,12 +19,17 @@ create_mcbette_beast2_options(
 }
 \arguments{
 \item{input_filename}{the name of a BEAST2 input XML file.
-This file usually has an \code{.xml} extension.}
+This file usually has an \code{.xml} extension.
+Use \link[beastier]{create_temp_input_filename} to create a temporary
+filename with that extension.}
 
-\item{output_state_filename}{name of the \code{.xml.state} file to create.}
+\item{output_state_filename}{name of the \code{.xml.state} file to create.
+Use \link[beastier]{create_temp_state_filename} to create a temporary
+filename with that extension.}
 
-\item{rng_seed}{a random number generator seed used for the BEAST2
-inference}
+\item{rng_seed}{the random number generator seed of the BEAST2 run.
+Must be a non-zero positive integer value or \link{NA}.
+If \code{rng_seed} is \link{NA}, BEAST2 will pick a random seed}
 
 \item{n_threads}{the number of computational threads to use.
 Use \link{NA} to use the BEAST2 default of 1.}
@@ -41,14 +46,27 @@ If FALSE, BEAST2 will not be started if
   \item{the \code{.trees} files created by BEAST2 exist}
 }}
 
-\item{beast2_bin_path}{path to the the BEAST2 binary file}
+\item{beast2_bin_path}{name of the BEAST2 binary file
+(usually simply \code{beast}).
+Use \link[beastier]{get_default_beast2_bin_path} to get
+the default BEAST binary file's path}
 
-\item{verbose}{if TRUE show debug output}
+\item{verbose}{if TRUE, additional information is displayed, that
+is potentially useful in debugging}
 }
 \description{
 Create a \code{beast2_options} structure, with the filenames
 indicating \code{mcbette} usage, as well as the correct
 BEAST2 binary type
+}
+\examples{
+library(testthat)
+
+beast2_options <- create_mcbette_beast2_options()
+
+# To use mcbette, the binary executable of BEAST2 must be used
+# (instead of the .jar file)
+expect_true(beastier::is_bin_path(beast2_options$beast2_path))
 }
 \seealso{
 use \link[beastier]{create_beast2_options}
