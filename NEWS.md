@@ -2,7 +2,7 @@
 
 Newest versions at top.
 
-## `mcbette` 1.8.2 (unreleased)
+## `mcbette` 1.8.2 (2020-01-15)
 
 ### NEW FEATURES
 
