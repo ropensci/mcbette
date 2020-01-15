@@ -39,9 +39,10 @@ before_install:
 
 
 before_script:
+  - echo "mcbette should build with and without BEAST2 installed"
   # Should build with and without BEAST2 installed
-  - Rscript -e "beastier::install_beast2()"
-  - Rscript -e 'mauricer::install_beast2_pkg("NS")'
+  #- Rscript -e "beastier::install_beast2()"
+  #- Rscript -e 'mauricer::install_beast2_pkg("NS")'
 
 script:
   - travis_wait 30 R CMD build .
