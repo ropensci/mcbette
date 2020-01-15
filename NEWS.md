@@ -10,12 +10,13 @@ Newest versions at top.
 
 ### MINOR IMPROVEMENTS
 
+ * Added `can_run_mcbette` as a shorthand for three if-statements
  * Added `create_ns_inference_model` for convenience, as it is the same
    as `create_inference_model(mcmc = create_ns_mcmc(...), ...)`. This
    function will be moved to `beautier` in a future version
- * Vignette uses BEAST2 example alignment, instead
-   of a simulated alignment
+ * Vignette uses BEAST2 example alignment, instead of a simulated alignment
  * Prepare for rOpenSci review
+ * Added more and better examples to the documentation
 
 ### BUG FIXES
 
