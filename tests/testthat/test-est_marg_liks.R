@@ -1,7 +1,6 @@
 test_that("use, 8 models", {
 
-  if (!beastier::is_beast2_installed()) return()
-  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!can_run_mcbette()) return()
   if (!beastier::is_on_travis()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
@@ -123,8 +122,7 @@ test_that("use, 8 models", {
 
 test_that("use, 1 model", {
 
-  if (!beastier::is_beast2_installed()) return()
-  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!can_run_mcbette()) return()
 
   df <- est_marg_liks(
     fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
@@ -139,8 +137,7 @@ test_that("use, 1 model", {
 
 test_that("use, 1 model, CBS", {
 
-  if (!beastier::is_beast2_installed()) return()
-  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!can_run_mcbette()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
@@ -163,6 +160,7 @@ test_that("use, 1 model, CBS", {
 
 test_that("use with same RNG seed must result in identical output", {
 
+  if (!can_run_mcbette()) return()
   if (!beastier::is_on_travis()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
