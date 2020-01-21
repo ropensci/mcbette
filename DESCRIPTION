@@ -2,8 +2,8 @@ Package: mcbette
 Title: Model Comparison Using 'babette'
 Version: 1.8.2
 Authors@R: c(
-    person("Richel J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
-Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
+    person("Richèl J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
+Maintainer: Richèl J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: 'BEAST2' (<http://www.beast2.org>) is a widely used
     Bayesian phylogenetic tool, that uses DNA/RNA/protein data
     and many model priors to create a posterior of jointly estimated 
