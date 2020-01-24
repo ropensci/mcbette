@@ -39,7 +39,7 @@ You can
 ### Installation
 
 ```r
-usethis::install_github("richelbilderbeek/mcbette", dependencies = TRUE)
+remotes::install_github("richelbilderbeek/mcbette", dependencies = TRUE)
 beastier::install_beast2()
 mauricer::install_beast2_pkg("NS")
 ```
