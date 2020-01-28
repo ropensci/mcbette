@@ -3,6 +3,8 @@
 
 library(mcbette)
 
+options(digits = 22)
+
 fasta_filename <- tempfile()
 
 beastier::save_nexus_as_fasta(
@@ -11,8 +13,8 @@ beastier::save_nexus_as_fasta(
 )
 
 df <- expand.grid(
-  epsilon = c(1e12, 1, 1e-12),
-  particle_count = c(1, 4, 16),
+  epsilon = c(1e20, 1, 1e-20),
+  particle_count = c(1, 16),
   marg_log_lik = NA,
   marg_log_lik_sd = NA
 )
@@ -22,6 +24,7 @@ for (i in seq_len(nrow(df))) {
   inference_model <- create_test_ns_inference_model()
   inference_model$mcmc$epsilon <- df$epsilon[i]
   inference_model$mcmc$particle_count <- df$particle_count[i]
+  inference_model$mcmc$chain_length <- 1e10
   evidence <- mcbette::est_marg_lik(
     fasta_filename = fasta_filename,
     inference_model = inference_model
@@ -29,5 +32,7 @@ for (i in seq_len(nrow(df))) {
   df$marg_log_lik <- evidence$marg_log_lik
   df$marg_log_lik_sd <- evidence$marg_log_lik_sd
 }
+df
 
-
+knitr::kable(df)
+df
