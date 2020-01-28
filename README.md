@@ -1,5 +1,7 @@
 # `mcbette`
 
+[![peer-review](https://badges.ropensci.org/360_status.svg)](https://github.com/ropensci/software-review/issues/360)
+
 Branch   |[![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)                                                                 |[![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)
 ---------|-------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 `master` |[![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/mcbette)  | [![codecov.io](https://codecov.io/github/richelbilderbeek/mcbette/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/mcbette?branch=master)
