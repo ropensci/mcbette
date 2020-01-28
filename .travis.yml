@@ -2,13 +2,13 @@ language: r
 dist: bionic
 cache: packages
 
-# ----------------+-------------+---------+-------+-------------+
-# Environment     | R CMD CHECK | codecov | lintr | run script  |
-# ----------------+-------------+---------+-------+-------------+
-# MacOS           | No          | No      | Yes   | No          |
-# Linux r-devel   | Yes         | Yes     | Yes   | No          |
-# Linux r-release | No          | No      | Yes   | Yes         |
-# ----------------+-------------+---------+-------+-------------+
+# ----------------+---------+-------------+
+# Environment     | codecov | goodpractice|
+# ----------------+---------+-------------+
+# MacOS           | No      | No          |
+# Linux r-devel   | Yes     | No          |
+# Linux r-release | No      | Yes         |
+# ----------------+---------+-------------+
 
 matrix:
   include:
@@ -23,6 +23,7 @@ matrix:
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
+  - MangoTheCat/goodpractice
 
 before_install:
   # ImageMagick
@@ -51,4 +52,6 @@ script:
 after_success:
   # Codecov
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
+  # Goodpractice
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 60 Rscript -e 'goodpractice::gp()'; fi
 
