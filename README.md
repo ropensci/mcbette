@@ -1,4 +1,4 @@
-# `mcbette_run`
+# `mcbette`
 
 Branch   |[![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)                                                                 |[![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)
 ---------|-------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -11,7 +11,7 @@ Model Comparison using `babette`.
 
 ### Installation
 
-:warning: `mcbette_run` only works on Linux and Mac
+:warning: `mcbette` only works on Linux and Mac
 
 ```r
 remotes::install_github("richelbilderbeek/mcbette", dependencies = TRUE)
