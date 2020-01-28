@@ -19,9 +19,6 @@ matrix:
   - r: release
     os: osx
 
-r_packages:
-  - txtplot
-
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
@@ -45,11 +42,7 @@ before_script:
 
 script:
   - travis_wait 30 R CMD build .
-  # R CD check
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 40 R CMD check *tar.gz; fi
-  # Run script
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 120 Rscript scripts/run.R; fi
+  - travis_wait 40 R CMD check *tar.gz
 
 after_success:
   # Codecov
