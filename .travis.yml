@@ -33,6 +33,9 @@ before_install:
   # Java
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R CMD javareconf; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R --quiet -e 'install.packages("rJava", type="source", repos="http://cran.us.r-project.org")'; fi
+  # PDF
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr update --self; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr install inconsolata; fi
 
 
 before_script:
