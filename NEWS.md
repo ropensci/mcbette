@@ -2,6 +2,26 @@
 
 Newest versions at top.
 
+## `mcbette` 1.8.3 (unrelease)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * Separated the package `mcbette` from a script running it.
+   The latter can be found at 
+   [https://github.com/richelbilderbeek/mcbette_run](https://github.com/richelbilderbeek/mcbette_run)
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.8.2 (2020-01-15)
 
 ### NEW FEATURES
