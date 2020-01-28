@@ -9,7 +9,6 @@ Branch   |[![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)  
 
 Model Comparison using `babette`.
 
-
 ### Installation
 
 :warning: `mcbette_run` only works on Linux and Mac
