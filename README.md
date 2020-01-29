@@ -16,7 +16,7 @@ Model Comparison using `babette`.
 :warning: `mcbette` only works on Linux and Mac
 
 ```r
-remotes::install_github("richelbilderbeek/mcbette", dependencies = TRUE)
+remotes::install_github("richelbilderbeek/mcbette")
 beastier::install_beast2()
 mauricer::install_beast2_pkg("NS")
 ```
