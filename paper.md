@@ -19,14 +19,17 @@ bibliography: paper.bib
 
 # Summary
 
-All species on Earth are related to one another. There even is a name for
-the last common ancestor all organisms share: LUCA ('Last Universal Common 
-Ancestor'). A feature of all life on Earth is that it uses DNA to store the
-blueprint of a species' features. The DNA carries traces of a species'
+All species on Earth are related to one another.
+They inherit their features from their ancestors
+ 
+And all species on Earth use DNA to store the blueprint of their features,
+which they inherited from their ancestors.
+That DNA carries traces of a species'
 evolutionary history, as species that are closely related have more similar
 DNA. The field of phylogenetics tries to conclude the evolutionary
-history of species from their DNA sequences. Doing so is a complex task, as the
-researcher needs to select the best of many ways to do so.
+history of species from their DNA sequences. To do so, the
+researcher needs to pick a model of how evolution works. The problem is,
+that there are many models to pick from.
 
 ![](man/figures/alignment_joss.png)
 ![](man/figures/arrow.png)
@@ -34,12 +37,13 @@ researcher needs to select the best of many ways to do so.
 Caption: phylogenetics in a nutshell: deriving the evolutionary history
 of species (at the right) from their DNA sequences (at the left)
 
-``mcbette`` is an R package that helps to pick the best way *how* to conclude 
+``mcbette`` is an R package that helps to pick the best model. conclude 
 the evolutionary history of species from their DNA sequences. 
 The 'best way', in this context, is that what is 'simple enough, but not 
 simpler'. 
 
-``mcbette`` builds heavily upon the ``babette`` R package [@Bilderbeek:2018]
+``mcbette`` builds heavily upon the ``babette`` R package [@Bilderbeek:2018],
+that uses the tool 
 
 ``Gala`` was designed to be used by 
 both astronomical researchers and by
