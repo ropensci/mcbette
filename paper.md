@@ -19,28 +19,26 @@ bibliography: paper.bib
 
 # Summary
 
-The forces on stars, galaxies, and dark matter under external gravitational
-fields lead to the dynamical evolution of structures in the universe. The orbits
-of these bodies are therefore key to understanding the formation, history, and
-future state of galaxies. The field of "galactic dynamics," which aims to model
-the gravitating components of galaxies to study their structure and evolution,
-is now well-established, commonly taught, and frequently used in astronomy.
-Aside from toy problems and demonstrations, the majority of problems require
-efficient numerical tools, many of which require the same base code (e.g., for
-performing numerical orbit integration).
+All species on Earth are related to one another. There even is a name for
+the last common ancestor all organisms share: LUCA ('Last Universal Common 
+Ancestor'). A feature of all life on Earth is that it uses DNA to store the
+blueprint of a species' features. The DNA carries traces of a species'
+evolutionary history, as species that are closely related have more similar
+DNA. The field of phylogenetics tries to conclude the evolutionary
+history of species from their DNA sequences. Doing so is a complex task, as the
+researcher needs to select the best of many ways to do so.
 
-``Gala`` is an Astropy-affiliated Python package for galactic dynamics. Python
-enables wrapping low-level languages (e.g., C) for speed without losing
-flexibility or ease-of-use in the user-interface. The API for ``Gala`` was
-designed to provide a class-based and user-friendly interface to fast (C or
-Cython-optimized) implementations of common operations such as gravitational
-potential and force evaluation, orbit integration, dynamical transformations,
-and chaos indicators for nonlinear dynamics. ``Gala`` also relies heavily on and
-interfaces well with the implementations of physical units and astronomical
-coordinate systems in the ``Astropy`` package [@astropy] (``astropy.units`` and
-``astropy.coordinates``).
+![Phylogenetics in a nutshell: ](man/figures/phylogenetics.png)
 
-``Gala`` was designed to be used by both astronomical researchers and by
+``mcbette`` is an R package that helps to pick the best way *how* to conclude 
+the evolutionary history of species from their DNA sequences. 
+The 'best way', in this context, is that what is 'simple enough, but not 
+simpler'. 
+
+``mcbette`` builds heavily upon the ``babette`` R package [@Bilderbeek:2018]
+
+``Gala`` was designed to be used by 
+both astronomical researchers and by
 students in courses on gravitational dynamics or astronomy. It has already been
 used in a number of scientific publications [@Pearson:2017] and has also been
 used in graduate courses on Galactic dynamics to, e.g., provide interactive
