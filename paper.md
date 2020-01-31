@@ -28,7 +28,11 @@ DNA. The field of phylogenetics tries to conclude the evolutionary
 history of species from their DNA sequences. Doing so is a complex task, as the
 researcher needs to select the best of many ways to do so.
 
-![Phylogenetics in a nutshell: ](man/figures/phylogenetics.png)
+![](man/figures/alignment_joss.png)
+![](man/figures/arrow.png)
+![](man/figures/phylogeny_joss.png)
+Caption: phylogenetics in a nutshell: deriving the evolutionary history
+of species (at the right) from their DNA sequences (at the left)
 
 ``mcbette`` is an R package that helps to pick the best way *how* to conclude 
 the evolutionary history of species from their DNA sequences. 
@@ -48,6 +52,15 @@ scientific explorations of forthcoming data releases from the *Gaia* mission
 [@gaia] by students and experts alike.
 
 # Mathematics
+
+
+|site_model_name |clock_model_name |tree_prior_name | marg_log_lik| marg_log_lik_sd|    weight|
+|:---------------|:----------------|:---------------|------------:|---------------:|---------:|
+|JC69            |strict           |yule            |    -179.9266|        2.427167| 0.2823000|
+|HKY             |strict           |yule            |    -182.2376|        1.992356| 0.0279950|
+|TN93            |strict           |yule            |    -179.0459|        2.446301| 0.6810869|
+|GTR             |strict           |yule            |    -183.4157|        2.636430| 0.0086181|
+
 
 Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
 
@@ -80,5 +93,6 @@ We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
 Oh, and support from Kathryn Johnston during the genesis of this project.
 
 # References
+
 
 

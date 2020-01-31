@@ -5,5 +5,5 @@
    which is in the public domain
  * Crown from [pngimg.com](http://pngimg.com/download/23834),
    licensed under Creative Commons 4.0 BY-NC
-
+ * Arrow from http://www.clker.com/clipart-transparent-arrow-1.html
 
