@@ -86,13 +86,17 @@ the `mc`) between multiple suggested evolutionary models and shows
 which one is best. The winner of this comparison is assumed to result
 in the best phylogenies, with the same definition of 'best'.
 
-To go into more detail, ``mcbette`` estimates the marginal likelihood of an
-evolutionary model, from a given alignment. The marginal likelihood, also called 'evidence',
+To go into more detail: ``mcbette`` estimates the marginal likelihood of an
+evolutionary model, from a given alignment. 
+The marginal likelihood, also called 'evidence',
 is a measure of probability that the evolutionary model will result in
-the given alignment. The marginal likelihood is very hard to calculate, 
-so instead, sscientists have developed ways to estimate it. 
-
-
+the given alignment. Marginal likelihoods can be compared directly
+across models, as they have the same unit, regardless of the complexity
+of the evolutionary model. Additionally, the marginal likelihood
+of models with more parameters are in a natural way penalized for being 
+complex. In other words: the highest marginal likelihood will be found 
+for models that are justifiably complex, instead of the model that has the
+most parameters.
 
 |site_model_name |clock_model_name |tree_prior_name | marg_log_lik| marg_log_lik_sd|    weight|
 |:---------------|:----------------|:---------------|------------:|---------------:|---------:|
