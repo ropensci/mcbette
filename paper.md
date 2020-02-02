@@ -119,11 +119,7 @@ tool 'BEAST2' [@Bouckaert:2019]. Additionally, ``mcbette`` uses the novel 'NS'
 With ``mcbette`` it will be 'as easy as possible, but not easier' to pick a 
 best evolutionary model.
 
-# Citations
-
-Citations to entries in paper.bib should be in
-[rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
-format.
+# References
 
  * `@Bilderbeek:2018`: Bilderbeek, Richèl JC, and Rampal S. Etienne. "babette: BEAUti 2, BEAST 2 and Tracer for R." Methods in Ecology and Evolution (2018). https://doi.org/10.1111/2041-210X.13032
  * `@Bouckaert:2019` Bouckaert R., Vaughan T.G., Barido-Sottani J., Duchêne S., Fourment M., Gavryushkina A., et al. (2019) BEAST 2.5: An advanced software platform for Bayesian evolutionary analysis. PLoS computational biology, 15(4), e1006650.
