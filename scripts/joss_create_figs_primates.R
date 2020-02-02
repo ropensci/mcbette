@@ -3,43 +3,28 @@
 # See https://github.com/richelbilderbeek/mcbette/issues/15
 
 folder <- "/home/richel/GitHubs/mcbette/man/figures"
-phylogeny_filename <- file.path(folder, "phylogeny_joss.png")
-fasta_filename <- file.path(folder, "alignment_joss.fasta")
-alignment_filename <- file.path(folder, "alignment_joss.png")
-marg_liks_filename <- file.path(folder, "marg_liks_joss.md")
+
+phylogeny_filename <- file.path(folder, "phylogeny_primates_joss.png")
+fasta_filename <- system.file("extdata", "primates.fas", package = "mcbette")
+alignment_filename <- file.path(folder, "alignment_primates_joss.png")
+marg_liks_filename <- file.path(folder, "marg_liks_primates_joss.md")
 n_models <- 4
-posterior_filenames <- file.path(folder, paste0("posterior_joss_", seq(1, n_models) ,".png"))
+posterior_filenames <- file.path(folder, paste0("posterior_primates_joss_", seq(1, n_models) ,".png"))
+consensus_posterior_filename <- file.path(folder, "posterior_primates_consensus_joss.png")
 
 library(testthat)
 expect_true(dir.exists(folder))
 
 library(mcbette)
 
-phylogeny <- ape::read.tree(text = "(((1:1,2:1):1, 3:2):1, 4:3);")
-
-# Plot phylogeny
-png(filename = phylogeny_filename, width = 400, height = 300)
-ape::plot.phylo(phylogeny, cex = 2.0, edge.width = 2.0)
-dev.off()
-
-# Simulate an alignment
-pirouette::create_tral_file(
-  phylogeny = phylogeny,
-  alignment_params = pirouette::create_alignment_params(
-    root_sequence = pirouette::create_blocked_dna(length = 40),
-    sim_tral_fun = pirouette::get_sim_tral_with_std_nsm_fun(
-      mutation_rate = 0.5 * 1.0 / 3.0,
-      site_model = create_tn93_site_model()
-    ),
-    fasta_filename = fasta_filename,
-    rng_seed = 42
-  )
-)
-
 # Plot the alignment
-png(filename = alignment_filename, width = 800, height = 300)
+alignment <- ape::read.FASTA(file = fasta_filename)
+taxa_names <- names(alignment)
+names(alignment) <- toupper(substring(names(alignment), 1, 1))
+
+png(filename = alignment_filename, width = 900, height = 300)
 ape::image.DNAbin(
-  ape::read.FASTA(file = fasta_filename),
+  alignment,
   grid = TRUE,
   show.bases = FALSE,
   legend = FALSE,
@@ -82,10 +67,12 @@ cat(
   file = marg_liks_filename
 )
 
-# We expect TN93 to win, as it generated the alignment
+# For primates, I know TN93 will win
 winning_model_index <-  which(marg_liks$weight == max(marg_liks$weight))
 expect_equal(3, winning_model_index)
 
+# Reduplicated plural
+posterior_treeses <- list()
 
 # Do an inference with each of the inference models
 for (i in seq_len(n_models)) {
@@ -99,13 +86,14 @@ for (i in seq_len(n_models)) {
   )
 
   # Pick the last 50%
-  posterior_trees <- output$alignment_joss_trees[501:1001]
+  posterior_trees <- output$primates_trees[501:1001]
+  posterior_treeses[[i]] <- posterior_trees
 
   png(filename = posterior_filenames[i], width = 1000, height = 800)
   babette::plot_densitree(
-    posterior_trees, library = "phangorn",
+    posterior_trees,
     alpha = 0.1,
-    consensus = as.character(c(1:4)),
+    consensus = rev(taxa_names),
     cex = 2.0,
     scaleX = TRUE,
     scale.bar = FALSE
@@ -113,5 +101,13 @@ for (i in seq_len(n_models)) {
   dev.off()
 }
 
+# Plot the consensus tree
+consensus_tree <- ape::consensus(posterior_treeses[[winning_model_index]])
 
-
+png(filename = consensus_posterior_filename, width = 400, height = 300)
+ape::plot.phylo(
+  consensus_tree,
+  cex = 2.0,
+  edge.width = 2.0
+)
+dev.off()

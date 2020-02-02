@@ -19,43 +19,79 @@ bibliography: paper.bib
 
 # Summary
 
-All species on Earth are related to one another.
-They inherit their features from their ancestors
- 
-And all species on Earth use DNA to store the blueprint of their features,
-which they inherited from their ancestors.
-That DNA carries traces of a species'
-evolutionary history, as species that are closely related have more similar
-DNA. The field of phylogenetics tries to conclude the evolutionary
-history of species from their DNA sequences. To do so, the
-researcher needs to pick a model of how evolution works. The problem is,
-that there are many models to pick from.
+All life on Earth is related to one another.
+We, humans, inherit our characteristics from our parents, which they
+inherted from theirs. Going back in time long enough (say, between 4-7 million
+years), we'll arrive at the ancestors that gave rise to both humans and chimps.
+At that early time, the human-chimp-ancestor mixed their heritable
+features freely, as all members of that species could produce offspring with
+another of the opposite gender. Alas, this would not last, as the 
+human-chimp-ancestor evolved into to seperate species. From that moment on,
+newly evolved features in humans, would stay in humans only.
+
+![](man/figures/posterior_primates_consensus_joss.png)
+
+> The evolutionary relationship between primates,
+> going from the past (left) to the present (right).
+> It shows that humans and chimps are the two species that are closest related.
+> H = Human, C = Chimp, G = Gorilla, O = Orangutan, S = Siamang.
+
+The evolutionary history of species leaves its traces in DNA, the 
+heritable material that contains the blueprint of an organism's features.
+The DNA consists of a 4 letter alphabet, which encodes the features of an organism.
+Each letter of this alphabet is named after one of the four nucleotides, 
+that are the encoding part of a DNA molecule.
+The DNA we have in our cells are a mix between our mother's and father's DNA,
+with a few novel mutations added.
+Because -at least theoretically- any human woman can produce offspring with 
+any human man, the DNA of our species gets mixed and novel mutations can
+spread through our population. As a consequence,
+the DNA between humans is more simular, then when compared to the DNA of any 
+other species. 
+
+![](man/figures/alignment_joss.png)
+
+> Schematic figure of the DNA sequences of 4 hypothetical species.
+> Species are numbered 1 to 4.
+> Of each species, 40 nucleotides are known.
+> Cells with identical colors depict the same nucleotide.
+
+Nowadays, we know the DNA sequences of many species. With these genetic
+codes, we should be able to reconstruct the evolutionary history of all 
+species. An evolutionary history is commonly depicted by a tree-like
+figure, called a phylogeny, or simply 'tree'. The field of phylogenetics 
+aims to construct the 'best' phylogeny from a the genetic codes of species.
 
 ![](man/figures/alignment_joss.png)
 ![](man/figures/arrow.png)
 ![](man/figures/phylogeny_joss.png)
-Caption: phylogenetics in a nutshell: deriving the evolutionary history
-of species (at the right) from their DNA sequences (at the left)
 
-``mcbette`` is an R package that helps to pick the best model. conclude 
-the evolutionary history of species from their DNA sequences. 
-The 'best way', in this context, is that what is 'simple enough, but not 
-simpler'. 
+> phylogenetics in a nutshell: deriving the evolutionary history
+> of species (at the right) from their DNA sequences (at the left)
 
-``mcbette`` builds heavily upon the ``babette`` R package [@Bilderbeek:2018],
-that uses the tool 
+Constructing a phylogeny, however, is non-trivial, due to the many ways
+to do so. A researcher needs to pick one model of how evolution works,
+for example, how DNA mutates, how mutations vary between different species
+and how frequent speciations and extinctions are. The problem is, that there 
+are many models to pick from.
 
-``Gala`` was designed to be used by 
-both astronomical researchers and by
-students in courses on gravitational dynamics or astronomy. It has already been
-used in a number of scientific publications [@Pearson:2017] and has also been
-used in graduate courses on Galactic dynamics to, e.g., provide interactive
-visualizations of textbook material [@Binney:2008]. The combination of speed,
-design, and support for Astropy functionality in ``Gala`` will enable exciting
-scientific explorations of forthcoming data releases from the *Gaia* mission
-[@gaia] by students and experts alike.
+![](man/figures/mcbette_logo.png)
 
-# Mathematics
+> ``mcbette`` logo
+
+``mcbette`` is an R package that helps to pick the 'best' model. 
+The 'best', in this context, is the model that is 'simple enough, but not 
+simpler'. In more precise term, ``mcbette`` does a model comparison (hence 
+the `mc`) between multiple suggested evolutionary models and shows
+which one is best. The winner of this comparison is assumed to result
+in the best phylogenies, with the same definition of 'best'.
+
+To go into more detail, ``mcbette`` estimates the marginal likelihood of an
+evolutionary model, from a given alignment. The marginal likelihood, also called 'evidence',
+is a measure of probability that the evolutionary model will result in
+the given alignment. The marginal likelihood is very hard to calculate, 
+so instead, sscientists have developed ways to estimate it. 
+
 
 
 |site_model_name |clock_model_name |tree_prior_name | marg_log_lik| marg_log_lik_sd|    weight|
@@ -65,16 +101,21 @@ scientific explorations of forthcoming data releases from the *Gaia* mission
 |TN93            |strict           |yule            |    -179.0459|        2.446301| 0.6810869|
 |GTR             |strict           |yule            |    -183.4157|        2.636430| 0.0086181|
 
+> Example ``mcbette`` output of a model comparison of four evolutionary models.
+> The first three columns summarize the evolutionary model, which consists of
+> a site model, clock model and tree prior. 
+> The last three columns show the result of a ``mcbette`` run,
+> showing the estimated marginal likelihood, the error in this estimation
+> and the relative model weight.
+> The 'best' model is the third model, as it has the highest relative model weight.
 
-Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
-
-Double dollars make self-standing equations:
-
-$$\Theta(x) = \left\{\begin{array}{l}
-0\textrm{ if } x < 0\cr
-1\textrm{ else}
-\end{array}\right.$$
-
+``mcbette`` is aimed to be used by anyone interested in phylogenetics.
+``mcbette`` builds heavily upon the ``babette`` R package [@Bilderbeek:2018],
+where ``babette`` is an R package to call the phylogenetic 
+tool 'BEAST2' [@Bouckaert:2019]. Additionally, ``mcbette`` uses the novel 'NS'
+'BEAST2' package [@Russel:2019] to do the actual model comparison.
+With ``mcbette`` it will be 'as easy as possible, but not easier' to pick a 
+best evolutionary model.
 
 # Citations
 
@@ -82,21 +123,7 @@ Citations to entries in paper.bib should be in
 [rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
 format.
 
-For a quick reference, the following citation commands can be used:
-- `@author:2001`  ->  "Author et al. (2001)"
-- `[@author:2001]` -> "(Author et al., 2001)"
-- `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
-
-# Figures
-
-Figures can be included like this: ![Example figure.](figure.png)
-
-# Acknowledgements
-
-We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
-Oh, and support from Kathryn Johnston during the genesis of this project.
-
-# References
-
-
+ * `@Bilderbeek:2018`: Bilderbeek, Richèl JC, and Rampal S. Etienne. "babette: BEAUti 2, BEAST 2 and Tracer for R." Methods in Ecology and Evolution (2018). https://doi.org/10.1111/2041-210X.13032
+ * `@Bouckaert:2019` Bouckaert R., Vaughan T.G., Barido-Sottani J., Duchêne S., Fourment M., Gavryushkina A., et al. (2019) BEAST 2.5: An advanced software platform for Bayesian evolutionary analysis. PLoS computational biology, 15(4), e1006650.
+ * `@Russel:2019` Russel, Patricio Maturana, et al. "Model selection and parameter inference in phylogenetics using nested sampling." Systematic biology 68.2 (2019): 219-233.
 
