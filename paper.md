@@ -62,9 +62,7 @@ species. An evolutionary history is commonly depicted by a tree-like
 figure, called a phylogeny, or simply 'tree'. The field of phylogenetics 
 aims to construct the 'best' phylogeny from a the genetic codes of species.
 
-![](man/figures/alignment_joss.png)
-![](man/figures/arrow.png)
-![](man/figures/phylogeny_joss.png)
+![](man/figures/combined.png)
 
 > phylogenetics in a nutshell: deriving the evolutionary history
 > of species (at the right) from their DNA sequences (at the left)

@@ -1,0 +1,3 @@
+#!/bin/bash
+convert +append alignment_joss.png arrow.png phylogeny_joss.png combined.png
+
