@@ -157,4 +157,6 @@
 #' @importFrom beautier create_xml_declaration
 #' @importFrom beautier create_yule_tree_prior
 #' @importFrom beastier create_beast2_options
+#' @importFrom beastier is_beast2_installed
+#' @importFrom mauricer is_beast2_ns_pkg_installed
 NULL

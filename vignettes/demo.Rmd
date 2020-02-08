@@ -41,12 +41,12 @@ To use `mcbette`, BEAST2 and the BEAST2 `NS` package must be installed:
 ```{r}
 if (rappdirs::app_dir()$os == "win") {
   message("'mcbette' can only run on Linux and MacOS")
-} else if (!beastier::is_beast2_installed()) {
+} else if (!is_beast2_installed()) {
   message(
     "BEAST2 must be installed. ",
     "Tip: use 'beastier::install_beast2()'"
   )
-} else if (!mauricer::is_beast2_ns_pkg_installed()) {
+} else if (!is_beast2_ns_pkg_installed()) {
   message(
     "The BEAST2 'NS' package must be installed. ",
     "Tip: use 'mauricer::install_beast2_pkg(\"NS\")'"
@@ -86,15 +86,15 @@ only differing in their nucleotide substitution model:
 
 ```{r}
 if (can_run_mcbette()) {
-  inference_model_1 <- beautier::create_test_ns_inference_model(
-    site_model = beautier::create_jc69_site_model()   
+  inference_model_1 <- create_test_ns_inference_model(
+    site_model = create_jc69_site_model()   
   )
-  inference_model_2 <- beautier::create_test_ns_inference_model(
-    site_model = beautier::create_gtr_site_model()   
+  inference_model_2 <- create_test_ns_inference_model(
+    site_model = create_gtr_site_model()   
   )
   inference_models <- c(list(inference_model_1), list(inference_model_2))
   
-  df <- mcbette::est_marg_liks(
+  df <- est_marg_liks(
     fasta_filename = fasta_filename, 
     inference_models = inference_models
   )
