@@ -17,16 +17,15 @@ RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 URL: https://github.com/richelbilderbeek/mcbette
 BugReports: https://github.com/richelbilderbeek/mcbette/issues
-Depends:
+Imports:
     babette,
     beautier (>= 2.3),
     beastier (>= 2.0.25),
     mauricer,
-    tracerer
-Imports:
     knitr,
     Rmpfr,
-    testit
+    testit,
+    tracerer
 Suggests:
     ape,
     devtools,
