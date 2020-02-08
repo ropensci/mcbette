@@ -13,9 +13,20 @@ Model Comparison using `babette` [Bilderbeek & Etienne, 2018]
 using the BEAST2 [Bouckaert et al., 2019] nested sampling package
 as described in [Russell et al., 2019].
 
-### Installation
+## Installation
 
-:warning: `mcbette` only works on Linux and Mac
+:warning: `mcbette` only works on Linux and Mac.
+
+`mcbette` depends on the [rJava](https://cran.r-project.org/package=rJava) 
+and [Rmpfr](https://cran.r-project.org/package=Rmpfr) packages.
+
+On Linux, to install these, do (as root):
+
+```
+apt install r-cran-rjava libmpfr-dev
+```
+
+After this, installing `mcbette` is easy:
 
 ```r
 remotes::install_github("richelbilderbeek/mcbette")
