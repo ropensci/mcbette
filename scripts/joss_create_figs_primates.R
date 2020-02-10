@@ -102,7 +102,10 @@ for (i in seq_len(n_models)) {
 }
 
 # Plot the consensus tree
-consensus_tree <- ape::consensus(posterior_treeses[[winning_model_index]])
+consensus_tree <- ape::consensus(
+  posterior_treeses[[winning_model_index]],
+  p = 0.5
+)
 
 png(filename = consensus_posterior_filename, width = 400, height = 300)
 ape::plot.phylo(
@@ -111,3 +114,8 @@ ape::plot.phylo(
   edge.width = 2.0
 )
 dev.off()
+
+ggtree::ggtree(
+  consensus_tree,
+  ladderize = FALSE
+) + ggtree::geom_tiplab(cex = 10)
