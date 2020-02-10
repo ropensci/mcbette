@@ -135,6 +135,21 @@ test_that("use, 1 model", {
   expect_equal(1.0, df$weight)
 })
 
+test_that("use, 1 model", {
+
+  if (!can_run_mcbette()) return()
+
+  expect_output(
+    est_marg_liks(
+      fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
+      inference_models = list(beautier::create_test_ns_inference_model()),
+      beast2_optionses = list(create_mcbette_beast2_options()),
+      verbose = TRUE
+    )
+  )
+})
+
+
 test_that("use, 1 model, CBS", {
 
   if (!can_run_mcbette()) return()
