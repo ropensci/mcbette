@@ -138,7 +138,6 @@
 #' @importFrom beautier create_test_treelog
 #' @importFrom beautier create_tn93_site_model
 #' @importFrom beautier create_tracelog
-#' @importFrom beautier create_trait_set_string
 #' @importFrom beautier create_tree_prior
 #' @importFrom beautier create_tree_prior_bd
 #' @importFrom beautier create_tree_prior_cbs
