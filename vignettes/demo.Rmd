@@ -39,7 +39,9 @@ library(mcbette)
 To use `mcbette`, BEAST2 and the BEAST2 `NS` package must be installed:
 
 ```{r}
-mcbette_self_test()
+tryCatch(
+  mcbette_self_test()
+)
 ```
 
 If you've just gotten a message that you need to install either
