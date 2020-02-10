@@ -39,9 +39,19 @@ library(mcbette)
 To use `mcbette`, BEAST2 and the BEAST2 `NS` package must be installed:
 
 ```{r}
-tryCatch(
-  mcbette_self_test()
-)
+if (rappdirs::app_dir()$os == "win") {
+  message("'mcbette' can only run on Linux and MacOS")
+} else if (!beastier::is_beast2_installed()) {
+  message(
+    "BEAST2 must be installed. ",
+    "Tip: use 'beastier::install_beast2()'"
+  )
+} else if (!mauricer::is_beast2_ns_pkg_installed()) {
+  message(
+    "The BEAST2 'NS' package must be installed. ",
+    "Tip: use 'mauricer::install_beast2_pkg(\"NS\")'"
+  )
+}
 ```
 
 If you've just gotten a message that you need to install either
