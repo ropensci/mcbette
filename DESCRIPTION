@@ -24,6 +24,7 @@ Imports:
     mauricer,
     knitr,
     Rmpfr,
+    stringr,
     testit,
     tracerer
 Suggests:

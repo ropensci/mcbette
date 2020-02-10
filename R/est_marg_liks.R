@@ -27,11 +27,11 @@
 #'   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 #'
 #'   # Create two inference models
-#'   inference_model_1 <- create_test_ns_inference_model(
-#'     site_model = create_jc69_site_model()
+#'   inference_model_1 <- beautier::create_test_ns_inference_model(
+#'     site_model = beautier::create_jc69_site_model()
 #'   )
-#'   inference_model_2 <- create_test_ns_inference_model(
-#'     site_model = create_hky_site_model()
+#'   inference_model_2 <- beautier::create_test_ns_inference_model(
+#'     site_model = beautier::create_hky_site_model()
 #'   )
 #'   inference_models <- list(inference_model_1, inference_model_2)
 #'

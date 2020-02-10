@@ -14,10 +14,10 @@ if (can_run_mcbette()) {
   # An example FASTA file
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
-  inference_model_1 <- create_test_ns_inference_model(
+  inference_model_1 <- beautier::create_test_ns_inference_model(
     site_model = beautier::create_jc69_site_model()
   )
-  inference_model_2 <- create_test_ns_inference_model(
+  inference_model_2 <- beautier::create_test_ns_inference_model(
     site_model = beautier::create_gtr_site_model()
   )
   inference_models <- c(list(inference_model_1), list(inference_model_2))

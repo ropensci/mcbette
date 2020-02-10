@@ -47,7 +47,7 @@ if (can_run_mcbette()) {
 
   # A testing inference model with inaccurate (thus fast) marginal
   # likelihood estimation
-  inference_model <- create_test_ns_inference_model()
+  inference_model <- beautier::create_test_ns_inference_model()
 
   # Setup the options for BEAST2 to be able to call BEAST2 packages
   beast2_options <- create_mcbette_beast2_options()
