@@ -25,11 +25,11 @@ test_that("use", {
     )
 
     # Restore current state
-    if (was_beast2_ns_pkg_installed) {
-      install_beast2_pkg("NS")
-    }
     if (was_beast2_installed) {
       install_beast2()
+    }
+    if (was_beast2_ns_pkg_installed) {
+      install_beast2_pkg("NS")
     }
   }
 })

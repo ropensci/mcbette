@@ -1,6 +1,5 @@
 test_that("use", {
 
-  skip("Not now")
   if (is_on_travis()) {
     # Store the current state
     was_beast2_installed <- is_beast2_installed()
