@@ -1,5 +1,6 @@
 test_that("use", {
 
+  skip("Not now")
   if (is_on_travis()) {
     # Store the current state
     was_beast2_installed <- is_beast2_installed()
@@ -38,6 +39,7 @@ test_that("use", {
       install_beast2()
     }
     if (was_beast2_ns_pkg_installed) {
+      expect_true(is_beast2_installed())
       expect_false(is_beast2_ns_pkg_installed())
       install_beast2_pkg("NS")
     }
