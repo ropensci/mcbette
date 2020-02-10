@@ -77,7 +77,7 @@ posterior_treeses <- list()
 # Do an inference with each of the inference models
 for (i in seq_len(n_models)) {
   # Must be a regular MCMC
-  inference_models[[i]]$mcmc <- create_mcmc()
+  inference_models[[i]]$mcmc <- beautier::create_mcmc()
 
   # Inference
   output <- babette::bbt_run_from_model(
