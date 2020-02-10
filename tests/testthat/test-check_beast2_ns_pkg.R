@@ -4,7 +4,7 @@ test_that("use", {
     # Store the current state
     was_beast2_installed <- is_beast2_installed()
     was_beast2_ns_installed <- FALSE
-    if (was_beast2_installed) {
+    if (was_beast2_ns_installed) {
       was_beast2_ns_pkg_installed <- is_beast2_ns_pkg_installed()
     }
 
@@ -28,7 +28,7 @@ test_that("use", {
     if (was_beast2_installed) {
       install_beast2()
     }
-    if (was_beast2_ns_pkg_installed) {
+    if (was_beast2_ns_installed) {
       install_beast2_pkg("NS")
     }
   }
