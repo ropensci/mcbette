@@ -35,10 +35,10 @@ dev.off()
 
 # Create the inference models
 inference_models <- list()
-inference_models[[1]] <- create_inference_model(site_model = create_jc69_site_model())
-inference_models[[2]] <- create_inference_model(site_model = create_hky_site_model())
-inference_models[[3]] <- create_inference_model(site_model = create_tn93_site_model())
-inference_models[[4]] <- create_inference_model(site_model = create_gtr_site_model())
+inference_models[[1]] <- beautier::create_inference_model(site_model = beautier::create_jc69_site_model())
+inference_models[[2]] <- beautier::create_inference_model(site_model = beautier::create_hky_site_model())
+inference_models[[3]] <- beautier::create_inference_model(site_model = beautier::create_tn93_site_model())
+inference_models[[4]] <- beautier::create_inference_model(site_model = beautier::create_gtr_site_model())
 expect_equal(n_models, length(inference_models))
 # Prepare BEAST2 options
 beast2_optionses <- rep(
@@ -49,7 +49,7 @@ expect_equal(n_models, length(beast2_optionses))
 
 # Do marginal likelihood estimation
 for (i in seq_len(n_models)) {
-  inference_models[[i]]$mcmc <- create_ns_mcmc()
+  inference_models[[i]]$mcmc <- beautier::create_ns_mcmc()
 }
 marg_liks <- mcbette::est_marg_liks(
   fasta_filename = fasta_filename,

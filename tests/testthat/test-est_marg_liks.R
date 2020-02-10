@@ -141,7 +141,9 @@ test_that("use, 1 model", {
 
   expect_output(
     est_marg_liks(
-      fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
+      fasta_filename = system.file(
+        "extdata", "simple.fas", package = "mcbette"
+      ),
       inference_models = list(beautier::create_test_ns_inference_model()),
       beast2_optionses = list(create_mcbette_beast2_options()),
       verbose = TRUE

@@ -27,7 +27,6 @@ test_that("use", {
     # 3. Check for nothing installed
     uninstall_beast2()
     expect_true(!is_beast2_installed())
-    #expect_true(!is_beast2_ns_pkg_installed())
     expect_error(
       mcbette_self_test(),
       "BEAST2 not installed. Tip: use beastier::install_beast2()"
