@@ -44,8 +44,8 @@ test_that("use", {
     }
     expect_equal(was_beast2_installed, is_beast2_installed())
     expect_true(
-        !was_beast2_ns_installed ||
-        was_beast2_ns_installed == is_beast2_ns_pkg_installed()
+        !was_beast2_ns_pkg_installed ||
+        was_beast2_ns_pkg_installed == is_beast2_ns_pkg_installed()
     )
   }
 })
