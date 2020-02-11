@@ -24,9 +24,7 @@ Imports:
     mauricer,
     knitr,
     Rmpfr,
-    stringr,
-    testit,
-    tracerer
+    testit
 Suggests:
     ape,
     devtools,
@@ -38,7 +36,9 @@ Suggests:
     rappdirs,
     rmarkdown,
     spelling,
-    testthat (>= 2.1.0)
+    stringr,
+    testthat (>= 2.1.0),
+    tracerer
 Language: en-US
 Encoding: UTF-8
 SystemRequirements: BEAST2 (https://www.beast2.org/)
