@@ -107,15 +107,23 @@ consensus_tree <- ape::consensus(
   p = 0.5
 )
 
+if (1 == 2) {
+  consensus_tree <- ape::read.tree(
+    text = "((((human:1, chimp:1):1, gorilla:2):1, orangutan:3):1, siamang:4);"
+  )
+}
+
 png(filename = consensus_posterior_filename, width = 400, height = 300)
 ape::plot.phylo(
   consensus_tree,
   cex = 2.0,
-  edge.width = 2.0
+  edge.width = 2.0,
+  x.lim = c(0, 7),
+  y.lim = c(0, 6)
 )
 dev.off()
 
 ggtree::ggtree(
   consensus_tree,
   ladderize = FALSE
-) + ggtree::geom_tiplab(cex = 10)
+) + ggtree::geom_tiplab(cex = 10) + ggtree::xlim(0, 6)
