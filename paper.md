@@ -21,12 +21,12 @@ bibliography: paper.bib
 
 All life on Earth is related to one another.
 We, humans, inherit our characteristics from our parents, which they
-inherted from theirs. Going back in time long enough (say, between 4-7 million
+inherited from theirs. Going back in time long enough (say, between 4-7 million
 years), we'll arrive at the ancestors that gave rise to both humans and chimps.
 At that early time, the human-chimp-ancestor mixed their heritable
 features freely, as all members of that species could produce offspring with
 another of the opposite gender. Alas, this would not last, as the 
-human-chimp-ancestor evolved into to seperate species. From that moment on,
+human-chimp-ancestor evolved into to separate species. From that moment on,
 newly evolved features in humans, would stay in humans only.
 
 ![](man/figures/posterior_primates_consensus_joss.png)
@@ -46,7 +46,7 @@ with a few novel mutations added.
 Because -at least theoretically- any human woman can produce offspring with 
 any human man, the DNA of our species gets mixed and novel mutations can
 spread through our population. As a consequence,
-the DNA between humans is more simular, then when compared to the DNA of any 
+the DNA between humans is more similar, then when compared to the DNA of any 
 other species. 
 
 ![](man/figures/alignment_joss.png)
