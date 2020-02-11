@@ -34,7 +34,7 @@ newly evolved features in humans, would stay in humans only.
 > The evolutionary relationship between primates,
 > going from the past (left) to the present (right).
 > It shows that humans and chimps are the two species that are closest related.
-> H = Human, C = Chimp, G = Gorilla, O = Orangutan, S = Siamang.
+> Horizontal lines are not to scale.
 
 The evolutionary history of species leaves its traces in DNA, the 
 heritable material that contains the blueprint of an organism's features.
