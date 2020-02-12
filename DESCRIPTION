@@ -21,6 +21,7 @@ Imports:
     babette,
     beautier (>= 2.3),
     beastier (>= 2.0.25),
+    curl,
     mauricer,
     knitr,
     Rmpfr,
