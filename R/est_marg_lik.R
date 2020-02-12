@@ -63,15 +63,10 @@ est_marg_lik <- function(
   beast2_options = create_mcbette_beast2_options(),
   os = rappdirs::app_dir()$os
 ) {
-  if (!beastier::is_beast2_installed()) {
-    stop("BEAST2 not installed. Tip: use beastier::install_beast2()")
-  }
-  mcbette::check_beast2_ns_pkg()
   beautier::check_file_exists(fasta_filename)
   beautier::check_inference_model(inference_model)
   beastier::check_beast2_options(beast2_options)
   beastier::check_os(os)
-
   if (os == "win") {
     stop(
       "mcbette must run on Linux or Mac.\n",
@@ -80,6 +75,11 @@ est_marg_lik <- function(
       "in a scripted way"
     )
   }
+  if (!beastier::is_beast2_installed()) {
+    stop("BEAST2 not installed. Tip: use beastier::install_beast2()")
+  }
+  mcbette::check_beast2_ns_pkg()
+
   if (!beastier::is_bin_path(beast2_options$beast2_path)) {
     stop(
       "Use the binary BEAST2 executable for marginal likelihood estimation. \n",

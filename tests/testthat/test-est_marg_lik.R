@@ -67,8 +67,6 @@ test_that("use, too few taxa for CBS", {
 
 test_that("abuse", {
 
-  if (!can_run_mcbette()) return()
-
   # fasta_filename
   expect_error(
     est_marg_lik(fasta_filename = "nonsense"),
