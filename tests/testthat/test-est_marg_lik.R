@@ -1,7 +1,6 @@
 test_that("use, JC69, strict, Yule", {
 
-  if (!beastier::is_beast2_installed()) return()
-  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!can_run_mcbette()) return()
 
   marg_lik <- est_marg_lik(
     fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
@@ -30,8 +29,7 @@ test_that("use, JC69, strict, Yule", {
 
 test_that("use, all non-default: GTR, RLN, BD", {
 
-  if (!beastier::is_beast2_installed()) return()
-  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!can_run_mcbette()) return()
 
   expect_silent(
     est_marg_lik(
@@ -51,9 +49,7 @@ test_that("use, all non-default: GTR, RLN, BD", {
 
 test_that("use, too few taxa for CBS", {
 
-  if (!beastier::is_beast2_installed()) return()
-  if (!mauricer::is_beast2_ns_pkg_installed()) return()
-
+  if (!can_run_mcbette()) return()
 
   expect_error(
     est_marg_lik(
@@ -71,8 +67,7 @@ test_that("use, too few taxa for CBS", {
 
 test_that("abuse", {
 
-  if (!beastier::is_beast2_installed()) return()
-  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!can_run_mcbette()) return()
 
   # fasta_filename
   expect_error(
@@ -119,8 +114,7 @@ test_that("abuse", {
 
 test_that("more particles, less sd", {
 
-  if (!beastier::is_beast2_installed()) return()
-  if (!mauricer::is_beast2_ns_pkg_installed()) return()
+  if (!can_run_mcbette()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   inference_model_1 <- beautier::create_test_ns_inference_model(
