@@ -241,7 +241,7 @@ test_that("abuse", {
       fasta_filename = fasta_filename,
       inference_models = list(
         beautier::create_inference_model(
-          mcmc = beautier::create_neste_sampling_mcmc()
+          mcmc = beautier::create_ns_mcmc()
         )
       ),
       os = "win"
