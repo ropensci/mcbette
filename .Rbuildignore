@@ -3,6 +3,7 @@
 ^NEWS\.md$
 ^\.Rproj\.user$
 ^\.travis\.yml$
+^\.github$
 ^alignment_joss\.log$
 ^alignment_joss\.posterior\.log$
 ^alignment_joss\.posterior\.trees$
