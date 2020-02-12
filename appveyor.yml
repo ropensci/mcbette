@@ -18,17 +18,13 @@ cache:
 # Inspired on https://github.com/juliasilge/tidytext
 environment:
   global:
-    WARNINGS_ARE_ERRORS: 1
+    WARNINGS_ARE_ERRORS: 0
     USE_RTOOLS: true
 
 build_script:
-  - # travis-tool.sh install magrittr
   - travis-tool.sh install_deps
-  - R -e "library(beastier); beastier::install_beast2()"
-  - travis-tool.sh install_r babette
-  - travis-tool.sh install_github jimhester/covr
-  - travis-tool.sh install_github jimhester/lintr
-  - travis-tool.sh install_github MangoTheCat/goodpractice
+  - Rscript -e "beastier::install_beast2()"
+  - Rscript -e "mauricer::install_beast2_pkg(\"NS\")"
 
 test_script:
   - travis-tool.sh run_tests
