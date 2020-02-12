@@ -4,21 +4,19 @@ mcbette_report <- function() {
   print("****************")
   print("* Dependencies *")
   print("****************")
-  print(paste0("beautier version: ", packageVersion("beautier")))
-  print(paste0("tracerer version: ", packageVersion("tracerer")))
-  print(paste0("beastier version: ", packageVersion("beastier")))
-  print(paste0("mauricer version: ", packageVersion("mauricer")))
-  print(paste0("babette version: ", packageVersion("babette")))
+  print(paste0("beautier version: ", utils::packageVersion("beautier")))
+  print(paste0("tracerer version: ", utils::packageVersion("tracerer")))
+  print(paste0("beastier version: ", utils::packageVersion("beastier")))
+  print(paste0("mauricer version: ", utils::packageVersion("mauricer")))
+  print(paste0("babette version: ", utils::packageVersion("babette")))
   print("***************")
   print("* BEAST2      *")
   print("***************")
   print(paste0("Is BEAST2 installed: ", beastier::is_beast2_installed()))
-  if (beastier::is_beast2_installed())
-  {
+  if (beastier::is_beast2_installed()) {
     print(paste0("BEAST2 version: ", beastier::get_beast2_version()))
   }
-  if (beastier::is_beast2_installed())
-  {
+  if (beastier::is_beast2_installed()) {
     print("*******************")
     print("* BEAST2 packages *")
     print("*******************")
@@ -33,13 +31,13 @@ mcbette_report <- function() {
       print(
         paste0(
           "BEAST2 NS installed version: ",
-          df[ df$name == "NS",  ]$installed_version
+          df[df$name == "NS", ]$installed_version
         )
       )
       print(
         paste0(
           "BEAST2 NS latest version: ",
-          df[ df$name == "NS",  ]$latest_version
+          df[df$name == "NS", ]$latest_version
         )
       )
     }
@@ -47,5 +45,5 @@ mcbette_report <- function() {
   print("***************")
   print("* sessionInfo *")
   print("***************")
-  print(sessionInfo())
+  print(utils::sessionInfo())
 }
