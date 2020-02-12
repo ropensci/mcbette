@@ -17,7 +17,7 @@ mcbette_report <- function() {
     print(paste0("BEAST2 version: ", beastier::get_beast2_version()))
     print(
       paste0(
-        "BEAST2 default path: ", 
+        "BEAST2 default path: ",
         beastier::get_default_beast2_bin_path()
       )
     )
