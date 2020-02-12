@@ -34,6 +34,33 @@ beastier::install_beast2()
 mauricer::install_beast2_pkg("NS")
 ```
 
+## Example
+
+```r
+library(mcbette)
+
+# An example FASTA file
+fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+
+# A testing inference model with inaccurate (thus fast) marginal
+# likelihood estimation
+inference_model <- beautier::create_test_ns_inference_model()
+
+# Estimate the marginal likelihood
+marg_lik <- est_marg_lik(
+  fasta_filename = fasta_filename,
+  inference_model = inference_model
+)
+
+cat(marg_lik$marg_log_lik)
+```
+
+Results in:
+
+```
+-15.93936
+```
+
 ## References
 
  * Bilderbeek, Richel JC, and Rampal S. Etienne. "babette: BEAUti 2, BEAST 2 and Tracer for R." Methods in Ecology and Evolution (2018). https://doi.org/10.1111/2041-210X.13032
