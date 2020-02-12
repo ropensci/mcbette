@@ -1,11 +1,28 @@
-# `mcbette`
+---
+output: github_document
+---
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# mcbette
+
+<!-- badges: start -->
 [![peer-review](https://badges.ropensci.org/360_status.svg)](https://github.com/ropensci/software-review/issues/360)
 
 Branch   |[![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)                                                                 |[![AppVeyor logo](man/figures/AppVeyor.png)](https://www.appveyor.com)                                                                                                            |[![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)
 ---------|-------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------
 `master` |[![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/mcbette)  |[![Build status](https://ci.appveyor.com/api/projects/status/co69b54ljo135b5x/branch/master?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/mcbette/branch/master)    |[![codecov.io](https://codecov.io/github/richelbilderbeek/mcbette/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/mcbette?branch=master)
 `develop`|[![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/mcbette) |[![Build status](https://ci.appveyor.com/api/projects/status/co69b54ljo135b5x/branch/develop?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/mcbette/branch/develop)  |[![codecov.io](https://codecov.io/github/richelbilderbeek/mcbette/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/mcbette?branch=develop)
+<!-- badges: end -->
 
 ![](man/figures/mcbette_logo.png)
 
@@ -37,7 +54,9 @@ mauricer::install_beast2_pkg("NS")
 
 ## Example
 
-```r
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
 library(mcbette)
 
 # An example FASTA file
@@ -55,13 +74,6 @@ marg_lik <- est_marg_lik(
 
 cat(marg_lik$marg_log_lik)
 ```
-
-Results in:
-
-```
--15.93936
-```
-
 
 ## References
 
