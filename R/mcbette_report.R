@@ -15,6 +15,12 @@ mcbette_report <- function() {
   print(paste0("Is BEAST2 installed: ", beastier::is_beast2_installed()))
   if (beastier::is_beast2_installed()) {
     print(paste0("BEAST2 version: ", beastier::get_beast2_version()))
+    print(
+      paste0(
+        "BEAST2 default path: ", 
+        beastier::beastier::get_default_beast2_bin_path()
+      )
+    )
   }
   if (beastier::is_beast2_installed()) {
     print("*******************")
