@@ -28,9 +28,7 @@ Show the results of running the following script:
 
 ```r
 library(mcbette)
-sessionInfo()
-beastier::get_beast2_version()
-knitr::kable(mauricer::get_beast2_pkg_names())
+mcbette::mcbette_report()
 ```
 
 **Additional context**
