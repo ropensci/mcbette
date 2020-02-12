@@ -84,14 +84,6 @@ est_marg_liks <- function(
   verbose = FALSE,
   os = rappdirs::app_dir()$os
 ) {
-  if (os == "win") {
-    stop(
-      "mcbette must run on Linux or Mac.\n",
-      "\n",
-      "It is not yet supported to call BEAST2 with packages installed\n",
-      "in a scripted way"
-    )
-  }
   if (!file.exists(fasta_filename)) {
     stop(
       "'fasta_filename' must be the name of an existing FASTA file.\n",
@@ -114,6 +106,14 @@ est_marg_liks <- function(
         "Tip: use 'beautier::create_ns_mcmc'"
       )
     }
+  }
+  if (os == "win") {
+    stop(
+      "mcbette must run on Linux or Mac.\n",
+      "\n",
+      "It is not yet supported to call BEAST2 with packages installed\n",
+      "in a scripted way"
+    )
   }
   testit::assert(file.exists(fasta_filename))
   testit::assert(beastier::is_beast2_installed())
