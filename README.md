@@ -62,7 +62,9 @@ marg_lik <- est_marg_lik(
 )
 
 cat(marg_lik$marg_log_lik)
-#> -20.00817
+#> -14.01602
+cat(marg_lik$marg_log_lik_sd)
+#> 1.78702
 ```
 
 ## References

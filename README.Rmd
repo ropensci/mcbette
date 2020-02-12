@@ -73,6 +73,7 @@ marg_lik <- est_marg_lik(
 )
 
 cat(marg_lik$marg_log_lik)
+cat(marg_lik$marg_log_lik_sd)
 ```
 
 ## References
