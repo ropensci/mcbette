@@ -204,6 +204,9 @@ test_that("use with same RNG seed must result in identical output", {
 
 test_that("abuse", {
 
+
+  if (!can_run_mcbette()) return()
+
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
   # no FASTA file
