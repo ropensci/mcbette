@@ -6,7 +6,8 @@ Newest versions at top.
 
 ### NEW FEATURES
 
- * None
+ * Add `mcbette_self_test` to self-test `mcbette`
+ * Add `mcbette_report` to print all information needed for a bug report
 
 ### MINOR IMPROVEMENTS
 
