@@ -14,6 +14,8 @@ Newest versions at top.
  * Separated the package `mcbette` from a script running it.
    The latter can be found at 
    [https://github.com/richelbilderbeek/mcbette_run](https://github.com/richelbilderbeek/mcbette_run)
+ * Add AppVeyor build, even though the core feature of `mcbette` 
+   requires Linux or MacOS
 
 ### BUG FIXES
 
