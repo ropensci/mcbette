@@ -80,17 +80,19 @@ are many models to pick from.
 ``mcbette`` is an R package that helps to pick the 'best' model. 
 The 'best', in this context, is the model that is 'simple enough, but not 
 simpler'. In more precise term, ``mcbette`` does a model comparison (hence 
-the `mc`) between multiple suggested evolutionary models and shows
+the `mc` in its name) between multiple suggested evolutionary models and shows
 which one is best. The winner of this comparison is assumed to result
-in the best phylogenies, with the same definition of 'best'.
+in the best phylogenies (with the same definition of 'best').
 
 To go into more detail: ``mcbette`` estimates the marginal likelihood of an
 evolutionary model, from a given alignment. 
 The marginal likelihood, also called 'evidence',
 is a measure of probability that the evolutionary model will result in
 the given alignment. Marginal likelihoods can be compared directly
-across models, as they have the same unit, regardless of the complexity
-of the evolutionary model. Additionally, the marginal likelihood
+across models, as they have the same unit (that is, unitless), 
+regardless of the complexity
+of the evolutionary model. 
+Additionally, the marginal likelihood
 of models with more parameters are in a natural way penalized for being 
 complex. In other words: the highest marginal likelihood will be found 
 for models that are justifiably complex, instead of the model that has the
