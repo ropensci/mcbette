@@ -78,14 +78,14 @@ est_marg_lik <- function(
   if (!beastier::is_beast2_installed()) {
     stop("BEAST2 not installed. Tip: use beastier::install_beast2()")
   }
-  mcbette::check_beast2_ns_pkg()
-
   if (!beastier::is_bin_path(beast2_options$beast2_path)) {
     stop(
       "Use the binary BEAST2 executable for marginal likelihood estimation. \n",
       "Actual path: ", beast2_options$beast2_path
     )
   }
+  mcbette::check_beast2_ns_pkg()
+
   beautier::check_nested_sampling_mcmc(inference_model$mcmc)
 
   testit::assert(file.exists(fasta_filename))
