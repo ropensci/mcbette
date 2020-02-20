@@ -3,6 +3,11 @@
 mcbette_report <- function() {
   kat <- function(x) cat(x, sep = "\n")
   kat("****************")
+  kat("* mcbette *")
+  kat("****************")
+  kat(paste0("Can run mcbette: ", mcbette::can_run_mcbette()))
+  kat(paste0("OS: ", rappdirs::app_dir()$os))
+  kat("****************")
   kat("* Dependencies *")
   kat("****************")
   kat(paste0("beautier version: ", utils::packageVersion("beautier")))
