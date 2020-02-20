@@ -36,7 +36,7 @@ set_mcbette_state <- function(mcbette_state) {
 
   # Install NS if requested
   if (isTRUE(mcbette_state$ns_installed) &&
-    isFALSE(cur_state$ns_installed)
+    !isTRUE(cur_state$ns_installed)
   ) {
     mauricer::install_beast2_pkg("NS")
   }
