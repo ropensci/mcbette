@@ -2,9 +2,9 @@
 #' @export
 mcbette_report <- function() {
   kat <- function(x) cat(x, sep = "\n")
-  kat("****************")
-  kat("* mcbette      *")
-  kat("****************")
+  kat("***********")
+  kat("* mcbette *")
+  kat("***********")
   kat(paste0("Can run mcbette: ", mcbette::can_run_mcbette()))
   kat(paste0("OS: ", rappdirs::app_dir()$os))
   kat("****************")
@@ -15,9 +15,9 @@ mcbette_report <- function() {
   kat(paste0("beastier version: ", utils::packageVersion("beastier")))
   kat(paste0("mauricer version: ", utils::packageVersion("mauricer")))
   kat(paste0("babette version: ", utils::packageVersion("babette")))
-  kat("***************")
-  kat("* BEAST2      *")
-  kat("***************")
+  kat("**********")
+  kat("* BEAST2 *")
+  kat("**********")
   kat(paste0("Java version: ", beastier::get_java_version()))
   kat(paste0("Is BEAST2 installed: ", beastier::is_beast2_installed()))
   if (beastier::is_beast2_installed()) {
