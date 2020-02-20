@@ -92,6 +92,16 @@ test_that("abuse", {
     "'input_filename' must be an element of an 'beast2_options'"
   )
 
+  expect_error(
+    est_marg_lik(
+      fasta_filename = fasta_filename,
+      beast2_options = create_beast2_options(
+        beast2_path = beastier::get_default_beast2_jar_path()
+      )
+    ),
+    "Use the binary BEAST2 executable for marginal likelihood estimation"
+  )
+
   # os
   expect_error(
     est_marg_lik(
