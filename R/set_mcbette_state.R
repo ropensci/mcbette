@@ -40,4 +40,7 @@ set_mcbette_state <- function(mcbette_state) {
   ) {
     mauricer::install_beast2_pkg("NS")
   }
+
+  # Must match now, remove this test if all pass
+  testthat::expect_identical(mcbette_state, get_mcbette_state())
 }
