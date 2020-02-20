@@ -1,7 +1,7 @@
 #' Create a \link{mcbette} report, to be used when reporting bugs
 #' @export
 mcbette_report <- function() {
-  kat <- function(x) { cat(x, sep = "\n") }
+  kat <- function(x) cat(x, sep = "\n")
   kat("****************")
   kat("* Dependencies *")
   kat("****************")
