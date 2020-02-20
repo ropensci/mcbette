@@ -22,5 +22,6 @@
 ^primates\.trees$
 ^run\.R$
 ^scripts$
-
 ^README\.Rmd$
+^README\.html$
+
