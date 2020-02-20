@@ -57,9 +57,11 @@ after_success:
   # Goodpractice
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 60 Rscript -e 'goodpractice::gp()'; fi
   # Report
+  - Rscript -e 'remotes::install_github("richelbilderbeek/mcbette")'
   - Rscript -e 'mcbette::mcbette_report()'
 
 after_failure:
   # Report
+  - Rscript -e 'remotes::install_github("richelbilderbeek/mcbette")'
   - Rscript -e 'mcbette::mcbette_report()'
 
