@@ -25,7 +25,7 @@ check_mcbette_state <- function(mcbette_state) {
   # States that make sense
   if (!mcbette_state$beast2_installed) {
     if (!beautier::is_one_na(mcbette_state$ns_installed)) {
-      stop("If 'beast2_installed' is TRUE, 'ns_installed' must be NA")
+      stop("If 'beast2_installed' is FALSE, 'ns_installed' must be NA")
     }
   }
 }

@@ -29,8 +29,8 @@ test_that("all transitions", {
   # 5          | Neither     | BEAST2 + NS                                      # nolint this is no code
   # 6          | BEAST2 + NS | Neither                                          # nolint this is no code
   #
-  state_neither   <- list(beast2_installed = FALSE, ns_installed = FALSE)
-  state_beast2    <- list(beast2_installed = TRUE, ns_installed = NA)
+  state_neither   <- list(beast2_installed = FALSE, ns_installed = NA)
+  state_beast2    <- list(beast2_installed = TRUE, ns_installed = FALSE)
   state_beast2_ns <- list(beast2_installed = TRUE, ns_installed = TRUE)
   expect_silent(check_mcbette_state(state_neither))
   expect_silent(check_mcbette_state(state_beast2))

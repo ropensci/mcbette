@@ -5,8 +5,8 @@ test_that("use", {
     before <- get_mcbette_state()
 
     # Create the tree states
-    state_neither   <- list(beast2_installed = FALSE, ns_installed = FALSE)
-    state_beast2    <- list(beast2_installed = TRUE, ns_installed = NA)
+    state_neither   <- list(beast2_installed = FALSE, ns_installed = NA)
+    state_beast2    <- list(beast2_installed = TRUE, ns_installed = FALSE)
     state_beast2_ns <- list(beast2_installed = TRUE, ns_installed = TRUE)
     expect_silent(check_mcbette_state(state_neither))
     expect_silent(check_mcbette_state(state_beast2))

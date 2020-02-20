@@ -17,11 +17,11 @@ test_that("the only three valid states", {
   # Invalid
   expect_error(
     check_mcbette_state(list(beast2_installed = FALSE, ns_installed = TRUE)),
-    "If 'beast2_installed' is TRUE, 'ns_installed' must be NA"
+    "If 'beast2_installed' is FALSE, 'ns_installed' must be NA"
   )
   expect_error(
     check_mcbette_state(list(beast2_installed = FALSE, ns_installed = FALSE)),
-    "If 'beast2_installed' is TRUE, 'ns_installed' must be NA"
+    "If 'beast2_installed' is FALSE, 'ns_installed' must be NA"
   )
 })
 
