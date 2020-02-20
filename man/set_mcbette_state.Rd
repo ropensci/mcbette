@@ -26,3 +26,11 @@ which is a \link{list} with the following elements:
 \description{
 Set the \link{mcbette} state.
 }
+\seealso{
+\itemize{
+  \item Use \link{get_mcbette_state} to
+    get the current \link{mcbette} state
+  \item Use \link{check_mcbette_state} to
+    check the current \link{mcbette} state
+}
+}

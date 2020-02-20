@@ -1,5 +1,12 @@
 #' Set the \link{mcbette} state.
 #' @inheritParams default_params_doc
+#' @seealso
+#' \itemize{
+#'   \item Use \link{get_mcbette_state} to
+#'     get the current \link{mcbette} state
+#'   \item Use \link{check_mcbette_state} to
+#'     check the current \link{mcbette} state
+#' }
 #' @export
 set_mcbette_state <- function(mcbette_state) {
   mcbette::check_mcbette_state(mcbette_state)
