@@ -60,6 +60,8 @@ before_script:
   - beast2_ns_pkg_installed_before=$(Rscript -e 'mauricer::is_beast2_ns_pkg_installed()')
   - echo $beast2_installed_before
   - echo $beast2_ns_pkg_installed_before
+  - if [ "$beast2_installed_before" != "$beast2_installed_after" ]; then echo "ERROR! THEY DIFFER!"; exit 1; fi
+  - if [ "$beast2_ns_pkg_installed_before" != "$beast2_ns_pkg_installed_after" ]; then echo "ERROR! THEY DIFFER!"; exit 1; fi
 
 script:
   - travis_wait 30 R CMD build .
