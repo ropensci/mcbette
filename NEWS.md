@@ -2,7 +2,7 @@
 
 Newest versions at top.
 
-## `mcbette` 1.8.3 (unrelease)
+## `mcbette` 1.8.3 (unreleased)
 
 ### NEW FEATURES
 

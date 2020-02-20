@@ -1,21 +1,23 @@
 #' Create a \link{mcbette} report, to be used when reporting bugs
 #' @export
 mcbette_report <- function() {
-  print("****************")
-  print("* Dependencies *")
-  print("****************")
-  print(paste0("beautier version: ", utils::packageVersion("beautier")))
-  print(paste0("tracerer version: ", utils::packageVersion("tracerer")))
-  print(paste0("beastier version: ", utils::packageVersion("beastier")))
-  print(paste0("mauricer version: ", utils::packageVersion("mauricer")))
-  print(paste0("babette version: ", utils::packageVersion("babette")))
-  print("***************")
-  print("* BEAST2      *")
-  print("***************")
-  print(paste0("Is BEAST2 installed: ", beastier::is_beast2_installed()))
+  kat <- function(x) { cat(x, sep = "\n") }
+  kat("****************")
+  kat("* Dependencies *")
+  kat("****************")
+  kat(paste0("beautier version: ", utils::packageVersion("beautier")))
+  kat(paste0("tracerer version: ", utils::packageVersion("tracerer")))
+  kat(paste0("beastier version: ", utils::packageVersion("beastier")))
+  kat(paste0("mauricer version: ", utils::packageVersion("mauricer")))
+  kat(paste0("babette version: ", utils::packageVersion("babette")))
+  kat("***************")
+  kat("* BEAST2      *")
+  kat("***************")
+  kat(paste0("Java version: ", beastier::get_java_version()))
+  kat(paste0("Is BEAST2 installed: ", beastier::is_beast2_installed()))
   if (beastier::is_beast2_installed()) {
-    print(paste0("BEAST2 version: ", beastier::get_beast2_version()))
-    print(
+    kat(paste0("BEAST2 version: ", beastier::get_beast2_version()))
+    kat(
       paste0(
         "BEAST2 default path: ",
         beastier::get_default_beast2_bin_path()
@@ -23,10 +25,10 @@ mcbette_report <- function() {
     )
   }
   if (beastier::is_beast2_installed()) {
-    print("*******************")
-    print("* BEAST2 packages *")
-    print("*******************")
-    print(
+    kat("*******************")
+    kat("* BEAST2 packages *")
+    kat("*******************")
+    kat(
       paste0(
         "Is BEAST2 NS package installed: ",
         mauricer::is_beast2_ns_pkg_installed()
@@ -34,13 +36,13 @@ mcbette_report <- function() {
     )
     if (curl::has_internet()) {
       df <- mauricer::get_beast2_pkg_names()
-      print(
+      kat(
         paste0(
           "BEAST2 NS installed version: ",
           df[df$name == "NS", ]$installed_version
         )
       )
-      print(
+      kat(
         paste0(
           "BEAST2 NS latest version: ",
           df[df$name == "NS", ]$latest_version
@@ -48,8 +50,8 @@ mcbette_report <- function() {
       )
     }
   }
-  print("***************")
-  print("* sessionInfo *")
-  print("***************")
+  kat("***************")
+  kat("* sessionInfo *")
+  kat("***************")
   print(utils::sessionInfo())
 }
