@@ -4,6 +4,8 @@ test_that("use", {
 
 test_that("all transitions", {
 
+  if (!beastier::is_on_travis()) return()
+
   before <- get_mcbette_state()
 
   # We'll do the following 6 transitions:
