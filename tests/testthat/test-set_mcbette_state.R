@@ -55,7 +55,7 @@ test_that("all transitions", {
   set_mcbette_state(state_beast2_ns)
 
   # 6          | BEAST2 + NS | Neither
-  set_mcbette_state(neither)
+  set_mcbette_state(state_neither)
 
   # Restore the state
   set_mcbette_state(before)
