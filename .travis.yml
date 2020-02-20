@@ -56,4 +56,10 @@ after_success:
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 60 Rscript -e 'covr::codecov()'; fi
   # Goodpractice
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 60 Rscript -e 'goodpractice::gp()'; fi
+  # Report
+  - Rscript -e 'mcbette::mcbette_report()'
+
+after_failure:
+  # Report
+  - Rscript -e 'mcbette::mcbette_report()'
 
