@@ -174,15 +174,9 @@ est_marg_liks <- function(
     weight = weights,
     ess = esses
   )
-  if (abs(1.0 - sum(weights)) > 0.01) {
-    warning(
-      "Sum of weights should be 1.0. \n",
-      "Actual sum: ", sum(weights), " \n",
-      "Maybe forgot to install libmpfr-dev? \n",
-      "df: \n",
-      knitr::kable(df), " \n"
-    )
-  }
-
+  testthat::expect_true(
+    abs(1.0 - sum(weights)) < 0.01,
+    info = "Sum of weights should be 1.0. Maybe forgot to install libmpfr-dev?"
+  )
   df
 }
