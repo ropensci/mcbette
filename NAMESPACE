@@ -3,6 +3,7 @@
 export(calc_weights)
 export(can_run_mcbette)
 export(check_beast2_ns_pkg)
+export(check_mcbette_state)
 export(create_mcbette_beast2_options)
 export(create_ns_inference_model)
 export(est_marg_lik)

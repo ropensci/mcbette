@@ -17,6 +17,7 @@ default_params_doc(
   fasta_filename,
   inference_model,
   inference_models,
+  mcbette_state,
   mcmc,
   os,
   rng_seed,
@@ -59,6 +60,22 @@ as can be created by \link[beautier]{create_inference_model}}
 
 \item{inference_models}{a list of one or more inference models,
 as can be created by \link[beautier]{create_inference_model}}
+
+\item{mcbette_state}{the \link{mcbette} state,
+which is a \link{list} with the following elements:
+\itemize{
+  \item{
+    beast2_installed
+      \link{TRUE} if BEAST2 is installed,
+      \link{FALSE} otherwise
+  }
+  \item{
+     ns_installed
+      \link{NA} if BEAST2 is not installed.
+      \link{TRUE} if the BEAST2 NS package is installed
+      \link{FALSE} if the BEAST2 NS package is not installed
+  }
+}}
 
 \item{mcmc}{an MCMC for the Nested Sampling run,
 as can be created by \link[beautier]{create_mcmc_nested_sampling}}
