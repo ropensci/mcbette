@@ -57,11 +57,15 @@ after_success:
   # Goodpractice
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 60 Rscript -e 'goodpractice::gp()'; fi
   # Report
+  - Rscript -e "beastier::is_beast2_installed()"
+  - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
   - Rscript -e 'remotes::install_github("richelbilderbeek/mcbette")'
   - Rscript -e 'mcbette::mcbette_report()'
 
 after_failure:
   # Report
+  - Rscript -e "beastier::is_beast2_installed()"
+  - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
   - Rscript -e 'remotes::install_github("richelbilderbeek/mcbette")'
   - Rscript -e 'mcbette::mcbette_report()'
 
