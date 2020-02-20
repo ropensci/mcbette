@@ -25,13 +25,10 @@ get_mcbette_state <- function() {
     beast2_installed = NA,
     ns_installed = NA
   )
-  if (beastier::is_beast2_installed())
-  {
+  if (beastier::is_beast2_installed()) {
     state$beast2_installed <- TRUE
     state$ns_installed <- mauricer::is_beast2_ns_pkg_installed()
-  }
-  else
-  {
+  } else {
     state$beast2_installed <- FALSE
   }
   testthat::expect_silent(check_mcbette_state(state))

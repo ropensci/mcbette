@@ -39,22 +39,22 @@ test_that("all transitions", {
   # First go to state neither
   set_mcbette_state(state_neither)
 
-  # 1          | Neither     | BEAST2
+  # 1          | Neither     | BEAST2                                           # nolint this is no code
   set_mcbette_state(state_beast2)
 
-  # 2          | BEAST2      | BEAST2 + NS
+  # 2          | BEAST2      | BEAST2 + NS                                      # nolint this is no code
   set_mcbette_state(state_beast2_ns)
 
-  # 3          | BEAST2 + NS | BEAST2
+  # 3          | BEAST2 + NS | BEAST2                                           # nolint this is no code
   set_mcbette_state(state_beast2)
 
-  # 4          | BEAST2      | Neither
+  # 4          | BEAST2      | Neither                                          # nolint this is no code
   set_mcbette_state(state_neither)
 
-  # 5          | Neither     | BEAST2 + NS
+  # 5          | Neither     | BEAST2 + NS                                      # nolint this is no code
   set_mcbette_state(state_beast2_ns)
 
-  # 6          | BEAST2 + NS | Neither
+  # 6          | BEAST2 + NS | Neither                                          # nolint this is no code
   set_mcbette_state(state_neither)
 
   # Restore the state

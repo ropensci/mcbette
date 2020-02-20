@@ -2,6 +2,30 @@ test_that("use", {
   expect_silent(check_mcbette_state(get_mcbette_state()))
 })
 
+test_that("the only three valid states", {
+  # Valid
+  expect_silent(
+    check_mcbette_state(list(beast2_installed = FALSE, ns_installed = NA))
+  )
+  expect_silent(
+    check_mcbette_state(list(beast2_installed = TRUE, ns_installed = FALSE))
+  )
+  expect_silent(
+    check_mcbette_state(list(beast2_installed = TRUE, ns_installed = TRUE))
+  )
+
+  # Invalid
+  expect_error(
+    check_mcbette_state(list(beast2_installed = FALSE, ns_installed = TRUE)),
+    "If 'beast2_installed' is TRUE, 'ns_installed' must be NA"
+  )
+  expect_error(
+    check_mcbette_state(list(beast2_installed = FALSE, ns_installed = FALSE)),
+    "If 'beast2_installed' is TRUE, 'ns_installed' must be NA"
+  )
+})
+
+
 test_that("abuse", {
   expect_error(
     check_mcbette_state("nonsense"),
@@ -34,4 +58,5 @@ test_that("abuse", {
   state <- valid_state
   state$ns_installed <- NULL
   expect_error(check_mcbette_state(state))
+
 })
