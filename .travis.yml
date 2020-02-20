@@ -20,6 +20,15 @@ matrix:
     os: osx
     osx_image: xcode9.2
 
+# There is evidence the tests uninstall BEAST2 and/or the packages
+# before and after the tests.
+# These variable allow to verify this
+env:
+  - beast2_installed_before=-1
+  - beast2_installed_after=-1
+  - beast2_ns_pkg_installed_before=-1
+  - beast2_ns_pkg_installed_after=-1
+
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
@@ -46,10 +55,18 @@ before_script:
   - Rscript -e "beastier::is_beast2_installed()"
   - Rscript -e 'mauricer::install_beast2_pkg("NS")'
   - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
+  - beast2_installed_before=$(Rscript -e "beastier::is_beast2_installed()")
+  - beast2_ns_pkg_installed_before=$(Rscript -e 'mauricer::is_beast2_ns_pkg_installed()')
+  - echo $beast2_installed_before
+  - echo $beast2_ns_pkg_installed_before
 
 script:
   - travis_wait 30 R CMD build .
   - travis_wait 40 R CMD check *tar.gz
+  - beast2_installed_after=$(Rscript -e "beastier::is_beast2_installed()")
+  - beast2_ns_pkg_installed_after=$(Rscript -e 'mauricer::is_beast2_ns_pkg_installed()')
+  - echo $beast2_installed_after
+  - echo $beast2_ns_pkg_installed_after
 
 after_success:
   # Codecov
