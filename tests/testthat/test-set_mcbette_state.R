@@ -38,25 +38,33 @@ test_that("all transitions", {
 
   # First go to state neither
   set_mcbette_state(state_neither)
+  expect_identical(state_neither, get_mcbette_state())
 
   # 1          | Neither     | BEAST2                                           # nolint this is no code
   set_mcbette_state(state_beast2)
+  expect_identical(state_beast2, get_mcbette_state())
 
   # 2          | BEAST2      | BEAST2 + NS                                      # nolint this is no code
   set_mcbette_state(state_beast2_ns)
+  expect_identical(state_beast2_ns, get_mcbette_state())
 
   # 3          | BEAST2 + NS | BEAST2                                           # nolint this is no code
   set_mcbette_state(state_beast2)
+  expect_identical(state_beast2, get_mcbette_state())
 
   # 4          | BEAST2      | Neither                                          # nolint this is no code
   set_mcbette_state(state_neither)
+  expect_identical(state_neither, get_mcbette_state())
 
   # 5          | Neither     | BEAST2 + NS                                      # nolint this is no code
   set_mcbette_state(state_beast2_ns)
+  expect_identical(state_beast2_ns, get_mcbette_state())
 
   # 6          | BEAST2 + NS | Neither                                          # nolint this is no code
   set_mcbette_state(state_neither)
+  expect_identical(state_neither, get_mcbette_state())
 
   # Restore the state
   set_mcbette_state(before)
+  expect_identical(before, get_mcbette_state())
 })

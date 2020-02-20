@@ -37,5 +37,8 @@ test_that("use", {
 
     # Restore current state
     set_mcbette_state(before)
+
+    # Check if everything is the same again
+    expect_identical(before, get_mcbette_state())
   }
 })
