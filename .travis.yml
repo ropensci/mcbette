@@ -24,10 +24,11 @@ matrix:
 # before and after the tests.
 # These variable allow to verify this
 env:
-  - beast2_installed_before=-1
-  - beast2_installed_after=-1
-  - beast2_ns_pkg_installed_before=-1
-  - beast2_ns_pkg_installed_after=-1
+  global:
+    - beast2_installed_before=-1
+    - beast2_installed_after=-1
+    - beast2_ns_pkg_installed_before=-1
+    - beast2_ns_pkg_installed_after=-1
 
 r_github_packages:
   - jimhester/covr
