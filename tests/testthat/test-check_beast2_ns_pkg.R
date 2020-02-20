@@ -2,21 +2,25 @@ test_that("use", {
 
   if (is_on_travis()) {
     # Store the current state
-    was_beast2_installed <- is_beast2_installed()
-    was_beast2_ns_installed <- FALSE
-    if (was_beast2_ns_installed) {
-      was_beast2_ns_pkg_installed <- is_beast2_ns_pkg_installed()
-    }
+    before <- get_mcbette_state()
+
+    # Create the tree states
+    state_neither   <- list(beast2_installed = FALSE, ns_installed = FALSE)
+    state_beast2    <- list(beast2_installed = TRUE, ns_installed = NA)
+    state_beast2_ns <- list(beast2_installed = TRUE, ns_installed = TRUE)
+    expect_silent(check_mcbette_state(state_neither))
+    expect_silent(check_mcbette_state(state_beast2))
+    expect_silent(check_mcbette_state(state_beast2_ns))
+
 
     # 1. Check for BEAST2 and BEAST2 NS package installed
-    if (!is_beast2_installed()) install_beast2()
-    if (!is_beast2_ns_pkg_installed()) install_beast2_pkg("NS")
+    set_mcbette_state(state_beast2_ns)
     expect_true(is_beast2_installed())
     expect_true(is_beast2_ns_pkg_installed())
     expect_silent(check_beast2_ns_pkg())
 
     # 2. Check for BEAST2 installed
-    uninstall_beast2_pkg("NS")
+    set_mcbette_state(state_beast2)
     expect_true(is_beast2_installed())
     expect_true(!is_beast2_ns_pkg_installed())
     expect_error(
@@ -25,16 +29,6 @@ test_that("use", {
     )
 
     # Restore current state
-    if (!was_beast2_installed) {
-      uninstall_beast2()
-    }
-    if (was_beast2_ns_installed) {
-      install_beast2_pkg("NS")
-    }
-    expect_equal(was_beast2_installed, is_beast2_installed())
-    expect_true(
-      !was_beast2_ns_installed ||
-        was_beast2_ns_installed == is_beast2_ns_pkg_installed()
-    )
+    set_mcbette_state(before)
   }
 })
