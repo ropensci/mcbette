@@ -9,6 +9,11 @@ Newest versions at top.
 
  * Add `mcbette_self_test` to self-test `mcbette`
  * Add `mcbette_report` to print all information needed for a bug report
+ * Add `get_mcbette_state` and `set_mcbette_state` to store and restore
+   the `mcbette` state. `check_mcbette_state` verifies if `mcbette` is in
+   one of these three states: (1) both BEAST2 and the BEAST NS are installed,
+   (2) only BEAST2 is installed (3) neither BEAST2 and the BEAST NS are 
+   installed
 
 ### MINOR IMPROVEMENTS
 
