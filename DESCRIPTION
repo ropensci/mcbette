@@ -23,7 +23,6 @@ Imports:
     beastier (>= 2.0.25),
     curl,
     mauricer,
-    knitr,
     Rmpfr,
     testit
 Suggests:
@@ -31,6 +30,7 @@ Suggests:
     devtools,
     ggplot2,
     hunspell,
+    knitr,
     lintr,
     nLTT,
     phangorn,
