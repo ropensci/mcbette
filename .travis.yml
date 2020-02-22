@@ -20,7 +20,7 @@ matrix:
     os: osx
     osx_image: xcode9.2
 
-# There is evidence the tests uninstall BEAST2 and/or the packages
+# It may be that this package uninstall BEAST2 and/or the packages
 # before and after the tests.
 # These variable allow to verify this
 env:
