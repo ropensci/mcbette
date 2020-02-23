@@ -67,14 +67,6 @@ est_marg_lik <- function(
   beautier::check_inference_model(inference_model)
   beastier::check_beast2_options(beast2_options)
   beastier::check_os(os)
-  if (os == "win") {
-    stop(
-      "mcbette must run on Linux or Mac.\n",
-      "\n",
-      "It is not yet supported to call BEAST2 with packages installed\n",
-      "in a scripted way"
-    )
-  }
   if (!beastier::is_beast2_installed()) {
     stop("BEAST2 not installed. Tip: use beastier::install_beast2()")
   }
@@ -82,6 +74,14 @@ est_marg_lik <- function(
     stop(
       "Use the binary BEAST2 executable for marginal likelihood estimation. \n",
       "Actual path: ", beast2_options$beast2_path
+    )
+  }
+  if (os == "win") {
+    stop(
+      "mcbette must run on Linux or Mac.\n",
+      "\n",
+      "It is not yet supported to call BEAST2 with packages installed\n",
+      "in a scripted way"
     )
   }
   mcbette::check_beast2_ns_pkg()
