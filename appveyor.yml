@@ -29,7 +29,11 @@ build_script:
 test_script:
   - travis-tool.sh run_tests
 
+on_success:
+  - Rscript -e "mcbette::mcbette_report()"
+
 on_failure:
+  - Rscript -e "mcbette::mcbette_report()"
   - 7z a failure.zip *.Rcheck\*
   - appveyor PushArtifact failure.zip
 
