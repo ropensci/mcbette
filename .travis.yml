@@ -31,12 +31,12 @@ env:
     - beast2_ns_pkg_installed_after=-1
 
 r_github_packages:
-  - ropensci/beautier
-  - ropensci/beastier
-  - ropensci/babette
   - jimhester/covr
   - jimhester/lintr
   - MangoTheCat/goodpractice
+  #- ropensci/beautier
+  #- ropensci/beastier
+  #- ropensci/babette
 
 before_install:
   # ImageMagick
