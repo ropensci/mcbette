@@ -19,9 +19,9 @@
 #'     single inference mode
 #' }
 #' @examples
-#' if (can_run_mcbette()) {
+#' library(testthat)
 #'
-#'   library(testthat)
+#' if (can_run_mcbette()) {
 #'
 #'   # Use an example FASTA file
 #'   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
@@ -172,11 +172,13 @@ est_marg_liks <- function(
     marg_log_lik = marg_log_liks,
     marg_log_lik_sd = marg_log_lik_sds,
     weight = weights,
-    ess = esses
+    ess = esses,
+    stringsAsFactors = TRUE
   )
   testthat::expect_true(
     abs(1.0 - sum(weights)) < 0.01,
     info = "Sum of weights should be 1.0. Maybe forgot to install libmpfr-dev?"
   )
+  testthat::expect_true(is.factor(df$site_model_name))
   df
 }

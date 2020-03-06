@@ -21,8 +21,12 @@ as returned by \code{\link[beautier]{create_clock_model}}}
 \item{tree_prior}{a tree priors,
 as returned by \code{\link[beautier]{create_tree_prior}}}
 
-\item{mcmc}{one MCMC
-as returned by \code{\link[beautier]{create_mcmc}}}
+\item{mcmc}{one MCMC.
+Use \code{\link[beautier]{create_mcmc}} to create an MCMC.
+Use \code{\link[beautier]{create_ns_mcmc}} to create an MCMC
+  for a Nested Sampling run.
+Use \code{\link[beautier]{check_mcmc}} to check if an MCMC is valid.
+Use \code{\link[beautier]{rename_mcmc_filenames}} to rename the filenames in an MCMC.}
 }
 \description{
 To do so, the inference model is created as usual (see
