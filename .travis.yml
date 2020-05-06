@@ -34,9 +34,6 @@ r_github_packages:
   - jimhester/covr
   - jimhester/lintr
   - MangoTheCat/goodpractice
-  #- ropensci/beautier
-  #- ropensci/beastier
-  #- ropensci/babette
 
 before_install:
   # From https://stackoverflow.com/a/20042195
