@@ -2,6 +2,24 @@
 
 Newest versions at top.
 
+## `mcbette` 1.8.4 (2020-05-21)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * Use CRAN versions of babette packages
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.8.3 (2020-02-24)
 
 ### NEW FEATURES
