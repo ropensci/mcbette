@@ -56,9 +56,9 @@ Estimate the marginal likelihoods for all combinations of
 site, clock and tree models
 }
 \examples{
-if (can_run_mcbette()) {
+library(testthat)
 
-  library(testthat)
+if (can_run_mcbette()) {
 
   # Use an example FASTA file
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")

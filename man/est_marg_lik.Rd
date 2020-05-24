@@ -30,8 +30,6 @@ a \link{list} showing the estimated marginal likelihoods
   \item \code{marg_log_lik}: estimated marginal (natural) log likelihood
   \item \code{marg_log_lik_sd}: estimated error of \code{marg_log_lik}
   \item \code{esses} the Effective Sample Size
-  \item \code{estimates} the estimated marginal (natural) log likelihoods
-  \item \code{trees} the jointly-estimated posterior trees
 }
 }
 \description{
