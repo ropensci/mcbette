@@ -154,3 +154,29 @@ test_that("more particles, less sd", {
     marg_lik_high_sd$marg_log_lik_sd
   )
 })
+
+test_that("use BEAST2 installed at a different location", {
+
+  if (!is_on_travis()) return()
+
+  folder_name <- tempfile()
+  beastier::install_beast2(folder_name = folder_name)
+  expect_true(beastier::is_beast2_installed(folder_name = folder_name))
+
+  bin_path <- beastier::get_default_beast2_bin_path(beast2_folder = folder_name)
+  expect_true(file.exists(bin_path))
+  beast2_options <- create_mcbette_beast2_options(
+    beast2_bin_path = beast2_bin_path
+  )
+  expect_silent(beastier::check_beast2_options(beast2_options))
+
+  fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+
+  expect_silent(
+    est_marg_lik(
+      fasta_filename = fasta_filename,
+      inference_model = beautier::create_test_ns_inference_model(),
+      beast2_options = beast2_options
+    )
+  )
+})
