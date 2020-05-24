@@ -76,6 +76,12 @@ cat(marg_lik$marg_log_lik)
 cat(marg_lik$marg_log_lik_sd)
 ```
 
+## Using an existing BEAST2 installation
+
+When BEAST2 is already installed, yet at a non-default location,
+one can use the `beast2_bin_path` argument in
+`create_mcbette_beast2_options`.
+
 ## References
 
  * Bilderbeek, Richel JC, and Rampal S. Etienne. "babette: BEAUti 2, BEAST 2 and Tracer for R." Methods in Ecology and Evolution (2018). https://doi.org/10.1111/2041-210X.13032
