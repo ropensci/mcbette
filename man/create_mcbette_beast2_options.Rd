@@ -71,3 +71,6 @@ expect_true(beastier::is_bin_path(beast2_options$beast2_path))
 \seealso{
 use \link[beastier]{create_beast2_options}
 }
+\author{
+Richèl J.C. Bilderbeek
+}

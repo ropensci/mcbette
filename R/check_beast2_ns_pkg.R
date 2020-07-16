@@ -1,5 +1,6 @@
 #' Checks if the BEAST2 'NS' package is installed.
 #'
+#' Checks if the BEAST2 'NS' package is installed.
 #' Will \link{stop} if not
 #' @export
 check_beast2_ns_pkg <- function() {

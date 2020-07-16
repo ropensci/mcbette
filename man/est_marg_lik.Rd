@@ -80,7 +80,7 @@ if (can_run_mcbette()) {
 \seealso{
 \itemize{
   \item \link{can_run_mcbette}: see if 'mcbette' can run
-  \item \link{est_marg_lik}: estimate multiple marginal likelihoods
+  \item \link{est_marg_liks}: estimate multiple marginal likelihoods
 }
 }
 \author{

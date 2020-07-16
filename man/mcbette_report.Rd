@@ -2,10 +2,24 @@
 % Please edit documentation in R/mcbette_report.R
 \name{mcbette_report}
 \alias{mcbette_report}
-\title{Create a \link{mcbette} report, to be used when reporting bugs}
+\title{Create a \link{mcbette} report,
+to be used when reporting bugs}
 \usage{
 mcbette_report()
 }
+\value{
+nothing. It is intended that the output (not
+the return value) is copy-pasted from screen.
+}
 \description{
-Create a \link{mcbette} report, to be used when reporting bugs
+Create a \link{mcbette} report,
+to be used when reporting bugs
+}
+\examples{
+library(testthat)
+
+expect_output(mcbette_report())
+}
+\author{
+Richèl J.C. Bilderbeek
 }

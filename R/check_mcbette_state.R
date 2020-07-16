@@ -1,7 +1,9 @@
 #' Check if the \code{mcbette_state} is valid.
 #'
+#' Check if the \code{mcbette_state} is valid.
 #' Will \link{stop} otherwise.
 #' @inheritParams default_params_doc
+#' @author Richèl J.C. Bilderbeek
 #' @export
 check_mcbette_state <- function(mcbette_state) {
   if (!is.list(mcbette_state)) {

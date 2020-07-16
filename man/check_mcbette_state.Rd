@@ -24,5 +24,9 @@ which is a \link{list} with the following elements:
 }}
 }
 \description{
+Check if the \code{mcbette_state} is valid.
 Will \link{stop} otherwise.
+}
+\author{
+Richèl J.C. Bilderbeek
 }

@@ -1,5 +1,6 @@
 #' Can 'mcbette' run?
 #'
+#' Can 'mcbette' run?
 #' Will return \link{TRUE} if:
 #' \itemize{
 #'   \item (1) Running on Linux or MacOS

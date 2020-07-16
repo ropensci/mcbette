@@ -13,7 +13,7 @@ interpret_bayes_factor(bayes_factor)
 a string with the interpretation in English
 }
 \description{
-Interpretation from [1].
+Interpret a Bayes factor, using the interpretation from [1].
 }
 \details{
 \itemize{
@@ -29,4 +29,7 @@ expect_equal(interpret_bayes_factor(8.5), "substantial")
 expect_equal(interpret_bayes_factor(12.5), "strong")
 expect_equal(interpret_bayes_factor(85.0), "very strong")
 expect_equal(interpret_bayes_factor(123.0), "decisive")
+}
+\author{
+Richèl J.C. Bilderbeek
 }

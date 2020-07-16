@@ -10,7 +10,7 @@
 #' @seealso
 #' \itemize{
 #'   \item \link{can_run_mcbette}: see if 'mcbette' can run
-#'   \item \link{est_marg_lik}: estimate multiple marginal likelihoods
+#'   \item \link{est_marg_liks}: estimate multiple marginal likelihoods
 #' }
 #' @examples
 #' if (can_run_mcbette()) {
@@ -71,7 +71,7 @@ est_marg_lik <- function(
   if (!beastier::is_bin_path(beast2_options$beast2_path)) {
     stop(
       "Use the binary BEAST2 executable for marginal likelihood estimation. \n",
-      "Actual path: ", beast2_options$beast2_path
+      "Current path: ", beast2_options$beast2_path
     )
   }
   if (os == "win") {

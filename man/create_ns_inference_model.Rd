@@ -29,6 +29,7 @@ Use \code{\link[beautier]{check_mcmc}} to check if an MCMC is valid.
 Use \code{\link[beautier]{rename_mcmc_filenames}} to rename the filenames in an MCMC.}
 }
 \description{
+Create an inference model to measure the evidence of.
 To do so, the inference model is created as usual (see
 \link[beautier]{create_inference_model}), except
 for using a Nested Sampling MCMC (see \link[beautier]{create_ns_mcmc})
@@ -41,4 +42,7 @@ if (can_run_mcbette()) {
   inference_model <- create_ns_inference_model()
   expect_true(beautier::is_nested_sampling_mcmc(inference_model$mcmc))
 }
+}
+\author{
+Richèl J.C. Bilderbeek
 }

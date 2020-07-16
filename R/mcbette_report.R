@@ -1,4 +1,12 @@
-#' Create a \link{mcbette} report, to be used when reporting bugs
+#' Create a \link{mcbette} report,
+#' to be used when reporting bugs
+#' @return nothing. It is intended that the output (not
+#' the return value) is copy-pasted from screen.
+#' @examples
+#' library(testthat)
+#'
+#' expect_output(mcbette_report())
+#' @author Richèl J.C. Bilderbeek
 #' @export
 mcbette_report <- function() {
   kat <- function(x) cat(x, sep = "\n")
@@ -59,4 +67,5 @@ mcbette_report <- function() {
   kat("* sessionInfo *")
   kat("***************")
   print(utils::sessionInfo())
+  invisible(NULL)
 }

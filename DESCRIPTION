@@ -2,9 +2,24 @@ Package: mcbette
 Title: Model Comparison Using 'babette'
 Version: 1.8.4
 Authors@R: c(
-    person("Richèl J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")),
-    person("Joëlle", "Barido-Sottani", role = "rev", comment = "Joëlle reviewed the package for rOpenSci, see https://github.com/ropensci/software-review/issues/360")),
-    person("Vikram", "Baliga", role = "rev", comment = c("Vikram reviewed the package for rOpenSci, see https://github.com/ropensci/software-review/issues/360", ORCID = "0000-0002-9367-8974"))))
+    person(
+      "Richèl J.C.", "Bilderbeek", 
+      email = "richel@richelbilderbeek.nl", 
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0003-1107-7049")
+    ),
+    person(
+      "Joëlle", "Barido-Sottani", role = "rev", 
+      comment = c("Joëlle reviewed the package for rOpenSci, see https://github.com/ropensci/software-review/issues/360")
+    ),
+    person(
+      "Vikram", "Baliga", role = "rev",
+      comment = c(
+        "Vikram reviewed the package for rOpenSci, see https://github.com/ropensci/software-review/issues/360",
+        ORCID = "0000-0002-9367-8974"
+      )
+    )
+  )
 Maintainer: Richèl J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: 'BEAST2' (<https://www.beast2.org>) is a widely used
     Bayesian phylogenetic tool, that uses DNA/RNA/protein data

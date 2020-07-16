@@ -11,6 +11,7 @@
 #' # To use mcbette, the binary executable of BEAST2 must be used
 #' # (instead of the .jar file)
 #' expect_true(beastier::is_bin_path(beast2_options$beast2_path))
+#' @author Richèl J.C. Bilderbeek
 #' @export
 create_mcbette_beast2_options <- function(
   input_filename = beastier::create_temp_input_filename(),
