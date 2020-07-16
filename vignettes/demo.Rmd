@@ -87,15 +87,15 @@ only differing in their nucleotide substitution model:
 ```{r}
 if (can_run_mcbette()) {
   inference_model_1 <- beautier::create_test_ns_inference_model(
-    site_model = beautier::create_jc69_site_model()   
+    site_model = beautier::create_jc69_site_model()
   )
   inference_model_2 <- beautier::create_test_ns_inference_model(
-    site_model = beautier::create_gtr_site_model()   
+    site_model = beautier::create_gtr_site_model()
   )
   inference_models <- c(list(inference_model_1), list(inference_model_2))
-  
+
   df <- est_marg_liks(
-    fasta_filename = fasta_filename, 
+    fasta_filename = fasta_filename,
     inference_models = inference_models
   )
   knitr::kable(df)
