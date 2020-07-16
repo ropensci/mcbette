@@ -2,7 +2,9 @@
 #' indicating \code{mcbette} usage, as well as the correct
 #' BEAST2 binary type
 #' @inheritParams beastier::default_params_doc
-#' @seealso use \link[beastier]{create_beast2_options}
+#' @seealso to create a regular (that is, not intended
+#' for model comparison) BEAST2 options structure,
+#' use  \link[beastier]{create_beast2_options}
 #' @examples
 #' library(testthat)
 #'

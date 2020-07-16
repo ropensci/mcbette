@@ -18,7 +18,7 @@ est_marg_lik(
 as can be created by \link[beautier]{create_inference_model}}
 
 \item{beast2_options}{a \code{beast2_options} structure,
-as can be created by \link[beastier]{create_beast2_options}.}
+as can be created by \link{create_mcbette_beast2_options}.}
 
 \item{os}{name of the operating system,
 must be \code{unix} (Linux, Mac) or \code{win} (Windows)}

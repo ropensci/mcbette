@@ -69,7 +69,9 @@ beast2_options <- create_mcbette_beast2_options()
 expect_true(beastier::is_bin_path(beast2_options$beast2_path))
 }
 \seealso{
-use \link[beastier]{create_beast2_options}
+to create a regular (that is, not intended
+for model comparison) BEAST2 options structure,
+use  \link[beastier]{create_beast2_options}
 }
 \author{
 Richèl J.C. Bilderbeek
