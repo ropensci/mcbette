@@ -1,5 +1,5 @@
 ---
-title: 'mcbette: model comparison using 'babette''
+title: 'mcbette: model comparison using babette'
 tags:
   - R
   - phylogenetics
@@ -48,7 +48,7 @@ with a few novel mutations added.
 Because -at least theoretically- any human woman can produce offspring with 
 any human man, the DNA of our species gets mixed and novel mutations can
 spread through our population. As a consequence,
-the DNA between humans is more similar, then when compared to the DNA of any 
+the DNA between humans is more similar, than when compared to the DNA of any 
 other species. 
 
 ![](man/figures/alignment_joss.png)
@@ -62,7 +62,7 @@ Nowadays, we know the DNA sequences of many species. With these genetic
 codes, we should be able to reconstruct the evolutionary history of all 
 species. An evolutionary history is commonly depicted by a tree-like
 figure, called a phylogeny, or simply 'tree'. The field of phylogenetics 
-aims to construct the 'best' phylogeny from a the genetic codes of species.
+aims to construct the 'best' phylogeny from the genetic codes of species.
 
 ![](man/figures/combined.png)
 
