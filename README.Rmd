@@ -26,9 +26,14 @@ Branch   |[![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)  
 
 ![](man/figures/mcbette_logo.png)
 
-`mcbette` allows for doing a Model Comparison using `babette` 
-[Bilderbeek & Etienne, 2018]. 
-It does so using the BEAST2 [Bouckaert et al., 2019] nested sampling package
+`mcbette` allows for doing a Model Comparison using `babette` (hence the name),
+that is, given a (say, DNA) alignment, it compares multiple phylogenetic inference 
+models to find the model that is likeliest to generate that alignment.
+With this, one can find the phylogenetic inference model that is
+simple enough, but not too simple.
+
+To do so, `mcbette` uses `babette` [Bilderbeek and Etienne, 2018] with the addition
+of using the BEAST2 [Bouckaert et al., 2019] nested sampling package
 as described in [Russell et al., 2019].
 
 ## Installation
