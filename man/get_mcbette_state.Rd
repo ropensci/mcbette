@@ -26,9 +26,5 @@ a \link{list} with the following elements:
 Get the current state of \link{mcbette}
 }
 \examples{
-library(testthat)
-
-state <- get_mcbette_state()
-expect_true("beast2_installed" \%in\% names(state))
-expect_true("ns_installed" \%in\% names(state))
+get_mcbette_state()
 }

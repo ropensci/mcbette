@@ -9,13 +9,7 @@
 #' @param bayes_factor Bayes factor to be interpreted
 #' @return a string with the interpretation in English
 #' @examples
-#' library(testthat)
-#' expect_equal(interpret_bayes_factor(0.5), "in favor of other model")
-#' expect_equal(interpret_bayes_factor(1.5), "barely worth mentioning")
-#' expect_equal(interpret_bayes_factor(8.5), "substantial")
-#' expect_equal(interpret_bayes_factor(12.5), "strong")
-#' expect_equal(interpret_bayes_factor(85.0), "very strong")
-#' expect_equal(interpret_bayes_factor(123.0), "decisive")
+#' interpret_bayes_factor(0.5)
 #' @author Richèl J.C. Bilderbeek
 #' @export
 interpret_bayes_factor <- function(bayes_factor) {

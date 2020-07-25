@@ -3,19 +3,11 @@
 #' @return the weight of each marginal likelihood estimate,
 #' which will sum up to 1.0
 #' @examples
-#' library(testthat)
-#'
 #' # Evidences (aka marginal likelihoods) can be very small
 #' evidences <- c(0.0001, 0.0002, 0.0003, 0.0004)
 #'
-#' # These are the weight we expect from these evidences
-#' expected <- c(0.1, 0.2, 0.3, 0.4)
-#'
-#' # Calculate the weights
-#' created <- calc_weights(evidences)
-#'
-#' expect_equal(created, expected)
-#' expect_equal(sum(created), 1.0)
+#' # Sum will be 1.0
+#' calc_weights(evidences)
 #' @author Richèl J.C. Bilderbeek
 #' @export
 calc_weights <- function(

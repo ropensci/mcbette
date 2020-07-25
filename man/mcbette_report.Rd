@@ -16,9 +16,7 @@ Create a \link{mcbette} report,
 to be used when reporting bugs
 }
 \examples{
-library(testthat)
-
-expect_output(mcbette_report())
+mcbette_report()
 }
 \author{
 Richèl J.C. Bilderbeek

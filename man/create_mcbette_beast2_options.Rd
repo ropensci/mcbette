@@ -60,13 +60,7 @@ indicating \code{mcbette} usage, as well as the correct
 BEAST2 binary type
 }
 \examples{
-library(testthat)
-
-beast2_options <- create_mcbette_beast2_options()
-
-# To use mcbette, the binary executable of BEAST2 must be used
-# (instead of the .jar file)
-expect_true(beastier::is_bin_path(beast2_options$beast2_path))
+create_mcbette_beast2_options()
 }
 \seealso{
 to create a regular (that is, not intended

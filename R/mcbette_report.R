@@ -3,9 +3,7 @@
 #' @return nothing. It is intended that the output (not
 #' the return value) is copy-pasted from screen.
 #' @examples
-#' library(testthat)
-#'
-#' expect_output(mcbette_report())
+#' mcbette_report()
 #' @author Richèl J.C. Bilderbeek
 #' @export
 mcbette_report <- function() {
