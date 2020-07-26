@@ -86,14 +86,27 @@ print(
 #> [1] "JC69 strict yule"
 ```
 
+The JC69 site model assumes that the four DNA nucleotides are equally
+likely to mutate from/to. The strict clock model assumes that mutation
+rates of all species are equal. The Yule tree model assumes that new
+species form at a constant rate for an extinction rate of zero.
+
 The competing model has a different site, clock and tree model:
 
 ``` r
 inference_model_2 <- inference_model_1
 inference_model_2$site_model <- beautier::create_hky_site_model()
-inference_model_2$tree_prior <- beautier::create_bd_tree_prior()
 inference_model_2$clock_model <- beautier::create_rln_clock_model()
+inference_model_2$tree_prior <- beautier::create_bd_tree_prior()
 ```
+
+The HKY site model assumes that DNA substitution rates differ between
+transitions (purine-to-purine or pyrimidine-to-pyrimidine) and
+translations (purine-to-pyrimidine or the other way around). The relaxed
+log-normal clock model assumes that mutation rates of all species are
+differ, where all these rates together follow a log-normal distribution.
+The birth-death tree model assumes that new species form and go extinct
+at a constant rate.
 
 `mcbette` shows the evidence (also called marginal likelihood) for each
 inference model, which is the likelihood that a model has generated the
