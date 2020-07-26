@@ -74,6 +74,9 @@ alignment <- ape::read.FASTA(fasta_filename)
 image(alignment)
 ```
 
+`mcbette` allows one to select the inference model that has the
+heighest evidence (aka marginal l
+
 From that alignment, get the marginal likelihood of two inference models,
 only differing in their nucleotide substitution model:
 
