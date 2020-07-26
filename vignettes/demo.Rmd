@@ -117,3 +117,24 @@ if (can_run_mcbette()) {
   cat(paste("Interpretation from JC69 model's point of view: ", interpretation))
 }
 ```
+
+## Available models
+
+The available site models:
+
+```{r}
+beautier::get_site_model_names()
+```
+
+The available clock models:
+
+```{r}
+beautier::get_clock_model_names()
+```
+
+The available tree models:
+
+```{r}
+beautier::get_tree_prior_names()
+```
+

@@ -59,26 +59,89 @@ mauricer::install_beast2_pkg("NS")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
+```{r load_mcbette}
 library(mcbette)
+```
 
-# An example FASTA file
-fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
+Suppose we have a DNA alignment, obtained by sequencing multiple
+species:
 
-# A testing inference model with inaccurate (thus fast) marginal
-# likelihood estimation
-inference_model <- beautier::create_test_ns_inference_model()
+```{r example_alignment}
+fasta_filename <- beautier::get_beautier_path("anthus_aco_sub.fas")
+ape::image.DNAbin(ape::read.FASTA(fasta_filename))
+```
 
-# Estimate the marginal likelihood
-marg_lik <- est_marg_lik(
-  fasta_filename = fasta_filename,
-  inference_model = inference_model
+Note that this alignment holds too little information to really base
+a publishable research on.
+
+To create a posterior distribution of phylogenies from this alignment,
+one needs to specify an inference model. An inference model 
+is (among others) a combination of a site model, clock model and tree 
+model. See the 'Available models' section to see the available models.
+
+In this example we let two inference models compete.
+
+Here is the default inference model:
+
+```{r example_inference_model_1}
+inference_model_1 <- create_ns_inference_model()
+print(
+  paste(
+    inference_model_1$site_model$name,
+    inference_model_1$clock_model$name,
+    inference_model_1$tree_prior$name
+  )
 )
+```
 
-cat(marg_lik$marg_log_lik)
-cat(marg_lik$marg_log_lik_sd)
+The competing model has a different site, clock and tree model:
+
+```{r example_inference_model_2}
+inference_model_2 <- inference_model_1
+inference_model_2$site_model <- beautier::create_hky_site_model()
+inference_model_2$tree_prior <- beautier::create_bd_tree_prior()
+inference_model_2$clock_model <- beautier::create_rln_clock_model()
+```
+
+`mcbette` shows the evidence (also called marginal likelihood)
+for each inference model, which is the likelihood that a model
+has generated the data.
+
+```{r example_est_marg_liks, cache=TRUE}
+if (can_run_mcbette()) {
+  knitr::kable(
+    est_marg_liks(
+      fasta_filename = fasta_filename,
+      inference_models = list(inference_model_1, inference_model_2)
+    )
+  )
+}
+```
+
+The most important result are the model weights.
+When a model's weight is very close to one, 
+one would prefer to use that inference model in doing a Bayesian inference.
+If these model weights are rather similar, one could argue to use either
+model. 
+
+## Available models
+
+The available site models:
+
+```{r}
+beautier::get_site_model_names()
+```
+
+The available clock models:
+
+```{r}
+beautier::get_clock_model_names()
+```
+
+The available tree models:
+
+```{r}
+beautier::get_tree_prior_names()
 ```
 
 ## Using an existing BEAST2 installation
