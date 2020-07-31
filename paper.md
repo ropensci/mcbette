@@ -49,7 +49,9 @@ the DNA alignment and species tree.
 
 ``mcbette`` is aimed to be used by anyone interested in phylogenetics
 and assumes some basic knowledge about the field.
-The BEAST book [@Drummond:2015] serves as an excellent starting point.
+The BEAST book [@Drummond:2015] serves as an excellent starting point
+about the field of phylogenetics, 
+where the ``mcbette`` README and vignette show a simpled worked-out example.
 The evolutionary models are those allowed by the ``babette`` 
 R package [@Bilderbeek:2018], which consist out of (among others) 
 a site model, clock model and tree model (see 'Supported models' below for an overview). 
