@@ -17,7 +17,12 @@ bibliography: paper.bib
 
 # Abstract
 
-TODO
+One can generate a phylogeny from a DNA alignment and a model of evolution.
+Selecting an evolutionary model is non-trivial, as there are many.
+``mcbette`` is an R package that determines the model that has most
+evidence for having generated the alignment, from a set of models.
+In this way, the model that is 'simple enough, but not simpler' can
+be used to generate a phylogeny.
 
 # Introduction
 
@@ -53,52 +58,44 @@ other species.
 
 ![](man/figures/alignment_joss.png)
 
-> Schematic figure of the DNA sequences of 4 hypothetical species.
+> Schematic figure of a DNA alignment of 4 hypothetical species.
 > Species are numbered 1 to 4.
 > Of each species, 40 nucleotides are known.
 > Cells with identical colors depict the same nucleotide.
 
 Nowadays, we know the DNA sequences of many species. With these genetic
-codes, we should be able to reconstruct the evolutionary history of all 
+codes, we are able to reconstruct the evolutionary history of all 
 species. An evolutionary history is commonly depicted by a tree-like
 figure, called a phylogeny, or simply 'tree'. The field of phylogenetics 
-aims to construct the 'best' phylogeny from the genetic codes of species.
+aims to reconstruct the true phylogeny from the genetic codes of species.
+
+(that is, multiple
+DNA sequences arranged in such a way that most nucleotides
+are in the same relative position)
+
 
 ![](man/figures/combined.png)
 
 > phylogenetics in a nutshell: deriving the evolutionary history
 > of species (at the right) from their DNA sequences (at the left)
 
-Constructing a phylogeny, however, is non-trivial, due to the many ways
-to do so. A researcher needs to pick one model of how evolution works,
-for example, how DNA mutates, how mutations vary between different species
-and how frequent speciations and extinctions are. The problem is, that there 
-are many models to pick from.
+Constructing a phylogeny from a DNA alignment, is non-trivial, 
+as it requires the researcher to choose how to model the evolutionary process.
+This evolutionary model has many aspects, 
+such as with which rates DNA nucleotides are substituted, 
+how mutation rates vary between different species
+and how frequent speciations and extinctions are.
 
 ![](man/figures/mcbette_logo.png)
 
 > ``mcbette`` logo
 
-``mcbette`` is an R package that helps to pick the 'best' model. 
-The 'best', in this context, is the model that is 'simple enough, but not 
-simpler'. In more precise term, ``mcbette`` does a model comparison (hence 
-the `mc` in its name) between multiple suggested evolutionary models and shows
-which one is best. The winner of this comparison is assumed to result
-in the best phylogenies (with the same definition of 'best').
-
-To go into more detail: ``mcbette`` estimates the marginal likelihood of an
-evolutionary model, from a given alignment. 
-The marginal likelihood, also called 'evidence',
-is a measure of probability that the evolutionary model will result in
-the given alignment. Marginal likelihoods can be compared directly
-across models, as they have the same unit (that is, unitless), 
-regardless of the complexity
-of the evolutionary model. 
-Additionally, the marginal likelihood
-of models with more parameters are in a natural way penalized for being 
-complex. In other words: the highest marginal likelihood will be found 
-for models that are justifiably complex, instead of the model that has the
-most parameters.
+``mcbette`` is an R package that determines the model with the most 
+evidence (aka marginal likelihood) for having generated the alignment,
+from a set of models. In other words, ``mcbette`` 
+does a model comparison (hence `mc` in the name) 
+to determine the most likely model (compensating for over-parameterisation)
+resulting in a model that is 'simple enough, but not simpler'.
 
 |site_model_name |clock_model_name |tree_prior_name | marg_log_lik| marg_log_lik_sd|    weight|
 |:---------------|:----------------|:---------------|------------:|---------------:|---------:|

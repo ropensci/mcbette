@@ -75,6 +75,9 @@ script:
   - echo $beast2_ns_pkg_installed_after
   - if [ "$beast2_installed_before" != "$beast2_installed_after" ]; then echo "ERROR! THEY DIFFER!"; exit 1; fi
   - if [ "$beast2_ns_pkg_installed_before" != "$beast2_ns_pkg_installed_after" ]; then echo "ERROR! THEY DIFFER!"; exit 1; fi
+  # Convert the paper to PDF
+  - pandoc paper.md -o paper.pdf
+  - if [ ! -f paper.pdf ]; then echo "file 'paper.pdf' not found" ; exit 1 ; fi
 
 after_success:
   # Codecov
