@@ -74,10 +74,24 @@ alignment <- ape::read.FASTA(fasta_filename)
 image(alignment)
 ```
 
-`mcbette` allows one to select the inference model that has the
-heighest evidence (aka marginal l
+`mcbette` allows one to select the evolutionary model that has the
+heighest evidence (aka marginal likelihood) for having generated that 
+alignment.
 
-From that alignment, get the marginal likelihood of two inference models,
+In this example, we compare two evolutionary models on the alignment shown
+above. Because the best evolutionary model will likely be used
+in Bayesian inference, in this example we will use 'evolutionary model'
+and 'inference model' interchangably.
+
+One of the inference models is the default `babette` inference
+model. 
+
+```{r}
+inference_model_1 <- mcbette::create_ns_inference_model()
+inference_model_1$site_model$name
+```
+
+
 only differing in their nucleotide substitution model:
 
   1. JC69: all nucleotides share the same mutation rate. 
