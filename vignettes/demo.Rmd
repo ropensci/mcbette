@@ -156,7 +156,7 @@ As an example, to use the HKY site model:
 
 ```{r}
 inference_model <- beautier::create_inference_model(
-  site_model = beautier::create_hky_site_model()  
+  site_model = beautier::create_hky_site_model()
 )
 ```
 
