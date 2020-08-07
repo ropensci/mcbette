@@ -26,6 +26,14 @@ which is a \link{list} with the following elements:
 \description{
 Set the \link{mcbette} state.
 }
+\examples{
+mcbette_state <- get_mcbette_state()
+mcbette_state$beast2_installed <- TRUE
+mcbette_state$ns_installed <- TRUE
+\dontrun{
+  set_mcbette_state(mcbette_state)
+}
+}
 \seealso{
 \itemize{
   \item Use \link{get_mcbette_state} to

@@ -134,10 +134,30 @@ if (can_run_mcbette()) {
 
 ## Available models
 
+An Bayesian phylogenetic inference model consist of, among others,
+a site, clock and tree model. 
+
+Creating a default inference model is easy:
+
+```{r}
+inference_model <- beautier::create_inference_model()
+names(inference_model)
+```
+
+The `beautier` package supplies the site, clock and tree models.
+
 The available site models:
 
 ```{r}
 beautier::get_site_model_names()
+```
+
+As an example, to use the HKY site model:
+
+```{r}
+inference_model <- beautier::create_inference_model(
+  site_model = beautier::create_hky_site_model()  
+)
 ```
 
 The available clock models:

@@ -7,6 +7,13 @@
 #'   \item Use \link{check_mcbette_state} to
 #'     check the current \link{mcbette} state
 #' }
+#' @examples
+#' mcbette_state <- get_mcbette_state()
+#' mcbette_state$beast2_installed <- TRUE
+#' mcbette_state$ns_installed <- TRUE
+#' \dontrun{
+#'   set_mcbette_state(mcbette_state)
+#' }
 #' @export
 set_mcbette_state <- function(mcbette_state) {
   mcbette::check_mcbette_state(mcbette_state)

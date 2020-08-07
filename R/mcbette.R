@@ -1,6 +1,8 @@
 #' mcbette: Model Comparison Using Babette
 #'
-#' 'mcbette' does a model comparing using \link[babette]{babette}.
+#' 'mcbette' does a model comparing using \link[babette]{babette},
+#' where the models are Bayesian phylogenetic models,
+#' as created by \link[beautier]{create_inference_mode}.
 #'
 #' @seealso Use \link{can_run_mcbette} to see if 'mcbette' can run.
 #' @examples
