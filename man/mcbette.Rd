@@ -5,7 +5,9 @@
 \alias{mcbette}
 \title{mcbette: Model Comparison Using Babette}
 \description{
-'mcbette' does a model comparing using \link[babette]{babette}.
+'mcbette' does a model comparing using \link[babette]{babette},
+where the models are Bayesian phylogenetic models,
+as created by \link[beautier]{create_inference_mode}.
 }
 \examples{
 if (can_run_mcbette()) {

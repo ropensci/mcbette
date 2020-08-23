@@ -4,7 +4,7 @@ author: "Richèl J.C. Bilderbeek"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Bayes Factor}
+  %\VignetteIndexEntry{Demo}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -76,7 +76,12 @@ image(alignment)
 
 `mcbette` allows one to select the evolutionary model that has the
 heighest evidence (aka marginal likelihood) for having generated that 
-alignment.
+alignment. For more information how to set up an inference model, 
+see the 'Inference models' vignette of the `beautier` package:
+
+```
+vignette("beautier", "inference_models")
+```
 
 In this example, we compare two evolutionary models on the alignment shown
 above. Because the best evolutionary model will likely be used
@@ -131,44 +136,3 @@ if (can_run_mcbette()) {
   cat(paste("Interpretation from JC69 model's point of view: ", interpretation))
 }
 ```
-
-## Available models
-
-An Bayesian phylogenetic inference model consist of, among others,
-a site, clock and tree model. 
-
-Creating a default inference model is easy:
-
-```{r}
-inference_model <- beautier::create_inference_model()
-names(inference_model)
-```
-
-The `beautier` package supplies the site, clock and tree models.
-
-The available site models:
-
-```{r}
-beautier::get_site_model_names()
-```
-
-As an example, to use the HKY site model:
-
-```{r}
-inference_model <- beautier::create_inference_model(
-  site_model = beautier::create_hky_site_model()
-)
-```
-
-The available clock models:
-
-```{r}
-beautier::get_clock_model_names()
-```
-
-The available tree models:
-
-```{r}
-beautier::get_tree_prior_names()
-```
-
