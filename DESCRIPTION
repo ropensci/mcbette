@@ -37,7 +37,7 @@ BugReports: https://github.com/richelbilderbeek/mcbette/issues
 Imports:
     babette,
     beautier (>= 2.4),
-    beastier (>= 2.0.25),
+    beastier (>= 2.2),
     curl,
     mauricer,
     Rmpfr,

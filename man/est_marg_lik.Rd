@@ -6,7 +6,7 @@
 \usage{
 est_marg_lik(
   fasta_filename,
-  inference_model = create_ns_inference_model(),
+  inference_model = beautier::create_ns_inference_model(),
   beast2_options = create_mcbette_beast2_options(),
   os = rappdirs::app_dir()$os
 )
