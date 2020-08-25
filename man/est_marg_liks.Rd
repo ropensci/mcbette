@@ -9,7 +9,7 @@ est_marg_liks(
   fasta_filename,
   inference_models = list(beautier::create_inference_model(mcmc =
     beautier::create_ns_mcmc())),
-  beast2_optionses = rep(list(create_mcbette_beast2_options()), times =
+  beast2_optionses = rep(list(beastier::create_mcbette_beast2_options()), times =
     length(inference_models)),
   verbose = FALSE,
   os = rappdirs::app_dir()$os
@@ -23,7 +23,7 @@ as can be created by \link[beautier]{create_inference_model}}
 
 \item{beast2_optionses}{list of one or more \code{beast2_options}
 structures,
-as can be created by \link{create_mcbette_beast2_options}.
+as can be created by \link[beastier]{create_mcbette_beast2_options}.
 Use of reduplicated plural to achieve difference with
 \code{beast2_options}}
 
@@ -70,7 +70,7 @@ if (can_run_mcbette()) {
   )
   inference_models <- list(inference_model_1, inference_model_2)
 
-  beast2_options <- create_mcbette_beast2_options()
+  beast2_options <- beastier::create_mcbette_beast2_options()
 
   # Need as much beast2_optionses as inference models
   beast2_optionses <- list(beast2_options, beast2_options)

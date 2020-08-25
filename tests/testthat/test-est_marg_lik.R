@@ -5,7 +5,7 @@ test_that("use, JC69, strict, Yule", {
   marg_lik <- est_marg_lik(
     fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
     inference_model = beautier::create_test_ns_inference_model(),
-    beast2_options = create_mcbette_beast2_options()
+    beast2_options = beastier::create_mcbette_beast2_options()
   )
 
   # A list
@@ -42,7 +42,7 @@ test_that("use, all non-default: GTR, RLN, BD", {
         tree_prior = beautier::create_bd_tree_prior(),
         mcmc = create_ns_mcmc(epsilon = 1e2)
       ),
-      beast2_options = create_mcbette_beast2_options()
+      beast2_options = beastier::create_mcbette_beast2_options()
     )
   )
 })
@@ -59,7 +59,7 @@ test_that("use, too few taxa for CBS", {
       inference_model = beautier::create_test_ns_inference_model(
         tree_prior = beautier::create_cbs_tree_prior()
       ),
-      beast2_options = create_mcbette_beast2_options()
+      beast2_options = beastier::create_mcbette_beast2_options()
     ),
     "'group_sizes_dimension' .* must be less than the number of taxa"
   )
@@ -135,7 +135,7 @@ test_that("more particles, less sd", {
       particle_count = 10
     )
   )
-  beast2_options <- create_mcbette_beast2_options(
+  beast2_options <- beastier::create_mcbette_beast2_options(
     rng_seed = 314
   )
 
@@ -167,7 +167,7 @@ test_that("use BEAST2 installed at a different location", {
     beast2_folder = folder_name
   )
   expect_true(file.exists(beast2_bin_path))
-  beast2_options <- create_mcbette_beast2_options(
+  beast2_options <- beastier::create_mcbette_beast2_options(
     beast2_bin_path = beast2_bin_path
   )
 

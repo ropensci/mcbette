@@ -36,11 +36,11 @@ produce intermediate files.
 By default, this is a temporary folder}
 
 \item{beast2_options}{a \code{beast2_options} structure,
-as can be created by \link{create_mcbette_beast2_options}.}
+as can be created by \link[beastier]{create_mcbette_beast2_options}.}
 
 \item{beast2_optionses}{list of one or more \code{beast2_options}
 structures,
-as can be created by \link{create_mcbette_beast2_options}.
+as can be created by \link[beastier]{create_mcbette_beast2_options}.
 Use of reduplicated plural to achieve difference with
 \code{beast2_options}}
 

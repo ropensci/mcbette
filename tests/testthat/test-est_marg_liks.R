@@ -127,7 +127,7 @@ test_that("use, 1 model", {
   df <- est_marg_liks(
     fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
     inference_models = list(beautier::create_test_ns_inference_model()),
-    beast2_optionses = list(create_mcbette_beast2_options())
+    beast2_optionses = list(beastier::create_mcbette_beast2_options())
   )
   expect_equal(1, nrow(df))
   expect_true(df$marg_log_lik < 0.0)
@@ -145,7 +145,7 @@ test_that("use, 1 model", {
         "extdata", "simple.fas", package = "mcbette"
       ),
       inference_models = list(beautier::create_test_ns_inference_model()),
-      beast2_optionses = list(create_mcbette_beast2_options()),
+      beast2_optionses = list(beastier::create_mcbette_beast2_options()),
       verbose = TRUE
     )
   )
@@ -162,7 +162,7 @@ test_that("use, 1 model, CBS", {
     tree_prior = beautier::create_cbs_tree_prior(),
   )
   inference_models <- list(inference_model)
-  beast2_options <- create_mcbette_beast2_options()
+  beast2_options <- beastier::create_mcbette_beast2_options()
   beast2_optionses <- list(beast2_options)
 
   expect_error(
@@ -186,7 +186,7 @@ test_that("use with same RNG seed must result in identical output", {
     mcmc = beautier::create_test_ns_mcmc()
   )
   inference_models <- list(inference_model, inference_model)
-  beast2_options <- create_mcbette_beast2_options(rng_seed = 314)
+  beast2_options <- beastier::create_mcbette_beast2_options(rng_seed = 314)
   beast2_optionses <- list(beast2_options, beast2_options)
 
   df_1 <- est_marg_liks(

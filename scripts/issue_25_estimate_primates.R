@@ -30,7 +30,7 @@ for (i in seq_len(nrow(df))) {
   inference_model$mcmc$tracelog$filename <- path.expand(paste0("~/ns_", i, ".log"))
   inference_model$mcmc$treelog$filename <- path.expand(paste0("~/ns_", i, ".trees"))
   inference_model$mcmc$screenlog$filename <- path.expand(paste0("~/ns_", i, ".txt"))
-  beast2_options <- create_mcbette_beast2_options(
+  beast2_options <- beastier::create_mcbette_beast2_options(
     input_filename = path.expand(paste0("~/ns_", i, ".xml")),
     output_state_filename = path.expand(paste0("~/ns_", i, ".xml.state")),
     rng_seed = 314

@@ -25,7 +25,7 @@
 #'   inference_model <- beautier::create_test_ns_inference_model()
 #'
 #'   # Setup the options for BEAST2 to be able to call BEAST2 packages
-#'   beast2_options <- create_mcbette_beast2_options()
+#'   beast2_options <- beastier::create_mcbette_beast2_options()
 #'
 #'   # Estimate the marginal likelihood
 #'   marg_lik <- est_marg_lik(
@@ -58,7 +58,7 @@
 est_marg_lik <- function(
   fasta_filename,
   inference_model = beautier::create_ns_inference_model(),
-  beast2_options = create_mcbette_beast2_options(),
+  beast2_options = beastier::create_mcbette_beast2_options(),
   os = rappdirs::app_dir()$os
 ) {
   beautier::check_file_exists(fasta_filename)

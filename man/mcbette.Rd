@@ -7,7 +7,7 @@
 \description{
 'mcbette' does a model comparing using \link[babette]{babette},
 where the models are Bayesian phylogenetic models,
-as created by \link[beautier]{create_inference_mode}.
+as created by \link[beautier]{create_inference_model}.
 }
 \examples{
 if (can_run_mcbette()) {

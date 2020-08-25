@@ -6,10 +6,10 @@
 #'   produce intermediate files.
 #'   By default, this is a temporary folder
 #' @param beast2_options a \code{beast2_options} structure,
-#'   as can be created by \link{create_mcbette_beast2_options}.
+#'   as can be created by \link[beastier]{create_mcbette_beast2_options}.
 #' @param beast2_optionses list of one or more \code{beast2_options}
 #'   structures,
-#'   as can be created by \link{create_mcbette_beast2_options}.
+#'   as can be created by \link[beastier]{create_mcbette_beast2_options}.
 #'   Use of reduplicated plural to achieve difference with
 #'   \code{beast2_options}
 #' @param clock_model a clock model,

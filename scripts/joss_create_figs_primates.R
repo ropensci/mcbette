@@ -42,7 +42,7 @@ inference_models[[4]] <- beautier::create_inference_model(site_model = beautier:
 expect_equal(n_models, length(inference_models))
 # Prepare BEAST2 options
 beast2_optionses <- rep(
-  list(create_mcbette_beast2_options(rng_seed = 42)),
+  list(beastier::create_mcbette_beast2_options(rng_seed = 42)),
   times = n_models
 )
 expect_equal(n_models, length(beast2_optionses))

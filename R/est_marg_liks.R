@@ -33,7 +33,7 @@
 #'   )
 #'   inference_models <- list(inference_model_1, inference_model_2)
 #'
-#'   beast2_options <- create_mcbette_beast2_options()
+#'   beast2_options <- beastier::create_mcbette_beast2_options()
 #'
 #'   # Need as much beast2_optionses as inference models
 #'   beast2_optionses <- list(beast2_options, beast2_options)
@@ -54,7 +54,7 @@ est_marg_liks <- function(
     )
   ),
   beast2_optionses = rep(
-    list(create_mcbette_beast2_options()),
+    list(beastier::create_mcbette_beast2_options()),
     times = length(inference_models)
   ),
   verbose = FALSE,
