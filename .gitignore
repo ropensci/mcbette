@@ -55,3 +55,7 @@ anthus_aco_sub.*
 paper.pdf
 doc
 Meta
+alignment_joss.log
+alignment_joss.posterior.log
+alignment_joss.posterior.trees
+alignment_joss.trees
