@@ -84,7 +84,7 @@ In this example we let two inference models compete.
 Here is the default inference model:
 
 ```{r example_inference_model_1}
-inference_model_1 <- create_ns_inference_model()
+inference_model_1 <- beautier::create_ns_inference_model()
 print(
   paste(
     inference_model_1$site_model$name,

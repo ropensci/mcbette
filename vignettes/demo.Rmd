@@ -92,7 +92,7 @@ One of the inference models is the default `babette` inference
 model. 
 
 ```{r}
-inference_model_1 <- mcbette::create_ns_inference_model()
+inference_model_1 <- beautier::create_ns_inference_model()
 inference_model_1$site_model$name
 ```
 
