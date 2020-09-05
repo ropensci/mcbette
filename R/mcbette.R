@@ -4,6 +4,32 @@
 #' where the models are Bayesian phylogenetic models,
 #' as created by \link[beautier]{create_inference_model}.
 #'
+#' The main function is \link{est_marg_liks},
+#' which estimate the marginal likelihoods (aka evidence)
+#' for one or more inference models, based on a single alignment.
+#' Also, the marginal likelihoods are compared, resulting in a
+#' relative weight for each model, where a relative weight of a model
+#' close to \code{1.0} means that that model is way likelier than
+#' the others.
+#'
+#' In the process, multiple (temporary) files are created (where
+#' \code{[x]} denotes the index in a list)
+#'
+#' \itemize{
+#'   \item \code{beast2_optionses[x]$input_filename}
+#'     path to the the BEAST2 XML input file
+#'   \item \code{beast2_optionses[x]$output_state_filename}
+#'     path to the BEAST2 XML state file
+#'   \item \code{inference_models[x]$mcmc$tracelog$filename}
+#'     path to the BEAST2 trace file with parameter estimates
+#'   \item \code{inference_models[x]$mcmc$treelog$filename}
+#'     path to the BEAST2 \code{trees} file with the posterior trees
+#'   \item \code{inference_models[x]$mcmc$screenlog$filename}
+#'     path to the BEAST2 screen output file
+#' }
+#'
+#' These file can be deleted manually by \link[babette]{bbt_delete_temp_files},
+#' else these will be deleted automatically by the operating system.
 #' @seealso Use \link{can_run_mcbette} to see if 'mcbette' can run.
 #' @examples
 #' if (can_run_mcbette()) {

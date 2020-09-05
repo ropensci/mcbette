@@ -1,5 +1,30 @@
-#' Estimate the marginal likelihoods for all combinations of
-#' site, clock and tree models
+#' Estimate the marginal likelihoods for one or more inference models
+#'
+#' Estimate the marginal likelihoods (aka evidence)
+#' for one or more inference models, based on a single alignment.
+#' Also, the marginal likelihoods are compared, resulting in a
+#' relative weight for each model, where a relative weight of a model
+#' close to \code{1.0} means that that model is way likelier than
+#' the others.
+#'
+#' In the process, multiple (temporary) files are created (where
+#' \code{[x]} denotes the index in a list)
+#'
+#' \itemize{
+#'   \item \code{beast2_optionses[x]$input_filename}
+#'     path to the the BEAST2 XML input file
+#'   \item \code{beast2_optionses[x]$output_state_filename}
+#'     path to the BEAST2 XML state file
+#'   \item \code{inference_models[x]$mcmc$tracelog$filename}
+#'     path to the BEAST2 trace file with parameter estimates
+#'   \item \code{inference_models[x]$mcmc$treelog$filename}
+#'     path to the BEAST2 \code{trees} file with the posterior trees
+#'   \item \code{inference_models[x]$mcmc$screenlog$filename}
+#'     path to the BEAST2 screen output file
+#' }
+#'
+#' These file can be deleted manually by \link[babette]{bbt_delete_temp_files},
+#' else these will be deleted automatically by the operating system.
 #' @inheritParams default_params_doc
 #' @return a \link{data.frame} showing the estimated marginal likelihoods
 #' (and its estimated error) per combination of models. Columns are:
@@ -36,12 +61,17 @@
 #'   inference_model_1$mcmc <- beautier::create_test_ns_mcmc()
 #'   inference_model_2$mcmc <- beautier::create_test_ns_mcmc()
 #'
+#'   # Combine the inference models
 #'   inference_models <- list(inference_model_1, inference_model_2)
 #'
-#'   beast2_options <- beastier::create_mcbette_beast2_options()
+#'   # Create the BEAST2 options, that will write the output
+#'   # to different (temporary) filanems
+#'   beast2_options_1 <- beastier::create_mcbette_beast2_options()
+#'   beast2_options_2 <- beastier::create_mcbette_beast2_options()
 #'
-#'   # Need as much beast2_optionses as inference models
-#'   beast2_optionses <- list(beast2_options, beast2_options)
+#'   # Combine the two BEAST2 options sets,
+#'   # use reduplicated plural
+#'   beast2_optionses <- list(beast2_options_1, beast2_options_2)
 #'
 #'   est_marg_liks(
 #'     fasta_filename,

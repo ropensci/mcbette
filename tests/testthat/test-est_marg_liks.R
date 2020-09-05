@@ -151,6 +151,30 @@ test_that("use, 1 model", {
   )
 })
 
+test_that("use, 1 model, check if files are created", {
+
+  if (!can_run_mcbette()) return()
+  inference_model <- beautier::create_test_ns_inference_model()
+  beast2_options <- beastier::create_mcbette_beast2_options()
+
+  df <- est_marg_liks(
+    fasta_filename = system.file(
+      "extdata", "simple.fas", package = "mcbette"
+    ),
+    inference_models = list(inference_model),
+    beast2_optionses = list(beast2_options)
+  )
+  expect_true(file.exists(beast2_options$input_filename))
+  expect_true(file.exists(beast2_options$output_state_filename))
+  expect_true(file.exists(inference_model$mcmc$tracelog$filename))
+  expect_true(file.exists(inference_model$mcmc$treelog$filename))
+  expect_true(file.exists(inference_model$mcmc$screenlog$filename))
+  babette::bbt_delete_temp_files(
+    inference_model = inference_model,
+    beast2_options = beast2_options
+  )
+})
+
 
 test_that("use, 1 model, CBS", {
 

@@ -54,30 +54,11 @@ if (can_run_mcbette()) {
   beast2_options <- beastier::create_mcbette_beast2_options()
 
   # Estimate the marginal likelihood
-  marg_lik <- est_marg_lik(
+  est_marg_lik(
     fasta_filename = fasta_filename,
     inference_model = inference_model,
     beast2_options = beast2_options
   )
-
-  # Results are:
-  # a list ...
-  expect_true(is.list(marg_lik))
-
-  # with these elements ...
-  expect_true("marg_log_lik" \%in\% names(marg_lik))
-  expect_true("marg_log_lik_sd" \%in\% names(marg_lik))
-  expect_true("ess" \%in\% names(marg_lik))
-
-  # with these data types ...
-  expect_true(beautier::is_one_double(marg_lik$marg_log_lik))
-  expect_true(beautier::is_one_double(marg_lik$marg_log_lik_sd))
-  expect_true(beautier::is_one_double(marg_lik$ess))
-
-  # with these values
-  expect_true(marg_lik$marg_log_lik < 0.0)
-  expect_true(marg_lik$marg_log_lik_sd > 0.0)
-  expect_true(marg_lik$ess > 0.0)
 }
 }
 \seealso{
