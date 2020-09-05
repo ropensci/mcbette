@@ -11,26 +11,34 @@ as created by \link[beautier]{create_inference_model}.
 }
 \examples{
 if (can_run_mcbette()) {
-  library(testthat)
 
   # An example FASTA file
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
-  inference_model_1 <- beautier::create_test_ns_inference_model(
+  inference_model_1 <- beautier::create_ns_inference_model(
     site_model = beautier::create_jc69_site_model()
   )
-  inference_model_2 <- beautier::create_test_ns_inference_model(
+  inference_model_2 <- beautier::create_ns_inference_model(
     site_model = beautier::create_gtr_site_model()
   )
+
+  # Shorten the run, by doing a short (dirty, unreliable) MCMC
+  inference_model_1$mcmc <- beautier::create_test_ns_mcmc()
+  inference_model_2$mcmc <- beautier::create_test_ns_mcmc()
+
   inference_models <- c(list(inference_model_1), list(inference_model_2))
 
-  df <- mcbette::est_marg_liks(
+  # Estimate the marginal log-likelihoods of the two models
+  df <- est_marg_liks(
     fasta_filename = fasta_filename,
     inference_models = inference_models
   )
 
+  # Convert the (non-log) marginal likelihoods
   marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512))
   marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
+
+  # Compare and interpret the marginal likelihoods
   bayes_factor <- marg_lik_jc / marg_lik_gtr
   interpretation <- interpret_bayes_factor(as.numeric(bayes_factor))
   cat(

@@ -22,7 +22,10 @@
 #'
 #'   # A testing inference model with inaccurate (thus fast) marginal
 #'   # likelihood estimation
-#'   inference_model <- beautier::create_test_ns_inference_model()
+#'   inference_model <- beautier::create_ns_inference_model()
+#'
+#'   # Shorten the run, by doing a short (dirty, unreliable) MCMC
+#'   inference_model$mcmc <- beautier::create_test_ns_mcmc()
 #'
 #'   # Setup the options for BEAST2 to be able to call BEAST2 packages
 #'   beast2_options <- beastier::create_mcbette_beast2_options()
