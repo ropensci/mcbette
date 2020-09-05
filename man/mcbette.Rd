@@ -79,3 +79,6 @@ if (can_run_mcbette()) {
 \seealso{
 Use \link{can_run_mcbette} to see if 'mcbette' can run.
 }
+\author{
+Richèl J.C. Bilderbeek
+}

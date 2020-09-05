@@ -23,6 +23,8 @@
 #'   as can be created by \link[beautier]{create_inference_model}
 #' @param inference_models a list of one or more inference models,
 #'   as can be created by \link[beautier]{create_inference_model}
+#' @param marg_liks the estimated marginal likelihoods (aka evidences),
+#'   as created by \link{est_marg_liks}
 #' @param mcbette_state the \link{mcbette} state,
 #' which is a \link{list} with the following elements:
 #' \itemize{
@@ -67,6 +69,7 @@ default_params_doc <- function(
   fasta_filename,
   inference_model,
   inference_models,
+  marg_liks,
   mcbette_state,
   mcmc,
   os,

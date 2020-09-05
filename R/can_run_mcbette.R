@@ -7,6 +7,7 @@
 #'   \item (2) BEAST2 is installed
 #'   \item (3) The BEAST2 NS package is installed
 #' }
+#' @author Richèl J.C. Bilderbeek
 #' @export
 can_run_mcbette <- function() {
   rappdirs::app_dir()$os != "win" &&

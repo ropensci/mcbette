@@ -15,3 +15,6 @@ Will return \link{TRUE} if:
   \item (3) The BEAST2 NS package is installed
 }
 }
+\author{
+Richèl J.C. Bilderbeek
+}

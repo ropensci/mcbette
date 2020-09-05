@@ -71,6 +71,7 @@
 #' }
 #' @docType package
 #' @name mcbette
+#' @author Richèl J.C. Bilderbeek
 #' @importFrom beautier create_alpha_param
 #' @importFrom beautier create_bd_tree_prior
 #' @importFrom beautier create_beast2_input
