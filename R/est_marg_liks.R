@@ -73,11 +73,15 @@
 #'   # use reduplicated plural
 #'   beast2_optionses <- list(beast2_options_1, beast2_options_2)
 #'
-#'   est_marg_liks(
+#'   # Compare the models
+#'   marg_liks <- est_marg_liks(
 #'     fasta_filename,
 #'     inference_models = inference_models,
 #'     beast2_optionses = beast2_optionses
 #'   )
+#'
+#'   # Interpret the results
+#'   interpret_marg_lik_estimates(marg_liks)
 #' }
 #' @author Richèl J.C. Bilderbeek
 #' @export

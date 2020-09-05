@@ -51,23 +51,13 @@
 #'   inference_models <- c(list(inference_model_1), list(inference_model_2))
 #'
 #'   # Estimate the marginal log-likelihoods of the two models
-#'   df <- est_marg_liks(
+#'   marg_liks <- est_marg_liks(
 #'     fasta_filename = fasta_filename,
 #'     inference_models = inference_models
 #'   )
 #'
-#'   # Convert the (non-log) marginal likelihoods
-#'   marg_lik_jc <- exp(Rmpfr::mpfr(df$marg_log_lik[1], 512))
-#'   marg_lik_gtr <- exp(Rmpfr::mpfr(df$marg_log_lik[2], 512))
-#'
-#'   # Compare and interpret the marginal likelihoods
-#'   bayes_factor <- marg_lik_jc / marg_lik_gtr
-#'   interpretation <- interpret_bayes_factor(as.numeric(bayes_factor))
-#'   cat(
-#'     paste(
-#'       "Interpretation from JC69 model's point of view: ", interpretation
-#'     )
-#'   )
+#'   # Interpret the results
+#'   interpret_marg_lik_estimates(marg_liks)
 #' }
 #' @docType package
 #' @name mcbette
