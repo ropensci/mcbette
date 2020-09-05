@@ -41,7 +41,8 @@ Imports:
     curl,
     mauricer,
     Rmpfr,
-    testit
+    testit,
+    txtplot
 Suggests:
     ape,
     devtools,
