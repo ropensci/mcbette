@@ -60,6 +60,12 @@ tool BEAST2 [@Bouckaert:2019].
 Additionally, ``mcbette`` uses the novel 'NS'
 'BEAST2' package [@Russel:2019] to do the actual model comparison.
 
+To see a demo of ``mcbette``, see the vignette:
+
+```
+vignette(topic = "demo", package = "mcbette")
+```
+
 # Quirks
 
 ``mcbette`` has two quirks. 
