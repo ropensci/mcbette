@@ -20,7 +20,7 @@ interpret_marg_lik_estimates <- function(marg_liks) {
   # Create an ordered data frame
   ##############################################################################
   # Keep rows without an NA
-  df_ordered <- na.omit(df)
+  df_ordered <- stats::na.omit(df)
 
   # Order from high to low
   df_ordered <- df_ordered[ order(-df_ordered$weight), ]
