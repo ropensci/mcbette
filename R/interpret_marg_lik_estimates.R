@@ -16,9 +16,9 @@ interpret_marg_lik_estimates <- function(marg_liks) {
   cat(" ", sep = "\n")
   cat(knitr::kable(df), sep = "\n")
 
-  ################################################################################
+  ##############################################################################
   # Create an ordered data frame
-  ################################################################################
+  ##############################################################################
   # Keep rows without an NA
   df_ordered <- na.omit(df)
 
@@ -37,11 +37,13 @@ interpret_marg_lik_estimates <- function(marg_liks) {
   cat(" ", sep = "\n")
   txtplot::txtplot(x = seq(1, length(df_ordered$weight)), y = df_ordered$weight)
 
-  ################################################################################
+  ##############################################################################
   # Create a best model data frame
-  ################################################################################
+  ##############################################################################
   # Show the best model
-  best_row_index <- which(df_ordered$marg_log_lik == max(df_ordered$marg_log_lik))
+  best_row_index <- which(
+    df_ordered$marg_log_lik == max(df_ordered$marg_log_lik)
+  )
   df_best <- df_ordered[best_row_index, ]
   cat(" ", sep = "\n")
   cat("**********************************", sep = "\n")

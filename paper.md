@@ -82,5 +82,11 @@ At the time of writing, these are the BEAST2 models that ``babette`` supports:
  * 5 tree models: birth-death, coalescent Bayesian skyline, 
    coalescent constant-population, coalescent exponential-population, Yule
 
+To see these:
+
+```
+vignette(topic = "inference_models", package = "beautier")
+```
+
 # References
 
