@@ -89,6 +89,8 @@ after_success:
   - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
   - Rscript -e 'remotes::install_github("richelbilderbeek/mcbette")'
   - Rscript -e 'mcbette::mcbette_report()'
+  # Download thesis
+  - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
 
 after_failure:
   # Report
@@ -96,4 +98,6 @@ after_failure:
   - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
   - Rscript -e 'remotes::install_github("richelbilderbeek/mcbette")'
   - Rscript -e 'mcbette::mcbette_report()'
+  # Download thesis
+  - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
 
