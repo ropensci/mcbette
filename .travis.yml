@@ -39,6 +39,8 @@ r_github_packages:
   - ropensci/mauricer
 
 before_install:
+  # Fix rJava error, from https://travis-ci.community/t/cannot-connect-to-java-from-r/9754/8
+  - sudo $(which R) CMD javareconf
   # ImageMagick
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagick++-dev; fi
   # Rmpfr
