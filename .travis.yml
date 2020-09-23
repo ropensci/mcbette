@@ -16,8 +16,9 @@ matrix:
     os: linux
   - r: devel
     os: linux
-  - r: release
-    os: osx
+  # No OSX, due to 'sudo tlmgr update --self' taking too long, see https://travis-ci.org/github/richelbilderbeek/mcbette/jobs/729580427#L109
+  #- r: release
+  #  os: osx
 
 # It may be that this package uninstall BEAST2 and/or the packages
 # before and after the tests.
