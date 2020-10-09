@@ -45,6 +45,11 @@ a set of evolutionary models on a DNA alignment, which allows
 to select that model that is closest to the process that underlied
 the DNA alignment and species tree.
 
+Unlike other methods, ``mcbette`` can be both be installed
+and run from an R script, allowing one to run many 
+analyses using different models, examine the results directly
+from R and integrate ``mcbette`` into an existing R pipeline.
+
 # Getting started
 
 ``mcbette`` is aimed to be used by anyone interested in phylogenetics
