@@ -30,3 +30,4 @@ paper.pdf
 README_cache/
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
+^codemeta\.json$
