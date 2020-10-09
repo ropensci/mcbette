@@ -16,7 +16,7 @@ matrix:
     os: linux
   - r: devel
     os: linux
-  # No OSX, due to 'sudo tlmgr update --self' taking too long, see https://travis-ci.org/github/richelbilderbeek/mcbette/jobs/729580427#L109
+  # No OSX, due to 'sudo tlmgr update --self' taking too long, see https://travis-ci.org/github/ropensci/mcbette/jobs/729580427#L109
   #- r: release
   #  os: osx
 
@@ -86,7 +86,7 @@ after_success:
   # Report
   - Rscript -e "beastier::is_beast2_installed()"
   - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
-  - Rscript -e 'remotes::install_github("richelbilderbeek/mcbette")'
+  - Rscript -e 'remotes::install_github("ropensci/mcbette")'
   - Rscript -e 'mcbette::mcbette_report()'
   # Download thesis
   - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
@@ -95,7 +95,7 @@ after_failure:
   # Report
   - Rscript -e "beastier::is_beast2_installed()"
   - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
-  - Rscript -e 'remotes::install_github("richelbilderbeek/mcbette")'
+  - Rscript -e 'remotes::install_github("ropensci/mcbette")'
   - Rscript -e 'mcbette::mcbette_report()'
   # Download thesis
   - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'

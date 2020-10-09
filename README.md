@@ -9,8 +9,8 @@
 
 | Branch    | [![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)                                                                 | [![AppVeyor logo](man/figures/AppVeyor.png)](https://www.appveyor.com)                                                                                                           | [![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)                                                                                                 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `master`  | [![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/mcbette)  | [![Build status](https://ci.appveyor.com/api/projects/status/co69b54ljo135b5x/branch/master?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/mcbette/branch/master)   | [![codecov.io](https://codecov.io/github/richelbilderbeek/mcbette/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/mcbette?branch=master)   |
-| `develop` | [![Build Status](https://travis-ci.org/richelbilderbeek/mcbette.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/mcbette) | [![Build status](https://ci.appveyor.com/api/projects/status/co69b54ljo135b5x/branch/develop?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/mcbette/branch/develop) | [![codecov.io](https://codecov.io/github/richelbilderbeek/mcbette/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/mcbette?branch=develop) |
+| `master`  | [![Build Status](https://travis-ci.org/ropensci/mcbette.svg?branch=master)](https://travis-ci.org/ropensci/mcbette)  | [![Build status](https://ci.appveyor.com/api/projects/status/co69b54ljo135b5x/branch/master?svg=true)](https://ci.appveyor.com/project/ropensci/mcbette/branch/master)   | [![codecov.io](https://codecov.io/github/ropensci/mcbette/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mcbette?branch=master)   |
+| `develop` | [![Build Status](https://travis-ci.org/ropensci/mcbette.svg?branch=develop)](https://travis-ci.org/ropensci/mcbette) | [![Build status](https://ci.appveyor.com/api/projects/status/co69b54ljo135b5x/branch/develop?svg=true)](https://ci.appveyor.com/project/ropensci/mcbette/branch/develop) | [![codecov.io](https://codecov.io/github/ropensci/mcbette/coverage.svg?branch=develop)](https://codecov.io/github/ropensci/mcbette?branch=develop) |
 
 <!-- badges: end -->
 
@@ -41,7 +41,7 @@ On Linux, to install these, do (as root):
 After this, installing `mcbette` is easy:
 
 ``` r
-remotes::install_github("richelbilderbeek/mcbette")
+remotes::install_github("ropensci/mcbette")
 beastier::install_beast2()
 mauricer::install_beast2_pkg("NS")
 ```

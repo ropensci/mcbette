@@ -1,6 +1,6 @@
 # Creates the figures for the JOSS article.
 #
-# See https://github.com/richelbilderbeek/mcbette/issues/15
+# See https://github.com/ropensci/mcbette/issues/15
 
 folder <- "/home/richel/GitHubs/mcbette/man/figures"
 phylogeny_filename <- file.path(folder, "phylogeny_joss.png")

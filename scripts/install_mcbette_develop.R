@@ -1,2 +1,2 @@
 # Install the mcbett develop branch 
-remotes::install_github("richelbilderbeek/mcbette", ref = "develop")
+remotes::install_github("ropensci/mcbette", ref = "develop")
