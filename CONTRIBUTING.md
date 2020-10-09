@@ -2,10 +2,12 @@
 
 Awesome that you are reading this.
 
-This GitHub follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
-
  * For questions, you can create an Issue
  * Code changes go via Pull Requests
+
+Please note that this package is released with a [Contributor
+Code of Conduct](https://ropensci.org/code-of-conduct/). 
+By contributing to this project, you agree to abide by its terms.
 
 ## Submitting code
 

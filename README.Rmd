@@ -164,6 +164,12 @@ When BEAST2 is already installed, yet at a non-default location,
 one can use the `beast2_bin_path` argument in
 `create_mcbette_beast2_options`.
 
+## Code of conduct
+
+Please note that this package is released with a [Contributor
+Code of Conduct](https://ropensci.org/code-of-conduct/). 
+By contributing to this project, you agree to abide by its terms.
+
 ## References
 
  * Bilderbeek, Richel JC, and Rampal S. Etienne. "babette: BEAUti 2, BEAST 2 and Tracer for R." Methods in Ecology and Evolution (2018). https://doi.org/10.1111/2041-210X.13032
