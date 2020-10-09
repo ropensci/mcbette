@@ -7,10 +7,10 @@
 
 [![peer-review](https://badges.ropensci.org/360_status.svg)](https://github.com/ropensci/software-review/issues/360)
 
-| Branch    | [![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)                                                                 | [![AppVeyor logo](man/figures/AppVeyor.png)](https://www.appveyor.com)                                                                                                           | [![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)                                                                                                 |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `master`  | [![Build Status](https://travis-ci.org/ropensci/mcbette.svg?branch=master)](https://travis-ci.org/ropensci/mcbette)  | [![Build status](https://ci.appveyor.com/api/projects/status/co69b54ljo135b5x/branch/master?svg=true)](https://ci.appveyor.com/project/ropensci/mcbette/branch/master)   | [![codecov.io](https://codecov.io/github/ropensci/mcbette/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mcbette?branch=master)   |
-| `develop` | [![Build Status](https://travis-ci.org/ropensci/mcbette.svg?branch=develop)](https://travis-ci.org/ropensci/mcbette) | [![Build status](https://ci.appveyor.com/api/projects/status/co69b54ljo135b5x/branch/develop?svg=true)](https://ci.appveyor.com/project/ropensci/mcbette/branch/develop) | [![codecov.io](https://codecov.io/github/ropensci/mcbette/coverage.svg?branch=develop)](https://codecov.io/github/ropensci/mcbette?branch=develop) |
+| Branch    | [![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)                                                 | [![AppVeyor logo](man/figures/AppVeyor.png)](https://www.appveyor.com)                                                                                                    | [![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)                                                                                 |
+| --------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `master`  | [![Build Status](https://travis-ci.org/ropensci/mcbette.svg?branch=master)](https://travis-ci.org/ropensci/mcbette)  | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/mcbette?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/mcbette)  | [![codecov.io](https://codecov.io/github/ropensci/mcbette/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mcbette?branch=master)   |
+| `develop` | [![Build Status](https://travis-ci.org/ropensci/mcbette.svg?branch=develop)](https://travis-ci.org/ropensci/mcbette) | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/mcbette?branch=develop&svg=true)](https://ci.appveyor.com/project/ropensci/mcbette) | [![codecov.io](https://codecov.io/github/ropensci/mcbette/coverage.svg?branch=develop)](https://codecov.io/github/ropensci/mcbette?branch=develop) |
 
 <!-- badges: end -->
 
@@ -75,7 +75,7 @@ In this example we let two inference models compete.
 Here is the default inference model:
 
 ``` r
-inference_model_1 <- create_ns_inference_model()
+inference_model_1 <- beautier::create_ns_inference_model()
 print(
   paste(
     inference_model_1$site_model$name,
@@ -162,6 +162,12 @@ beautier::get_tree_prior_names()
 
 When BEAST2 is already installed, yet at a non-default location, one can
 use the `beast2_bin_path` argument in `create_mcbette_beast2_options`.
+
+## Code of conduct
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
 
 ## References
 
