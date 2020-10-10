@@ -2,6 +2,25 @@
 
 Newest versions at top.
 
+## `mcbette` 1.9 (2020-10-10)
+
+### NEW FEATURES
+
+ * Transferred repository ownership to rOpenSci 
+
+### MINOR IMPROVEMENTS
+
+ * Processed feedback rOpenSci
+ * Processed feedback JOSS
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.8.4 (2020-05-21)
 
 ### NEW FEATURES
