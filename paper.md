@@ -18,7 +18,7 @@ date: 31 July 2020
 bibliography: paper.bib
 ---
 
-![](man/figures/mcbette_logo.png)
+![](man/figures/mcbette_logo_50.png)
 
 > ``mcbette`` logo
 
