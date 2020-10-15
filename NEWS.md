@@ -2,6 +2,26 @@
 
 Newest versions at top.
 
+## `mcbette` 1.10 (2020-10-15)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * Use CRAN versions
+ * Processed feedback rOpenSci
+ * Processed feedback JOSS
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.9 (2020-10-10)
 
 ### NEW FEATURES
