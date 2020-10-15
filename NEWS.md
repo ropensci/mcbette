@@ -10,7 +10,6 @@ Newest versions at top.
 
 ### MINOR IMPROVEMENTS
 
- * Use CRAN versions
  * Processed feedback rOpenSci
  * Processed feedback JOSS
 
