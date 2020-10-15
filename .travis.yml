@@ -34,10 +34,10 @@ r_github_packages:
   - jimhester/covr
   - jimhester/lintr
   - MangoTheCat/goodpractice
-  - ropensci/beautier
-  - ropensci/tracerer
-  - ropensci/beastier
-  - ropensci/mauricer
+  #- ropensci/beautier
+  #- ropensci/tracerer
+  #- ropensci/beastier
+  #- ropensci/mauricer
 
 before_install:
   # Fix rJava error, from https://travis-ci.community/t/cannot-connect-to-java-from-r/9754/8
