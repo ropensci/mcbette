@@ -28,7 +28,7 @@ Description: 'BEAST2' (<https://www.beast2.org>) is a widely used
     'mcbette' allows to do a Bayesian model comparison over some
     site and clock models, 
     using 'babette' (<https://www.github.com/ropensci/babette>).
-License: GPL-3 + file LICENSE
+License: GPL-3
 LazyData: true
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
