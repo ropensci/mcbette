@@ -1,6 +1,6 @@
 Package: mcbette
 Title: Model Comparison Using 'babette'
-Version: 1.10
+Version: 1.11
 Authors@R: c(
     person(
       "Richèl J.C.", "Bilderbeek", 

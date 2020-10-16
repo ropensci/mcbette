@@ -2,6 +2,24 @@
 
 Newest versions at top.
 
+## `mcbette` 1.11 (2020-10-16)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * Depends on CRAN version of beautier (v2.4)
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.10 (2020-10-15)
 
 ### NEW FEATURES
