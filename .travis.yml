@@ -88,7 +88,7 @@ after_success:
   - Rscript -e 'remotes::install_github("ropensci/mcbette")'
   - Rscript -e 'mcbette::mcbette_report()'
   # Download thesis
-  - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
+  - wget https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf
 
 after_failure:
   # Report
@@ -97,6 +97,6 @@ after_failure:
   - Rscript -e 'remotes::install_github("ropensci/mcbette")'
   - Rscript -e 'mcbette::mcbette_report()'
   # Download thesis
-  - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
+  - wget https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf
 
 
