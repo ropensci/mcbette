@@ -35,7 +35,6 @@ r_github_packages:
   - jimhester/lintr
   - MangoTheCat/goodpractice
   #- ropensci/tracerer
-  - ropensci/beastier
   #- ropensci/mauricer
 
 before_install:
