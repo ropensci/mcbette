@@ -14,16 +14,19 @@ matrix:
   include:
   - r: release
     os: linux
-    env: INSTALL_BEAST2_NS=true
-    env: INSTALL_BEAST2=true
+    env: 
+    - INSTALL_BEAST2_NS=true
+    - INSTALL_BEAST2=true
   - r: release
     os: linux
-    env: INSTALL_BEAST2=true
-    env: INSTALL_BEAST2_NS=false
+    env: 
+    - INSTALL_BEAST2=true
+    - INSTALL_BEAST2_NS=false
   - r: devel
     os: linux
-    env: INSTALL_BEAST2=false
-    env: INSTALL_BEAST2_NS=false
+    env: 
+    - INSTALL_BEAST2=false
+    - INSTALL_BEAST2_NS=false
 
 # It may be that this package uninstall BEAST2 and/or the packages
 # before and after the tests.
