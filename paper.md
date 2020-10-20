@@ -20,7 +20,7 @@ bibliography: paper.bib
 
 ![](man/figures/mcbette_logo_50.png)
 
-> ``mcbette`` logo
+> The ``mcbette`` logo.
 
 # Abstract
 
