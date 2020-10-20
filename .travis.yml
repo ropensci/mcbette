@@ -14,10 +14,16 @@ matrix:
   include:
   - r: release
     os: linux
+    env: INSTALL_BEAST2_NS=true
     env: INSTALL_BEAST2=true
+  - r: release
+    os: linux
+    env: INSTALL_BEAST2=true
+    env: INSTALL_BEAST2_NS=false
   - r: devel
     os: linux
     env: INSTALL_BEAST2=false
+    env: INSTALL_BEAST2_NS=false
 
 # It may be that this package uninstall BEAST2 and/or the packages
 # before and after the tests.
@@ -53,7 +59,7 @@ before_script:
   - if [[ "$INSTALL_BEAST2" == true ]]; then Rscript -e "beastier::install_beast2()"; fi
   # Check state before mcbette is checked
   - Rscript -e "beastier::is_beast2_installed()"
-  - Rscript -e 'mauricer::install_beast2_pkg("NS")'
+  - if [[ "$INSTALL_BEAST2_NS" == true ]]; then Rscript -e 'mauricer::install_beast2_pkg("NS")'; fi
   - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
   - beast2_installed_before=$(Rscript -e "beastier::is_beast2_installed()")
   - beast2_ns_pkg_installed_before=$(Rscript -e 'mauricer::is_beast2_ns_pkg_installed()')
@@ -78,9 +84,9 @@ script:
 
 after_success:
   # Codecov
-  - if [[ "$INSTALL_BEAST2" == true ]]; then travis_wait 60 Rscript -e 'covr::codecov()'; fi
+  - if [[ "$INSTALL_BEAST2_NS" == true ]]; then travis_wait 60 Rscript -e 'covr::codecov()'; fi
   # Goodpractice
-  - if [[ "$INSTALL_BEAST2" == true ]]; then travis_wait 60 Rscript -e 'goodpractice::gp()'; fi
+  - if [[ "$INSTALL_BEAST2_NS" == true ]]; then travis_wait 60 Rscript -e 'goodpractice::gp()'; fi
   # Report
   - Rscript -e "beastier::is_beast2_installed()"
   - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
