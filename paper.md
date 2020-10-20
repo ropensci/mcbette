@@ -38,27 +38,27 @@ be used to generate a phylogeny.
 > Constructing a species phylogeny (at the right) 
 > from a DNA alignment (at the left)
 > using an evolutionary model (the arrow). 
-> ``mcbette`` allows to select an evolutionary model from a set of models.
+> ``mcbette`` allows for selecting an evolutionary model from a set of models.
 
 ``mcbette`` is an R package to do model comparison between
 a set of evolutionary models on a DNA alignment, which allows
-to select that model that is closest to the process that underlied
+to select that model that is closest to the process consistent with
 the DNA alignment and species tree.
 
-Unlike other methods, ``mcbette`` can be both be installed
+Unlike other methods, ``mcbette`` can both be installed
 and run from an R script, allowing one to run many 
 analyses using different models, examine the results directly
 from R and integrate ``mcbette`` into an existing R pipeline.
 
 # Getting started
 
-``mcbette`` is aimed to be used by anyone interested in phylogenetics
+``mcbette`` is aimed at being used by anyone interested in phylogenetics
 and assumes some basic knowledge about the field.
 The BEAST book [@Drummond:2015] serves as an excellent starting point
 about the field of phylogenetics, 
 where the ``mcbette`` README and vignette show a simpled worked-out example.
 The evolutionary models are those allowed by the ``babette`` 
-R package [@Bilderbeek:2018], which consist out of (among others) 
+R package [@Bilderbeek:2018], which consist of (among others) 
 a site model, clock model and tree model (see 'Supported models' below for an overview). 
 ``babette`` is an R package to work with the phylogenetic 
 tool BEAST2 [@Bouckaert:2019]. 
