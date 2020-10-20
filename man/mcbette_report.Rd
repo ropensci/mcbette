@@ -5,7 +5,7 @@
 \title{Create a \link{mcbette} report,
 to be used when reporting bugs}
 \usage{
-mcbette_report()
+mcbette_report(beast2_folder = beastier::get_default_beast2_folder())
 }
 \value{
 nothing. It is intended that the output (not

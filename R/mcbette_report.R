@@ -6,7 +6,9 @@
 #' mcbette_report()
 #' @author Richèl J.C. Bilderbeek
 #' @export
-mcbette_report <- function() {
+mcbette_report <- function(
+  beast2_folder = beastier::get_default_beast2_folder()
+) {
   kat <- function(x) cat(x, sep = "\n")
   kat("***********")
   kat("* mcbette *")
@@ -25,28 +27,38 @@ mcbette_report <- function() {
   kat("* BEAST2 *")
   kat("**********")
   kat(paste0("Java version: ", beastier::get_java_version()))
-  kat(paste0("Is BEAST2 installed: ", beastier::is_beast2_installed()))
-  if (beastier::is_beast2_installed()) {
-    kat(paste0("BEAST2 version: ", beastier::get_beast2_version()))
+  kat(
+    paste0(
+      "Is BEAST2 installed: ",
+      beastier::is_beast2_installed(folder_name = beast2_folder)
+    )
+  )
+  if (beastier::is_beast2_installed(folder_name = beast2_folder)) {
+    kat(
+      paste0(
+        "BEAST2 version: ",
+        beastier::get_beast2_version(beast2_path = beast2_folder)
+      )
+    )
     kat(
       paste0(
         "BEAST2 default path: ",
-        beastier::get_default_beast2_bin_path()
+        beastier::get_default_beast2_bin_path(beast2_folder = beast2_folder)
       )
     )
   }
-  if (beastier::is_beast2_installed()) {
+  if (beastier::is_beast2_installed(folder_name = beast2_folder)) {
     kat("*******************")
     kat("* BEAST2 packages *")
     kat("*******************")
     kat(
       paste0(
         "Is BEAST2 NS package installed: ",
-        mauricer::is_beast2_ns_pkg_installed()
+        mauricer::is_beast2_ns_pkg_installed(beast2_path = beast2_folder)
       )
     )
     if (curl::has_internet()) {
-      df <- mauricer::get_beast2_pkg_names()
+      df <- mauricer::get_beast2_pkg_names(folder_name = beast2_folder)
       kat(
         paste0(
           "BEAST2 NS installed version: ",

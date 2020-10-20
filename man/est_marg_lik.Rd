@@ -38,8 +38,6 @@ Estimate the marginal likelihood for an inference model.
 \examples{
 if (can_run_mcbette()) {
 
-  library(testthat)
-
   # An example FASTA file
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 
