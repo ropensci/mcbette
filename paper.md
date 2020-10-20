@@ -38,7 +38,7 @@ be used to generate a phylogeny.
 > Constructing a species phylogeny (at the right) 
 > from a DNA alignment (at the left)
 > using an evolutionary model (the arrow). 
-> ``mcbette`` allows to select an evolutionary model from a set of models
+> ``mcbette`` allows to select an evolutionary model from a set of models.
 
 ``mcbette`` is an R package to do model comparison between
 a set of evolutionary models on a DNA alignment, which allows
