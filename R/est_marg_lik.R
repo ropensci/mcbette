@@ -47,8 +47,14 @@ est_marg_lik <- function(
   beautier::check_inference_model(inference_model)
   beastier::check_beast2_options(beast2_options)
   beastier::check_os(os)
-  if (!beastier::is_beast2_installed()) {
-    stop("BEAST2 not installed. Tip: use beastier::install_beast2()")
+  folder_name <- dirname(dirname(dirname(beast2_options$beast2_path)))
+  if (!beastier::is_beast2_installed(folder_name = folder_name)) {
+    stop(
+      "BEAST2 not installed. \n",
+      "'beast2_options$beast2_path': ", beast2_options$beast2_path, " \n",
+      "'folder_name': ", folder_name, " \n",
+      "Tip: use beastier::install_beast2()"
+    )
   }
   if (!beastier::is_bin_path(beast2_options$beast2_path)) {
     stop(
