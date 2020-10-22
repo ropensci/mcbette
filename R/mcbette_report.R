@@ -1,5 +1,6 @@
 #' Create a \link{mcbette} report,
 #' to be used when reporting bugs
+#' @inheritParams default_params_doc
 #' @return nothing. It is intended that the output (not
 #' the return value) is copy-pasted from screen.
 #' @examples
