@@ -27,6 +27,5 @@ get_mcbette_state <- function() {
   } else {
     state$beast2_installed <- FALSE
   }
-  testthat::expect_silent(check_mcbette_state(state))
   state
 }

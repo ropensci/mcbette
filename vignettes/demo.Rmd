@@ -118,8 +118,7 @@ if (can_run_mcbette()) {
   # Shorten the run, by doing a short (dirty, unreliable) MCMC
   inference_model_1$mcmc <- beautier::create_test_ns_mcmc()
   inference_model_2$mcmc <- beautier::create_test_ns_mcmc()
-  
-  
+
   # Combine the two inference models
   inference_models <- c(list(inference_model_1), list(inference_model_2))
 

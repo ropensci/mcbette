@@ -18,7 +18,7 @@
 set_mcbette_state <- function(mcbette_state) {
   mcbette::check_mcbette_state(mcbette_state)
 
-  cur_state <- get_mcbette_state()
+  cur_state <- mcbette::get_mcbette_state()
 
   # Uninstall NS if requested
   # Uninstall if ns_installed must be either FALSE or NA
@@ -48,7 +48,4 @@ set_mcbette_state <- function(mcbette_state) {
   ) {
     mauricer::install_beast2_pkg("NS")
   }
-
-  # Must match now, remove this test if all pass
-  testthat::expect_identical(mcbette_state, get_mcbette_state())
 }
