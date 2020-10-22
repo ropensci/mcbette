@@ -54,11 +54,11 @@ mcbette_report <- function(
     kat(
       paste0(
         "Is BEAST2 NS package installed: ",
-        mauricer::is_beast2_ns_pkg_installed(beast2_path = beast2_folder)
+        mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)
       )
     )
     if (curl::has_internet()) {
-      df <- mauricer::get_beast2_pkg_names(folder_name = beast2_folder)
+      df <- mauricer::get_beast2_pkg_names(beast2_folder = beast2_folder)
       kat(
         paste0(
           "BEAST2 NS installed version: ",
