@@ -47,12 +47,12 @@ est_marg_lik <- function(
   beautier::check_inference_model(inference_model)
   beastier::check_beast2_options(beast2_options)
   beastier::check_os(os)
-  folder_name <- dirname(dirname(dirname(beast2_options$beast2_path)))
-  if (!beastier::is_beast2_installed(folder_name = folder_name)) {
+  beast2_folder <- dirname(dirname(dirname(beast2_options$beast2_path)))
+  if (!beastier::is_beast2_installed(folder_name = beast2_folder)) {
     stop(
       "BEAST2 not installed. \n",
       "'beast2_options$beast2_path': ", beast2_options$beast2_path, " \n",
-      "'folder_name': ", folder_name, " \n",
+      "'beast2_folder': ", beast2_folder, " \n",
       "Tip: use beastier::install_beast2()"
     )
   }
@@ -70,13 +70,13 @@ est_marg_lik <- function(
       "in a scripted way"
     )
   }
-  mcbette::check_beast2_ns_pkg()
+  mcbette::check_beast2_ns_pkg(beast2_options$beast2_path)
 
   beautier::check_nested_sampling_mcmc(inference_model$mcmc)
 
   testit::assert(file.exists(fasta_filename))
-  testit::assert(beastier::is_beast2_installed())
-  testit::assert(mauricer::is_beast2_ns_pkg_installed())
+  testit::assert(beastier::is_beast2_installed(folder_name = beast2_folder))
+  testit::assert(mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder))
 
   ns <- NA
 

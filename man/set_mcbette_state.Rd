@@ -4,7 +4,10 @@
 \alias{set_mcbette_state}
 \title{Set the \link{mcbette} state.}
 \usage{
-set_mcbette_state(mcbette_state)
+set_mcbette_state(
+  mcbette_state,
+  beast2_folder = beastier::get_default_beast2_folder()
+)
 }
 \arguments{
 \item{mcbette_state}{the \link{mcbette} state,
@@ -22,6 +25,16 @@ which is a \link{list} with the following elements:
       \link{FALSE} if the BEAST2 NS package is not installed
   }
 }}
+
+\item{beast2_folder}{the folder where the BEAST2 is installed.
+Note that this is not the folder where the BEAST2 executable is installed:
+the BEAST2 executable is in a subfolder.
+Use \link[beastier]{get_default_beast2_folder}
+  to get the default BEAST2 folder.
+Use \link[beastier]{get_default_beast2_bin_path}
+  to get the full path to the default BEAST2 executable.
+Use \link[beastier]{get_default_beast2_jar_path}
+  to get the full path to the default BEAST2 jar file.}
 }
 \description{
 Set the \link{mcbette} state.

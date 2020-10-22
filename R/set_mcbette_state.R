@@ -15,37 +15,40 @@
 #'   set_mcbette_state(mcbette_state)
 #' }
 #' @export
-set_mcbette_state <- function(mcbette_state) {
+set_mcbette_state <- function(
+  mcbette_state,
+  beast2_folder = beastier::get_default_beast2_folder()
+) {
   mcbette::check_mcbette_state(mcbette_state)
 
-  cur_state <- mcbette::get_mcbette_state()
+  cur_state <- mcbette::get_mcbette_state(beast2_folder = beast2_folder)
 
   # Uninstall NS if requested
   # Uninstall if ns_installed must be either FALSE or NA
   if (!isTRUE(mcbette_state$ns_installed) &&
     isTRUE(cur_state$ns_installed)
   ) {
-    mauricer::uninstall_beast2_pkg("NS")
+    mauricer::uninstall_beast2_pkg(name = "NS", beast2_folder = beast2_folder)
   }
 
   # Uninstall BEAST2 if requested
   if (isFALSE(mcbette_state$beast2_installed) &&
     isTRUE(cur_state$beast2_installed)
   ) {
-    beastier::uninstall_beast2()
+    beastier::uninstall_beast2(folder_name = beast2_folder)
   }
 
   # Install BEAST2 if requested
   if (isTRUE(mcbette_state$beast2_installed) &&
     isFALSE(cur_state$beast2_installed)
   ) {
-    beastier::install_beast2()
+    beastier::install_beast2(folder_name = beast2_folder)
   }
 
   # Install NS if requested
   if (isTRUE(mcbette_state$ns_installed) &&
     !isTRUE(cur_state$ns_installed)
   ) {
-    mauricer::install_beast2_pkg("NS")
+    mauricer::install_beast2_pkg("NS", beast2_folder = beast2_folder)
   }
 }

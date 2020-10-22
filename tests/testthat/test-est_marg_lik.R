@@ -92,15 +92,17 @@ test_that("abuse", {
     "'input_filename' must be an element of an 'beast2_options'"
   )
 
-  expect_error(
-    est_marg_lik(
-      fasta_filename = fasta_filename,
-      beast2_options = create_beast2_options(
-        beast2_path = beastier::get_default_beast2_jar_path()
-      )
-    ),
-    "Use the binary BEAST2 executable for marginal likelihood estimation"
-  )
+  if (beastier::is_beast2_installed()) {
+    expect_error(
+      est_marg_lik(
+        fasta_filename = fasta_filename,
+        beast2_options = create_beast2_options(
+          beast2_path = beastier::get_default_beast2_jar_path()
+        )
+      ),
+      "Use the binary BEAST2 executable for marginal likelihood estimation"
+    )
+  }
 
   # os
   expect_error(
@@ -110,13 +112,15 @@ test_that("abuse", {
     ),
     "'os' must be either 'mac', 'unix' or 'win'"
   )
-  expect_error(
-    est_marg_lik(
-      fasta_filename = fasta_filename,
-      os = "win"
-    ),
-    "mcbette must run on Linux or Mac"
-  )
+  if (beastier::is_beast2_installed()) {
+    expect_error(
+      est_marg_lik(
+        fasta_filename = fasta_filename,
+        os = "win"
+      ),
+      "mcbette must run on Linux or Mac"
+    )
+  }
 })
 
 
@@ -159,12 +163,14 @@ test_that("use BEAST2 installed at a different location", {
 
   if (!is_on_travis()) return()
 
-  folder_name <- tempfile()
-  beastier::install_beast2(folder_name = folder_name)
-  expect_true(beastier::is_beast2_installed(folder_name = folder_name))
+  beast2_folder <- tempfile()
+  beastier::install_beast2(folder_name = beast2_folder)
+  expect_true(beastier::is_beast2_installed(folder_name = beast2_folder))
+  mauricer::install_beast2_pkg(name = "NS", beast2_folder = beast2_folder)
+  expect_true(mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder))
 
   beast2_bin_path <- beastier::get_default_beast2_bin_path(
-    beast2_folder = folder_name
+    beast2_folder = beast2_folder
   )
   expect_true(file.exists(beast2_bin_path))
   beast2_options <- beastier::create_mcbette_beast2_options(
