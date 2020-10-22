@@ -37,7 +37,11 @@ mcbette_report <- function(
     kat(
       paste0(
         "BEAST2 version: ",
-        beastier::get_beast2_version(beast2_path = beast2_folder)
+        beastier::get_beast2_version(
+          beast2_path = beastier::get_default_beast2_bin_path(
+            beast2_folder = beast2_folder
+          )
+        )
       )
     )
     kat(
