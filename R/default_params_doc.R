@@ -2,6 +2,15 @@
 #' This function does nothing.
 #' It is intended to inherit function argument documentation.
 #' @param beast2_bin_path path to the the BEAST2 binary file
+#' @param beast2_folder the folder where the BEAST2 is installed.
+#'   Note that this is not the folder where the BEAST2 executable is installed:
+#'   the BEAST2 executable is in a subfolder.
+#'   Use \link[beastier]{get_default_beast2_folder}
+#'     to get the default BEAST2 folder.
+#'   Use \link[beastier]{get_default_beast2_bin_path}
+#'     to get the full path to the default BEAST2 executable.
+#'   Use \link[beastier]{get_default_beast2_jar_path}
+#'     to get the full path to the default BEAST2 jar file.
 #' @param beast2_working_dir folder in which BEAST2 will run and
 #'   produce intermediate files.
 #'   By default, this is a temporary folder
@@ -61,6 +70,7 @@
 #'   functions to find the documentation parameters
 default_params_doc <- function(
   beast2_bin_path,
+  beast2_folder,
   beast2_working_dir,
   beast2_options,
   beast2_optionses,
