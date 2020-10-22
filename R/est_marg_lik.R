@@ -74,9 +74,13 @@ est_marg_lik <- function(
 
   beautier::check_nested_sampling_mcmc(inference_model$mcmc)
 
-  testit::assert(file.exists(fasta_filename))
-  testit::assert(beastier::is_beast2_installed(folder_name = beast2_folder))
-  testit::assert(mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder))
+  testthat::expect_true(file.exists(fasta_filename))
+  testthat::expect_true(
+    beastier::is_beast2_installed(folder_name = beast2_folder)
+  )
+  testthat::expect_true(
+    mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)
+  )
 
   ns <- NA
 

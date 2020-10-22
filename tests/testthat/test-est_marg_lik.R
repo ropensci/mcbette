@@ -163,11 +163,15 @@ test_that("use BEAST2 installed at a different location", {
 
   if (!is_on_travis()) return()
 
-  beast2_folder <- tempfile()
+  beast2_folder <- tempfile(pattern = "mcbette_")
   beastier::install_beast2(folder_name = beast2_folder)
   expect_true(beastier::is_beast2_installed(folder_name = beast2_folder))
-  mauricer::install_beast2_pkg(name = "NS", beast2_folder = beast2_folder)
-  expect_true(mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder))
+  if (!mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)) {
+    mauricer::install_beast2_pkg(name = "NS", beast2_folder = beast2_folder)
+  }
+  expect_true(
+    mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)
+  )
 
   beast2_bin_path <- beastier::get_default_beast2_bin_path(
     beast2_folder = beast2_folder
