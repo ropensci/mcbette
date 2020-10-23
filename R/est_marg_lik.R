@@ -70,7 +70,7 @@ est_marg_lik <- function(
       "in a scripted way"
     )
   }
-  mcbette::check_beast2_ns_pkg(beast2_options$beast2_path)
+  mcbette::check_beast2_ns_pkg(beast2_bin_path =  beast2_options$beast2_path)
 
   beautier::check_nested_sampling_mcmc(inference_model$mcmc)
 

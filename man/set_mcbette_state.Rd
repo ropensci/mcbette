@@ -6,7 +6,8 @@
 \usage{
 set_mcbette_state(
   mcbette_state,
-  beast2_folder = beastier::get_default_beast2_folder()
+  beast2_folder = beastier::get_default_beast2_folder(),
+  verbose = FALSE
 )
 }
 \arguments{
@@ -35,9 +36,19 @@ Use \link[beastier]{get_default_beast2_bin_path}
   to get the full path to the default BEAST2 executable.
 Use \link[beastier]{get_default_beast2_jar_path}
   to get the full path to the default BEAST2 jar file.}
+
+\item{verbose}{if TRUE show debug output}
 }
 \description{
-Set the \link{mcbette} state.
+Set the \link{mcbette} state to having BEAST2 installed with
+or without installing the BEAST2 NS package.
+}
+\note{
+In newer versions of BEAST2, BEAST2 comes pre-installed with the
+BEAST2 NS package. For such a version, one cannot install BEAST2
+without NS. A warning will be issues if one intends to only install
+BEAST2 (i.e. without the BEAST2 NS package) and gets the BEAST2
+NS package installed as a side effect as well
 }
 \examples{
 mcbette_state <- get_mcbette_state()

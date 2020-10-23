@@ -24,7 +24,7 @@ get_mcbette_state <- function(
     beast2_installed = NA,
     ns_installed = NA
   )
-  if (beastier::is_beast2_installed()) {
+  if (beastier::is_beast2_installed(folder_name = beast2_folder)) {
     state$beast2_installed <- TRUE
     state$ns_installed <- mauricer::is_beast2_ns_pkg_installed(
       beast2_folder = beast2_folder

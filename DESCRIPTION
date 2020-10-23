@@ -35,7 +35,7 @@ VignetteBuilder: knitr
 URL: https://github.com/ropensci/mcbette/
 BugReports: https://github.com/ropensci/mcbette/issues
 Imports:
-    babette,
+    babette (>= 2.1.5),
     beautier (>= 2.4),
     beastier (>= 2.2.1),
     curl,
