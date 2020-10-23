@@ -8,7 +8,7 @@ test_that("use", {
   state_neither   <- list(beast2_installed = FALSE, ns_installed = NA)   # 00
   state_beast2    <- list(beast2_installed = TRUE, ns_installed = FALSE) # 01
   state_beast2_ns <- list(beast2_installed = TRUE, ns_installed = TRUE)  # 11
-  # 00 -> 11 -> 10 -> 00 -> 10 -> 11 -> 00
+  # 00 -> 11 -> 10 -> 00 -> 10 -> 11 -> 00                                      # nolint these are state transitions
 
   expect_silent(check_mcbette_state(state_neither))
   expect_silent(check_mcbette_state(state_beast2))
