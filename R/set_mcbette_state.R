@@ -37,24 +37,31 @@ set_mcbette_state <- function(
   if (!isTRUE(mcbette_state$ns_installed) &&
     isTRUE(cur_state$ns_installed)
   ) {
-    if (isTRUE(verbose)) message("Uninstalling the BEAST2 NS package")
-    mauricer::uninstall_beast2_pkg(name = "NS", beast2_folder = beast2_folder)
+    mauricer::uninstall_beast2_pkg(
+      name = "NS",
+      beast2_folder = beast2_folder,
+      verbose = verbose
+    )
   }
 
   # Uninstall BEAST2 if requested
   if (isFALSE(mcbette_state$beast2_installed) &&
     isTRUE(cur_state$beast2_installed)
   ) {
-    if (isTRUE(verbose)) message("Uninstalling BEAST2")
-    beastier::uninstall_beast2(folder_name = beast2_folder)
+    beastier::uninstall_beast2(
+      folder_name = beast2_folder,
+      verbose = verbose
+    )
   }
 
   # Install BEAST2 if requested
   if (isTRUE(mcbette_state$beast2_installed) &&
     isFALSE(cur_state$beast2_installed)
   ) {
-    if (isTRUE(verbose)) message("Installing BEAST2")
-    beastier::install_beast2(folder_name = beast2_folder)
+    beastier::install_beast2(
+      folder_name = beast2_folder,
+      verbose = verbose
+    )
   }
 
   # Install NS if requested
@@ -63,8 +70,11 @@ set_mcbette_state <- function(
   ) {
     # BEAST2 comes with the NS package pre-installed for newer version
     if (!mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)) {
-      if (isTRUE(verbose)) message("Installing the BEAST2 NS package")
-      mauricer::install_beast2_pkg("NS", beast2_folder = beast2_folder)
+      mauricer::install_beast2_pkg(
+        "NS",
+        beast2_folder = beast2_folder,
+        verbose = verbose
+      )
     } else {
       if (isTRUE(verbose)) message("NS came pre-installed with BEAST2")
     }
