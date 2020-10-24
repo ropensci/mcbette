@@ -4,7 +4,7 @@
 mcbette_self_test <- function(
   beast2_folder = beastier::get_default_beast2_folder()
 ) {
-  mauricer::est_marg_lik(
+  mcbette::est_marg_lik(
     fasta_filename = system.file("extdata", "simple.fas", package = "mcbette"),
     inference_model = beautier::create_test_ns_inference_model(),
     beast2_options = beastier::create_beast2_options(

@@ -32,31 +32,9 @@ set_mcbette_state <- function(
 
   cur_state <- mcbette::get_mcbette_state(beast2_folder = beast2_folder)
 
-  # Uninstall NS if requested
-  # Uninstall if ns_installed must be either FALSE or NA
-  if (!isTRUE(mcbette_state$ns_installed) &&
-    isTRUE(cur_state$ns_installed)
-  ) {
-    mauricer::uninstall_beast2_pkg(
-      name = "NS",
-      beast2_folder = beast2_folder,
-      verbose = verbose
-    )
-  }
-
-  # Uninstall BEAST2 if requested
-  if (isFALSE(mcbette_state$beast2_installed) &&
-    isTRUE(cur_state$beast2_installed)
-  ) {
-    beastier::uninstall_beast2(
-      folder_name = beast2_folder,
-      verbose = verbose
-    )
-  }
-
   # Install BEAST2 if requested
   if (isTRUE(mcbette_state$beast2_installed) &&
-    isFALSE(cur_state$beast2_installed)
+    beastier::is_beast2_installed(folder_name = beast2_folder)
   ) {
     beastier::install_beast2(
       folder_name = beast2_folder,
@@ -66,30 +44,20 @@ set_mcbette_state <- function(
 
   # Install NS if requested
   if (isTRUE(mcbette_state$ns_installed) &&
-    !isTRUE(cur_state$ns_installed)
+      !mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)
   ) {
-    # BEAST2 comes with the NS package pre-installed for newer version
-    if (!mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)) {
-      mauricer::install_beast2_pkg(
-        "NS",
-        beast2_folder = beast2_folder,
-        verbose = verbose
-      )
-    } else {
-      if (isTRUE(verbose)) message("NS came pre-installed with BEAST2")
-    }
+    mauricer::install_beast2_pkg(
+      "NS",
+      beast2_folder = beast2_folder,
+      verbose = verbose
+    )
   }
 
   # Uninstall NS if requested
   # BEAST2 comes with the NS package pre-installed for newer version
   if (isFALSE(mcbette_state$ns_installed)
+    && mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)
   ) {
-    # BEAST2 comes with the NS package pre-installed for newer version
-    if (mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)) {
-      if (isTRUE(verbose)) {
-        message("Uninstalling pre-installed BEAST2 NS package")
-      }
-      mauricer::uninstall_beast2_pkg("NS", beast2_folder = beast2_folder)
-    }
+    mauricer::uninstall_beast2_pkg("NS", beast2_folder = beast2_folder)
   }
 }
