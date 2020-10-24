@@ -30,8 +30,6 @@ set_mcbette_state <- function(
 ) {
   mcbette::check_mcbette_state(mcbette_state)
 
-  cur_state <- mcbette::get_mcbette_state(beast2_folder = beast2_folder)
-
   # Install BEAST2 if requested
   if (isTRUE(mcbette_state$beast2_installed) &&
     beastier::is_beast2_installed(folder_name = beast2_folder)
