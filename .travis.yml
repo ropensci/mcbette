@@ -41,6 +41,7 @@ env:
 r_github_packages:
   - ropensci/beastier
   - ropensci/mauricer
+  - ropensci/babette
   - jimhester/covr
   - jimhester/lintr
   - MangoTheCat/goodpractice
