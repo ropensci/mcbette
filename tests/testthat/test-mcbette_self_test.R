@@ -8,8 +8,11 @@ test_that("use", {
   state_neither   <- list(beast2_installed = FALSE, ns_installed = NA)   # 00
   state_beast2    <- list(beast2_installed = TRUE, ns_installed = FALSE) # 01
   state_beast2_ns <- list(beast2_installed = TRUE, ns_installed = TRUE)  # 11
-  # 00 -> 11 -> 10 -> 00 -> 10 -> 11 -> 00                                      # nolint these are state transitions
 
+  # We'll do the following 6 transitions:
+  # 00 -> 11 -> 10 -> 00 -> 10 -> 11 -> 00                                      # nolint these are state transitions
+  # First digit: is BEAST2 installed
+  # Second digit: is the BEAST2 NS package installed
   expect_silent(check_mcbette_state(state_neither))
   expect_silent(check_mcbette_state(state_beast2))
   expect_silent(check_mcbette_state(state_beast2_ns))
@@ -20,7 +23,7 @@ test_that("use", {
     beast2_folder = beast2_folder,
     verbose = TRUE
   )
-  expect_true(is_beast2_installed(folder_name = beast2_folder))
+  expect_true(beastier::is_beast2_installed(folder_name = beast2_folder))
   expect_true(is_beast2_ns_pkg_installed(beast2_folder = beast2_folder))
   expect_silent(mcbette_self_test(beast2_folder = beast2_folder))
 
