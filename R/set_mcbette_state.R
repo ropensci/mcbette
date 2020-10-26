@@ -32,7 +32,7 @@ set_mcbette_state <- function(
 
   # Install BEAST2 if requested
   if (isTRUE(mcbette_state$beast2_installed) &&
-    beastier::is_beast2_installed(folder_name = beast2_folder)
+    !beastier::is_beast2_installed(folder_name = beast2_folder)
   ) {
     beastier::install_beast2(
       folder_name = beast2_folder,
@@ -56,6 +56,10 @@ set_mcbette_state <- function(
   if (isFALSE(mcbette_state$ns_installed)
     && mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)
   ) {
-    mauricer::uninstall_beast2_pkg("NS", beast2_folder = beast2_folder)
+    mauricer::uninstall_beast2_pkg(
+      "NS",
+      beast2_folder = beast2_folder,
+      verbose = verbose
+    )
   }
 }
