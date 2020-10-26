@@ -27,9 +27,8 @@ a \link{list} with the following elements:
   }
   \item{
      ns_installed
-      \link{NA} if BEAST2 is not installed.
       \link{TRUE} if the BEAST2 NS package is installed
-      \link{FALSE} if the BEAST2 NS package is not installed
+      \link{FALSE} if the BEAST2 or the BEAST2 NS package is not installed
   }
 }
 }
