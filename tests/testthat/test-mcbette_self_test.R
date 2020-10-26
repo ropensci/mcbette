@@ -5,7 +5,7 @@ test_that("use", {
   beast2_folder <- tempfile(pattern = "mcbette_")
 
   # Create the tree states
-  state_neither   <- list(beast2_installed = FALSE, ns_installed = NA)   # 00
+  state_neither   <- list(beast2_installed = FALSE, ns_installed = FALSE) # 00
   state_beast2    <- list(beast2_installed = TRUE, ns_installed = FALSE) # 01
   state_beast2_ns <- list(beast2_installed = TRUE, ns_installed = TRUE)  # 11
 
