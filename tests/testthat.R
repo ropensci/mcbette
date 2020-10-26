@@ -13,5 +13,3 @@ if (is.na(before$ns_installed)) {
 } else {
   expect_identical(before, get_mcbette_state())
 }
-
-
