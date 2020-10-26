@@ -20,14 +20,11 @@ check_mcbette_state <- function(mcbette_state) {
   if (!beautier::is_one_bool(mcbette_state$beast2_installed)) {
     stop("'beast2_installed' must be one boolean")
   }
-  if (!beautier::is_one_na(mcbette_state$ns_installed) &&
-    !beautier::is_one_bool(mcbette_state$ns_installed)) {
-    stop("'ns_installed' must be one NA or one boolean")
+  if (!beautier::is_one_bool(mcbette_state$ns_installed)) {
+    stop("'ns_installed' must be one boolean")
   }
   # States that make sense
-  if (!mcbette_state$beast2_installed) {
-    if (!beautier::is_one_na(mcbette_state$ns_installed)) {
-      stop("If 'beast2_installed' is FALSE, 'ns_installed' must be NA")
-    }
+  if (!mcbette_state$beast2_installed && mcbette_state$ns_installed) {
+    stop("If 'beast2_installed' is FALSE, 'ns_installed' must be FALSE")
   }
 }
