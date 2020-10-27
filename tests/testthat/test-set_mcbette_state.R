@@ -4,6 +4,7 @@ test_that("set present state", {
   after <- get_mcbette_state()
   expect_identical(before$beast2_installed, after$beast2_installed)
   expect_identical(before$ns_installed, after$ns_installed)
+  expect_identical(before, after)
 })
 
 test_that("uninstall all", {
@@ -19,6 +20,7 @@ test_that("uninstall all", {
   after <- get_mcbette_state()
   expect_identical(before$beast2_installed, after$beast2_installed)
   expect_identical(before$ns_installed, after$ns_installed)
+  expect_identical(before, after)
 })
 
 test_that("uninstall all", {
@@ -34,6 +36,7 @@ test_that("uninstall all", {
   after <- get_mcbette_state()
   expect_identical(before$beast2_installed, after$beast2_installed)
   expect_identical(before$ns_installed, after$ns_installed)
+  expect_identical(before, after)
 })
 
 
@@ -50,4 +53,5 @@ test_that("uninstall all", {
   after <- get_mcbette_state()
   expect_identical(before$beast2_installed, after$beast2_installed)
   expect_identical(before$ns_installed, after$ns_installed)
+  expect_identical(before, after)
 })
