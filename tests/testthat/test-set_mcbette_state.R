@@ -27,7 +27,7 @@ test_that("uninstall all", {
 
   before <- get_mcbette_state()
 
-  state_beast2    <- list(beast2_installed = TRUE, ns_installed = FALSE)
+  state_beast2 <- list(beast2_installed = TRUE, ns_installed = FALSE)
   expect_silent(set_mcbette_state(state_beast2))
 
   expect_silent(set_mcbette_state(before))
@@ -44,7 +44,7 @@ test_that("uninstall all", {
   before <- get_mcbette_state()
 
   state_beast2_ns <- list(beast2_installed = TRUE, ns_installed = TRUE)
-  expect_silent(set_mcbette_state(state_neither))
+  expect_silent(set_mcbette_state(state_beast2_ns))
 
   expect_silent(set_mcbette_state(before))
   after <- get_mcbette_state()
