@@ -3,4 +3,5 @@ test_that("use", {
   expect_silent(set_mcbette_state(before))
   after <- get_mcbette_state()
   expect_identical(before$beast2_installed, after$beast2_installed)
+  expect_identical(before$ns_installed, after$ns_installed)
 })
