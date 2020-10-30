@@ -1,3 +1,5 @@
+# STATE IS CHANGED HERE
+
 # test_that("use", {
 #   if (!is_on_travis()) return()
 #
