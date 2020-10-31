@@ -39,7 +39,6 @@ env:
     - beast2_ns_pkg_installed_after=-1
 
 r_github_packages:
-  - ropensci/beastier
   - ropensci/mauricer
   - ropensci/babette
   - jimhester/covr
