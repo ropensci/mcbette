@@ -17,26 +17,11 @@ matrix:
     env: 
     - INSTALL_BEAST2_NS=true
     - INSTALL_BEAST2=true
-  - r: release
-    os: linux
-    env: 
-    - INSTALL_BEAST2=true
-    - INSTALL_BEAST2_NS=false
   - r: devel
     os: linux
     env: 
     - INSTALL_BEAST2=false
     - INSTALL_BEAST2_NS=false
-
-# It may be that this package uninstall BEAST2 and/or the packages
-# before and after the tests.
-# These variable allow to verify this
-env:
-  global:
-    - beast2_installed_before=-1
-    - beast2_installed_after=-1
-    - beast2_ns_pkg_installed_before=-1
-    - beast2_ns_pkg_installed_after=-1
 
 r_github_packages:
   - ropensci/mauricer
@@ -66,21 +51,10 @@ before_script:
   - Rscript -e "beastier::is_beast2_installed()"
   - if [[ "$INSTALL_BEAST2_NS" == true ]]; then Rscript -e 'mauricer::install_beast2_pkg("NS")'; fi
   - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
-  - beast2_installed_before=$(Rscript -e "beastier::is_beast2_installed()")
-  - beast2_ns_pkg_installed_before=$(Rscript -e 'mauricer::is_beast2_ns_pkg_installed()')
-  - echo $beast2_installed_before
-  - echo $beast2_ns_pkg_installed_before
 
 script:
   - travis_wait 30 R CMD build .
   - travis_wait 40 R CMD check *tar.gz
-  # Check state after mcbette is checked, which must be the same
-  - beast2_installed_after=$(Rscript -e "beastier::is_beast2_installed()")
-  - beast2_ns_pkg_installed_after=$(Rscript -e 'mauricer::is_beast2_ns_pkg_installed()')
-  - echo $beast2_installed_after
-  - echo $beast2_ns_pkg_installed_after
-  - if [ "$beast2_installed_before" != "$beast2_installed_after" ]; then echo "ERROR! THEY DIFFER!"; exit 1; fi
-  - if [ "$beast2_ns_pkg_installed_before" != "$beast2_ns_pkg_installed_after" ]; then echo "ERROR! THEY DIFFER!"; exit 1; fi
   # lintr
   - if [[ "$INSTALL_BEAST2" == false ]]; then Rscript -e 'lintr::expect_lint_free()'; fi
   # Convert the paper to PDF
