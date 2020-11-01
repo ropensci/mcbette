@@ -2,11 +2,15 @@
 #'
 #' Set the \link{mcbette} state to having BEAST2 installed with
 #' or without installing the BEAST2 NS package.
+#'
 #' @note In newer versions of BEAST2, BEAST2 comes pre-installed with the
 #' BEAST2 NS package. For such a version, one cannot install BEAST2
 #' without NS. A warning will be issues if one intends to only install
 #' BEAST2 (i.e. without the BEAST2 NS package) and gets the BEAST2
-#' NS package installed as a side effect as well
+#' NS package installed as a side effect as well.
+#'
+#' Also, installing or uninstalling a BEAST2 package from a BEAST2
+#' installation will affect all installations.
 #' @inheritParams default_params_doc
 #' @seealso
 #' \itemize{
