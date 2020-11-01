@@ -189,4 +189,3 @@ test_that("use BEAST2 installed at a different location", {
     )
   )
 })
-
