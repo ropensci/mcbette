@@ -13,7 +13,6 @@ test_that("use", {
   expect_silent(check_mcbette_state(state_beast2))
   expect_silent(check_mcbette_state(state_beast2_ns))
 
-
   # 1. Check for BEAST2 and BEAST2 NS package installed
   set_mcbette_state(
     mcbette_state = state_beast2_ns,
@@ -29,8 +28,6 @@ test_that("use", {
       )
     )
   )
-  # Check if everything is still the same
-  expect_identical(before, get_mcbette_state())
 
   # 2. Check for BEAST2 installed
   # Note that this function changes the global state as well!
