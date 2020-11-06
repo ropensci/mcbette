@@ -98,7 +98,7 @@ est_marg_lik <- function(
         "Could not estimate the marginal likelihood. \n",
         "Error message: ", e$message, "\n",
         "fasta_filename: ", fasta_filename, "\n",
-        "beast2_options: ", beast2_options, "\n",
+        "beast2_options: ", paste0(beast2_options, collapse = " "), "\n",
         "inference_model: ", inference_model, "\n"
       )
     }
