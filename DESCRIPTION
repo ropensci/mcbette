@@ -39,13 +39,13 @@ Imports:
     beautier (>= 2.4),
     beastier (>= 2.2.1),
     curl,
+    devtools,
     mauricer (>= 2.3),
     Rmpfr,
     testit,
     txtplot
 Suggests:
     ape,
-    devtools,
     ggplot2,
     hunspell,
     knitr,
