@@ -87,7 +87,7 @@ Here is the default inference model:
 
 ```{r example_inference_model_1}
 inference_model_1 <- beautier::create_ns_inference_model()
-print(
+message(
   paste(
     inference_model_1$site_model$name,
     inference_model_1$clock_model$name,

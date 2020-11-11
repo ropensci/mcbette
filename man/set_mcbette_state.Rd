@@ -57,7 +57,7 @@ installation will affect all installations.
 mcbette_state <- get_mcbette_state()
 mcbette_state$beast2_installed <- TRUE
 mcbette_state$ns_installed <- TRUE
-\dontrun{
+\donttest{
   set_mcbette_state(mcbette_state)
 }
 }

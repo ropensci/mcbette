@@ -10,7 +10,7 @@
 mcbette_report <- function(
   beast2_folder = beastier::get_default_beast2_folder()
 ) {
-  kat <- function(x) cat(x, sep = "\n")
+  kat <- function(x) message(x, sep = "\n")
   kat("***********")
   kat("* mcbette *")
   kat("***********")
@@ -81,6 +81,6 @@ mcbette_report <- function(
   kat("***************")
   kat("* sessionInfo *")
   kat("***************")
-  print(utils::sessionInfo())
+  message(utils::sessionInfo())
   invisible(NULL)
 }

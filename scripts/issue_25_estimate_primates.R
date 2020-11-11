@@ -21,7 +21,7 @@ df <- expand.grid(
 )
 
 for (i in seq_len(nrow(df))) {
-  print(i)
+  message(i)
   inference_model <- create_test_ns_inference_model()
   inference_model$mcmc$epsilon <- df$epsilon[i]
   inference_model$mcmc$particle_count <- df$particle_count[i]

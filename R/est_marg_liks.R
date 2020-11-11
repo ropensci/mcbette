@@ -146,7 +146,7 @@ est_marg_liks <- function(
   # Iterate over all inference models and BEAST2 optionses
   for (i in seq(1, n_rows)) {
     if (verbose == TRUE) {
-      print(
+      message(
         paste0(
           "Estimating evidence for model ", i, "/", n_rows, " with ",
           inference_models[[i]]$site_model$name, " site model, ",
@@ -166,7 +166,7 @@ est_marg_liks <- function(
       beast2_options = beast2_options,
       os = os
     )
-    if (verbose) print(ns)
+    if (verbose) message(ns)
     testit::assert("marg_log_lik" %in% names(ns))
     testit::assert("marg_log_lik_sd" %in% names(ns))
     marg_log_liks[i] <- ns$marg_log_lik

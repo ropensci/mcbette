@@ -61,7 +61,7 @@ marg_liks <- mcbette::est_marg_liks(
 # Show results
 # ESS cannot be interpreted anyways
 marg_liks$ess <- NULL
-cat(
+message(
   knitr::kable(marg_liks, format = "markdown"),
   sep = "\n",
   file = marg_liks_filename

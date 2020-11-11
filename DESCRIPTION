@@ -27,7 +27,7 @@ Description: 'BEAST2' (<https://www.beast2.org>) is a widely used
     phylogenies and parameters.
     'mcbette' allows to do a Bayesian model comparison over some
     site and clock models, 
-    using 'babette' (<https://www.github.com/ropensci/babette/>).
+    using 'babette' (<https://github.com/ropensci/babette/>).
 License: GPL-3
 LazyData: true
 RoxygenNote: 7.1.1
