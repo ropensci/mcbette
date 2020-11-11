@@ -78,9 +78,9 @@ mcbette_report <- function(
       )
     }
   }
-  kat("***************")
-  kat("* sessionInfo *")
-  kat("***************")
+  kat("****************")
+  kat("* session info *")
+  kat("****************")
   message(paste0(devtools::session_info(), collapse = "\n"))
   invisible(NULL)
 }
