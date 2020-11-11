@@ -1,5 +1,5 @@
 test_that("use", {
-  expect_output(mcbette_report())
+  expect_message(mcbette_report())
 })
 
 test_that("give output when nothing is installed", {

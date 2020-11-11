@@ -2,6 +2,26 @@
 
 Newest versions at top.
 
+## `mcbette` 1.12 (unreleased)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * Process CRAN feedback, thanks Gregor Seyer
+ * Use `message` instead of `cat`/`print`
+ * Fix URL in DESCRIPTION
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.11 (2020-10-16)
 
 ### NEW FEATURES

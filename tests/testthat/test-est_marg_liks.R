@@ -139,7 +139,7 @@ test_that("use, 1 model", {
 
   if (!can_run_mcbette()) return()
 
-  expect_output(
+  expect_message(
     est_marg_liks(
       fasta_filename = system.file(
         "extdata", "simple.fas", package = "mcbette"
