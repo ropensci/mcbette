@@ -50,7 +50,7 @@
 #'     \item \code{ess}: effective sample size of the marginal likelihood
 #'       estimation
 #'   }
-#'   Use \link{create_test_marg_liks} to create a test \code{marg_liks}.
+#'   Use \link{get_test_marg_liks} to get a test \code{marg_liks}.
 #'   Use \link{is_marg_liks} to determine if a \code{marg_liks} is valid.
 #'   Use \link{check_marg_liks} to check that a \code{marg_liks} is valid.
 #' @param mcbette_state the \link{mcbette} state,
