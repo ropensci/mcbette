@@ -10,6 +10,10 @@ plot_marg_liks <- function(marg_liks) {
   max_y <- max(marg_liks$marg_log_lik) +
     (2.0 * max(marg_liks$marg_log_lik_sd))
 
+  i <- NULL; rm(i) # nolint, fixes warning: no visible binding for global variable
+  marg_log_lik <- NULL; rm(marg_log_lik) # nolint, fixes warning: no visible binding for global variable
+  marg_log_lik_sd <- NULL; rm(marg_log_lik_sd) # nolint, fixes warning: no visible binding for global variable
+
   ggplot2::ggplot(marg_liks, ggplot2::aes(x = i, y = marg_log_lik)) +
     ggplot2::geom_point(shape = 3) +
     ggplot2::geom_errorbar(
