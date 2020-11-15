@@ -73,8 +73,27 @@ as can be created by \link[beautier]{create_inference_model}}
 \item{inference_models}{a list of one or more inference models,
 as can be created by \link[beautier]{create_inference_model}}
 
-\item{marg_liks}{the estimated marginal likelihoods (aka evidences),
-as created by \link{est_marg_liks}}
+\item{marg_liks}{a table of (estimated) marginal likelihoods,
+as, for example, created by \link{est_marg_liks}.
+This \link{data.frame} has the following columns:
+\itemize{
+  \item \code{site_model_name}: name of the site model,
+    must be an element of \link[beautier]{get_site_model_names}
+  \item \code{clock_model_name}: name of the clock model,
+    must be an element of \link[beautier]{get_clock_model_names}
+  \item \code{tree_prior_name}: name of the tree prior,
+    must be an element of \link[beautier]{get_tree_prior_names}
+  \item \code{marg_log_lik}: estimated marginal (natural) log likelihood
+  \item \code{marg_log_lik_sd}: estimated error of \code{marg_log_lik}
+  \item \code{weight}: relative model weight, a value from 1.0 (all
+    evidence is in favor of this model combination) to 0.0 (no
+    evidence in favor of this model combination)
+  \item \code{ess}: effective sample size of the marginal likelihood
+    estimation
+}
+Use \link{create_test_marg_liks} to create a test \code{marg_liks}.
+Use \link{is_marg_liks} to determine if a \code{marg_liks} is valid.
+Use \link{check_marg_liks} to check that a \code{marg_liks} is valid.}
 
 \item{mcbette_state}{the \link{mcbette} state,
 which is a \link{list} with the following elements:

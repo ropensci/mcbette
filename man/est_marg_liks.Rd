@@ -43,11 +43,8 @@ a \link{data.frame} showing the estimated marginal likelihoods
   \item \code{weight}: relative model weight, a value from 1.0 (all
     evidence is in favor of this model combination) to 0.0 (no
     evidence in favor of this model combination)
-}
-\itemize{
-  \item \link{can_run_mcbette}: see if 'mcbette' can run
-  \item \link{est_marg_liks}: estimate multiple marginal likelihood of a
-    single inference mode
+  \item \code{ess}: effective sample size of the marginal likelihood
+    estimation
 }
 }
 \description{
@@ -117,6 +114,13 @@ if (can_run_mcbette()) {
 
   # Interpret the results
   interpret_marg_lik_estimates(marg_liks)
+}
+}
+\seealso{
+\itemize{
+  \item \link{can_run_mcbette}: see if 'mcbette' can run
+  \item \link{est_marg_liks}: estimate multiple marginal likelihood of a
+    single inference mode
 }
 }
 \author{

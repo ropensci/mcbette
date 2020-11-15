@@ -37,7 +37,10 @@
 #'   \item \code{weight}: relative model weight, a value from 1.0 (all
 #'     evidence is in favor of this model combination) to 0.0 (no
 #'     evidence in favor of this model combination)
+#'   \item \code{ess}: effective sample size of the marginal likelihood
+#'     estimation
 #' }
+#' @seealso
 #' \itemize{
 #'   \item \link{can_run_mcbette}: see if 'mcbette' can run
 #'   \item \link{est_marg_liks}: estimate multiple marginal likelihood of a
