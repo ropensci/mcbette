@@ -9,7 +9,9 @@ is_marg_liks <- function(marg_liks, verbose = FALSE) {
       is <- TRUE
     },
     error = function(e) {
-      if (verbose) message(e)
+      if (isTRUE(verbose)) {
+        message("Error: ", e)
+      }
     }
   )
   is
