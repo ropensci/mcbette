@@ -15,6 +15,8 @@ test_that("uninstall all", {
 
   state_neither <- list(beast2_installed = FALSE, ns_installed = FALSE)
   expect_silent(set_mcbette_state(state_neither))
+  state_neither_again <- get_mcbette_state()
+  expect_identical(state_neither_again, state_neither)
 
   expect_silent(set_mcbette_state(before))
   after <- get_mcbette_state()
