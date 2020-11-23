@@ -2,6 +2,24 @@
 
 Newest versions at top.
 
+## `mcbette` 1.13 (unreleased)
+
+### NEW FEATURES
+
+ * Add `plot_marg_liks`
+
+### MINOR IMPROVEMENTS
+
+ * Add `check_marg_liks`
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.12 (2020-11-11)
 
 ### NEW FEATURES
