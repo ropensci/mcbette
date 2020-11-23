@@ -125,12 +125,18 @@ has generated the data.
 
 ```{r example_est_marg_liks, cache=TRUE}
 if (can_run_mcbette()) {
-  knitr::kable(
-    est_marg_liks(
-      fasta_filename = fasta_filename,
-      inference_models = list(inference_model_1, inference_model_2)
-    )
+  marg_liks <- est_marg_liks(
+    fasta_filename = fasta_filename,
+    inference_models = list(inference_model_1, inference_model_2)
   )
+}
+```
+
+Here we display the marginal likelihoods as a table:
+
+```{r marg_liks_as_table}
+if (can_run_mcbette()) {
+  knitr::kable(marg_liks)
 }
 ```
 
@@ -139,6 +145,14 @@ When a model's weight is very close to one,
 one would prefer to use that inference model in doing a Bayesian inference.
 If these model weights are rather similar, one could argue to use either
 model. 
+
+Here we display the marginal likelihoods as a barplot:
+
+```{r plot_marg_liks}
+if (can_run_mcbette()) {
+  plot_marg_liks(marg_liks)
+}
+```
 
 ## Available models
 

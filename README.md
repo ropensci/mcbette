@@ -6,6 +6,7 @@
 <!-- badges: start -->
 
 [![peer-review](https://badges.ropensci.org/360_status.svg)](https://github.com/ropensci/software-review/issues/360)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.02762/status.svg)](https://doi.org/10.21105/joss.02762)
 
 | Branch    | [![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.org)                                                 | [![AppVeyor logo](man/figures/AppVeyor.png)](https://www.appveyor.com)                                                                                                    | [![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)                                                                                 |
 | --------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -83,7 +84,7 @@ message(
     inference_model_1$tree_prior$name
   )
 )
-#> [1] "JC69 strict yule"
+#> JC69 strict yule
 ```
 
 The JC69 site model assumes that the four DNA nucleotides are equally
@@ -114,24 +115,40 @@ data.
 
 ``` r
 if (can_run_mcbette()) {
-  knitr::kable(
-    est_marg_liks(
-      fasta_filename = fasta_filename,
-      inference_models = list(inference_model_1, inference_model_2)
-    )
+  marg_liks <- est_marg_liks(
+    fasta_filename = fasta_filename,
+    inference_models = list(inference_model_1, inference_model_2)
   )
 }
 ```
 
-| site\_model\_name | clock\_model\_name   | tree\_prior\_name | marg\_log\_lik | marg\_log\_lik\_sd | weight |      ess |
-| :---------------- | :------------------- | :---------------- | -------------: | -----------------: | -----: | -------: |
-| JC69              | strict               | yule              |     \-143.8551 |           1.919144 | 0.1369 | 7.568266 |
-| HKY               | relaxed\_log\_normal | birth\_death      |     \-142.0138 |           2.625996 | 0.8631 | 4.159713 |
+Here we display the marginal likelihoods as a table:
+
+``` r
+if (can_run_mcbette()) {
+  knitr::kable(marg_liks)
+}
+```
+
+| site\_model\_name | clock\_model\_name   | tree\_prior\_name | marg\_log\_lik | marg\_log\_lik\_sd |    weight |      ess |
+| :---------------- | :------------------- | :---------------- | -------------: | -----------------: | --------: | -------: |
+| JC69              | strict               | yule              |     \-142.3376 |           2.165187 | 0.4402429 | 4.237548 |
+| HKY               | relaxed\_log\_normal | birth\_death      |     \-142.0975 |           1.870081 | 0.5597571 | 5.347145 |
 
 The most important result are the model weights. When a model’s weight
 is very close to one, one would prefer to use that inference model in
 doing a Bayesian inference. If these model weights are rather similar,
 one could argue to use either model.
+
+Here we display the marginal likelihoods as a barplot:
+
+``` r
+if (can_run_mcbette()) {
+  plot_marg_liks(marg_liks)
+}
+```
+
+<img src="man/figures/README-plot_marg_liks-1.png" width="100%" />
 
 ## Available models
 
