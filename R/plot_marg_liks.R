@@ -24,7 +24,7 @@ plot_marg_liks <- function(marg_liks) {
       )
     ) +
     ggplot2::scale_y_continuous(
-      name = "Marginal likelihood",
+      name = "Marginal log-likelihood",
       limits = c(min_y, max_y),
     ) +
     ggplot2::scale_x_continuous(
