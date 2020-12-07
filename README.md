@@ -42,7 +42,7 @@ On Linux, to install these, do (as root):
 After this, installing `mcbette` is easy:
 
 ``` r
-remotes::install_github("ropensci/mcbette")
+install.packages("mcbette")
 beastier::install_beast2()
 mauricer::install_beast2_pkg("NS")
 ```
@@ -130,11 +130,6 @@ if (can_run_mcbette()) {
 }
 ```
 
-| site\_model\_name | clock\_model\_name   | tree\_prior\_name | marg\_log\_lik | marg\_log\_lik\_sd |    weight |      ess |
-| :---------------- | :------------------- | :---------------- | -------------: | -----------------: | --------: | -------: |
-| JC69              | strict               | yule              |     \-142.3376 |           2.165187 | 0.4402429 | 4.237548 |
-| HKY               | relaxed\_log\_normal | birth\_death      |     \-142.0975 |           1.870081 | 0.5597571 | 5.347145 |
-
 The most important result are the model weights. When a model’s weight
 is very close to one, one would prefer to use that inference model in
 doing a Bayesian inference. If these model weights are rather similar,
@@ -147,8 +142,6 @@ if (can_run_mcbette()) {
   plot_marg_liks(marg_liks)
 }
 ```
-
-<img src="man/figures/README-plot_marg_liks-1.png" width="100%" />
 
 ## Available models
 
@@ -174,6 +167,64 @@ beautier::get_tree_prior_names()
 #> [3] "coalescent_constant_population" "coalescent_exp_population"     
 #> [5] "yule"
 ```
+
+## Documentation
+
+  - The mcbette vignette
+  - [rOpenSci blog post: Call BEAST2 for Bayesian evolutionary analysis
+    from R](https://ropensci.org/blog/2020/01/28/babette/)
+  - [rOpenSci blog post: Selecting the Best Phylogenetic Evolutionary
+    Model](https://ropensci.org/blog/2020/12/01/mcbette-selecting-the-best-inference-model/)
+
+## FAQ
+
+### Under which platforms does `mcbette` work?
+
+`mcbette` only works on Linux and Mac, because BEAST2 package management
+only works on those platforms.
+
+### How do I let mcbette compare all models?
+
+First, this is impossible, as there are infinitely many inference models
+possible.
+
+``` r
+inference_models <- list()
+i <- 1
+for (site_model in beautier::create_site_models()) {
+  for (clock_model in beautier::create_clock_models()) {
+    for (tree_prior in beautier::create_tree_priors()) {
+      inference_models[[i]] <- beautier::create_ns_inference_model(
+        site_model = site_model,
+        clock_model = clock_model,
+        tree_prior = tree_prior
+      )
+      i <- i + 1
+    }
+  }
+}
+```
+
+Now, `inference_models` holds a list of inference models, to be used
+with `mcbette::est_marg_liks`.
+
+### `Error: dir.exists(examples_folder) is not TRUE`
+
+Currently, this line gives a suboptimal error message:
+
+    beastier::get_beast2_example_filename("Primates.nex")
+
+The error message is:
+
+    Error: dir.exists(examples_folder) is not TRUE
+
+The error message it should display is:
+
+    Error: BEAST2 examples folder not found at path '[path]'.
+    Maybe BEAST2 is not installed? 
+    Tip: run 'beastier::install_beast2()'
+
+This will be added in a future version of `beastier`.
 
 ## Using an existing BEAST2 installation
 
