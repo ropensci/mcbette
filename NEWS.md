@@ -2,6 +2,24 @@
 
 Newest versions at top.
 
+## `mcbette` 1.14 (unreleased)
+
+### NEW FEATURES
+
+ * Use GitHub Actions as a continuous integration service
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.13 (2020-12-05)
 
 ### NEW FEATURES
