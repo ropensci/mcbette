@@ -50,6 +50,7 @@ Suggests:
     hunspell,
     knitr,
     lintr,
+    markdown,
     nLTT,
     phangorn,
     rappdirs,
