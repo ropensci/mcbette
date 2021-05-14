@@ -23,6 +23,8 @@ matrix:
     - INSTALL_BEAST2_NS=false
 
 r_github_packages:
+  - ropensci/beautier@develop
+  - ropensci/beastier@develop
   - jimhester/covr
   - jimhester/lintr
   - MangoTheCat/goodpractice

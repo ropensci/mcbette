@@ -14,7 +14,7 @@ jobs:
           - install_beast2: "true" 
           - install_beast2: "false"
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -41,6 +41,8 @@ jobs:
           remotes::install_cran("rcmdcheck")
           remotes::install_cran("covr")
           remotes::install_cran("lintr")
+          remotes::install_github("ropensci/beautier", ref = "develop")
+          remotes::install_github("ropensci/beastier", ref = "develop")
           remotes::install_github("MangoTheCat/goodpractice")
         shell: Rscript {0}
 
