@@ -3,6 +3,8 @@
 on:
   push:
   pull_request:
+  schedule:
+  - cron: "* * * * 6"
 
 name: R-CMD-check
 
