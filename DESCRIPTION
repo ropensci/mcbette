@@ -39,7 +39,7 @@ Imports:
     beastier (>= 2.4),
     curl,
     devtools,
-    mauricer (>= 2.3),
+    mauricer (>= 2.5),
     Rmpfr,
     testit,
     txtplot
