@@ -53,7 +53,7 @@ est_marg_lik <- function(
       "BEAST2 not installed. \n",
       "'beast2_options$beast2_path': ", beast2_options$beast2_path, " \n",
       "'beast2_folder': ", beast2_folder, " \n",
-      "Tip: use beastier::install_beast2()"
+      "Tip: use beastierinstall::install_beast2()"
     )
   }
   if (!beastier::is_bin_path(beast2_options$beast2_path)) {

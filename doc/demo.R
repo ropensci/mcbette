@@ -13,7 +13,7 @@ if (rappdirs::app_dir()$os == "win") {
 } else if (!beastier::is_beast2_installed()) {
   message(
     "BEAST2 must be installed. ",
-    "Tip: use 'beastier::install_beast2()'"
+    "Tip: use 'beastierinstall::install_beast2()'"
   )
 } else if (!mauricer::is_beast2_ns_pkg_installed()) {
   message(
