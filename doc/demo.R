@@ -18,7 +18,7 @@ if (rappdirs::app_dir()$os == "win") {
 } else if (!mauricer::is_beast2_ns_pkg_installed()) {
   message(
     "The BEAST2 'NS' package must be installed. ",
-    "Tip: use 'mauricer::install_beast2_pkg(\"NS\")'"
+    "Tip: use 'mauricerinstall::install_beast2_pkg(\"NS\")'"
   )
 }
 

@@ -12,7 +12,7 @@ check_beast2_ns_pkg <- function(
   if (!mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)) {
     stop(
       "BEAST2 'NS' package not installed. ",
-      "Tip: use mauricer::install_beast2_pkg(\"NS\")"
+      "Tip: use mauricerinstall::install_beast2_pkg(\"NS\")"
     )
   }
   invisible(NULL)
