@@ -47,10 +47,13 @@ before_install:
 
 before_script:
   # Install BEAST2. Note: beastier must work without BEAST2 installed as well
-  - if [[ "$INSTALL_BEAST2" == true ]]; then Rscript -e "beastier::install_beast2()"; fi
+  - if [[ "$INSTALL_BEAST2" == true ]]; then Rscript -e "remotes::install_github("richelbilderbeek/beastierinstall")"; fi
+  - if [[ "$INSTALL_BEAST2" == true ]]; then Rscript -e "beastierinstall::install_beast2()"; fi
+  - if [[ "$INSTALL_BEAST2" == true ]]; then Rscript -e "beastierinstall::install_beast2()"; fi
   # Check state before mcbette is checked
   - Rscript -e "beastier::is_beast2_installed()"
-  - if [[ "$INSTALL_BEAST2_NS" == true ]]; then Rscript -e 'mauricer::install_beast2_pkg("NS")'; fi
+  - if [[ "$INSTALL_BEAST2_NS" == true ]]; then Rscript -e "remotes::install_github("richelbilderbeek/mauricerinstall")"; fi
+  - if [[ "$INSTALL_BEAST2_NS" == true ]]; then Rscript -e 'mauricerinstall::install_beast2_pkg("NS")'; fi
   - Rscript -e 'mauricer::is_beast2_ns_pkg_installed()'
 
 script:
