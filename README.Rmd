@@ -52,13 +52,20 @@ On Linux, to install these, do (as root):
 apt install r-cran-rjava libmpfr-dev
 ```
 
-After this, installing `mcbette` is easy:
+After this, installing `mcbette` is rather easy:
 
 ```r
 install.packages("mcbette")
-beastier::install_beast2()
-mauricer::install_beast2_pkg("NS")
+remotes::install_github("richelbilderbeek/beastierinstall")
+beastierinstall::install_beast2()
+remotes::install_github("richelbilderbeek/mauricerinstall")
+mauricerinstall::install_beast2_pkg("NS")
 ```
+
+Note that `mcbette` uses the non-CRAN extensions 
+[beastierinstall](https://github.com/richelbilderbeek/beastierinstall) 
+and [mauricerinstall](https://github.com/richelbilderbeek/mauricerinstall) 
+to install and uninstall BEAST2 and its packages.
 
 ## Example
 
