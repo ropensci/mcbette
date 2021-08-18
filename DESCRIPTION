@@ -36,7 +36,7 @@ BugReports: https://github.com/ropensci/mcbette/issues
 Imports:
     babette (>= 2.1.5),
     beautier (>= 2.6.2),
-    beastier (>= 2.4),
+    beastier (>= 2.4.6),
     curl,
     devtools,
     mauricer (>= 2.5),
