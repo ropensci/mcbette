@@ -22,11 +22,16 @@ matrix:
     - INSTALL_BEAST2=false
     - INSTALL_BEAST2_NS=false
 
+r_packages:
+  - covr
+  - lintr
+  - goodpractice
+
 r_github_packages:
-  - ropensci/beastier@develop
-  - r-lib/covr
-  - jimhester/lintr
-  - MangoTheCat/goodpractice
+  - ropensci/beautier
+  - ropensci/beastier
+  - ropensci/mauricer
+  - ropensci/babette
 
 before_install:
   # Fix rJava error, from https://travis-ci.community/t/cannot-connect-to-java-from-r/9754/8
