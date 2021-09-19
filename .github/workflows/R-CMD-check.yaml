@@ -24,6 +24,8 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v1
 
+      - uses: r-lib/actions/setup-pandoc@v1
+
       - name: Install libmpfr-dev for Rmpfr
         run: sudo apt install -qq libmpfr-dev
 
