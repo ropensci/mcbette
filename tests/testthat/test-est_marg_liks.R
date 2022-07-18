@@ -1,7 +1,7 @@
 test_that("use, 8 models", {
 
   if (!can_run_mcbette()) return()
-  if (!beastier::is_on_travis()) return()
+  if (!beautier::is_on_gha()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
   # idx | site | clock  | tree                                                  # nolint this is not code
@@ -202,7 +202,7 @@ test_that("use, 1 model, CBS", {
 test_that("use with same RNG seed must result in identical output", {
 
   if (!can_run_mcbette()) return()
-  if (!beastier::is_on_travis()) return()
+  if (!beautier::is_on_gha()) return()
 
   fasta_filename <- system.file("extdata", "simple.fas", package = "mcbette")
 

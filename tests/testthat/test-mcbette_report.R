@@ -3,7 +3,7 @@ test_that("use", {
 })
 
 test_that("give output when nothing is installed", {
-  if (!beastier::is_on_travis()) return()
+  if (!beautier::is_on_gha()) return()
 
   beast2_folder <- tempfile(pattern = "mcbette_mcbette_report_")
   set_mcbette_state(
@@ -19,7 +19,7 @@ test_that("give output when nothing is installed", {
 })
 
 test_that("give output when only BEAST2 is installed", {
-  if (!beastier::is_on_travis()) return()
+  if (!beautier::is_on_gha()) return()
 
   beast2_folder <- tempfile(pattern = "mcbette_mcbette_report_")
   set_mcbette_state(
@@ -35,7 +35,7 @@ test_that("give output when only BEAST2 is installed", {
 })
 
 test_that("give output when BEAST2 and NS are installed", {
-  if (!beastier::is_on_travis()) return()
+  if (!beautier::is_on_gha()) return()
 
   beast2_folder <- tempfile(pattern = "mcbette_mcbette_report_")
   set_mcbette_state(
