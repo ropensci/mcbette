@@ -8,10 +8,10 @@
 [![peer-review](https://badges.ropensci.org/360_status.svg)](https://github.com/ropensci/software-review/issues/360)
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.02762/status.svg)](https://doi.org/10.21105/joss.02762)
 
-| Branch    | [GitHub Actions](https://github.com/ropensci/mcbette/actions)                                      | [![Travis CI logo](man/figures/TravisCI.png)](https://travis-ci.com)                                                 | [![AppVeyor logo](man/figures/AppVeyor.png)](https://www.appveyor.com)                                                                                                    | [![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)                                                                                 |
-| --------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `master`  | ![R-CMD-check](https://github.com/ropensci/mcbette/workflows/R-CMD-check/badge.svg?branch=master)  | [![Build Status](https://travis-ci.com/ropensci/mcbette.svg?branch=master)](https://travis-ci.com/ropensci/mcbette)  | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/mcbette?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/mcbette)  | [![codecov.io](https://codecov.io/github/ropensci/mcbette/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mcbette?branch=master)   |
-| `develop` | ![R-CMD-check](https://github.com/ropensci/mcbette/workflows/R-CMD-check/badge.svg?branch=develop) | [![Build Status](https://travis-ci.com/ropensci/mcbette.svg?branch=develop)](https://travis-ci.com/ropensci/mcbette) | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/mcbette?branch=develop&svg=true)](https://ci.appveyor.com/project/ropensci/mcbette) | [![codecov.io](https://codecov.io/github/ropensci/mcbette/coverage.svg?branch=develop)](https://codecov.io/github/ropensci/mcbette?branch=develop) |
+| Branch    | [![GitHub Actions logo](man/figures/GitHubActions.png)](https://github.com/ropensci/mcbette/actions) | [![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)                                                                                 |
+|-----------|------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| `master`  | ![R-CMD-check](https://github.com/ropensci/mcbette/workflows/R-CMD-check/badge.svg?branch=master)    | [![codecov.io](https://codecov.io/github/ropensci/mcbette/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mcbette?branch=master)   |
+| `develop` | ![R-CMD-check](https://github.com/ropensci/mcbette/workflows/R-CMD-check/badge.svg?branch=develop)   | [![codecov.io](https://codecov.io/github/ropensci/mcbette/coverage.svg?branch=develop)](https://codecov.io/github/ropensci/mcbette?branch=develop) |
 
 <!-- badges: end -->
 
@@ -39,13 +39,21 @@ On Linux, to install these, do (as root):
 
     apt install r-cran-rjava libmpfr-dev
 
-After this, installing `mcbette` is easy:
+After this, installing `mcbette` is rather easy:
 
 ``` r
 install.packages("mcbette")
-beastier::install_beast2()
-mauricer::install_beast2_pkg("NS")
+remotes::install_github("richelbilderbeek/beastierinstall")
+beastierinstall::install_beast2()
+remotes::install_github("richelbilderbeek/mauricerinstall")
+mauricerinstall::install_beast2_pkg("NS")
 ```
+
+Note that `mcbette` uses the non-CRAN extensions
+[beastierinstall](https://github.com/richelbilderbeek/beastierinstall)
+and
+[mauricerinstall](https://github.com/richelbilderbeek/mauricerinstall)
+to install and uninstall BEAST2 and its packages.
 
 ## Example
 
@@ -170,10 +178,10 @@ beautier::get_tree_prior_names()
 
 ## Documentation
 
-  - The mcbette vignette
-  - [rOpenSci blog post: Call BEAST2 for Bayesian evolutionary analysis
+-   The mcbette vignette
+-   [rOpenSci blog post: Call BEAST2 for Bayesian evolutionary analysis
     from R](https://ropensci.org/blog/2020/01/28/babette/)
-  - [rOpenSci blog post: Selecting the Best Phylogenetic Evolutionary
+-   [rOpenSci blog post: Selecting the Best Phylogenetic Evolutionary
     Model](https://ropensci.org/blog/2020/12/01/mcbette-selecting-the-best-inference-model/)
 
 ## FAQ
@@ -237,16 +245,19 @@ Please note that this package is released with a [Contributor Code of
 Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
 project, you agree to abide by its terms.
 
+## Links
+
+-   [‘mcbette’ CRAN page](https://CRAN.R-project.org/package=mcbette)
+
 ## References
 
-  - Bilderbeek, Richel JC, and Rampal S. Etienne. “babette: BEAUti 2,
+-   Bilderbeek, Richel JC, and Rampal S. Etienne. “babette: BEAUti 2,
     BEAST 2 and Tracer for R.” Methods in Ecology and Evolution (2018).
     <https://doi.org/10.1111/2041-210X.13032>
-  - Bouckaert R., Vaughan T.G., Barido-Sottani J., Duchêne S., Fourment
+-   Bouckaert R., Vaughan T.G., Barido-Sottani J., Duchêne S., Fourment
     M., Gavryushkina A., et al. (2019) BEAST 2.5: An advanced software
     platform for Bayesian evolutionary analysis. PLoS computational
     biology, 15(4), e1006650.
-  - Russel, Patricio Maturana, et al. “Model selection and parameter
+-   Russel, Patricio Maturana, et al. “Model selection and parameter
     inference in phylogenetics using nested sampling.” Systematic
     biology 68.2 (2019): 219-233.
-
