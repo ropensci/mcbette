@@ -1,7 +1,7 @@
 # STATE IS CHANGED HERE
 
 test_that("use", {
-  if (!is_on_travis()) return()
+  if (!is_on_ci()) return()
 
   beast2_folder <- tempfile(pattern = "mcbette_")
 

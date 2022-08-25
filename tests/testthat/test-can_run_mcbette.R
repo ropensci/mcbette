@@ -8,7 +8,7 @@ test_that("correct", {
 })
 
 test_that("from custom location", {
-  if (!is_on_travis()) return()
+  if (!is_on_ci()) return()
 
   beast2_folder <- tempfile(pattern = "mcbette_")
   expect_false(can_run_mcbette(beast2_folder = beast2_folder))

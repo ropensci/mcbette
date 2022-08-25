@@ -161,7 +161,7 @@ test_that("more particles, less sd", {
 
 test_that("use BEAST2 installed at a different location", {
 
-  if (!is_on_travis()) return()
+  if (!is_on_ci()) return()
 
   beast2_folder <- tempfile(pattern = "mcbette_")
   set_mcbette_state(
