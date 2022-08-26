@@ -10,6 +10,8 @@
 #' @return a string with the interpretation in English
 #' @examples
 #' interpret_bayes_factor(0.5)
+#'
+#' beastier::check_empty_beaustier_folders()
 #' @author Richèl J.C. Bilderbeek
 #' @export
 interpret_bayes_factor <- function(bayes_factor) {

@@ -34,6 +34,8 @@
 #'     inference_model = inference_model,
 #'     beast2_options = beast2_options
 #'   )
+#'
+#'   beastier::check_empty_beaustier_folders()
 #' }
 #' @author Richèl J.C. Bilderbeek
 #' @export

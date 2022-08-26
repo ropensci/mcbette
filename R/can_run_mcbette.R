@@ -9,6 +9,10 @@
 #' }
 #' @inheritParams default_params_doc
 #' @author Richèl J.C. Bilderbeek
+#' @examples
+#' can_run_mcbette()
+#'
+#' beastier::check_empty_beaustier_folders()
 #' @export
 can_run_mcbette <- function(
   beast2_folder = beastier::get_default_beast2_folder()

@@ -85,6 +85,8 @@
 #'
 #'   # Interpret the results
 #'   interpret_marg_lik_estimates(marg_liks)
+#'
+#'   beastier::check_empty_beaustier_folders()
 #' }
 #' @author Richèl J.C. Bilderbeek
 #' @export

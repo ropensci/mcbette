@@ -9,3 +9,8 @@ get_test_marg_liks()
 \description{
 Get testing \code{marg_liks}
 }
+\examples{
+get_test_marg_liks()
+
+beastier::check_empty_beaustier_folders()
+}

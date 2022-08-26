@@ -1,4 +1,8 @@
 #' Get testing \code{marg_liks}
+#' @examples
+#' get_test_marg_liks()
+#'
+#' beastier::check_empty_beaustier_folders()
 #' @export
 get_test_marg_liks <- function() {
   #   site_model_name   clock_model_name tree_prior_name marg_log_lik marg_log_lik_sd     weight      ess # nolint this is an example

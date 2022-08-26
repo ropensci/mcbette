@@ -23,6 +23,8 @@ Interpret a Bayes factor, using the interpretation from [1].
 }
 \examples{
 interpret_bayes_factor(0.5)
+
+beastier::check_empty_beaustier_folders()
 }
 \author{
 Richèl J.C. Bilderbeek

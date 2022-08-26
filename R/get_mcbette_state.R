@@ -15,6 +15,8 @@
 #' }
 #' @examples
 #' get_mcbette_state()
+#'
+#' beastier::check_empty_beaustier_folders()
 #' @export
 get_mcbette_state <- function(
   beast2_folder = beastier::get_default_beast2_folder()

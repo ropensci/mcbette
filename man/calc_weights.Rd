@@ -22,6 +22,8 @@ evidences <- c(0.0001, 0.0002, 0.0003, 0.0004)
 
 # Sum will be 1.0
 calc_weights(evidences)
+
+beastier::check_empty_beaustier_folders()
 }
 \author{
 Richèl J.C. Bilderbeek

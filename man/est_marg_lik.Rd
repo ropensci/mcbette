@@ -57,6 +57,8 @@ if (can_run_mcbette()) {
     inference_model = inference_model,
     beast2_options = beast2_options
   )
+
+  beastier::check_empty_beaustier_folders()
 }
 }
 \seealso{

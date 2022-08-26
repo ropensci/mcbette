@@ -8,6 +8,8 @@
 #'
 #' # Sum will be 1.0
 #' calc_weights(evidences)
+#'
+#' beastier::check_empty_beaustier_folders()
 #' @author Richèl J.C. Bilderbeek
 #' @export
 calc_weights <- function(

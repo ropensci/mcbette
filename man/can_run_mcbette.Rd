@@ -26,6 +26,11 @@ Will return \link{TRUE} if:
   \item (3) The BEAST2 NS package is installed
 }
 }
+\examples{
+can_run_mcbette()
+
+beastier::check_empty_beaustier_folders()
+}
 \author{
 Richèl J.C. Bilderbeek
 }
