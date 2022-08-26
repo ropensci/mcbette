@@ -68,9 +68,9 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
 
-      - name: Make sure that no files are created in the .cache folder
-        run: beastier::check_empty_beaustier_folders()
-        shell: Rscript {0}
+      #- name: Make sure that no files are created in the .cache folder
+      #  run: beastier::check_empty_beaustier_folders()
+      #  shell: Rscript {0}
 
       - name: Test coverage
         env:
