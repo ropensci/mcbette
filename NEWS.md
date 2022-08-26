@@ -2,6 +2,24 @@
 
 Newest versions at top.
 
+## `mcbette` 1.15 (unreleased)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * 'set_mcbette_state', as this violates CRAN policy
+
 ## `mcbette` 1.14 (2021-05-14)
 
 ### NEW FEATURES
