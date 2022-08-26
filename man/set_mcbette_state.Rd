@@ -53,14 +53,6 @@ NS package installed as a side effect as well.
 Also, installing or uninstalling a BEAST2 package from a BEAST2
 installation will affect all installations.
 }
-\examples{
-mcbette_state <- get_mcbette_state()
-mcbette_state$beast2_installed <- TRUE
-mcbette_state$ns_installed <- TRUE
-\donttest{
-  set_mcbette_state(mcbette_state)
-}
-}
 \seealso{
 \itemize{
   \item Use \link{get_mcbette_state} to

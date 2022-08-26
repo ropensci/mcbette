@@ -19,64 +19,19 @@
 #'   \item Use \link{check_mcbette_state} to
 #'     check the current \link{mcbette} state
 #' }
-#' @examples
-#' mcbette_state <- get_mcbette_state()
-#' mcbette_state$beast2_installed <- TRUE
-#' mcbette_state$ns_installed <- TRUE
-#' \donttest{
-#'   set_mcbette_state(mcbette_state)
-#' }
 #' @export
 set_mcbette_state <- function(
   mcbette_state,
   beast2_folder = beastier::get_default_beast2_folder(),
   verbose = FALSE
 ) {
-  mcbette::check_mcbette_state(mcbette_state)
-
-  # Install BEAST2 if requested
-  if (isTRUE(mcbette_state$beast2_installed) &&
-    !beastier::is_beast2_installed(folder_name = beast2_folder)
-  ) {
-    beastierinstall::install_beast2(
-      folder_name = beast2_folder,
-      verbose = verbose
-    )
-  }
-
-  # Install NS if requested
-  if (isTRUE(mcbette_state$ns_installed) &&
-      !mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)
-  ) {
-    mauricerinstall::install_beast2_pkg(
-      "NS",
-      beast2_folder = beast2_folder,
-      verbose = verbose
-    )
-  }
-
-  # Uninstall NS if requested
-  # BEAST2 comes with the NS package pre-installed for newer version
-  if (isFALSE(mcbette_state$ns_installed)
-    && mauricer::is_beast2_ns_pkg_installed(beast2_folder = beast2_folder)
-  ) {
-    # Also uninstalls the global NS version :confused:
-    # I guess the list of packages is a global :confused:
-    mauricer::uninstall_beast2_pkg(
-      "NS",
-      beast2_folder = beast2_folder,
-      verbose = verbose
-    )
-  }
-
-  # Uninstall BEAST2 if requested
-  if (isFALSE(mcbette_state$beast2_installed) &&
-    beastier::is_beast2_installed(folder_name = beast2_folder)
-  ) {
-    beastier::uninstall_beast2(
-      folder_name = beast2_folder,
-      verbose = verbose
-    )
-  }
+  stop(
+    "This function is deprecated, as it violated CRAN policies.\n",
+    "\n",
+    "Tip: use 'mcbetteinstall::set_mcbette_state' instead:\n",
+    "\n",
+    "  remotes::install_github(\"richelbilderbeek/mcbetteinstall\")\n",
+    "  mcbetteinstall::set_mcbette_state(...)\n"
+  )
 
 }
