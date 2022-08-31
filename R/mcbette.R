@@ -59,8 +59,8 @@
 #'   # Interpret the results
 #'   interpret_marg_lik_estimates(marg_liks)
 #'
-#'   beastier::check_empty_beaustier_folders()
 #'   beastier::remove_beaustier_folders()
+#'   beastier::check_empty_beaustier_folders()
 #' }
 #' @docType package
 #' @name mcbette
