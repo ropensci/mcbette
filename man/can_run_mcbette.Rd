@@ -29,6 +29,7 @@ Will return \link{TRUE} if:
 \examples{
 can_run_mcbette()
 
+beastier::remove_beaustier_folders()
 beastier::check_empty_beaustier_folders()
 }
 \author{

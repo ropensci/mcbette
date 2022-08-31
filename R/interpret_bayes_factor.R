@@ -11,6 +11,7 @@
 #' @examples
 #' interpret_bayes_factor(0.5)
 #'
+#' beastier::remove_beaustier_folders()
 #' beastier::check_empty_beaustier_folders()
 #' @author Richèl J.C. Bilderbeek
 #' @export

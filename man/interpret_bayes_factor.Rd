@@ -24,6 +24,7 @@ Interpret a Bayes factor, using the interpretation from [1].
 \examples{
 interpret_bayes_factor(0.5)
 
+beastier::remove_beaustier_folders()
 beastier::check_empty_beaustier_folders()
 }
 \author{

@@ -38,5 +38,6 @@ Get the current state of \link{mcbette}
 \examples{
 get_mcbette_state()
 
+beastier::remove_beaustier_folders()
 beastier::check_empty_beaustier_folders()
 }

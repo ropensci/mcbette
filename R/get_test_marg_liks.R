@@ -2,6 +2,7 @@
 #' @examples
 #' get_test_marg_liks()
 #'
+#' beastier::remove_beaustier_folders()
 #' beastier::check_empty_beaustier_folders()
 #' @export
 get_test_marg_liks <- function() {

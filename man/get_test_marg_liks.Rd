@@ -12,5 +12,6 @@ Get testing \code{marg_liks}
 \examples{
 get_test_marg_liks()
 
+beastier::remove_beaustier_folders()
 beastier::check_empty_beaustier_folders()
 }
