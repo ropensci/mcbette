@@ -265,3 +265,7 @@ By contributing to this project, you agree to abide by its terms.
  * Bouckaert R., Vaughan T.G., Barido-Sottani J., Duchêne S., Fourment M., Gavryushkina A., et al. (2019) BEAST 2.5: An advanced software platform for Bayesian evolutionary analysis. PLoS computational biology, 15(4), e1006650.
  * Russel, Patricio Maturana, et al. "Model selection and parameter inference in phylogenetics using nested sampling." Systematic biology 68.2 (2019): 219-233.
 
+```{r cleanup_at_end}
+beastier::remove_beaustier_folders()
+beastier::check_empty_beaustier_folders()
+```

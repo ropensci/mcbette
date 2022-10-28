@@ -5,4 +5,7 @@ test_that("correct", {
       mauricer::is_beast2_ns_pkg_installed(),
     can_run_mcbette()
   )
+
+  beastier::remove_beaustier_folders()
+  beastier::check_empty_beaustier_folders()
 })

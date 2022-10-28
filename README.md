@@ -261,3 +261,8 @@ project, you agree to abide by its terms.
 -   Russel, Patricio Maturana, et al. “Model selection and parameter
     inference in phylogenetics using nested sampling.” Systematic
     biology 68.2 (2019): 219-233.
+
+``` r
+beastier::remove_beaustier_folders()
+beastier::check_empty_beaustier_folders()
+```

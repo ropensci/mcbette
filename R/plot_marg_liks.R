@@ -1,6 +1,11 @@
 #' Plot the \code{marg_liks}
 #' @inheritParams default_params_doc
 #' @return a \link[ggplot2]{ggplot}
+#' @examples
+#' plot_marg_liks(get_test_marg_liks())
+#'
+#' beastier::remove_beaustier_folders()
+#' beastier::check_empty_beaustier_folders()
 #' @export
 plot_marg_liks <- function(marg_liks) {
   mcbette::check_marg_liks(marg_liks)

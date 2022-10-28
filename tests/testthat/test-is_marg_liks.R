@@ -12,4 +12,7 @@ test_that("use", {
 
 test_that("verbose", {
   expect_message(is_marg_liks("nonsense", verbose = TRUE))
+
+  beastier::remove_beaustier_folders()
+  beastier::check_empty_beaustier_folders()
 })

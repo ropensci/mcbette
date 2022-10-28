@@ -35,3 +35,9 @@ a \link[ggplot2]{ggplot}
 \description{
 Plot the \code{marg_liks}
 }
+\examples{
+plot_marg_liks(get_test_marg_liks())
+
+beastier::remove_beaustier_folders()
+beastier::check_empty_beaustier_folders()
+}

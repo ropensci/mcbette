@@ -2,6 +2,24 @@
 
 Newest versions at top.
 
+## `mcbette` 1.15.1 (2022-10-28)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * Fix CRAN errors at https://github.com/ropensci/mcbette/issues/44
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.15 (unreleased)
 
 ### NEW FEATURES
@@ -18,7 +36,7 @@ Newest versions at top.
 
 ### DEPRECATED AND DEFUNCT
 
- * 'set_mcbette_state', as this violates CRAN policy
+ * Removed 'set_mcbette_state', as this violates CRAN policy
 
 ## `mcbette` 1.14 (2021-05-14)
 

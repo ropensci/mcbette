@@ -1,7 +1,4 @@
-context("test-calc_weights")
-
 test_that("human values", {
-
   marg_liks <- c(0.1, 0.2, 0.3, 0.4)
   created <- calc_weights(marg_liks)
   expected <- c(0.1, 0.2, 0.3, 0.4)
@@ -47,4 +44,7 @@ test_that("treat NA as zero, using Rmpfr", {
   created <- calc_weights(marg_liks)
   expected <- Rmpfr::mpfr(c(0.1, 0.2, 0.3, 0.4, 0.0), 512)
   expect_true(all(created - expected < 0.000000000001))
+
+  beastier::remove_beaustier_folders()
+  beastier::check_empty_beaustier_folders()
 })
