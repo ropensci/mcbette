@@ -62,9 +62,6 @@
 #'   beastier::remove_beaustier_folders()
 #'   beastier::check_empty_beaustier_folders()
 #' }
-#' @docType package
-#' @name mcbette
-#' @author Richèl J.C. Bilderbeek
 #' @importFrom beautier create_alpha_param
 #' @importFrom beautier create_bd_tree_prior
 #' @importFrom beautier create_beast2_input
@@ -188,4 +185,10 @@
 #' @importFrom mauricer install_beast2_pkg
 #' @importFrom mauricer is_beast2_ns_pkg_installed
 #' @importFrom mauricer uninstall_beast2_pkg
+#' @author Richèl J.C. Bilderbeek
+#' @keywords internal
+"_PACKAGE"
+
+## usethis namespace: start
+## usethis namespace: end
 NULL
