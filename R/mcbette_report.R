@@ -4,7 +4,9 @@
 #' @return nothing. It is intended that the output (not
 #' the return value) is copy-pasted from screen.
 #' @examples
-#' mcbette_report()
+#' if(beautier::is_on_ci()) {
+#'   mcbette_report()
+#' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
 mcbette_report <- function(

@@ -27,7 +27,9 @@ Create a \link{mcbette} report,
 to be used when reporting bugs
 }
 \examples{
-mcbette_report()
+if(beautier::is_on_ci()) {
+  mcbette_report()
+}
 }
 \author{
 Richèl J.C. Bilderbeek
