@@ -2,6 +2,24 @@
 
 Newest versions at top.
 
+## `mcbette` 1.15.2 (2023-09-25)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * Use new CITATION style
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.15.1 (2022-10-28)
 
 ### NEW FEATURES
