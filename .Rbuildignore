@@ -24,12 +24,12 @@
 ^scripts$
 ^README\.Rmd$
 ^README\.html$
-
 ^Meta$
 paper.pdf
 README_cache/
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 ^codemeta\.json$
-LICENSE
-anthus_aco_sub.*
+^LICENSE$
+^anthus_aco_sub.*$
+^mlc_config.json$
