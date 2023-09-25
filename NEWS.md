@@ -202,7 +202,7 @@ Newest versions at top.
 
  * Separated the package `mcbette` from a script running it.
    The latter can be found at 
-   [https://github.com/ropensci/mcbette_run](https://github.com/ropensci/mcbette_run)
+   [https://github.com/richelbilderbeek/mcbette_run](https://github.com/richelbilderbeek/mcbette_run)
  * Add `README.Rmd`, build `README.md` from it
  * Add AppVeyor build, even though the core feature of `mcbette` 
    requires Linux or MacOS
