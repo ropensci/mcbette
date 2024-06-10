@@ -4,5 +4,5 @@ bibentry(
   title = "mcbette: model comparison using babette",
   journal = "Journal of Open Source Software",
   year = 2020,
-  url = "https://doi.org/10.21105/joss.02762",
+  doi = "10.21105/joss.02762",
 )
