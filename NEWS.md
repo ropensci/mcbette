@@ -2,6 +2,24 @@
 
 Newest versions at top.
 
+## `mcbette` 1.15.3 (2024-07-23)
+
+### NEW FEATURES
+
+ * None
+
+### MINOR IMPROVEMENTS
+
+ * Update email address
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## `mcbette` 1.15.2 (2023-09-25)
 
 ### NEW FEATURES
