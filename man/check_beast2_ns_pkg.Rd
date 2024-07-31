@@ -9,6 +9,10 @@ check_beast2_ns_pkg(beast2_bin_path = beastier::get_default_beast2_bin_path())
 \arguments{
 \item{beast2_bin_path}{path to the the BEAST2 binary file}
 }
+\value{
+Nothing. The function will \link{stop} with an error message if
+the BEAST2 'NS' package is not installed.
+}
 \description{
 Checks if the BEAST2 'NS' package is installed.
 Will \link{stop} if not

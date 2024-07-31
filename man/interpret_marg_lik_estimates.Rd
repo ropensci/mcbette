@@ -29,6 +29,10 @@ Use \link{get_test_marg_liks} to get a test \code{marg_liks}.
 Use \link{is_marg_liks} to determine if a \code{marg_liks} is valid.
 Use \link{check_marg_liks} to check that a \code{marg_liks} is valid.}
 }
+\value{
+Nothing. This function shows the interpretation
+via \link{message}.
+}
 \description{
 Interpret the marginal likelihood estimates
 as created by \link{est_marg_liks}.

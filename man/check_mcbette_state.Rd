@@ -23,6 +23,9 @@ which is a \link{list} with the following elements:
   }
 }}
 }
+\value{
+Nothing. Will \link{stop} if the input is invalid.
+}
 \description{
 Check if the \code{mcbette_state} is valid.
 Will \link{stop} otherwise.

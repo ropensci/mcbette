@@ -1,4 +1,5 @@
 #' Get testing \code{marg_liks}
+#' @return A data frame with marginal likelihoods.
 #' @examples
 #' get_test_marg_liks()
 #'

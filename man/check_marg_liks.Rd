@@ -30,6 +30,10 @@ Use \link{get_test_marg_liks} to get a test \code{marg_liks}.
 Use \link{is_marg_liks} to determine if a \code{marg_liks} is valid.
 Use \link{check_marg_liks} to check that a \code{marg_liks} is valid.}
 }
+\value{
+Nothing. Will \link{stop} with an error message if there
+is a problem with the input.
+}
 \description{
 \link{stop} if not.
 }

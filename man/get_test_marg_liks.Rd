@@ -6,6 +6,9 @@
 \usage{
 get_test_marg_liks()
 }
+\value{
+A data frame with marginal likelihoods.
+}
 \description{
 Get testing \code{marg_liks}
 }

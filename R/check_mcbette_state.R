@@ -3,6 +3,7 @@
 #' Check if the \code{mcbette_state} is valid.
 #' Will \link{stop} otherwise.
 #' @inheritParams default_params_doc
+#' @return Nothing. Will \link{stop} if the input is invalid.
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_mcbette_state <- function(mcbette_state) {
@@ -27,4 +28,5 @@ check_mcbette_state <- function(mcbette_state) {
   if (!mcbette_state$beast2_installed && mcbette_state$ns_installed) {
     stop("If 'beast2_installed' is FALSE, 'ns_installed' must be FALSE")
   }
+  invisible(mcbette_state)
 }

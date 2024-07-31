@@ -17,6 +17,10 @@ Use \link[beastier]{get_default_beast2_bin_path}
 Use \link[beastier]{get_default_beast2_jar_path}
   to get the full path to the default BEAST2 jar file.}
 }
+\value{
+Nothing. Will \link{stop} is 'mcbette' cannot run on a minimal,
+standard input.
+}
 \description{
 Performs a minimal \link{mcbette} run
 }

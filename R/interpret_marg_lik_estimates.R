@@ -4,6 +4,8 @@
 #' as created by \link{est_marg_liks}.
 #'
 #' @inheritParams default_params_doc
+#' @return Nothing. This function shows the interpretation
+#' via \link{message}.
 #' @author Richèl J.C. Bilderbeek
 #' @export
 interpret_marg_lik_estimates <- function(marg_liks) {
@@ -51,4 +53,5 @@ interpret_marg_lik_estimates <- function(marg_liks) {
   message("**********************************", sep = "\n")
   message(" ", sep = "\n")
   message(knitr::kable(df_best, row.names = FALSE), sep = "\n")
+  invisible(marg_liks)
 }

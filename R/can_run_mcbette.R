@@ -8,6 +8,7 @@
 #'   \item (3) The BEAST2 NS package is installed
 #' }
 #' @inheritParams default_params_doc
+#' @return \link{TRUE} if 'mcbette' can run.
 #' @author Richèl J.C. Bilderbeek
 #' @examples
 #' can_run_mcbette()

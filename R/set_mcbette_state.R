@@ -12,6 +12,7 @@
 #' Also, installing or uninstalling a BEAST2 package from a BEAST2
 #' installation will affect all installations.
 #' @inheritParams default_params_doc
+#' @return Nothing.
 #' @seealso
 #' \itemize{
 #'   \item Use \link{get_mcbette_state} to
@@ -33,5 +34,5 @@ set_mcbette_state <- function(
     "  remotes::install_github(\"richelbilderbeek/mcbetteinstall\")\n",
     "  mcbetteinstall::set_mcbette_state(...)\n"
   )
-
+  invisible(NULL)
 }

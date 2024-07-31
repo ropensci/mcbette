@@ -1,5 +1,7 @@
 #' Performs a minimal \link{mcbette} run
 #' @inheritParams default_params_doc
+#' @return Nothing. Will \link{stop} is 'mcbette' cannot run on a minimal,
+#' standard input.
 #' @export
 mcbette_self_test <- function(
   beast2_folder = beastier::get_default_beast2_folder()

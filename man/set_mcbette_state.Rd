@@ -39,6 +39,9 @@ Use \link[beastier]{get_default_beast2_jar_path}
 
 \item{verbose}{if TRUE show debug output}
 }
+\value{
+Nothing.
+}
 \description{
 Set the \link{mcbette} state to having BEAST2 installed with
 or without installing the BEAST2 NS package.

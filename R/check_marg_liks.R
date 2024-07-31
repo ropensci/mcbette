@@ -3,6 +3,8 @@
 #'
 #' \link{stop} if not.
 #' @inheritParams default_params_doc
+#' @return Nothing. Will \link{stop} with an error message if there
+#' is a problem with the input.
 #' @export
 check_marg_liks <- function(marg_liks) {
   if (!is.data.frame(marg_liks)) {
@@ -36,4 +38,5 @@ check_marg_liks <- function(marg_liks) {
   testthat::expect_true(
     all(is.numeric(marg_liks$ess))
   )
+  invisible(marg_liks)
 }

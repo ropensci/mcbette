@@ -17,6 +17,9 @@ Use \link[beastier]{get_default_beast2_bin_path}
 Use \link[beastier]{get_default_beast2_jar_path}
   to get the full path to the default BEAST2 jar file.}
 }
+\value{
+\link{TRUE} if 'mcbette' can run.
+}
 \description{
 Can 'mcbette' run?
 Will return \link{TRUE} if:
