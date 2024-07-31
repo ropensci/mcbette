@@ -40,7 +40,6 @@ Imports:
     curl,
     devtools,
     mauricer (>= 2.5),
-    babette (>= 2.3),
     Rmpfr,
     testit,
     txtplot
