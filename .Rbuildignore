@@ -33,3 +33,4 @@ CONTRIBUTING.md
 ^LICENSE$
 ^anthus_aco_sub.*$
 ^mlc_config.json$
+^CITATION\.cff$
