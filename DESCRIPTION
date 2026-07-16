@@ -49,7 +49,6 @@ Suggests:
     ggplot2,
     hunspell,
     knitr,
-    lintr,
     markdown,
     nLTT,
     phangorn,
